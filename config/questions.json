@@ -1,0 +1,63 @@
+{
+  "version": "1.0",
+  "questions": [
+    {
+      "index": 1,
+      "id": "q1_value",
+      "text": "車に求める価値は？",
+      "choices": [
+        { "key": "safety", "label": "安心" },
+        { "key": "enjoyment", "label": "楽しさ" },
+        { "key": "family", "label": "家族時間" },
+        { "key": "efficiency", "label": "効率" },
+        { "key": "status", "label": "ステータス" }
+      ]
+    },
+    {
+      "index": 2,
+      "id": "q2_weekend",
+      "text": "休日の過ごし方は？",
+      "choices": [
+        { "key": "family_center", "label": "家族中心" },
+        { "key": "solo", "label": "一人時間" },
+        { "key": "active", "label": "アクティブ" },
+        { "key": "learning", "label": "学び" },
+        { "key": "hobby", "label": "趣味" }
+      ]
+    },
+    {
+      "index": 3,
+      "id": "q3_regret",
+      "text": "最も避けたい後悔は？",
+      "choices": [
+        { "key": "unused", "label": "買ってから使わない" },
+        { "key": "family_dissatisfaction", "label": "家族不満" },
+        { "key": "maintenance", "label": "維持費" },
+        { "key": "boredom", "label": "すぐ飽きる" },
+        { "key": "feature_lack", "label": "機能不足" }
+      ]
+    },
+    {
+      "index": 4,
+      "id": "q4_stress",
+      "text": "移動時のストレスは？",
+      "choices": [
+        { "key": "fatigue", "label": "疲れる" },
+        { "key": "traffic", "label": "渋滞" },
+        { "key": "parking", "label": "駐車" },
+        { "key": "difficult_operation", "label": "操作が難しい" },
+        { "key": "too_much_info", "label": "情報が多い" }
+      ]
+    },
+    {
+      "index": 5,
+      "id": "q5_ai",
+      "text": "AIとの付き合い方は？",
+      "choices": [
+        { "key": "ai_decide", "label": "AIに決めてほしい" },
+        { "key": "ai_candidates", "label": "候補だけ" },
+        { "key": "self_decide", "label": "自分で選びたい" }
+      ]
+    }
+  ]
+}

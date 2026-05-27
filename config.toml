@@ -1,0 +1,10 @@
+[server]
+# 全ネットワークインターフェースでリッスン（他のPCからのアクセスを許可）
+address = "0.0.0.0"
+port = 8501
+headless = true
+
+[browser]
+# 起動時にブラウザを自動で開く
+serverAddress = "localhost"
+serverPort = 8501

@@ -1,0 +1,46 @@
+{
+  "demo_fallback": true,
+  "recommendations": [
+    {
+      "model": "VEZEL",
+      "score": 0.92,
+      "reason": "安心・家族ニーズに高い適合度（デモデータ）",
+      "archetype": "安心重視型",
+      "similar_consumers": [],
+      "quick_grade": "e:HEV",
+      "price_range": "",
+      "fuel_type": "Hybrid",
+      "seating_capacity": 5,
+      "appeal_points": []
+    },
+    {
+      "model": "FIT",
+      "score": 0.88,
+      "reason": "効率と都市部利用にバランスが良い（デモデータ）",
+      "archetype": "バランス型",
+      "similar_consumers": [],
+      "quick_grade": "HOME",
+      "price_range": "",
+      "fuel_type": "Hybrid",
+      "seating_capacity": 5,
+      "appeal_points": []
+    },
+    {
+      "model": "ステップワゴン",
+      "score": 0.85,
+      "reason": "ファミリー利用シーンに適合（デモデータ）",
+      "archetype": "家族重視型",
+      "similar_consumers": [],
+      "quick_grade": "EX",
+      "price_range": "",
+      "fuel_type": "Hybrid",
+      "seating_capacity": 7,
+      "appeal_points": []
+    }
+  ],
+  "excluded": [
+    { "model": "NSX", "reason": "利用文脈との一致度が低い" },
+    { "model": "S660", "reason": "ファミリー利用には不向き" },
+    { "model": "N-ONE", "reason": "重視する価値軸との適合度が低い" }
+  ]
+}

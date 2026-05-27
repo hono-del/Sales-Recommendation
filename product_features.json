@@ -1,0 +1,1369 @@
+[
+  {
+    "model_name": "ES",
+    "category": "SEDAN",
+    "features": [
+      "ハイブリッドシステム搭載",
+      "3眼フルLEDヘッドランプ",
+      "パノラミックビューモニター",
+      "Lexus Safety System +プリクラッシュセーフティ"
+    ],
+    "safety_features": [
+      "プリクラッシュセーフティ（歩行者・自転車運転者検知）",
+      "レーントレーシングアシスト",
+      "ブラインドスポットモニター",
+      "パーキングサポートブレーキ",
+      "SRSエアバッグシステム（11個）"
+    ],
+    "technology": [
+      "12.3インチディスプレイオーディオ（コネクティッドナビ対応）",
+      "デジタルアウターミラー",
+      "ハンズフリーパワートランクリッド",
+      "おくだけ充電",
+      "ITS Connect",
+      "ETC2.0ユニット"
+    ],
+    "specs": {
+      "price_range": "6,020,000〜7,180,000円",
+      "fuel_type": "ハイブリッド",
+      "seating_capacity": 5
+    },
+    "satisfies_needs": [
+      "safety",
+      "comfort",
+      "technology",
+      "fuel_efficiency",
+      "design"
+    ]
+  },
+  {
+    "model_name": "GX",
+    "category": "SUV",
+    "features": [
+      "V型6気筒ツインターボエンジン（3.444L、353PS）",
+      "4輪駆動システム搭載",
+      "Direct Shift-10AT電子制御オートマチック",
+      "7人乗り/5人乗りの選択可能"
+    ],
+    "safety_features": [
+      "Lexus Safety System+（プリクラッシュセーフティ、歩行者・自転車検知）",
+      "Lexus Teammate Advanced Drive（渋滞時支援）",
+      "9個のエアバッグシステム",
+      "ブラインドスポットモニター",
+      "パーキングサポートブレーキ（前後方・接近車両対応）",
+      "パノラミックビューモニター"
+    ],
+    "technology": [
+      "12.3インチTFT液晶メーター＆カラーヘッドアップディスプレイ",
+      "14インチタッチディスプレイオーディオ（コネクティッドナビ対応）",
+      "ナノイーX搭載エアコン",
+      "ハンズフリーパワーバックドア",
+      "デジタルキー対応",
+      "G-Link（コネクティッド機能）"
+    ],
+    "specs": {
+      "price_range": "11,950,000〜12,700,000円",
+      "fuel_type": "無鉛プレミアムガソリン",
+      "seating_capacity": 7
+    },
+    "satisfies_needs": [
+      "safety",
+      "space",
+      "offroad",
+      "comfort",
+      "technology"
+    ]
+  },
+  {
+    "model_name": "IS",
+    "category": "SEDAN",
+    "features": [
+      "ハイブリッドシステム搭載による高い燃費性能",
+      "2.5L直列4気筒エンジン+モーター",
+      "電気式無段変速機による滑らかな加速",
+      "後輪駆動による上質な走行性能",
+      "最新のレクサスデザインフィロソフィー",
+      "上質でスポーティな室内空間"
+    ],
+    "safety_features": [
+      "Lexus Safety System +（プリクラッシュセーフティ、レーンディパーチャーアラート、レーントレーシングアシスト）",
+      "Lexus Teammate Advanced Drive（渋滞時支援）",
+      "ブラインドスポットモニター",
+      "パノラミックビューモニター",
+      "パーキングサポートブレーキ（前後方静止物・後方接近車両・後方歩行者対応）",
+      "SRSエアバッグシステム（運転席・助手席・サイド・カーテンシールド）",
+      "ITS Connect対応"
+    ],
+    "technology": [
+      "12.3インチタッチディスプレイオーディオ（コネクティッドナビ対応）Plus",
+      "G-Link（初度登録から3年間無料）",
+      "おくだけ充電（ワイヤレス充電）",
+      "スマートエントリー&スタートシステム",
+      "NAVI・AI-AVS（リニアソレノイド式）※オプション",
+      "12.3インチTFT液晶式メーター",
+      "パノラミックビューモニター（床下透過表示機能付）"
+    ],
+    "specs": {
+      "price_range": "5,800,000〜6,750,000円",
+      "fuel_type": "ハイブリッド",
+      "seating_capacity": 5
+    },
+    "satisfies_needs": [
+      "fuel_efficiency",
+      "safety",
+      "comfort",
+      "technology",
+      "design"
+    ]
+  },
+  {
+    "model_name": "LBX",
+    "category": "SUV",
+    "features": [
+      "コンパクトプレミアムSUV",
+      "ハイブリッドシステム搭載",
+      "E-Four電気式4輪駆動対応",
+      "5つのグレード展開"
+    ],
+    "safety_features": [
+      "Lexus Safety System +",
+      "プリクラッシュセーフティ（歩行者・自転車・自動二輪車検知）",
+      "レーンディパーチャーアラート",
+      "パーキングサポートブレーキ",
+      "レーダークルーズコントロール",
+      "Lexus Teammate Advanced Drive",
+      "パノラミックビューモニター"
+    ],
+    "technology": [
+      "ハイブリッドシステム",
+      "電気式無段変速機",
+      "アクティブノイズコントロール",
+      "12.3インチTFTメーター",
+      "9.8インチディスプレイオーディオ",
+      "G-Link（3年間無料）",
+      "ナノイーX",
+      "デジタルキー対応"
+    ],
+    "specs": {
+      "price_range": "4,200,000〜5,760,000円",
+      "fuel_type": "ハイブリッド",
+      "seating_capacity": 5
+    },
+    "satisfies_needs": [
+      "safety",
+      "fuel_efficiency",
+      "comfort",
+      "design",
+      "technology"
+    ]
+  },
+  {
+    "model_name": "LC",
+    "category": "SEDAN",
+    "features": [
+      "V型8気筒エンジン搭載",
+      "ハイブリッドシステム選択可",
+      "クーペ/コンバーチブルボディ",
+      "後輪駆動(FR)"
+    ],
+    "safety_features": [
+      "Lexus Safety System+",
+      "プリクラッシュセーフティ（歩行者・自転車検知）",
+      "レーントレーシングアシスト[LTA]",
+      "オートマチックハイビーム[AHB]",
+      "レーダークルーズコントロール",
+      "ロードサインアシスト[RSA]"
+    ],
+    "technology": [
+      "12.3インチタッチディスプレイオーディオ",
+      "カラーヘッドアップディスプレイ",
+      "パノラミックビューモニター",
+      "ドライブモードセレクト（6モード）",
+      "アクティブリヤウィング",
+      "ギヤ比可変ステアリング[VGRS]"
+    ],
+    "specs": {
+      "price_range": "14,100,000〜15,550,000円",
+      "fuel_type": "ガソリン/ハイブリッド",
+      "seating_capacity": 4
+    },
+    "satisfies_needs": [
+      "comfort",
+      "design",
+      "technology",
+      "safety",
+      "fuel_efficiency"
+    ]
+  },
+  {
+    "model_name": "LM",
+    "category": "MINIVAN",
+    "features": [
+      "ハイブリッドシステム搭載",
+      "4人乗り/6人乗り設定",
+      "プレミアムサルーン",
+      "電動パワースライドドア"
+    ],
+    "safety_features": [
+      "Lexus Safety System +",
+      "プリクラッシュセーフティ（歩行者・自転車・自動二輪車検知）",
+      "レーンディパーチャーアラート",
+      "パーキングサポートブレーキ",
+      "Lexus Teammate Advanced Drive",
+      "ドライバー異常時対応システム"
+    ],
+    "technology": [
+      "12.3インチTFT液晶式メーター",
+      "カラーヘッドアップディスプレイ",
+      "14インチタッチディスプレイオーディオ（コネクティッドナビ対応）",
+      "マークレビンソン リファレンス3Dサラウンドサウンドシステム",
+      "デジタルインナーミラー",
+      "パノラミックビューモニター",
+      "G-Link",
+      "デジタルキー"
+    ],
+    "specs": {
+      "price_range": "15,200,000〜20,300,000円",
+      "fuel_type": "ハイブリッド（ガソリン+電気）",
+      "seating_capacity": 4
+    },
+    "satisfies_needs": [
+      "safety",
+      "comfort",
+      "space",
+      "technology",
+      "family"
+    ]
+  },
+  {
+    "model_name": "LS",
+    "category": "SEDAN",
+    "features": [
+      "V型6気筒エンジン搭載",
+      "ハイブリッドシステム（LS500h）と直噴ツインターボ（LS500）の2パワートレイン",
+      "マルチステージハイブリッドトランスミッション搭載",
+      "Direct Shift-10AT電子制御10速オートマチック",
+      "高級感あふれるプレミアム設計",
+      "電子制御エアサスペンション搭載"
+    ],
+    "safety_features": [
+      "Lexus Safety System +（プリクラッシュセーフティ、歩行者・自転車・自動二輪車検知機能付）",
+      "Advanced Park+パーキングサポートブレーキ",
+      "ブレードスキャン®アダプティブハイビームシステム[AHS]",
+      "複数のSRSエアバッグシステム（運転席・助手席デュアルステージ、サイド、カーテンシールド、後席サイド）",
+      "ドライバー異常時対応システム",
+      "セカンダリーコリジョンブレーキ（停車中後突対応）",
+      "安心降車アシスト[SEA]"
+    ],
+    "technology": [
+      "12.3インチディスプレイオーディオ（コネクティッドナビ対応）Plus",
+      "Lexus Teammate（Advanced Drive、Advanced Park機能）",
+      "デジタルインナーミラー",
+      "パノラミックビューモニター（床下透過表示機能付）",
+      "ドライブレコーダー（前後方）",
+      "ETC2.0ユニット（VICS機能付）",
+      "ナノイーX",
+      "コネクティッドサービス（G-Link、ヘルプネット®、レクサスオーナーズデスク）"
+    ],
+    "specs": {
+      "price_range": "11,110,000〜17,730,000円",
+      "fuel_type": "ガソリン/ハイブリッド",
+      "seating_capacity": 5
+    },
+    "satisfies_needs": [
+      "safety",
+      "comfort",
+      "technology",
+      "design",
+      "fuel_efficiency"
+    ]
+  },
+  {
+    "model_name": "LX",
+    "category": "SUV",
+    "features": [
+      "フラグシップラグジュアリーSUV",
+      "ハイブリッド・ガソリン2つのパワートレイン",
+      "マルチテレイン対応の走破性",
+      "最新のレクサスプレミアム装備"
+    ],
+    "safety_features": [
+      "Lexus Safety System +（プリクラッシュセーフティ、レーンディパーチャーアラート等）",
+      "パーキングサポートブレーキ（前後方静止物・後方接近車両・後方歩行者対応）",
+      "マルチテレインモニー/パノラミックビューモニター",
+      "セカンダリーコリジョンブレーキ",
+      "ドライバーモニター連携安全装備"
+    ],
+    "technology": [
+      "12.3インチディスプレイオーディオ（コネクティッドナビ対応）",
+      "デュアルディスプレイシステム",
+      "カラーヘッドアップディスプレイ",
+      "リヤシートエンターテインメントシステム",
+      "マークレビンソン・リファレンス3Dサラウンドサウンドシステム",
+      "G-Link（初度登録3年間無料）",
+      "ITS Connect対応"
+    ],
+    "specs": {
+      "price_range": "14,500,000～21,000,000円",
+      "fuel_type": "ハイブリッド/ガソリン",
+      "seating_capacity": 7
+    },
+    "satisfies_needs": [
+      "safety",
+      "comfort",
+      "technology",
+      "family",
+      "offroad"
+    ]
+  },
+  {
+    "model_name": "NX",
+    "category": "SUV",
+    "features": [
+      "プラグインハイブリッド（NX450h+）とハイブリッド（NX350h）、ガソリン（NX350）の3パワートレイン展開",
+      "E-Four電気式4輪駆動システム",
+      "最新の安全運転支援技術Lexus Safety System+搭載",
+      "コネクティッドナビ対応で最先端の利便性"
+    ],
+    "safety_features": [
+      "プリクラッシュセーフティシステム（昼夜対応の歩行者・自転車検知）",
+      "レーントレーシングアシスト（LTA）",
+      "パーキングサポートブレーキ（前後方・静止物対応）",
+      "パノラミックビューモニター（床下透過表示機能付）",
+      "アダプティブハイビームシステム（AHS）"
+    ],
+    "technology": [
+      "14インチタッチディスプレイオーディオ（コネクティッドナビ対応）",
+      "デジタルキー（スマートフォン対応）",
+      "Lexus Teammate（一部グレード）",
+      "ヒートポンプエアコン（ハイブリッド車全車標準）",
+      "ナノイーX搭載"
+    ],
+    "specs": {
+      "price_range": "5,500,000〜7,725,000円",
+      "fuel_type": "プラグインハイブリッド/ハイブリッド/ガソリン",
+      "seating_capacity": 5
+    },
+    "satisfies_needs": [
+      "safety",
+      "technology",
+      "fuel_efficiency",
+      "comfort",
+      "design"
+    ]
+  },
+  {
+    "model_name": "RX",
+    "category": "SUV",
+    "features": [
+      "3列シート5人乗り大型クロスオーバーSUV",
+      "ハイブリッド・PHEV・ガソリンエンジンの複数パワートレイン展開",
+      "E-Four電気式4輪駆動システム搭載",
+      "最新の安全・運転支援技術搭載"
+    ],
+    "safety_features": [
+      "Lexus Safety System+(プリクラッシュセーフティ・歩行者/自転車/自動二輪車検知)",
+      "Lexus Teammate Advanced Drive(渋滞時支援)",
+      "Advanced Park(リモート機能付パーキングサポート)",
+      "ドライバー異常時対応システム・ドライバーモニター",
+      "ブラインドスポットモニター・後方車両接近告知",
+      "パノラミックビューモニター・ドライブレコーダー"
+    ],
+    "technology": [
+      "コネクティッドナビ対応14インチタッチディスプレイオーディオ",
+      "デジタルキー対応スマートエントリー&スタートシステム",
+      "G-Link(初度登録日から3年間無料)",
+      "ハンズフリーパワーバックドア・ナノイーX",
+      "カラーヘッドアップディスプレイ",
+      "12.3インチTFT液晶メーター"
+    ],
+    "specs": {
+      "price_range": "7,090,000〜9,030,000円",
+      "fuel_type": "ガソリン/ハイブリッド/PHEV",
+      "seating_capacity": 5
+    },
+    "satisfies_needs": [
+      "safety",
+      "space",
+      "technology",
+      "comfort",
+      "family"
+    ]
+  },
+  {
+    "model_name": "RZ",
+    "category": "SUV",
+    "features": [
+      "100%電動SUV",
+      "ステアバイワイヤシステム搭載（F SPORT）",
+      "パノラマルーフ選択可能",
+      "最新プラットフォーム採用"
+    ],
+    "safety_features": [
+      "Lexus Safety System +",
+      "プリクラッシュセーフティ（歩行者・自転車・自動二輪車検知）",
+      "Lexus Teammate Advanced Drive",
+      "Advanced Park（リモート機能付）",
+      "パノラミックビューモニター"
+    ],
+    "technology": [
+      "14インチタッチディスプレイオーディオ（コネクティッドナビ対応）Plus",
+      "TFT液晶式メーター",
+      "カラーヘッドアップディスプレイ",
+      "G-Link（3年間無料）",
+      "デジタルキー対応",
+      "おくだけ充電®"
+    ],
+    "specs": {
+      "price_range": "7,900,000〜9,500,000円",
+      "fuel_type": "EV（電気自動車）",
+      "seating_capacity": 5
+    },
+    "satisfies_needs": [
+      "safety",
+      "technology",
+      "fuel_efficiency",
+      "comfort",
+      "design"
+    ]
+  },
+  {
+    "model_name": "UX",
+    "category": "SUV",
+    "features": [
+      "コンパクトラグジュアリーSUV",
+      "ハイブリッドシステム搭載",
+      "電気式4輪駆動（E-Four）オプション",
+      "洗練されたデザイン"
+    ],
+    "safety_features": [
+      "Lexus Safety System +",
+      "プリクラッシュセーフティ（歩行者・自転車・自動二輪車検知）",
+      "レーントレーシングアシスト",
+      "アダプティブハイビームシステム",
+      "ブラインドスポットモニター",
+      "パーキングサポートブレーキ"
+    ],
+    "technology": [
+      "12.3インチディスプレイオーディオ（コネクティッドナビ対応）",
+      "マークレビンソンプレミアムサラウンドサウンドシステム",
+      "パノラミックビューモニター（床下透過表示機能付）",
+      "デジタルキー",
+      "ITS Connect",
+      "ETC2.0ユニット"
+    ],
+    "specs": {
+      "price_range": "4,903,000〜5,757,000円",
+      "fuel_type": "ハイブリッド",
+      "seating_capacity": 5
+    },
+    "satisfies_needs": [
+      "safety",
+      "fuel_efficiency",
+      "comfort",
+      "technology",
+      "design"
+    ]
+  },
+  {
+    "model_name": "TX",
+    "category": "SUV",
+    "features": [
+      "3列シート大型SUV",
+      "ファミリー向け",
+      "広い室内空間",
+      "上質な内装"
+    ],
+    "safety_features": [
+      "レクサスセーフティシステム+",
+      "後席モニタリングシステム"
+    ],
+    "technology": [
+      "14インチタッチスクリーン",
+      "後席エンターテインメント",
+      "ヘッドアップディスプレイ"
+    ],
+    "specs": {
+      "price_range": "8,500,000〜11,000,000円",
+      "fuel_type": "ハイブリッド",
+      "seating_capacity": 7
+    },
+    "satisfies_needs": [
+      "space",
+      "family",
+      "safety",
+      "comfort"
+    ]
+  },
+  {
+    "model_name": "RC",
+    "category": "SEDAN",
+    "features": [
+      "2ドアクーペ",
+      "スポーティスタイル",
+      "個性的デザイン",
+      "走行性能"
+    ],
+    "safety_features": [
+      "レクサスセーフティシステム+",
+      "プリクラッシュセーフティ"
+    ],
+    "technology": [
+      "10.3インチナビ",
+      "スポーツ走行モード",
+      "パドルシフト"
+    ],
+    "specs": {
+      "price_range": "5,200,000〜7,200,000円",
+      "fuel_type": "ハイブリッド/ガソリン",
+      "seating_capacity": 4
+    },
+    "satisfies_needs": [
+      "design",
+      "comfort"
+    ]
+  },
+  {
+    "model_name": "INSIGHT",
+    "category": "SUV",
+    "features": [
+      "シャープで未来的なフォルム",
+      "高トルクモーターによる心昂ぶる加速",
+      "軽快な操縦フィール",
+      "大容量の荷室スペース"
+    ],
+    "safety_features": [
+      "Honda SENSING（先進安全運転支援システム）",
+      "Honda パーキングパイロット（自動駐車支援）",
+      "ドライブレコーダー内蔵センターカメラミラーシステム",
+      "高水準の衝突安全性能"
+    ],
+    "technology": [
+      "Honda CONNECT（コネクテッド技術）",
+      "ヘッドアップディスプレー（11.5インチ相当）",
+      "BOSEプレミアムサウンドシステム（12スピーカー）",
+      "LEDアンビエントランプ",
+      "電動スモークドガラス・サンルーフ",
+      "フラッシュアウターハンドル",
+      "アロマディフューザー",
+      "Honda リモート操作（スマホアプリ）",
+      "EVカーナビ by NAVITIME"
+    ],
+    "specs": {
+      "price_range": "5,500,000円",
+      "fuel_type": "EV",
+      "seating_capacity": 5
+    },
+    "satisfies_needs": [
+      "fuel_efficiency",
+      "technology",
+      "comfort",
+      "design",
+      "safety"
+    ]
+  },
+  {
+    "model_name": "N-VAN-E",
+    "category": "KEI",
+    "features": [
+      "軽商用EV",
+      "スクエア型の大容量荷室",
+      "給電機能付（最大1,500W出力）",
+      "走る蓄電池として活用可能"
+    ],
+    "safety_features": [
+      "Honda SENSING（衝突軽減ブレーキ、先行車発進お知らせ機能、歩行者事故低減ステアリング、路外逸脱抑制機能など）",
+      "サイドカーテンエアバッグシステム（軽商用バン初）",
+      "i-SRSエアバッグシステム",
+      "パーキングセンサーシステム"
+    ],
+    "technology": [
+      "Honda CONNECT（新世代コネクテッド技術）",
+      "スマートフォンからの充電状態確認・遠隔操作",
+      "普通充電ポート（外部給電機能付）",
+      "急速充電ポート対応（高出力対応）"
+    ],
+    "specs": {
+      "price_range": "2,699,400〜2,919,400円",
+      "fuel_type": "EV",
+      "seating_capacity": 1
+    },
+    "satisfies_needs": [
+      "space",
+      "technology",
+      "fuel_efficiency",
+      "design"
+    ]
+  },
+  {
+    "model_name": "N-ONE-E",
+    "category": "KEI",
+    "features": [
+      "軽EVトップクラスの航続距離（295km）",
+      "シングルペダルコントロール",
+      "外部給電機能（走る蓄電池）",
+      "静粛性に優れたモーター駆動"
+    ],
+    "safety_features": [
+      "Honda SENSING（先進安全運転支援システム）",
+      "衝突安全性能",
+      "予防安全性能"
+    ],
+    "technology": [
+      "Honda CONNECT（コネクテッド技術）",
+      "スマートフォン連携機能",
+      "充電管理アプリ",
+      "AC外部給電器"
+    ],
+    "specs": {
+      "price_range": "2,699,400〜3,198,800円",
+      "fuel_type": "EV",
+      "seating_capacity": 4
+    },
+    "satisfies_needs": [
+      "fuel_efficiency",
+      "technology",
+      "comfort",
+      "safety"
+    ]
+  },
+  {
+    "model_name": "NEW",
+    "category": "HATCHBACK",
+    "features": [
+      "軽量ボディー（1,090kg）による操る喜びの実現",
+      "BOOSTモード搭載で最高出力70kW、刺激的な加速体験",
+      "一充電走行距離274km",
+      "ロー&ワイドなスタンスと近未来的なデザイン",
+      "仮想有段シフト制御と専用サウンド"
+    ],
+    "safety_features": [
+      "先進の安全運転支援機能",
+      "ダイレクトプロジェクション式フルLEDヘッドライト",
+      "フロントスポーツシートによる安定したドライビングポジション"
+    ],
+    "technology": [
+      "Google搭載9インチHonda CONNECTディスプレー",
+      "Googleアシスタント、Googleマップ、Google Play対応",
+      "BOSEプレミアムサウンドシステム（8スピーカー）",
+      "アクティブサウンドコントロール",
+      "シングルペダルコントロール",
+      "パドルシフト",
+      "LEDインパネラインイルミネーション",
+      "7インチTFT液晶メーター"
+    ],
+    "specs": {
+      "price_range": "",
+      "fuel_type": "EV",
+      "seating_capacity": 5
+    },
+    "satisfies_needs": [
+      "design",
+      "technology",
+      "fuel_efficiency",
+      "comfort"
+    ]
+  },
+  {
+    "model_name": "N-VAN",
+    "category": "KEI",
+    "features": [
+      "大容量荷室スペース",
+      "ダブルビッグ大開口",
+      "低床設計",
+      "助手席テーブルモード",
+      "フラットな床面",
+      "シートアレンジ機能"
+    ],
+    "safety_features": [
+      "衝突軽減ブレーキ(CMBS)",
+      "車線維持支援システム(LKAS)",
+      "アダプティブクルーズコントロール(ACC)",
+      "歩行者事故低減ステアリング",
+      "路外逸脱抑制機能",
+      "標識認識機能",
+      "先行車発進お知らせ機能",
+      "誤発進抑制機能",
+      "後方誤発進抑制機能",
+      "オートハイビーム",
+      "パーキングセンサーシステム"
+    ],
+    "technology": [
+      "Honda SENSING",
+      "フルLEDヘッドライト(FUN/NATURE STYLE)",
+      "7インチTFT液晶メーター",
+      "プッシュエンジンスタート",
+      "充電用USBジャック(Type-C)",
+      "Hondaスマートキーシステム",
+      "純正ナビ対応",
+      "リアワイドカメラ対応"
+    ],
+    "specs": {
+      "price_range": "1,498,200〜2,269,300円",
+      "fuel_type": "ガソリン",
+      "seating_capacity": 4
+    },
+    "satisfies_needs": [
+      "space",
+      "comfort",
+      "design",
+      "family",
+      "safety"
+    ]
+  },
+  {
+    "model_name": "NBOX",
+    "category": "KEI",
+    "features": [
+      "広い室内空間",
+      "使いやすい収納・荷室",
+      "快適性と実用性の両立",
+      "多様なグレード展開"
+    ],
+    "safety_features": [
+      "Honda SENSING",
+      "衝突軽減ブレーキ（CMBS）",
+      "歩行者事故低減ステアリング",
+      "車線維持支援システム（LKAS）",
+      "前席用i-サイドエアバッグシステム",
+      "サイドカーテンエアバッグシステム"
+    ],
+    "technology": [
+      "Honda CONNECT",
+      "マルチビューカメラシステム",
+      "フルLEDヘッドライト",
+      "渋滋追従機能付アダプティブクルーズコントロール",
+      "踏み間違い衝突軽減システム",
+      "電子制御パーキングブレーキ"
+    ],
+    "specs": {
+      "price_range": "1,739,100〜2,475,000円",
+      "fuel_type": "ガソリン",
+      "seating_capacity": 4
+    },
+    "satisfies_needs": [
+      "space",
+      "comfort",
+      "family",
+      "safety",
+      "design"
+    ]
+  },
+  {
+    "model_name": "N-WGN",
+    "category": "KEI",
+    "features": [
+      "軽ハイトワゴン",
+      "快適な室内空間",
+      "運転しやすい設計",
+      "広い荷室"
+    ],
+    "safety_features": [
+      "衝突軽減ブレーキ（CMBS）",
+      "先行車発進お知らせ機能",
+      "歩行者事故低減ステアリング",
+      "路外逸脱抑制機能",
+      "標識認識機能",
+      "渋滞追従機能付アダプティブクルーズコントロール（ACC）",
+      "車線維持支援システム（LKAS）",
+      "踏み間違い衝突軽減システム",
+      "パーキングセンサーシステム"
+    ],
+    "technology": [
+      "Honda SENSING（先進安全運転支援システム）",
+      "LEDヘッドライト",
+      "7インチTFT液晶メーター",
+      "オートハイビーム",
+      "充電用USBジャック（Type-C）",
+      "360° スーパーUV・IRカット パッケージ",
+      "フルオート・エアコンディショナー",
+      "電子制御パーキングブレーキ",
+      "オートブレーキホールド機能"
+    ],
+    "specs": {
+      "price_range": "1,576,300〜2,124,100円",
+      "fuel_type": "ガソリン",
+      "seating_capacity": 4
+    },
+    "satisfies_needs": [
+      "safety",
+      "space",
+      "comfort",
+      "fuel_efficiency"
+    ]
+  },
+  {
+    "model_name": "N-ONE",
+    "category": "KEI",
+    "features": [
+      "タイムレスデザイン",
+      "丸目ヘッドライト",
+      "台形フォルム",
+      "コンパクトボディ"
+    ],
+    "safety_features": [
+      "Honda SENSING",
+      "衝突軽減ブレーキ（CMBS）",
+      "誤発進抑制機能",
+      "近距離衝突軽減ブレーキ",
+      "歩行者事故低減ステアリング",
+      "先行車発進お知らせ機能",
+      "標識認識機能",
+      "路外逸脱抑制機能",
+      "渋滞追従機能付アダプティブクルーズコントロール（ACC）",
+      "車線維持支援システム（LKAS）",
+      "オートハイビーム",
+      "パーキングセンサーシステム",
+      "電子制御パーキングブレーキ",
+      "オートブレーキホールド機能",
+      "エアバッグシステム"
+    ],
+    "technology": [
+      "フルLEDヘッドライト",
+      "デイタイムランニングランプ",
+      "フルLEDリアコンビネーションランプ",
+      "360°スーパーUV・IRカットパッケージ",
+      "ナビゲーション装着用スペシャルパッケージ",
+      "充電用USBジャック（Type-C）",
+      "リアワイドカメラ",
+      "ハンズフリーテレホンスイッチ",
+      "音声認識スイッチ"
+    ],
+    "specs": {
+      "price_range": "1,767,700〜2,318,800円",
+      "fuel_type": "ガソリン",
+      "seating_capacity": 4
+    },
+    "satisfies_needs": [
+      "design",
+      "comfort",
+      "safety",
+      "fuel_efficiency",
+      "family"
+    ]
+  },
+  {
+    "model_name": "FIT",
+    "category": "HATCHBACK",
+    "features": [
+      "シンプルでスタイリッシュなデザイン",
+      "どの席でも広々とした室内空間",
+      "使いやすい広い荷室と収納",
+      "広く開放感のある視界"
+    ],
+    "safety_features": [
+      "衝突軽減ブレーキ（CMBS）",
+      "誤発進抑制機能・後方誤発進抑制機能",
+      "近距離衝突軽減ブレーキ",
+      "歩行者事故低減ステアリング",
+      "路外逸脱抑制機能",
+      "渋滞追従機能付アダプティブクルーズコントロール（ACC）",
+      "車線維持支援システム（LKAS）",
+      "トラフィックジャムアシスト",
+      "先行車発進お知らせ機能",
+      "標識認識機能",
+      "オートハイビーム",
+      "パーキングセンサーシステム"
+    ],
+    "technology": [
+      "Honda CONNECT（コネクテッド技術）",
+      "2モーターハイブリッドシステム e:HEV",
+      "フルLEDヘッドライト",
+      "Honda SENSINGセーフティ・サポートシステム",
+      "Hondaスマートキーシステム",
+      "電子制御パーキングブレーキ",
+      "マルチビューカメラシステム",
+      "USBチャージャー（Type-C）"
+    ],
+    "specs": {
+      "price_range": "1,776,500〜2,929,300円",
+      "fuel_type": "ガソリン/ハイブリッド",
+      "seating_capacity": 5
+    },
+    "satisfies_needs": [
+      "safety",
+      "space",
+      "fuel_efficiency",
+      "comfort",
+      "technology"
+    ]
+  },
+  {
+    "model_name": "ODYSSEY",
+    "category": "MINIVAN",
+    "features": [
+      "2モーターハイブリッドシステム「e:HEV」搭載",
+      "超低床プラットフォームによる低く伸びやかなスタイル",
+      "3列全てにプレミアムな空間を実現",
+      "Honda独創の操る歓びを実現"
+    ],
+    "safety_features": [
+      "Honda SENSING（衝突軽減ブレーキ、誤発進抑制機能、後方誤発進抑制機能、近距離衝突軽減ブレーキ）",
+      "歩行者事故低減ステアリング",
+      "路外逸脱抑制機能",
+      "渋滞追従機能付アダプティブクルーズコントロール（ACC）",
+      "車線維持支援システム（LKAS）",
+      "先行車発進お知らせ機能",
+      "標識認識機能",
+      "オートハイビーム",
+      "ブラインドスポットインフォメーション",
+      "パーキングセンサーシステム",
+      "後退出庫サポート"
+    ],
+    "technology": [
+      "Honda CONNECT（新世代コネクテッド技術）",
+      "スマートフォン連携（エアコン操作、位置確認可能）",
+      "ハンズフリーアクセスパワーテールゲート",
+      "エレクトリックギアセレクター",
+      "減速セレクター",
+      "ドライブモードスイッチ（SPORTモード/ECONモード/EVスイッチ）",
+      "ワイヤレス充電器",
+      "マルチビューカメラシステム",
+      "LEDアクティブコーナリングライト",
+      "LEDシーケンシャルターンシグナルランプ"
+    ],
+    "specs": {
+      "price_range": "5,086,400〜5,450,500円",
+      "fuel_type": "ハイブリッド",
+      "seating_capacity": 8
+    },
+    "satisfies_needs": [
+      "safety",
+      "space",
+      "comfort",
+      "family",
+      "fuel_efficiency",
+      "technology"
+    ]
+  },
+  {
+    "model_name": "STEPWGN",
+    "category": "MINIVAN",
+    "features": [
+      "家族みんなにとって最高のミニバン",
+      "Hondaでいちばんの開放的な広さ",
+      "マジックシート（3列目分割床下格納シート）",
+      "充実した室内空間と荷室・収納"
+    ],
+    "safety_features": [
+      "Honda SENSING（衝突軽減ブレーキ、歩行者事故低減ステアリング等）",
+      "踏み間違い衝突軽減システム（誤発進抑制機能、後方誤発進抑制機能、近距離衝突軽減ブレーキ）",
+      "渋滞追従機能付アダプティブクルーズコントロール（ACC）",
+      "車線維持支援システム（LKAS）"
+    ],
+    "technology": [
+      "Honda CONNECT（新世代コネクテッド技術）",
+      "スマートフォンからのエアコン・ドア・テールゲート操作",
+      "e:HEV（2モーターハイブリッドシステム）",
+      "マルチビューカメラシステム"
+    ],
+    "specs": {
+      "price_range": "3,348,400〜4,406,600円",
+      "fuel_type": "ガソリン/ハイブリッド（e:HEV）",
+      "seating_capacity": 7
+    },
+    "satisfies_needs": [
+      "family",
+      "space",
+      "safety",
+      "comfort",
+      "technology"
+    ]
+  },
+  {
+    "model_name": "FREED",
+    "category": "MINIVAN",
+    "features": [
+      "コンパクトなボディサイズながら広い室内空間",
+      "3列シート設定で最大7人乗り対応",
+      "フラットフロア構造による快適性と積載性",
+      "ハイブリッド（e:HEV）とガソリン車をラインアップ",
+      "クロスオーバータイプ（CROSSTAR）の設定"
+    ],
+    "safety_features": [
+      "Honda SENSING搭載の先進安全運転支援システム",
+      "衝突軽減ブレーキ（CMBS）",
+      "誤発進抑制機能・踏み間違い衝突軽減システム",
+      "車線維持支援システム（LKAS）",
+      "渋滋追従機能付アダプティブクルーズコントロール（ACC）",
+      "i-サイドエアバッグシステム＋サイドカーテンエアバッグ",
+      "マルチビューカメラシステム",
+      "アダプティブドライビングビーム",
+      "ブラインドスポットインフォメーション"
+    ],
+    "technology": [
+      "Honda CONNECT（コネクテッド技術）",
+      "スマートフォンからのエアコン操作・位置確認",
+      "Honda純正ナビゲーション「Gathers」対応",
+      "7インチTFT液晶メーター＋マルチインフォメーション・ディスプレー",
+      "360°スーパーUV・IRカットパッケージ",
+      "フルLEDヘッドライト（デイタイムランニングランプ付）"
+    ],
+    "specs": {
+      "price_range": "2,623,500〜3,602,500円",
+      "fuel_type": "ガソリン/ハイブリッド",
+      "seating_capacity": 7
+    },
+    "satisfies_needs": [
+      "safety",
+      "space",
+      "family",
+      "comfort",
+      "fuel_efficiency"
+    ]
+  },
+  {
+    "model_name": "VEZEL",
+    "category": "SUV",
+    "features": [
+      "クーペプロポーションのスタイリング",
+      "e:HEV（2モーターハイブリッド）システム搭載",
+      "コンパクトなボディサイズながら広い室内空間",
+      "都市からアウトドアまで対応するアーバンSUV"
+    ],
+    "safety_features": [
+      "Honda SENSING（衝突軽減ブレーキ、車線維持支援システム等）",
+      "歩行者事故低減ステアリング",
+      "トラフィックジャムアシスト（渋滞運転支援機能）",
+      "アダプティブドライビングビーム",
+      "ブラインドスポットインフォメーション"
+    ],
+    "technology": [
+      "Honda CONNECT（コネクテッド技術）",
+      "Honda リモート操作（スマートフォンでクルマを操作）",
+      "Honda デジタルキー（スマホがクルマのキーに）",
+      "自動地図更新サービス",
+      "マルチビューカメラシステム",
+      "パノラマルーフ（Z・PLaYパッケージ）"
+    ],
+    "specs": {
+      "price_range": "2,758,800〜3,968,800円",
+      "fuel_type": "ハイブリッド",
+      "seating_capacity": 5
+    },
+    "satisfies_needs": [
+      "safety",
+      "fuel_efficiency",
+      "design",
+      "technology",
+      "comfort"
+    ]
+  },
+  {
+    "model_name": "CR-V",
+    "category": "SUV",
+    "features": [
+      "SPORTS e:HEVハイブリッドシステム搭載",
+      "上質で洗練されたデザイン",
+      "大容量フレキシブル荷室",
+      "Honda SENSING 360先進安全装備"
+    ],
+    "safety_features": [
+      "Honda SENSING 360（前方交差車両警報、車線変更時衝突抑制機能、車線変更支援機能）",
+      "衝突軽減ブレーキ（CMBS）",
+      "車線維持支援システム（LKAS）",
+      "渋滞追従機能付アダプティブクルーズコントロール（ACC）",
+      "歩行者事故低減ステアリング",
+      "路外逸脱抑制機能",
+      "誤発進抑制機能"
+    ],
+    "technology": [
+      "Honda CONNECT（Google搭載）",
+      "Google アシスタント",
+      "Google マップ統合",
+      "Google Play対応",
+      "10.2インチデジタルグラフィックメーター",
+      "ヘッドアップディスプレー",
+      "リアルタイムAWD（4WD車）",
+      "アクティブノイズコントロール",
+      "アクティブサウンドコントロール"
+    ],
+    "specs": {
+      "price_range": "5,122,700〜5,779,400円",
+      "fuel_type": "ハイブリッド",
+      "seating_capacity": 5
+    },
+    "satisfies_needs": [
+      "safety",
+      "space",
+      "comfort",
+      "technology",
+      "design"
+    ]
+  },
+  {
+    "model_name": "ZR-V",
+    "category": "SUV",
+    "features": [
+      "2モーターハイブリッドシステム「e:HEV」搭載",
+      "洗練されたモダンデザイン",
+      "力強く逞しい走行性能",
+      "充実した室内空間とシートアレンジ"
+    ],
+    "safety_features": [
+      "衝突軽減ブレーキ（CMBS）",
+      "Honda SENSING（安全運転支援システム）",
+      "車線維持支援システム（LKAS）",
+      "アダプティブクルーズコントロール（ACC）",
+      "トラフィックジャムアシスト（渋滞運転支援機能）",
+      "歩行者事故低減ステアリング",
+      "路外逸脱抑制機能",
+      "踏み間違い衝突軽減システム",
+      "パーキングセンサーシステム"
+    ],
+    "technology": [
+      "Honda CONNECT（コネクテッド技術）",
+      "Google搭載ディスプレー対応",
+      "アダプティブドライビングビーム",
+      "標識認識機能",
+      "オートハイビーム",
+      "ブラインドスポットインフォメーション",
+      "後退出庫サポート"
+    ],
+    "specs": {
+      "price_range": "3,707,000〜4,727,800円",
+      "fuel_type": "ハイブリッド",
+      "seating_capacity": 5
+    },
+    "satisfies_needs": [
+      "safety",
+      "fuel_efficiency",
+      "comfort",
+      "design",
+      "technology"
+    ]
+  },
+  {
+    "model_name": "WR-V",
+    "category": "SUV",
+    "features": [
+      "力強いたくましさのあるSUVスタイリング",
+      "ゆったりと広い室内空間",
+      "クラストップレベルの大容量ラゲッジ",
+      "高いアイポイントで運転しやすい設計"
+    ],
+    "safety_features": [
+      "Honda SENSING（衝突軽減ブレーキ、先行車発進お知らせ機能、車線維持支援システム等）",
+      "前席用i-サイドエアバッグシステム＋サイドカーテンエアバッグシステム",
+      "踏み間違い衝突軽減システム（誤発進抑制機能、後方誤発進抑制機能、近距離衝突軽減ブレーキ）"
+    ],
+    "technology": [
+      "Honda CONNECT（コネクテッド技術）",
+      "フルLEDヘッドライト（デイタイムランニングランプ付）",
+      "LEDフォグライト",
+      "アダプティブクルーズコントロール（ACC）"
+    ],
+    "specs": {
+      "price_range": "2,149,400〜2,580,600円",
+      "fuel_type": "ガソリン",
+      "seating_capacity": 5
+    },
+    "satisfies_needs": [
+      "safety",
+      "space",
+      "design",
+      "technology",
+      "family"
+    ]
+  },
+  {
+    "model_name": "ACCORD",
+    "category": "SEDAN",
+    "features": [
+      "堂々とした佇まいと流麗なシルエット",
+      "SPORTS e:HEV 2モーターハイブリッドシステム",
+      "Honda SENSING 360＋による高度な運転支援",
+      "Google搭載によるスマート機能"
+    ],
+    "safety_features": [
+      "Honda SENSING 360＋（ハンズオフ機能付高度車線内運転支援機能）",
+      "衝突軽減ブレーキ(CMBS)",
+      "ドライバー異常時対応システム",
+      "レコメンド型車線変更支援機能",
+      "ドライバーモニタリングカメラ"
+    ],
+    "technology": [
+      "Honda CONNECT（コネクテッド技術）",
+      "Google アシスタント・Google マップ・Google Play搭載",
+      "ハンズオフ機能付高度車線内運転支援機能",
+      "アダプティブ・ダンパー・システム",
+      "マルチビューカメラシステム"
+    ],
+    "specs": {
+      "price_range": "5,599,000〜5,999,400円",
+      "fuel_type": "ハイブリッド",
+      "seating_capacity": 5
+    },
+    "satisfies_needs": [
+      "safety",
+      "comfort",
+      "technology",
+      "fuel_efficiency",
+      "design"
+    ]
+  },
+  {
+    "model_name": "CIVIC",
+    "category": "SEDAN",
+    "features": [
+      "スポーティーなシルエットと爽快な走り",
+      "2つの走行体験（6速MT RS と SPORTS e:HEV）",
+      "Honda S+ Shift搭載による操る喜び",
+      "上質でスポーティーなインテリア設計"
+    ],
+    "safety_features": [
+      "Honda SENSING（安全運転支援システム）",
+      "衝突軽減ブレーキ（CMBS）",
+      "歩行者事故低減ステアリング",
+      "路外逸脱抑制機能",
+      "車線維持支援システム（LKAS）",
+      "アダプティブクルーズコントロール（ACC）"
+    ],
+    "technology": [
+      "Honda CONNECT（コネクテッド技術）",
+      "SPORTS e:HEV（2モーターハイブリッドシステム）",
+      "レブマッチシステム",
+      "ダイレクトアクセル",
+      "アクティブサウンドコントロール",
+      "減速セレクター&ワインディング制御",
+      "電動パノラミックサンルーフ",
+      "Qiワイヤレス充電"
+    ],
+    "specs": {
+      "price_range": "3,544,200〜4,403,300円",
+      "fuel_type": "ガソリン/ハイブリッド",
+      "seating_capacity": 5
+    },
+    "satisfies_needs": [
+      "design",
+      "fuel_efficiency",
+      "technology",
+      "comfort",
+      "safety"
+    ]
+  },
+  {
+    "model_name": "CIVICTYPE-R",
+    "category": "HATCHBACK",
+    "features": [
+      "究極のピュアスポーツ性能",
+      "エアロダイナミクスとロー&ワイドフォルム",
+      "330PS/420N・mの高出力エンジン",
+      "サーキット走行対応の走行性能"
+    ],
+    "safety_features": [
+      "衝突軽減ブレーキ（CMBS）",
+      "歩行者事故低減ステアリング",
+      "アダプティブクルーズコントロール（ACC）",
+      "車線維持支援システム（LKAS）",
+      "ブラインドスポットインフォメーション",
+      "パーキングセンサーシステム"
+    ],
+    "technology": [
+      "Honda CONNECT対応ナビゲーション",
+      "Honda LogRデータロガーアプリ",
+      "ETC2.0車載器",
+      "アクティブ・エキゾーストバルブ機構",
+      "アクティブサウンドコントロール",
+      "ワイヤレス充電器",
+      "自動防眩ルームミラー"
+    ],
+    "specs": {
+      "price_range": "6,179,800円",
+      "fuel_type": "ガソリン",
+      "seating_capacity": 5
+    },
+    "satisfies_needs": [
+      "design",
+      "technology",
+      "safety",
+      "comfort"
+    ]
+  },
+  {
+    "model_name": "PRELUDE",
+    "category": "COUPE",
+    "features": [
+      "スペシャリティースポーツハイブリッド",
+      "TYPE R譲りのシャシー搭載",
+      "流麗なクーペスタイル",
+      "次世代Honda S+ Shift搭載"
+    ],
+    "safety_features": [
+      "衝突軽減ブレーキ（CMBS）",
+      "Honda SENSING予防安全システム",
+      "歩行者事故低減ステアリング",
+      "路外逸脱抑制機能",
+      "渋滞追従機能付アダプティブクルーズコントロール",
+      "車線維持支援システム（LKAS）",
+      "トラフィックジャムアシスト",
+      "先行車発進お知らせ機能",
+      "標識認識機能",
+      "アダプティブドライビングビーム",
+      "ブラインドスポットインフォメーション",
+      "後退出庫サポート",
+      "パーキングセンサーシステム"
+    ],
+    "technology": [
+      "Honda CONNECT（新世代コネクテッド技術対応ナビゲーション標準装備）",
+      "Honda S+ Shift（仮想8段パドルシフト）",
+      "SPORTS e:HEV（2.0L直噴エンジン＋2モーターハイブリッド）",
+      "コースティング制御",
+      "3つの走行モード（EVモード、ハイブリッドモード、エンジンモード）",
+      "フルLEDヘッドライト",
+      "LEDリアコンビネーションランプ",
+      "フラッシュアウターハンドル"
+    ],
+    "specs": {
+      "price_range": "6,179,800〜6,480,100円",
+      "fuel_type": "ハイブリッド",
+      "seating_capacity": 5
+    },
+    "satisfies_needs": [
+      "design",
+      "technology",
+      "comfort",
+      "fuel_efficiency"
+    ]
+  },
+  {
+    "model_name": "CR-V-EFCEV",
+    "category": "SUV",
+    "features": [
+      "水素と電気のハイブリッド走行システム",
+      "プラグイン充電機能付きFCEV",
+      "大人5人がゆったり乗れるSUVの使い勝手",
+      "外部給電機能（給電・充電対応）"
+    ],
+    "safety_features": [
+      "Honda SENSING（衝突軽減ブレーキ、歩行者事故低減ステアリング等）",
+      "渋滞追従機能付アダプティブクルーズコントロール（ACC）",
+      "車線維持支援システム（LKAS）",
+      "トラフィックジャムアシスト",
+      "パーキングセンサーシステム",
+      "ブラインドスポットインフォメーション"
+    ],
+    "technology": [
+      "Honda CONNECT（スマートフォン連携）",
+      "充電状態リモート表示機能",
+      "水素ステーション検索機能",
+      "10.2インチデジタルグラフィックメーター",
+      "AC/DC給電機能",
+      "ワイヤレス充電器",
+      "BOSEプレミアムサウンドシステム",
+      "左右独立温度コントロール式フルオートエアコン"
+    ],
+    "specs": {
+      "price_range": "",
+      "fuel_type": "水素/ハイブリッド（FCEV）",
+      "seating_capacity": 5
+    },
+    "satisfies_needs": [
+      "fuel_efficiency",
+      "technology",
+      "safety",
+      "comfort",
+      "family"
+    ]
+  }
+]

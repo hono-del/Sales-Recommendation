@@ -1,0 +1,85 @@
+{
+  "version": "1.0",
+  "answer_to_needs": {
+    "q1_value": {
+      "safety": ["ChildSafety", "DrivingConfidence", "AccidentAnxietyReduction", "EasyParking"],
+      "enjoyment": ["DrivingEnjoyment", "PersonalExpression", "RelaxingDrive"],
+      "family": ["FamilyComfort", "WeekendFamilyTrip", "ChildSafety", "EasyChildPickup"],
+      "efficiency": ["EfficientDailyMobility", "LowFuelAnxiety", "MaintenanceCostReduction"],
+      "status": ["PremiumFeeling", "PersonalExpression", "EmotionalAttachment"]
+    },
+    "q2_weekend": {
+      "family_center": ["WeekendFamilyTrip", "FamilyComfort", "StressFreeSchoolPickup"],
+      "solo": ["RelaxingDrive", "QuietCabinExperience", "PersonalExpression"],
+      "active": ["OutdoorLifestyle", "AdventureLifestyle", "OutdoorGearTransport"],
+      "learning": ["EfficientDailyMobility", "UrbanManeuverability"],
+      "hobby": ["DrivingEnjoyment", "OutdoorLifestyle", "FlexibleCargoSpace"]
+    },
+    "q3_regret": {
+      "unused": ["EfficientDailyMobility", "LongTermReliability"],
+      "family_dissatisfaction": ["FamilyComfort", "ChildSafety", "WeekendFamilyTrip"],
+      "maintenance": ["MaintenanceCostReduction", "LowFuelAnxiety", "LongTermReliability"],
+      "boredom": ["DrivingEnjoyment", "PersonalExpression", "EmotionalAttachment"],
+      "feature_lack": ["DrivingConfidence", "TechInnovation"]
+    },
+    "q4_stress": {
+      "fatigue": ["FatigueReduction", "SmoothRideComfort", "QuietCabinExperience"],
+      "traffic": ["EfficientDailyMobility", "UrbanManeuverability"],
+      "parking": ["EasyParking", "CompactParkingEase", "UrbanManeuverability"],
+      "difficult_operation": ["DrivingConfidence", "EasyParking", "VisibilityConfidence"],
+      "too_much_info": ["DrivingConfidence", "AccidentAnxietyReduction"]
+    },
+    "q5_ai": {
+      "ai_decide": ["EfficientDailyMobility", "DrivingConfidence"],
+      "ai_candidates": ["DrivingConfidence", "FamilyComfort"],
+      "self_decide": ["DrivingEnjoyment", "PersonalExpression"]
+    }
+  },
+  "need_to_capabilities": {
+    "ChildSafety": "SafetyPerformance",
+    "DrivingConfidence": "SafetyPerformance",
+    "AccidentAnxietyReduction": "SafetyPerformance",
+    "EasyParking": "SafetyPerformance",
+    "FamilyComfort": "FamilyFriendly",
+    "WeekendFamilyTrip": "FamilyFriendly",
+    "EasyChildPickup": "FamilyFriendly",
+    "StressFreeSchoolPickup": "FamilyFriendly",
+    "FatigueReduction": "RideComfort",
+    "SmoothRideComfort": "RideComfort",
+    "QuietCabinExperience": "RideComfort",
+    "RelaxingDrive": "RideComfort",
+    "EfficientDailyMobility": "FuelEfficiency",
+    "LowFuelAnxiety": "FuelEfficiency",
+    "MaintenanceCostReduction": "FuelEfficiency",
+    "LongTermReliability": "GeneralPerformance",
+    "DrivingEnjoyment": "DesignAppeal",
+    "PersonalExpression": "DesignAppeal",
+    "PremiumFeeling": "DesignAppeal",
+    "EmotionalAttachment": "DesignAppeal",
+    "OutdoorLifestyle": "OffRoadCapability",
+    "AdventureLifestyle": "OffRoadCapability",
+    "OutdoorGearTransport": "SpaceUtility",
+    "FlexibleCargoSpace": "SpaceUtility",
+    "UrbanManeuverability": "GeneralPerformance",
+    "CompactParkingEase": "GeneralPerformance",
+    "VisibilityConfidence": "SafetyPerformance"
+  },
+  "profile_to_ui_needs": {
+    "safety": "safety",
+    "family": "family",
+    "efficiency": "fuel_efficiency",
+    "enjoyment": "design",
+    "adventure": "offroad"
+  },
+  "capability_labels_ja": {
+    "SafetyPerformance": "安全性能",
+    "FamilyFriendly": "ファミリー対応",
+    "RideComfort": "快適・静粛性",
+    "FuelEfficiency": "燃費・エネルギー効率",
+    "DesignAppeal": "デザイン魅力",
+    "SpaceUtility": "空間・収納",
+    "OffRoadCapability": "オフロード・走破性",
+    "GeneralPerformance": "総合性能",
+    "TechInnovation": "先進技術"
+  }
+}

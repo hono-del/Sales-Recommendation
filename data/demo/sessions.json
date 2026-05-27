@@ -1,0 +1,1614 @@
+{
+  "e620dbee-ed77-41f9-b7b4-d5f9838380b1": {
+    "session_id": "e620dbee-ed77-41f9-b7b4-d5f9838380b1",
+    "created_at": "2026-05-26T10:30:57Z",
+    "updated_at": "2026-05-26T10:30:57Z",
+    "status": "active",
+    "delegation_level": null,
+    "demo_fallback_used": false,
+    "answers": [],
+    "profile": null,
+    "events": []
+  },
+  "1f90e363-8ad2-4a8d-bb13-32a3efabbfce": {
+    "session_id": "1f90e363-8ad2-4a8d-bb13-32a3efabbfce",
+    "created_at": "2026-05-26T10:30:57Z",
+    "updated_at": "2026-05-26T10:30:57Z",
+    "status": "active",
+    "delegation_level": null,
+    "demo_fallback_used": false,
+    "answers": [
+      {
+        "question_index": 1,
+        "question_id": "q1_value",
+        "answer_key": "safety",
+        "answered_at": "2026-05-26T10:30:57Z"
+      }
+    ],
+    "profile": {
+      "profile": {
+        "score_safety": 100.0,
+        "score_family": 28.6,
+        "score_efficiency": 0.0,
+        "score_enjoyment": 0.0,
+        "score_adventure": 0.0
+      },
+      "mapped_needs": [
+        "AccidentAnxietyReduction",
+        "ChildSafety",
+        "DrivingConfidence",
+        "EasyParking"
+      ],
+      "mapped_capabilities": [
+        "SafetyPerformance"
+      ],
+      "detected_loads": [],
+      "ui_needs": [
+        "safety",
+        "family",
+        "fuel_efficiency"
+      ]
+    },
+    "events": []
+  },
+  "6b6615d4-6bf9-4131-8e2d-9db98e5930cb": {
+    "session_id": "6b6615d4-6bf9-4131-8e2d-9db98e5930cb",
+    "created_at": "2026-05-26T10:30:57Z",
+    "updated_at": "2026-05-26T10:30:57Z",
+    "status": "active",
+    "delegation_level": "co_pilot",
+    "demo_fallback_used": false,
+    "answers": [],
+    "profile": null,
+    "events": []
+  },
+  "9675a0ae-ac8a-4032-b3bf-f492f342437a": {
+    "session_id": "9675a0ae-ac8a-4032-b3bf-f492f342437a",
+    "created_at": "2026-05-26T10:30:57Z",
+    "updated_at": "2026-05-26T10:30:57Z",
+    "status": "active",
+    "delegation_level": null,
+    "demo_fallback_used": false,
+    "answers": [],
+    "profile": null,
+    "events": []
+  },
+  "a1839a07-855d-4390-a7dd-852deb3b2a3a": {
+    "session_id": "a1839a07-855d-4390-a7dd-852deb3b2a3a",
+    "created_at": "2026-05-26T10:30:57Z",
+    "updated_at": "2026-05-26T10:30:57Z",
+    "status": "active",
+    "delegation_level": null,
+    "demo_fallback_used": false,
+    "answers": [
+      {
+        "question_index": 1,
+        "question_id": "q1_value",
+        "answer_key": "family",
+        "answered_at": "2026-05-26T10:30:57Z"
+      },
+      {
+        "question_index": 2,
+        "question_id": "q2_weekend",
+        "answer_key": "family_center",
+        "answered_at": "2026-05-26T10:30:57Z"
+      },
+      {
+        "question_index": 3,
+        "question_id": "q3_regret",
+        "answer_key": "family_dissatisfaction",
+        "answered_at": "2026-05-26T10:30:57Z"
+      },
+      {
+        "question_index": 4,
+        "question_id": "q4_stress",
+        "answer_key": "fatigue",
+        "answered_at": "2026-05-26T10:30:57Z"
+      },
+      {
+        "question_index": 5,
+        "question_id": "q5_ai",
+        "answer_key": "ai_candidates",
+        "answered_at": "2026-05-26T10:30:57Z"
+      }
+    ],
+    "profile": {
+      "profile": {
+        "score_safety": 73.6,
+        "score_family": 100.0,
+        "score_efficiency": 18.2,
+        "score_enjoyment": 0.0,
+        "score_adventure": 0.0
+      },
+      "mapped_needs": [
+        "ChildSafety",
+        "DrivingConfidence",
+        "EasyChildPickup",
+        "FamilyComfort",
+        "FatigueReduction",
+        "QuietCabinExperience",
+        "SmoothRideComfort",
+        "StressFreeSchoolPickup",
+        "WeekendFamilyTrip"
+      ],
+      "mapped_capabilities": [
+        "SafetyPerformance",
+        "FamilyFriendly",
+        "RideComfort"
+      ],
+      "detected_loads": [
+        "家族同乗時の不満リスク",
+        "長距離移動による疲労"
+      ],
+      "ui_needs": [
+        "family",
+        "safety",
+        "fuel_efficiency"
+      ]
+    },
+    "events": []
+  },
+  "6a19fc6e-982e-4b9c-87db-887e0cfd991b": {
+    "session_id": "6a19fc6e-982e-4b9c-87db-887e0cfd991b",
+    "created_at": "2026-05-26T10:49:05Z",
+    "updated_at": "2026-05-26T10:49:28Z",
+    "status": "active",
+    "delegation_level": "co_pilot",
+    "demo_fallback_used": false,
+    "answers": [
+      {
+        "question_index": 1,
+        "question_id": "q1_value",
+        "answer_key": "enjoyment",
+        "answered_at": "2026-05-26T10:49:22Z"
+      },
+      {
+        "question_index": 2,
+        "question_id": "q2_weekend",
+        "answer_key": "family_center",
+        "answered_at": "2026-05-26T10:49:22Z"
+      },
+      {
+        "question_index": 3,
+        "question_id": "q3_regret",
+        "answer_key": "maintenance",
+        "answered_at": "2026-05-26T10:49:22Z"
+      },
+      {
+        "question_index": 4,
+        "question_id": "q4_stress",
+        "answer_key": "traffic",
+        "answered_at": "2026-05-26T10:49:22Z"
+      },
+      {
+        "question_index": 5,
+        "question_id": "q5_ai",
+        "answer_key": "ai_candidates",
+        "answered_at": "2026-05-26T10:49:22Z"
+      }
+    ],
+    "profile": {
+      "profile": {
+        "score_safety": 64.7,
+        "score_family": 57.1,
+        "score_efficiency": 100.0,
+        "score_enjoyment": 42.9,
+        "score_adventure": 15.3
+      },
+      "mapped_needs": [
+        "DrivingConfidence",
+        "DrivingEnjoyment",
+        "EfficientDailyMobility",
+        "FamilyComfort",
+        "LongTermReliability",
+        "LowFuelAnxiety",
+        "MaintenanceCostReduction",
+        "PersonalExpression",
+        "RelaxingDrive",
+        "StressFreeSchoolPickup",
+        "UrbanManeuverability",
+        "WeekendFamilyTrip"
+      ],
+      "mapped_capabilities": [
+        "SafetyPerformance",
+        "DesignAppeal",
+        "FuelEfficiency",
+        "FamilyFriendly",
+        "GeneralPerformance",
+        "RideComfort"
+      ],
+      "detected_loads": [
+        "維持費への不安",
+        "渋滞ストレス"
+      ],
+      "ui_needs": [
+        "fuel_efficiency",
+        "safety",
+        "family"
+      ]
+    },
+    "events": [
+      {
+        "id": "c920f089-4164-4672-95f9-d2f5f925765c",
+        "screen_id": "SCR-03",
+        "event_type": "cta_click",
+        "payload": {
+          "delegation_level": "co_pilot"
+        },
+        "duration_ms": null,
+        "created_at": "2026-05-26T10:49:22Z"
+      },
+      {
+        "id": "013a7266-6626-4fc6-a4ab-488d95c0ce66",
+        "screen_id": "SCR-05",
+        "event_type": "enter",
+        "payload": {},
+        "duration_ms": null,
+        "created_at": "2026-05-26T10:49:28Z"
+      }
+    ]
+  },
+  "5bf6cb1d-7994-4a7e-9cde-2ed415c2b242": {
+    "session_id": "5bf6cb1d-7994-4a7e-9cde-2ed415c2b242",
+    "created_at": "2026-05-26T11:00:48Z",
+    "updated_at": "2026-05-26T11:00:48Z",
+    "status": "active",
+    "delegation_level": null,
+    "demo_fallback_used": false,
+    "answers": [],
+    "profile": null,
+    "events": []
+  },
+  "130be741-1201-4f62-bea3-1d963816c3cd": {
+    "session_id": "130be741-1201-4f62-bea3-1d963816c3cd",
+    "created_at": "2026-05-26T11:04:20Z",
+    "updated_at": "2026-05-26T11:05:34Z",
+    "status": "active",
+    "delegation_level": "co_pilot",
+    "demo_fallback_used": false,
+    "answers": [
+      {
+        "question_index": 1,
+        "question_id": "q1_value",
+        "answer_key": "enjoyment",
+        "answered_at": "2026-05-26T11:05:27Z"
+      },
+      {
+        "question_index": 2,
+        "question_id": "q2_weekend",
+        "answer_key": "family_center",
+        "answered_at": "2026-05-26T11:05:28Z"
+      },
+      {
+        "question_index": 3,
+        "question_id": "q3_regret",
+        "answer_key": "maintenance",
+        "answered_at": "2026-05-26T11:05:28Z"
+      },
+      {
+        "question_index": 4,
+        "question_id": "q4_stress",
+        "answer_key": "traffic",
+        "answered_at": "2026-05-26T11:05:28Z"
+      },
+      {
+        "question_index": 5,
+        "question_id": "q5_ai",
+        "answer_key": "ai_decide",
+        "answered_at": "2026-05-26T11:05:28Z"
+      }
+    ],
+    "profile": {
+      "profile": {
+        "score_safety": 57.3,
+        "score_family": 35.5,
+        "score_efficiency": 100.0,
+        "score_enjoyment": 38.1,
+        "score_adventure": 13.6
+      },
+      "mapped_needs": [
+        "DrivingConfidence",
+        "DrivingEnjoyment",
+        "EfficientDailyMobility",
+        "FamilyComfort",
+        "LongTermReliability",
+        "LowFuelAnxiety",
+        "MaintenanceCostReduction",
+        "PersonalExpression",
+        "RelaxingDrive",
+        "StressFreeSchoolPickup",
+        "UrbanManeuverability",
+        "WeekendFamilyTrip"
+      ],
+      "mapped_capabilities": [
+        "SafetyPerformance",
+        "DesignAppeal",
+        "FuelEfficiency",
+        "FamilyFriendly",
+        "GeneralPerformance",
+        "RideComfort"
+      ],
+      "detected_loads": [
+        "維持費への不安",
+        "渋滞ストレス"
+      ],
+      "ui_needs": [
+        "fuel_efficiency",
+        "safety",
+        "design"
+      ]
+    },
+    "events": [
+      {
+        "id": "a9de8dbd-ba33-4725-9274-39860d13f075",
+        "screen_id": "SCR-03",
+        "event_type": "cta_click",
+        "payload": {
+          "delegation_level": "co_pilot"
+        },
+        "duration_ms": null,
+        "created_at": "2026-05-26T11:04:38Z"
+      },
+      {
+        "id": "938a4caf-8429-4e5a-87d8-4ef3234e8b45",
+        "screen_id": "SCR-03",
+        "event_type": "cta_click",
+        "payload": {
+          "delegation_level": "co_pilot"
+        },
+        "duration_ms": null,
+        "created_at": "2026-05-26T11:04:41Z"
+      },
+      {
+        "id": "32b030fd-24b3-41a5-b84f-398b41443368",
+        "screen_id": "SCR-03",
+        "event_type": "cta_click",
+        "payload": {
+          "delegation_level": "co_pilot"
+        },
+        "duration_ms": null,
+        "created_at": "2026-05-26T11:04:43Z"
+      },
+      {
+        "id": "96e02b06-613e-4c22-8fea-3e9f757425f5",
+        "screen_id": "SCR-03",
+        "event_type": "cta_click",
+        "payload": {
+          "delegation_level": "co_pilot"
+        },
+        "duration_ms": null,
+        "created_at": "2026-05-26T11:04:44Z"
+      },
+      {
+        "id": "b2e5f73b-b96e-46f4-85ab-9c4e5c7d67bc",
+        "screen_id": "SCR-03",
+        "event_type": "cta_click",
+        "payload": {
+          "delegation_level": "co_pilot"
+        },
+        "duration_ms": null,
+        "created_at": "2026-05-26T11:04:47Z"
+      },
+      {
+        "id": "dc201d96-8824-4746-b8e1-2a262f2e58b8",
+        "screen_id": "SCR-05",
+        "event_type": "enter",
+        "payload": {},
+        "duration_ms": null,
+        "created_at": "2026-05-26T11:05:34Z"
+      }
+    ]
+  },
+  "0a65bf2f-a2aa-4e2a-9f10-106c28ecedeb": {
+    "session_id": "0a65bf2f-a2aa-4e2a-9f10-106c28ecedeb",
+    "created_at": "2026-05-26T11:08:46Z",
+    "updated_at": "2026-05-26T11:08:46Z",
+    "status": "active",
+    "delegation_level": null,
+    "demo_fallback_used": false,
+    "answers": [],
+    "profile": null,
+    "events": []
+  },
+  "8567526a-055d-4f88-a20c-9ccf2fd63b3d": {
+    "session_id": "8567526a-055d-4f88-a20c-9ccf2fd63b3d",
+    "created_at": "2026-05-26T11:08:46Z",
+    "updated_at": "2026-05-26T11:08:46Z",
+    "status": "active",
+    "delegation_level": null,
+    "demo_fallback_used": false,
+    "answers": [
+      {
+        "question_index": 1,
+        "question_id": "q1_value",
+        "answer_key": "safety",
+        "answered_at": "2026-05-26T11:08:46Z"
+      }
+    ],
+    "profile": {
+      "profile": {
+        "score_safety": 100.0,
+        "score_family": 28.6,
+        "score_efficiency": 0.0,
+        "score_enjoyment": 0.0,
+        "score_adventure": 0.0
+      },
+      "mapped_needs": [
+        "AccidentAnxietyReduction",
+        "ChildSafety",
+        "DrivingConfidence",
+        "EasyParking"
+      ],
+      "mapped_capabilities": [
+        "SafetyPerformance"
+      ],
+      "detected_loads": [],
+      "ui_needs": [
+        "safety",
+        "family",
+        "fuel_efficiency"
+      ]
+    },
+    "events": []
+  },
+  "31b50b01-90cb-40a9-bf79-79f395560d65": {
+    "session_id": "31b50b01-90cb-40a9-bf79-79f395560d65",
+    "created_at": "2026-05-26T11:08:46Z",
+    "updated_at": "2026-05-26T11:08:46Z",
+    "status": "active",
+    "delegation_level": "co_pilot",
+    "demo_fallback_used": false,
+    "answers": [],
+    "profile": null,
+    "events": []
+  },
+  "62e9d1fc-da14-41d9-aa35-fabd2a19a197": {
+    "session_id": "62e9d1fc-da14-41d9-aa35-fabd2a19a197",
+    "created_at": "2026-05-26T11:08:46Z",
+    "updated_at": "2026-05-26T11:08:46Z",
+    "status": "active",
+    "delegation_level": null,
+    "demo_fallback_used": false,
+    "answers": [],
+    "profile": null,
+    "events": []
+  },
+  "ba6edf2f-433d-4f4a-9c72-02ffb2ea7d43": {
+    "session_id": "ba6edf2f-433d-4f4a-9c72-02ffb2ea7d43",
+    "created_at": "2026-05-26T11:08:46Z",
+    "updated_at": "2026-05-26T11:08:46Z",
+    "status": "active",
+    "delegation_level": null,
+    "demo_fallback_used": false,
+    "answers": [
+      {
+        "question_index": 1,
+        "question_id": "q1_value",
+        "answer_key": "family",
+        "answered_at": "2026-05-26T11:08:46Z"
+      },
+      {
+        "question_index": 2,
+        "question_id": "q2_weekend",
+        "answer_key": "family_center",
+        "answered_at": "2026-05-26T11:08:46Z"
+      },
+      {
+        "question_index": 3,
+        "question_id": "q3_regret",
+        "answer_key": "family_dissatisfaction",
+        "answered_at": "2026-05-26T11:08:46Z"
+      },
+      {
+        "question_index": 4,
+        "question_id": "q4_stress",
+        "answer_key": "fatigue",
+        "answered_at": "2026-05-26T11:08:46Z"
+      },
+      {
+        "question_index": 5,
+        "question_id": "q5_ai",
+        "answer_key": "ai_candidates",
+        "answered_at": "2026-05-26T11:08:46Z"
+      }
+    ],
+    "profile": {
+      "profile": {
+        "score_safety": 73.6,
+        "score_family": 100.0,
+        "score_efficiency": 18.2,
+        "score_enjoyment": 0.0,
+        "score_adventure": 0.0
+      },
+      "mapped_needs": [
+        "ChildSafety",
+        "DrivingConfidence",
+        "EasyChildPickup",
+        "FamilyComfort",
+        "FatigueReduction",
+        "QuietCabinExperience",
+        "SmoothRideComfort",
+        "StressFreeSchoolPickup",
+        "WeekendFamilyTrip"
+      ],
+      "mapped_capabilities": [
+        "SafetyPerformance",
+        "FamilyFriendly",
+        "RideComfort"
+      ],
+      "detected_loads": [
+        "家族同乗時の不満リスク",
+        "長距離移動による疲労"
+      ],
+      "ui_needs": [
+        "family",
+        "safety",
+        "fuel_efficiency"
+      ]
+    },
+    "events": []
+  },
+  "4956444c-43fb-4ed9-a457-09319ba11ff9": {
+    "session_id": "4956444c-43fb-4ed9-a457-09319ba11ff9",
+    "created_at": "2026-05-26T11:08:56Z",
+    "updated_at": "2026-05-26T11:08:56Z",
+    "status": "active",
+    "delegation_level": null,
+    "demo_fallback_used": false,
+    "answers": [
+      {
+        "question_index": 1,
+        "question_id": "q1_value",
+        "answer_key": "family",
+        "answered_at": "2026-05-26T11:08:56Z"
+      },
+      {
+        "question_index": 2,
+        "question_id": "q2_weekend",
+        "answer_key": "family_center",
+        "answered_at": "2026-05-26T11:08:56Z"
+      },
+      {
+        "question_index": 3,
+        "question_id": "q3_regret",
+        "answer_key": "family_dissatisfaction",
+        "answered_at": "2026-05-26T11:08:56Z"
+      },
+      {
+        "question_index": 4,
+        "question_id": "q4_stress",
+        "answer_key": "fatigue",
+        "answered_at": "2026-05-26T11:08:56Z"
+      },
+      {
+        "question_index": 5,
+        "question_id": "q5_ai",
+        "answer_key": "ai_candidates",
+        "answered_at": "2026-05-26T11:08:56Z"
+      }
+    ],
+    "profile": {
+      "profile": {
+        "score_safety": 73.6,
+        "score_family": 100.0,
+        "score_efficiency": 18.2,
+        "score_enjoyment": 0.0,
+        "score_adventure": 0.0
+      },
+      "mapped_needs": [
+        "ChildSafety",
+        "DrivingConfidence",
+        "EasyChildPickup",
+        "FamilyComfort",
+        "FatigueReduction",
+        "QuietCabinExperience",
+        "SmoothRideComfort",
+        "StressFreeSchoolPickup",
+        "WeekendFamilyTrip"
+      ],
+      "mapped_capabilities": [
+        "SafetyPerformance",
+        "FamilyFriendly",
+        "RideComfort"
+      ],
+      "detected_loads": [
+        "家族同乗時の不満リスク",
+        "長距離移動による疲労"
+      ],
+      "ui_needs": [
+        "family",
+        "safety",
+        "fuel_efficiency"
+      ]
+    },
+    "events": []
+  },
+  "abddecf4-5da3-4c24-b888-7e638f1c73d4": {
+    "session_id": "abddecf4-5da3-4c24-b888-7e638f1c73d4",
+    "created_at": "2026-05-26T11:09:08Z",
+    "updated_at": "2026-05-26T11:09:08Z",
+    "status": "active",
+    "delegation_level": null,
+    "demo_fallback_used": false,
+    "answers": [
+      {
+        "question_index": 1,
+        "question_id": "q1_value",
+        "answer_key": "family",
+        "answered_at": "2026-05-26T11:09:08Z"
+      },
+      {
+        "question_index": 2,
+        "question_id": "q2_weekend",
+        "answer_key": "family_center",
+        "answered_at": "2026-05-26T11:09:08Z"
+      },
+      {
+        "question_index": 3,
+        "question_id": "q3_regret",
+        "answer_key": "family_dissatisfaction",
+        "answered_at": "2026-05-26T11:09:08Z"
+      },
+      {
+        "question_index": 4,
+        "question_id": "q4_stress",
+        "answer_key": "fatigue",
+        "answered_at": "2026-05-26T11:09:08Z"
+      },
+      {
+        "question_index": 5,
+        "question_id": "q5_ai",
+        "answer_key": "ai_candidates",
+        "answered_at": "2026-05-26T11:09:08Z"
+      }
+    ],
+    "profile": {
+      "profile": {
+        "score_safety": 73.6,
+        "score_family": 100.0,
+        "score_efficiency": 18.2,
+        "score_enjoyment": 0.0,
+        "score_adventure": 0.0
+      },
+      "mapped_needs": [
+        "ChildSafety",
+        "DrivingConfidence",
+        "EasyChildPickup",
+        "FamilyComfort",
+        "FatigueReduction",
+        "QuietCabinExperience",
+        "SmoothRideComfort",
+        "StressFreeSchoolPickup",
+        "WeekendFamilyTrip"
+      ],
+      "mapped_capabilities": [
+        "SafetyPerformance",
+        "FamilyFriendly",
+        "RideComfort"
+      ],
+      "detected_loads": [
+        "家族同乗時の不満リスク",
+        "長距離移動による疲労"
+      ],
+      "ui_needs": [
+        "family",
+        "safety",
+        "fuel_efficiency"
+      ]
+    },
+    "events": []
+  },
+  "d1e8adfc-e026-49dd-90ee-9c30fc42e789": {
+    "session_id": "d1e8adfc-e026-49dd-90ee-9c30fc42e789",
+    "created_at": "2026-05-26T11:09:18Z",
+    "updated_at": "2026-05-26T11:09:18Z",
+    "status": "active",
+    "delegation_level": null,
+    "demo_fallback_used": false,
+    "answers": [
+      {
+        "question_index": 1,
+        "question_id": "q1_value",
+        "answer_key": "family",
+        "answered_at": "2026-05-26T11:09:18Z"
+      },
+      {
+        "question_index": 2,
+        "question_id": "q2_weekend",
+        "answer_key": "family_center",
+        "answered_at": "2026-05-26T11:09:18Z"
+      },
+      {
+        "question_index": 3,
+        "question_id": "q3_regret",
+        "answer_key": "family_dissatisfaction",
+        "answered_at": "2026-05-26T11:09:18Z"
+      },
+      {
+        "question_index": 4,
+        "question_id": "q4_stress",
+        "answer_key": "fatigue",
+        "answered_at": "2026-05-26T11:09:18Z"
+      },
+      {
+        "question_index": 5,
+        "question_id": "q5_ai",
+        "answer_key": "ai_candidates",
+        "answered_at": "2026-05-26T11:09:18Z"
+      }
+    ],
+    "profile": {
+      "profile": {
+        "score_safety": 73.6,
+        "score_family": 100.0,
+        "score_efficiency": 18.2,
+        "score_enjoyment": 0.0,
+        "score_adventure": 0.0
+      },
+      "mapped_needs": [
+        "ChildSafety",
+        "DrivingConfidence",
+        "EasyChildPickup",
+        "FamilyComfort",
+        "FatigueReduction",
+        "QuietCabinExperience",
+        "SmoothRideComfort",
+        "StressFreeSchoolPickup",
+        "WeekendFamilyTrip"
+      ],
+      "mapped_capabilities": [
+        "SafetyPerformance",
+        "FamilyFriendly",
+        "RideComfort"
+      ],
+      "detected_loads": [
+        "家族同乗時の不満リスク",
+        "長距離移動による疲労"
+      ],
+      "ui_needs": [
+        "family",
+        "safety",
+        "fuel_efficiency"
+      ]
+    },
+    "events": []
+  },
+  "d00d0661-dc9a-491f-bde3-ca47aa0a1e2f": {
+    "session_id": "d00d0661-dc9a-491f-bde3-ca47aa0a1e2f",
+    "created_at": "2026-05-26T11:13:35Z",
+    "updated_at": "2026-05-26T11:14:12Z",
+    "status": "active",
+    "delegation_level": "co_pilot",
+    "demo_fallback_used": false,
+    "answers": [
+      {
+        "question_index": 1,
+        "question_id": "q1_value",
+        "answer_key": "enjoyment",
+        "answered_at": "2026-05-26T11:14:12Z"
+      },
+      {
+        "question_index": 2,
+        "question_id": "q2_weekend",
+        "answer_key": "active",
+        "answered_at": "2026-05-26T11:14:12Z"
+      },
+      {
+        "question_index": 3,
+        "question_id": "q3_regret",
+        "answer_key": "maintenance",
+        "answered_at": "2026-05-26T11:14:12Z"
+      },
+      {
+        "question_index": 4,
+        "question_id": "q4_stress",
+        "answer_key": "traffic",
+        "answered_at": "2026-05-26T11:14:12Z"
+      },
+      {
+        "question_index": 5,
+        "question_id": "q5_ai",
+        "answer_key": "self_decide",
+        "answered_at": "2026-05-26T11:14:12Z"
+      }
+    ],
+    "profile": {
+      "profile": {
+        "score_safety": 30.0,
+        "score_family": 0.0,
+        "score_efficiency": 93.5,
+        "score_enjoyment": 100.0,
+        "score_adventure": 82.8
+      },
+      "mapped_needs": [
+        "AdventureLifestyle",
+        "DrivingEnjoyment",
+        "EfficientDailyMobility",
+        "LongTermReliability",
+        "LowFuelAnxiety",
+        "MaintenanceCostReduction",
+        "OutdoorGearTransport",
+        "OutdoorLifestyle",
+        "PersonalExpression",
+        "RelaxingDrive",
+        "UrbanManeuverability"
+      ],
+      "mapped_capabilities": [
+        "OffRoadCapability",
+        "DesignAppeal",
+        "FuelEfficiency",
+        "GeneralPerformance",
+        "SpaceUtility",
+        "RideComfort"
+      ],
+      "detected_loads": [
+        "維持費への不安",
+        "渋滞ストレス"
+      ],
+      "ui_needs": [
+        "design",
+        "fuel_efficiency",
+        "offroad"
+      ]
+    },
+    "events": [
+      {
+        "id": "e3b1ad65-f7a2-4563-9ddd-4cec57056c65",
+        "screen_id": "SCR-03",
+        "event_type": "cta_click",
+        "payload": {
+          "delegation_level": "co_pilot"
+        },
+        "duration_ms": null,
+        "created_at": "2026-05-26T11:14:03Z"
+      },
+      {
+        "id": "40f38bdb-c881-4bd4-86d9-90e7ea21eb32",
+        "screen_id": "SCR-03",
+        "event_type": "cta_click",
+        "payload": {
+          "delegation_level": "co_pilot"
+        },
+        "duration_ms": null,
+        "created_at": "2026-05-26T11:14:07Z"
+      },
+      {
+        "id": "43ad9eda-0db4-4097-8a6b-cdb6f0321db9",
+        "screen_id": "SCR-03",
+        "event_type": "cta_click",
+        "payload": {
+          "delegation_level": "co_pilot"
+        },
+        "duration_ms": null,
+        "created_at": "2026-05-26T11:14:07Z"
+      },
+      {
+        "id": "b5e930af-4cd1-4376-b1d9-b3b08c018e4d",
+        "screen_id": "SCR-03",
+        "event_type": "cta_click",
+        "payload": {
+          "delegation_level": "co_pilot"
+        },
+        "duration_ms": null,
+        "created_at": "2026-05-26T11:14:08Z"
+      }
+    ]
+  },
+  "407dd242-5942-468f-aa61-e3428babc0a0": {
+    "session_id": "407dd242-5942-468f-aa61-e3428babc0a0",
+    "created_at": "2026-05-27T04:31:45Z",
+    "updated_at": "2026-05-27T04:31:45Z",
+    "status": "active",
+    "delegation_level": null,
+    "demo_fallback_used": false,
+    "answers": [
+      {
+        "question_index": 1,
+        "question_id": "q1_value",
+        "answer_key": "family",
+        "answered_at": "2026-05-27T04:31:45Z"
+      },
+      {
+        "question_index": 2,
+        "question_id": "q2_weekend",
+        "answer_key": "family_center",
+        "answered_at": "2026-05-27T04:31:45Z"
+      },
+      {
+        "question_index": 3,
+        "question_id": "q3_regret",
+        "answer_key": "family_dissatisfaction",
+        "answered_at": "2026-05-27T04:31:45Z"
+      },
+      {
+        "question_index": 4,
+        "question_id": "q4_stress",
+        "answer_key": "fatigue",
+        "answered_at": "2026-05-27T04:31:45Z"
+      },
+      {
+        "question_index": 5,
+        "question_id": "q5_ai",
+        "answer_key": "ai_candidates",
+        "answered_at": "2026-05-27T04:31:45Z"
+      }
+    ],
+    "profile": {
+      "profile": {
+        "score_safety": 73.6,
+        "score_family": 100.0,
+        "score_efficiency": 18.2,
+        "score_enjoyment": 0.0,
+        "score_adventure": 0.0
+      },
+      "mapped_needs": [
+        "ChildSafety",
+        "DrivingConfidence",
+        "EasyChildPickup",
+        "FamilyComfort",
+        "FatigueReduction",
+        "QuietCabinExperience",
+        "SmoothRideComfort",
+        "StressFreeSchoolPickup",
+        "WeekendFamilyTrip"
+      ],
+      "mapped_capabilities": [
+        "SafetyPerformance",
+        "FamilyFriendly",
+        "RideComfort"
+      ],
+      "detected_loads": [
+        "家族同乗時の不満リスク",
+        "長距離移動による疲労"
+      ],
+      "ui_needs": [
+        "family",
+        "safety",
+        "fuel_efficiency"
+      ]
+    },
+    "events": []
+  },
+  "22b30c08-6aa3-41db-9fe2-383a53caa3da": {
+    "session_id": "22b30c08-6aa3-41db-9fe2-383a53caa3da",
+    "created_at": "2026-05-27T04:32:00Z",
+    "updated_at": "2026-05-27T04:32:00Z",
+    "status": "active",
+    "delegation_level": null,
+    "demo_fallback_used": false,
+    "answers": [
+      {
+        "question_index": 1,
+        "question_id": "q1_value",
+        "answer_key": "family",
+        "answered_at": "2026-05-27T04:32:00Z"
+      },
+      {
+        "question_index": 2,
+        "question_id": "q2_weekend",
+        "answer_key": "family_center",
+        "answered_at": "2026-05-27T04:32:00Z"
+      },
+      {
+        "question_index": 3,
+        "question_id": "q3_regret",
+        "answer_key": "family_dissatisfaction",
+        "answered_at": "2026-05-27T04:32:00Z"
+      },
+      {
+        "question_index": 4,
+        "question_id": "q4_stress",
+        "answer_key": "fatigue",
+        "answered_at": "2026-05-27T04:32:00Z"
+      },
+      {
+        "question_index": 5,
+        "question_id": "q5_ai",
+        "answer_key": "ai_candidates",
+        "answered_at": "2026-05-27T04:32:00Z"
+      }
+    ],
+    "profile": {
+      "profile": {
+        "score_safety": 73.6,
+        "score_family": 100.0,
+        "score_efficiency": 18.2,
+        "score_enjoyment": 0.0,
+        "score_adventure": 0.0
+      },
+      "mapped_needs": [
+        "ChildSafety",
+        "DrivingConfidence",
+        "EasyChildPickup",
+        "FamilyComfort",
+        "FatigueReduction",
+        "QuietCabinExperience",
+        "SmoothRideComfort",
+        "StressFreeSchoolPickup",
+        "WeekendFamilyTrip"
+      ],
+      "mapped_capabilities": [
+        "SafetyPerformance",
+        "FamilyFriendly",
+        "RideComfort"
+      ],
+      "detected_loads": [
+        "家族同乗時の不満リスク",
+        "長距離移動による疲労"
+      ],
+      "ui_needs": [
+        "family",
+        "safety",
+        "fuel_efficiency"
+      ]
+    },
+    "events": []
+  },
+  "b1337af1-1225-4a3c-9969-401d8ac9e9b6": {
+    "session_id": "b1337af1-1225-4a3c-9969-401d8ac9e9b6",
+    "created_at": "2026-05-27T04:32:09Z",
+    "updated_at": "2026-05-27T04:32:09Z",
+    "status": "active",
+    "delegation_level": null,
+    "demo_fallback_used": false,
+    "answers": [
+      {
+        "question_index": 1,
+        "question_id": "q1_value",
+        "answer_key": "family",
+        "answered_at": "2026-05-27T04:32:09Z"
+      },
+      {
+        "question_index": 2,
+        "question_id": "q2_weekend",
+        "answer_key": "family_center",
+        "answered_at": "2026-05-27T04:32:09Z"
+      },
+      {
+        "question_index": 3,
+        "question_id": "q3_regret",
+        "answer_key": "family_dissatisfaction",
+        "answered_at": "2026-05-27T04:32:09Z"
+      },
+      {
+        "question_index": 4,
+        "question_id": "q4_stress",
+        "answer_key": "fatigue",
+        "answered_at": "2026-05-27T04:32:09Z"
+      },
+      {
+        "question_index": 5,
+        "question_id": "q5_ai",
+        "answer_key": "ai_candidates",
+        "answered_at": "2026-05-27T04:32:09Z"
+      }
+    ],
+    "profile": {
+      "profile": {
+        "score_safety": 73.6,
+        "score_family": 100.0,
+        "score_efficiency": 18.2,
+        "score_enjoyment": 0.0,
+        "score_adventure": 0.0
+      },
+      "mapped_needs": [
+        "ChildSafety",
+        "DrivingConfidence",
+        "EasyChildPickup",
+        "FamilyComfort",
+        "FatigueReduction",
+        "QuietCabinExperience",
+        "SmoothRideComfort",
+        "StressFreeSchoolPickup",
+        "WeekendFamilyTrip"
+      ],
+      "mapped_capabilities": [
+        "SafetyPerformance",
+        "FamilyFriendly",
+        "RideComfort"
+      ],
+      "detected_loads": [
+        "家族同乗時の不満リスク",
+        "長距離移動による疲労"
+      ],
+      "ui_needs": [
+        "family",
+        "safety",
+        "fuel_efficiency"
+      ]
+    },
+    "events": []
+  },
+  "26ae08ba-aeb2-41b1-a8a4-c49bb2a828c2": {
+    "session_id": "26ae08ba-aeb2-41b1-a8a4-c49bb2a828c2",
+    "created_at": "2026-05-27T04:32:13Z",
+    "updated_at": "2026-05-27T04:32:13Z",
+    "status": "active",
+    "delegation_level": null,
+    "demo_fallback_used": false,
+    "answers": [],
+    "profile": null,
+    "events": []
+  },
+  "88eb7c5f-dcb5-4c53-9261-49fe12152009": {
+    "session_id": "88eb7c5f-dcb5-4c53-9261-49fe12152009",
+    "created_at": "2026-05-27T04:32:13Z",
+    "updated_at": "2026-05-27T04:32:13Z",
+    "status": "active",
+    "delegation_level": null,
+    "demo_fallback_used": false,
+    "answers": [
+      {
+        "question_index": 1,
+        "question_id": "q1_value",
+        "answer_key": "safety",
+        "answered_at": "2026-05-27T04:32:13Z"
+      }
+    ],
+    "profile": {
+      "profile": {
+        "score_safety": 100.0,
+        "score_family": 28.6,
+        "score_efficiency": 0.0,
+        "score_enjoyment": 0.0,
+        "score_adventure": 0.0
+      },
+      "mapped_needs": [
+        "AccidentAnxietyReduction",
+        "ChildSafety",
+        "DrivingConfidence",
+        "EasyParking"
+      ],
+      "mapped_capabilities": [
+        "SafetyPerformance"
+      ],
+      "detected_loads": [],
+      "ui_needs": [
+        "safety",
+        "family",
+        "fuel_efficiency"
+      ]
+    },
+    "events": []
+  },
+  "d4510df9-0a33-4ebe-a898-338f754f1dc2": {
+    "session_id": "d4510df9-0a33-4ebe-a898-338f754f1dc2",
+    "created_at": "2026-05-27T04:32:13Z",
+    "updated_at": "2026-05-27T04:32:13Z",
+    "status": "active",
+    "delegation_level": "co_pilot",
+    "demo_fallback_used": false,
+    "answers": [],
+    "profile": null,
+    "events": []
+  },
+  "6e28a7ab-de25-4932-baef-1d0ff978152d": {
+    "session_id": "6e28a7ab-de25-4932-baef-1d0ff978152d",
+    "created_at": "2026-05-27T04:32:13Z",
+    "updated_at": "2026-05-27T04:32:13Z",
+    "status": "active",
+    "delegation_level": null,
+    "demo_fallback_used": false,
+    "answers": [],
+    "profile": null,
+    "events": []
+  },
+  "504367c4-8af4-49ac-b609-5e2e398e3381": {
+    "session_id": "504367c4-8af4-49ac-b609-5e2e398e3381",
+    "created_at": "2026-05-27T04:32:13Z",
+    "updated_at": "2026-05-27T04:32:14Z",
+    "status": "active",
+    "delegation_level": null,
+    "demo_fallback_used": false,
+    "answers": [
+      {
+        "question_index": 1,
+        "question_id": "q1_value",
+        "answer_key": "family",
+        "answered_at": "2026-05-27T04:32:13Z"
+      },
+      {
+        "question_index": 2,
+        "question_id": "q2_weekend",
+        "answer_key": "family_center",
+        "answered_at": "2026-05-27T04:32:13Z"
+      },
+      {
+        "question_index": 3,
+        "question_id": "q3_regret",
+        "answer_key": "family_dissatisfaction",
+        "answered_at": "2026-05-27T04:32:13Z"
+      },
+      {
+        "question_index": 4,
+        "question_id": "q4_stress",
+        "answer_key": "fatigue",
+        "answered_at": "2026-05-27T04:32:14Z"
+      },
+      {
+        "question_index": 5,
+        "question_id": "q5_ai",
+        "answer_key": "ai_candidates",
+        "answered_at": "2026-05-27T04:32:14Z"
+      }
+    ],
+    "profile": {
+      "profile": {
+        "score_safety": 73.6,
+        "score_family": 100.0,
+        "score_efficiency": 18.2,
+        "score_enjoyment": 0.0,
+        "score_adventure": 0.0
+      },
+      "mapped_needs": [
+        "ChildSafety",
+        "DrivingConfidence",
+        "EasyChildPickup",
+        "FamilyComfort",
+        "FatigueReduction",
+        "QuietCabinExperience",
+        "SmoothRideComfort",
+        "StressFreeSchoolPickup",
+        "WeekendFamilyTrip"
+      ],
+      "mapped_capabilities": [
+        "SafetyPerformance",
+        "FamilyFriendly",
+        "RideComfort"
+      ],
+      "detected_loads": [
+        "家族同乗時の不満リスク",
+        "長距離移動による疲労"
+      ],
+      "ui_needs": [
+        "family",
+        "safety",
+        "fuel_efficiency"
+      ]
+    },
+    "events": []
+  },
+  "8f13366e-f5ae-4c15-a841-7032eff5f5ca": {
+    "session_id": "8f13366e-f5ae-4c15-a841-7032eff5f5ca",
+    "created_at": "2026-05-27T04:41:34Z",
+    "updated_at": "2026-05-27T04:41:34Z",
+    "status": "active",
+    "delegation_level": null,
+    "demo_fallback_used": false,
+    "answers": [],
+    "profile": null,
+    "events": []
+  },
+  "fbde901a-8b34-4611-a182-da22a53d1790": {
+    "session_id": "fbde901a-8b34-4611-a182-da22a53d1790",
+    "created_at": "2026-05-27T04:41:34Z",
+    "updated_at": "2026-05-27T04:41:34Z",
+    "status": "active",
+    "delegation_level": null,
+    "demo_fallback_used": false,
+    "answers": [
+      {
+        "question_index": 1,
+        "question_id": "q1_value",
+        "answer_key": "family",
+        "answered_at": "2026-05-27T04:41:34Z"
+      },
+      {
+        "question_index": 2,
+        "question_id": "q2_weekend",
+        "answer_key": "family_center",
+        "answered_at": "2026-05-27T04:41:34Z"
+      },
+      {
+        "question_index": 3,
+        "question_id": "q3_regret",
+        "answer_key": "family_dissatisfaction",
+        "answered_at": "2026-05-27T04:41:34Z"
+      },
+      {
+        "question_index": 4,
+        "question_id": "q4_stress",
+        "answer_key": "fatigue",
+        "answered_at": "2026-05-27T04:41:34Z"
+      },
+      {
+        "question_index": 5,
+        "question_id": "q5_ai",
+        "answer_key": "ai_candidates",
+        "answered_at": "2026-05-27T04:41:34Z"
+      }
+    ],
+    "profile": {
+      "profile": {
+        "score_safety": 73.6,
+        "score_family": 100.0,
+        "score_efficiency": 18.2,
+        "score_enjoyment": 0.0,
+        "score_adventure": 0.0
+      },
+      "mapped_needs": [
+        "ChildSafety",
+        "DrivingConfidence",
+        "EasyChildPickup",
+        "FamilyComfort",
+        "FatigueReduction",
+        "QuietCabinExperience",
+        "SmoothRideComfort",
+        "StressFreeSchoolPickup",
+        "WeekendFamilyTrip"
+      ],
+      "mapped_capabilities": [
+        "SafetyPerformance",
+        "FamilyFriendly",
+        "RideComfort"
+      ],
+      "detected_loads": [
+        "家族同乗時の不満リスク",
+        "長距離移動による疲労"
+      ],
+      "ui_needs": [
+        "family",
+        "safety",
+        "fuel_efficiency"
+      ]
+    },
+    "events": []
+  },
+  "ab8b9a5a-7c64-42f8-93f9-68aa8c943e38": {
+    "session_id": "ab8b9a5a-7c64-42f8-93f9-68aa8c943e38",
+    "created_at": "2026-05-27T04:41:40Z",
+    "updated_at": "2026-05-27T04:41:41Z",
+    "status": "active",
+    "delegation_level": null,
+    "demo_fallback_used": false,
+    "answers": [
+      {
+        "question_index": 1,
+        "question_id": "q1_value",
+        "answer_key": "family",
+        "answered_at": "2026-05-27T04:41:40Z"
+      },
+      {
+        "question_index": 2,
+        "question_id": "q2_weekend",
+        "answer_key": "family_center",
+        "answered_at": "2026-05-27T04:41:40Z"
+      },
+      {
+        "question_index": 3,
+        "question_id": "q3_regret",
+        "answer_key": "family_dissatisfaction",
+        "answered_at": "2026-05-27T04:41:40Z"
+      },
+      {
+        "question_index": 4,
+        "question_id": "q4_stress",
+        "answer_key": "fatigue",
+        "answered_at": "2026-05-27T04:41:40Z"
+      },
+      {
+        "question_index": 5,
+        "question_id": "q5_ai",
+        "answer_key": "ai_candidates",
+        "answered_at": "2026-05-27T04:41:41Z"
+      }
+    ],
+    "profile": {
+      "profile": {
+        "score_safety": 73.6,
+        "score_family": 100.0,
+        "score_efficiency": 18.2,
+        "score_enjoyment": 0.0,
+        "score_adventure": 0.0
+      },
+      "mapped_needs": [
+        "ChildSafety",
+        "DrivingConfidence",
+        "EasyChildPickup",
+        "FamilyComfort",
+        "FatigueReduction",
+        "QuietCabinExperience",
+        "SmoothRideComfort",
+        "StressFreeSchoolPickup",
+        "WeekendFamilyTrip"
+      ],
+      "mapped_capabilities": [
+        "SafetyPerformance",
+        "FamilyFriendly",
+        "RideComfort"
+      ],
+      "detected_loads": [
+        "家族同乗時の不満リスク",
+        "長距離移動による疲労"
+      ],
+      "ui_needs": [
+        "family",
+        "safety",
+        "fuel_efficiency"
+      ]
+    },
+    "events": []
+  },
+  "dc00b503-71fb-4712-8845-ff5483ca255c": {
+    "session_id": "dc00b503-71fb-4712-8845-ff5483ca255c",
+    "created_at": "2026-05-27T04:42:08Z",
+    "updated_at": "2026-05-27T04:42:40Z",
+    "status": "active",
+    "delegation_level": "co_pilot",
+    "demo_fallback_used": false,
+    "answers": [
+      {
+        "question_index": 1,
+        "question_id": "q1_value",
+        "answer_key": "enjoyment",
+        "answered_at": "2026-05-27T04:42:40Z"
+      },
+      {
+        "question_index": 2,
+        "question_id": "q2_weekend",
+        "answer_key": "family_center",
+        "answered_at": "2026-05-27T04:42:40Z"
+      },
+      {
+        "question_index": 3,
+        "question_id": "q3_regret",
+        "answer_key": "maintenance",
+        "answered_at": "2026-05-27T04:42:40Z"
+      },
+      {
+        "question_index": 4,
+        "question_id": "q4_stress",
+        "answer_key": "traffic",
+        "answered_at": "2026-05-27T04:42:40Z"
+      },
+      {
+        "question_index": 5,
+        "question_id": "q5_ai",
+        "answer_key": "self_decide",
+        "answered_at": "2026-05-27T04:42:40Z"
+      }
+    ],
+    "profile": {
+      "profile": {
+        "score_safety": 52.2,
+        "score_family": 48.3,
+        "score_efficiency": 100.0,
+        "score_enjoyment": 82.8,
+        "score_adventure": 44.3
+      },
+      "mapped_needs": [
+        "DrivingEnjoyment",
+        "EfficientDailyMobility",
+        "FamilyComfort",
+        "LongTermReliability",
+        "LowFuelAnxiety",
+        "MaintenanceCostReduction",
+        "PersonalExpression",
+        "RelaxingDrive",
+        "StressFreeSchoolPickup",
+        "UrbanManeuverability",
+        "WeekendFamilyTrip"
+      ],
+      "mapped_capabilities": [
+        "DesignAppeal",
+        "FuelEfficiency",
+        "FamilyFriendly",
+        "GeneralPerformance",
+        "RideComfort"
+      ],
+      "detected_loads": [
+        "維持費への不安",
+        "渋滞ストレス"
+      ],
+      "ui_needs": [
+        "fuel_efficiency",
+        "design",
+        "safety"
+      ]
+    },
+    "events": [
+      {
+        "id": "748e944c-cf08-4386-91fc-006a1482f2aa",
+        "screen_id": "SCR-03",
+        "event_type": "cta_click",
+        "payload": {
+          "delegation_level": "co_pilot"
+        },
+        "duration_ms": null,
+        "created_at": "2026-05-27T04:42:28Z"
+      }
+    ]
+  },
+  "baa23dc5-c998-4cff-87d0-16b214dd0889": {
+    "session_id": "baa23dc5-c998-4cff-87d0-16b214dd0889",
+    "created_at": "2026-05-27T04:50:14Z",
+    "updated_at": "2026-05-27T04:51:11Z",
+    "status": "active",
+    "delegation_level": "co_pilot",
+    "demo_fallback_used": false,
+    "answers": [
+      {
+        "question_index": 1,
+        "question_id": "q1_value",
+        "answer_key": "enjoyment",
+        "answered_at": "2026-05-27T04:51:11Z"
+      },
+      {
+        "question_index": 2,
+        "question_id": "q2_weekend",
+        "answer_key": "family_center",
+        "answered_at": "2026-05-27T04:51:11Z"
+      },
+      {
+        "question_index": 3,
+        "question_id": "q3_regret",
+        "answer_key": "maintenance",
+        "answered_at": "2026-05-27T04:51:11Z"
+      },
+      {
+        "question_index": 4,
+        "question_id": "q4_stress",
+        "answer_key": "traffic",
+        "answered_at": "2026-05-27T04:51:11Z"
+      },
+      {
+        "question_index": 5,
+        "question_id": "q5_ai",
+        "answer_key": "ai_decide",
+        "answered_at": "2026-05-27T04:51:11Z"
+      }
+    ],
+    "profile": {
+      "profile": {
+        "score_safety": 57.3,
+        "score_family": 35.5,
+        "score_efficiency": 100.0,
+        "score_enjoyment": 38.1,
+        "score_adventure": 13.6
+      },
+      "mapped_needs": [
+        "DrivingConfidence",
+        "DrivingEnjoyment",
+        "EfficientDailyMobility",
+        "FamilyComfort",
+        "LongTermReliability",
+        "LowFuelAnxiety",
+        "MaintenanceCostReduction",
+        "PersonalExpression",
+        "RelaxingDrive",
+        "StressFreeSchoolPickup",
+        "UrbanManeuverability",
+        "WeekendFamilyTrip"
+      ],
+      "mapped_capabilities": [
+        "SafetyPerformance",
+        "DesignAppeal",
+        "FuelEfficiency",
+        "FamilyFriendly",
+        "GeneralPerformance",
+        "RideComfort"
+      ],
+      "detected_loads": [
+        "維持費への不安",
+        "渋滞ストレス"
+      ],
+      "ui_needs": [
+        "fuel_efficiency",
+        "safety",
+        "design"
+      ]
+    },
+    "events": [
+      {
+        "id": "cf38c80b-65b4-435d-83db-2967e0b236ba",
+        "screen_id": "SCR-03",
+        "event_type": "cta_click",
+        "payload": {
+          "delegation_level": "co_pilot"
+        },
+        "duration_ms": null,
+        "created_at": "2026-05-27T04:51:11Z"
+      }
+    ]
+  }
+}

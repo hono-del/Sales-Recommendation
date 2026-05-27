@@ -1,0 +1,34 @@
+version: '3.8'
+
+# =============================================================================
+# Decision Intelligence PoC — Docker Compose
+# 使い方:
+#   docker compose up -d        # Neo4j 起動
+#   docker compose down         # 停止
+#   docker compose down -v      # 停止 + データ削除（リセット）
+# =============================================================================
+
+services:
+  neo4j:
+    image: neo4j:5
+    container_name: neo4j-poc
+    ports:
+      - "7474:7474"   # Neo4j Browser (http://localhost:7474)
+      - "7687:7687"   # Bolt プロトコル
+    environment:
+      - NEO4J_AUTH=neo4j/${NEO4J_PASSWORD}
+      - NEO4J_PLUGINS=["apoc"]
+      - NEO4J_dbms_security_procedures_unrestricted=apoc.*
+    volumes:
+      - neo4j_data:/data
+      - neo4j_logs:/logs
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "cypher-shell", "-u", "neo4j", "-p", "${NEO4J_PASSWORD}", "RETURN 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  neo4j_data:
+  neo4j_logs:

@@ -1,0 +1,38 @@
+{
+  "demo_fallback": true,
+  "nodes": [
+    { "id": "person", "type": "person", "label": "あなた", "subtype": "Family Oriented" },
+    { "id": "value_safety", "type": "value", "label": "安心" },
+    { "id": "value_family", "type": "value", "label": "家族時間" },
+    { "id": "lifestyle_weekend", "type": "lifestyle", "label": "週末ファミリー" },
+    { "id": "load_fatigue", "type": "load", "label": "疲労" },
+    { "id": "load_info", "type": "load", "label": "判断負荷" },
+    { "id": "feature_adas", "type": "feature", "label": "Honda SENSING" },
+    { "id": "feature_quiet", "type": "feature", "label": "静粛性" },
+    { "id": "vehicle_vezel", "type": "vehicle", "label": "VEZEL", "score": 0.92 }
+  ],
+  "edges": [
+    { "source": "person", "target": "value_safety", "label": "重視" },
+    { "source": "person", "target": "value_family", "label": "重視" },
+    { "source": "person", "target": "lifestyle_weekend", "label": "ライフスタイル" },
+    { "source": "value_safety", "target": "load_fatigue", "label": "軽減したい" },
+    { "source": "value_family", "target": "load_info", "label": "軽減したい" },
+    { "source": "load_fatigue", "target": "feature_adas", "label": "実現" },
+    { "source": "load_info", "target": "feature_quiet", "label": "実現" },
+    { "source": "feature_adas", "target": "vehicle_vezel", "label": "搭載" },
+    { "source": "feature_quiet", "target": "vehicle_vezel", "label": "搭載" }
+  ],
+  "why_panel": {
+    "values": [
+      { "key": "safety", "label": "安心", "percent": 92 },
+      { "key": "family", "label": "家族時間", "percent": 84 },
+      { "key": "efficiency", "label": "効率", "percent": 65 }
+    ],
+    "loads": [
+      "長距離移動による疲労",
+      "情報量増加による判断負荷",
+      "家族同乗時の安心ニーズ"
+    ],
+    "logic": "家族利用 × 疲労軽減 × 後悔回避 → ADAS, 静粛性, 操作支援を重視"
+  }
+}

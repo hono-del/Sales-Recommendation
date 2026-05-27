@@ -1,0 +1,52 @@
+{
+  "version": "1.0",
+  "axes": ["safety", "family", "efficiency", "enjoyment", "adventure"],
+  "decay_per_question": 0.92,
+  "answer_weights": {
+    "q1_value": {
+      "safety": { "safety": 28, "family": 8 },
+      "enjoyment": { "enjoyment": 28, "adventure": 10 },
+      "family": { "family": 28, "safety": 12 },
+      "efficiency": { "efficiency": 28, "safety": 6 },
+      "status": { "enjoyment": 14, "adventure": 18, "efficiency": 8 }
+    },
+    "q2_weekend": {
+      "family_center": { "family": 24, "safety": 10 },
+      "solo": { "enjoyment": 16, "efficiency": 12 },
+      "active": { "adventure": 22, "enjoyment": 12 },
+      "learning": { "efficiency": 18, "enjoyment": 8 },
+      "hobby": { "enjoyment": 20, "adventure": 14 }
+    },
+    "q3_regret": {
+      "unused": { "efficiency": 20, "enjoyment": 6 },
+      "family_dissatisfaction": { "family": 24, "safety": 14 },
+      "maintenance": { "efficiency": 24, "safety": 6 },
+      "boredom": { "enjoyment": 18, "adventure": 12 },
+      "feature_lack": { "safety": 16, "efficiency": 12 }
+    },
+    "q4_stress": {
+      "fatigue": { "safety": 18, "family": 8, "efficiency": 6 },
+      "traffic": { "efficiency": 20, "safety": 8 },
+      "parking": { "safety": 20, "efficiency": 10 },
+      "difficult_operation": { "safety": 22, "efficiency": 8 },
+      "too_much_info": { "efficiency": 18, "safety": 12 }
+    },
+    "q5_ai": {
+      "ai_decide": { "efficiency": 14, "safety": 10 },
+      "ai_candidates": { "safety": 10, "family": 8, "efficiency": 8 },
+      "self_decide": { "enjoyment": 12, "adventure": 10 }
+    }
+  },
+  "load_labels": {
+    "fatigue": "長距離移動による疲労",
+    "traffic": "渋滞ストレス",
+    "parking": "駐車・狭い道への不安",
+    "difficult_operation": "操作の難しさ",
+    "too_much_info": "情報過多による判断負荷",
+    "family_dissatisfaction": "家族同乗時の不満リスク",
+    "maintenance": "維持費への不安",
+    "feature_lack": "機能不足による後悔",
+    "unused": "使わない設備への投資",
+    "boredom": "すぐ飽きるリスク"
+  }
+}
