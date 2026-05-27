@@ -10,12 +10,16 @@ from datetime import date, datetime
 from pathlib import Path
 from typing import Any, Optional
 
+from dotenv import load_dotenv
 import requests
 from bs4 import BeautifulSoup
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import anthropic
+
+# Load environment variables from .env file
+load_dotenv()
 
 from api.demo.router import router as demo_router
 from engine.recommendation_engine import RecommendationEngine, RecommendationRequest
@@ -46,14 +50,14 @@ app = FastAPI(title="Decision Intelligence PoC", version="1.0.0")
 
 _cors_origins = os.environ.get(
     "CORS_ORIGINS",
-    "http://localhost:3000,http://localhost:8501",
+    "http://localhost:3000,http://localhost:3001,http://localhost:8501",
 ).split(",")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[o.strip() for o in _cors_origins if o.strip()],
     allow_credentials=True,
-    allow_methods=["GET", "POST", "PATCH", "OPTIONS"],
-    allow_headers=["Content-Type"],
+    allow_methods=["GET", "POST", "PATCH", "PUT", "DELETE", "OPTIONS"],
+    allow_headers=["*"],
 )
 app.include_router(demo_router)
 
