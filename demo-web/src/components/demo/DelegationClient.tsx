@@ -59,9 +59,9 @@ export function DelegationClient() {
 
   return (
     <main className="mx-auto max-w-4xl px-6 py-12 text-center">
-      <h1 className="text-3xl font-light text-navy">AIにどこまで任せますか？</h1>
+      <h1 className="text-3xl font-light text-navy">AIとの付き合い方を教えてください</h1>
       <p className="mt-4 text-text-muted">
-        同じ推薦でも、見せ方と関わり方は変わります。
+        あなたの意思決定スタイルに合わせて、AIの関わり方を調整します。
       </p>
       <DelegationSelector selected={delegationLevel} onSelect={handleSelect} />
       <p className="mt-8 min-h-[3rem] text-base text-text">{message}</p>

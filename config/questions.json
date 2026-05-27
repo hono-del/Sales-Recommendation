@@ -1,5 +1,5 @@
 {
-  "version": "1.0",
+  "version": "1.1",
   "questions": [
     {
       "index": 1,
@@ -47,16 +47,6 @@
         { "key": "parking", "label": "駐車" },
         { "key": "difficult_operation", "label": "操作が難しい" },
         { "key": "too_much_info", "label": "情報が多い" }
-      ]
-    },
-    {
-      "index": 5,
-      "id": "q5_ai",
-      "text": "AIとの付き合い方は？",
-      "choices": [
-        { "key": "ai_decide", "label": "AIに決めてほしい" },
-        { "key": "ai_candidates", "label": "候補だけ" },
-        { "key": "self_decide", "label": "自分で選びたい" }
       ]
     }
   ]

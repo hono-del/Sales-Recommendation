@@ -43,7 +43,7 @@ class ProfileInputRequest(BaseModel):
 
 
 class AnswerRequest(BaseModel):
-    question_index: int = Field(..., ge=1, le=5)
+    question_index: int = Field(..., ge=1, le=4)
     question_id: str
     answer_key: str
 

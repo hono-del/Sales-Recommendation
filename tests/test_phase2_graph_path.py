@@ -14,14 +14,13 @@ from api.api_server import app
 client = TestClient(app)
 
 
-def _session_with_5_answers() -> str:
+def _session_with_4_answers() -> str:
     sid = client.post("/api/demo/sessions", json={}).json()["session_id"]
     answers = [
         (1, "q1_value", "family"),
         (2, "q2_weekend", "family_center"),
         (3, "q3_regret", "family_dissatisfaction"),
         (4, "q4_stress", "fatigue"),
-        (5, "q5_ai", "ai_candidates"),
     ]
     for qi, qid, key in answers:
         client.post(
@@ -33,7 +32,7 @@ def _session_with_5_answers() -> str:
 
 class TestPhase2GraphPath:
     def test_graph_path_structure(self):
-        sid = _session_with_5_answers()
+        sid = _session_with_4_answers()
         r = client.get(f"/api/demo/sessions/{sid}/graph-path")
         assert r.status_code == 200
         data = r.json()
@@ -47,7 +46,7 @@ class TestPhase2GraphPath:
         assert "vehicle" in types
 
     def test_graph_path_personalizes_why_panel(self):
-        sid = _session_with_5_answers()
+        sid = _session_with_4_answers()
         data = client.get(f"/api/demo/sessions/{sid}/graph-path").json()
         values = data["why_panel"]["values"]
         assert len(values) >= 2
@@ -55,7 +54,7 @@ class TestPhase2GraphPath:
         assert data["why_panel"]["logic"]
 
     def test_graph_path_top_model_query(self):
-        sid = _session_with_5_answers()
+        sid = _session_with_4_answers()
         r = client.get(f"/api/demo/sessions/{sid}/graph-path?top_model=FIT")
         assert r.status_code == 200
         vehicles = [n for n in r.json()["nodes"] if n["type"] == "vehicle"]

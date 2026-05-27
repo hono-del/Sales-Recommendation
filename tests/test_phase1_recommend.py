@@ -14,14 +14,13 @@ from api.api_server import app
 client = TestClient(app)
 
 
-def _session_with_5_answers() -> str:
+def _session_with_4_answers() -> str:
     sid = client.post("/api/demo/sessions", json={}).json()["session_id"]
     answers = [
         (1, "q1_value", "family"),
         (2, "q2_weekend", "family_center"),
         (3, "q3_regret", "family_dissatisfaction"),
         (4, "q4_stress", "fatigue"),
-        (5, "q5_ai", "ai_candidates"),
     ]
     for qi, qid, key in answers:
         client.post(
@@ -32,13 +31,13 @@ def _session_with_5_answers() -> str:
 
 
 class TestPhase1Recommend:
-    def test_recommend_requires_5_answers(self):
+    def test_recommend_requires_4_answers(self):
         sid = client.post("/api/demo/sessions", json={}).json()["session_id"]
         r = client.post(f"/api/demo/sessions/{sid}/recommend")
         assert r.status_code == 400
 
     def test_recommend_returns_top3(self):
-        sid = _session_with_5_answers()
+        sid = _session_with_4_answers()
         r = client.post(f"/api/demo/sessions/{sid}/recommend")
         assert r.status_code == 200
         data = r.json()
@@ -51,7 +50,7 @@ class TestPhase1Recommend:
             assert isinstance(data["recommendations"][0]["appeal_points"], list)
 
     def test_recommend_excluded_up_to_three(self):
-        sid = _session_with_5_answers()
+        sid = _session_with_4_answers()
         data = client.post(f"/api/demo/sessions/{sid}/recommend").json()
         excluded = data["excluded"]
         assert 1 <= len(excluded) <= 3

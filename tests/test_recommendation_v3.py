@@ -43,17 +43,14 @@ class TestDemoProfile:
         assert result["profile"]["score_safety"] >= 0
         assert "ChildSafety" in result["mapped_needs"] or "DrivingConfidence" in result["mapped_needs"]
 
-    def test_profile_five_answers(self):
+    def test_profile_four_answers(self):
         calc = DemoProfileCalculator()
         answers = [
             {"question_index": 1, "question_id": "q1_value", "answer_key": "family"},
             {"question_index": 2, "question_id": "q2_weekend", "answer_key": "family_center"},
             {"question_index": 3, "question_id": "q3_regret", "answer_key": "family_dissatisfaction"},
             {"question_index": 4, "question_id": "q4_stress", "answer_key": "fatigue"},
-            {"question_index": 5, "question_id": "q5_ai", "answer_key": "co_pilot"},
         ]
-        # q5 key fix
-        answers[-1]["answer_key"] = "ai_candidates"
         result = calc.compute_from_answers(answers)
         assert result["profile"]["score_family"] >= result["profile"]["score_adventure"]
         assert len(result["ui_needs"]) >= 1
