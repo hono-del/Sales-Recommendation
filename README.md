@@ -161,6 +161,42 @@ py -m pytest tests/test_phase2_graph_path.py -v
 
 ---
 
+## Vercel デプロイ（社内共有用）
+
+### 前提条件
+- GitHubリポジトリ: https://github.com/hono-del/Sales-Recommendation
+- Vercelプロジェクト: https://vercel.com/hono-2482s-projects/sales-recommendation
+
+### デプロイ手順
+
+1. **Vercelダッシュボードでリポジトリを接続**
+   - https://vercel.com/hono-2482s-projects/sales-recommendation にアクセス
+   - "Connect Git Repository" をクリック
+   - `hono-del/Sales-Recommendation` を選択
+
+2. **プロジェクト設定**
+   - **Root Directory**: `demo-web`
+   - **Framework Preset**: Next.js
+   - **Build Command**: `npm run build`
+   - **Output Directory**: `.next`
+   - **Install Command**: `npm install`
+
+3. **環境変数（後でAPI統合時に設定）**
+   ```
+   NEXT_PUBLIC_API_URL=https://your-api-url.com
+   ```
+
+4. **デプロイ**
+   - "Deploy" をクリック
+   - 自動ビルド完了後、URLが発行されます
+
+### 注意事項
+- 現在はフロントエンドのみデプロイ（APIは別途必要）
+- APIなしでは一部機能が動作しません（fallbackで最低限動作）
+- Neo4jデータベースは含まれません
+
+---
+
 ## トラブルシューティング
 
 | 問題 | 対処 |
