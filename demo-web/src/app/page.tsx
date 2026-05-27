@@ -1,5 +1,18 @@
-import { redirect } from "next/navigation";
+"use client";
+
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
-  redirect("/demo/opening");
+  const router = useRouter();
+
+  useEffect(() => {
+    router.replace("/demo/opening");
+  }, [router]);
+
+  return (
+    <div className="flex min-h-screen items-center justify-center">
+      <p className="text-text-muted">リダイレクト中...</p>
+    </div>
+  );
 }
