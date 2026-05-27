@@ -1,7 +1,8 @@
 # Decision Intelligence PoC — 迷わせないレコメンド
 
 **バージョン**: v1.0 (Phase 3 完了)  
-**最終更新**: 2026-05-27
+**最終更新**: 2026-05-27  
+**リポジトリ**: https://github.com/hono-del/Sales-Recommendation
 
 自動車購入における意思決定支援システムのショールームデモ。Knowledge Graph で「なぜその提案か」を可視化し、説明可能な推薦を実現します。
 
