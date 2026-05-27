@@ -1,0 +1,132 @@
+{
+  "version": "1.0",
+  "description": "Load（負荷・不安）から推奨される TechnicalFeature へのマッピング",
+  "load_to_features": {
+    "fatigue": {
+      "features": [
+        "アダプティブクルーズコントロール",
+        "レーンキープアシスト",
+        "Honda SENSING",
+        "プレミアムシート",
+        "静粛性向上技術"
+      ],
+      "boost_score": 15,
+      "capabilities": ["RideComfort", "SafetyPerformance"]
+    },
+    "traffic": {
+      "features": [
+        "アダプティブクルーズコントロール",
+        "渋滞追従機能",
+        "Honda SENSING",
+        "ナビゲーションシステム"
+      ],
+      "boost_score": 12,
+      "capabilities": ["FuelEfficiency", "RideComfort"]
+    },
+    "parking": {
+      "features": [
+        "パノラミックビューモニター",
+        "バックモニター",
+        "パーキングセンサー",
+        "Honda SENSING",
+        "電動パーキングブレーキ",
+        "360度カメラ"
+      ],
+      "boost_score": 18,
+      "capabilities": ["SafetyPerformance", "GeneralPerformance"]
+    },
+    "difficult_operation": {
+      "features": [
+        "Honda SENSING",
+        "ヘッドアップディスプレイ",
+        "パドルシフト",
+        "電動パーキングブレーキ",
+        "ステアリングスイッチ"
+      ],
+      "boost_score": 14,
+      "capabilities": ["SafetyPerformance", "TechInnovation"]
+    },
+    "too_much_info": {
+      "features": [
+        "シンプルインターフェース",
+        "音声認識システム",
+        "ステアリングスイッチ",
+        "ヘッドアップディスプレイ"
+      ],
+      "boost_score": 10,
+      "capabilities": ["TechInnovation"]
+    },
+    "family_dissatisfaction": {
+      "features": [
+        "3列シート",
+        "スライドドア",
+        "後席モニター",
+        "USB充電ポート",
+        "広い室内空間",
+        "チャイルドシート対応"
+      ],
+      "boost_score": 16,
+      "capabilities": ["FamilyFriendly", "SpaceUtility"]
+    },
+    "maintenance": {
+      "features": [
+        "ハイブリッドシステム",
+        "e:HEV",
+        "電動パワートレイン",
+        "長期保証",
+        "メンテナンスパック"
+      ],
+      "boost_score": 15,
+      "capabilities": ["FuelEfficiency", "GeneralPerformance"]
+    },
+    "feature_lack": {
+      "features": [
+        "Honda SENSING",
+        "先進安全装備",
+        "ナビゲーションシステム",
+        "コネクテッド機能",
+        "スマートキーシステム"
+      ],
+      "boost_score": 12,
+      "capabilities": ["TechInnovation", "SafetyPerformance"]
+    },
+    "unused": {
+      "features": [
+        "シートアレンジ",
+        "コンパクト設計",
+        "燃費性能",
+        "実用装備"
+      ],
+      "boost_score": 10,
+      "capabilities": ["FuelEfficiency", "SpaceUtility"]
+    },
+    "boredom": {
+      "features": [
+        "スポーティデザイン",
+        "パドルシフト",
+        "ドライビングモード切替",
+        "走行性能",
+        "エクステリアカスタマイズ"
+      ],
+      "boost_score": 13,
+      "capabilities": ["DesignAppeal", "GeneralPerformance"]
+    }
+  },
+  "load_labels_ja": {
+    "fatigue": "長距離移動による疲労",
+    "traffic": "渋滞ストレス",
+    "parking": "駐車・狭い道への不安",
+    "difficult_operation": "操作の難しさ",
+    "too_much_info": "情報過多による判断負荷",
+    "family_dissatisfaction": "家族同乗時の不満リスク",
+    "maintenance": "維持費への不安",
+    "feature_lack": "機能不足による後悔",
+    "unused": "使わない設備への投資",
+    "boredom": "すぐ飽きるリスク"
+  },
+  "usage_notes": {
+    "boost_score": "該当機能を持つ車種のスコアに加算されるポイント（0-20）",
+    "capabilities": "対応する Capability。推薦理由生成に使用",
+    "features": "具体的な TechnicalFeature 名。Neo4j の feature.name と部分一致"
+  }
+}

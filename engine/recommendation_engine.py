@@ -1,8 +1,11 @@
 """
 Phase 5: Recommendation engine
 Score = Need match 45% + Feature match 25% + Similar consumer 20% + EvalCriteria 10%
++ Load Boost (0-20 pts per detected load)
 """
 import os
+import json
+from pathlib import Path
 from dataclasses import dataclass, field
 from neo4j import GraphDatabase
 
@@ -40,6 +43,7 @@ class RecommendationRequest:
     budget: int  # yen
     needs: list[str]
     usage: str = ""
+    detected_loads: list[str] = field(default_factory=list)  # Load 検出結果
 
 
 @dataclass
@@ -52,11 +56,20 @@ class Recommendation:
     consumer_score: float = 0.0
     ec_score: float = 0.0
     similar_consumers: list[str] = field(default_factory=list)
+    load_boost: float = 0.0  # Load によるブーストスコア
+    matched_load_features: list[str] = field(default_factory=list)  # マッチした Load 対応機能
 
 
 class RecommendationEngine:
     def __init__(self):
         self.driver = GraphDatabase.driver(NEO4J_URI, auth=(NEO4J_USER, NEO4J_PASSWORD))
+        
+        # Load マッピング設定を読み込み
+        config_path = Path(__file__).parent.parent / "config" / "load-feature-mapping.json"
+        if config_path.exists():
+            self.load_mapping = json.loads(config_path.read_text(encoding="utf-8"))
+        else:
+            self.load_mapping = {"load_to_features": {}}
 
     def close(self):
         self.driver.close()
@@ -219,6 +232,123 @@ class RecommendationEngine:
                 matched += 1
 
         return min(matched / len(needs), 1.0)
+    
+    def _get_vehicle_features(self, vehicle_name: str) -> list[str]:
+        """車種の TechnicalFeature リストを取得"""
+        with self.driver.session() as session:
+            result = session.run(
+                """
+                MATCH (v:VehicleModel {name: $vname})-[:HAS_FEATURE]->(tf:TechnicalFeature)
+                RETURN collect(tf.name) AS features
+                """,
+                vname=vehicle_name
+            )
+            record = result.single()
+            return record["features"] if record else []
+    
+    def _calculate_load_boost(
+        self, 
+        vehicle_name: str, 
+        detected_loads: list[str]
+    ) -> tuple[float, list[str]]:
+        """
+        車種が持つ Load 対応機能のブーストスコアを計算
+        
+        Args:
+            vehicle_name: 車種名
+            detected_loads: 検出された Load ラベルのリスト (e.g., ["parking", "fatigue"])
+        
+        Returns:
+            (boost_score, matched_features): ブーストポイント（正規化前）とマッチした機能リスト
+        """
+        if not detected_loads:
+            return 0.0, []
+        
+        # 車種の全機能を取得
+        vehicle_features = self._get_vehicle_features(vehicle_name)
+        if not vehicle_features:
+            return 0.0, []
+        
+        total_boost = 0.0
+        matched_features = []
+        load_feature_matches = {}  # Load ごとに1回だけブースト
+        
+        for load_key in detected_loads:
+            load_config = self.load_mapping["load_to_features"].get(load_key, {})
+            boost = load_config.get("boost_score", 0)
+            target_features = load_config.get("features", [])
+            
+            # 部分一致で機能をチェック（1つの Load につき1回だけブースト）
+            for target in target_features:
+                for vehicle_feature in vehicle_features:
+                    if target in vehicle_feature or vehicle_feature in target:
+                        if load_key not in load_feature_matches:
+                            total_boost += boost
+                            load_feature_matches[load_key] = vehicle_feature
+                            matched_features.append(f"{vehicle_feature}({load_key})")
+                        break
+                if load_key in load_feature_matches:
+                    break
+        
+        # ブーストスコアを 0-20 の範囲に正規化
+        normalized_boost = min(total_boost / 100.0, 0.20)
+        
+        return normalized_boost, matched_features
+    
+    def _generate_load_reason(
+        self, 
+        detected_loads: list[str], 
+        matched_features: list[str]
+    ) -> list[str]:
+        """
+        Load に基づく推薦理由を生成
+        
+        Args:
+            detected_loads: 検出された Load ラベル
+            matched_features: マッチした機能リスト（"機能名(load_key)" 形式）
+        
+        Returns:
+            推薦理由のリスト
+        """
+        load_labels = self.load_mapping.get("load_labels_ja", {})
+        reasons = []
+        
+        # matched_features から load_key を抽出
+        load_feature_map = {}
+        for feature_str in matched_features:
+            if "(" in feature_str and ")" in feature_str:
+                feature_name = feature_str.split("(")[0]
+                load_key = feature_str.split("(")[1].rstrip(")")
+                if load_key not in load_feature_map:
+                    load_feature_map[load_key] = []
+                load_feature_map[load_key].append(feature_name)
+        
+        # Load ごとに推薦理由を生成
+        for load_key in detected_loads:
+            if load_key not in load_feature_map:
+                continue
+            
+            features = load_feature_map[load_key]
+            load_label = load_labels.get(load_key, load_key)
+            
+            if load_key == "parking":
+                reasons.append(f"{features[0]}で駐車・狭い道の不安を解消")
+            elif load_key == "fatigue":
+                reasons.append(f"{features[0]}で長距離運転の疲労を軽減")
+            elif load_key == "maintenance":
+                reasons.append(f"{features[0]}で維持費を抑えられる")
+            elif load_key == "family_dissatisfaction":
+                reasons.append(f"{features[0]}で家族全員が快適に移動")
+            elif load_key == "traffic":
+                reasons.append(f"{features[0]}で渋滞時のストレスを軽減")
+            elif load_key == "difficult_operation":
+                reasons.append(f"{features[0]}で操作をサポート")
+            elif load_key == "too_much_info":
+                reasons.append(f"{features[0]}で情報整理をアシスト")
+            else:
+                reasons.append(f"{features[0]}で{load_label}に対応")
+        
+        return reasons[:2]  # 最大2つまで
 
     def _parse_price_range(self, price_range: str) -> tuple[int, int]:
         """Extract min/max price in yen from price range string."""
@@ -258,8 +388,17 @@ class RecommendationEngine:
             # EvaluationCriteria bridge score (bonus)
             ec_score = self._score_eval_criteria_match(v["name"], req.needs)
 
-            # Weights sum to 1.0: 0.45 + 0.25 + 0.20 + 0.10 = 1.00
-            total = need_score * 0.45 + feat_score * 0.25 + cons_score * 0.2 + ec_score * 0.1
+            # Load Boost スコア計算
+            load_boost, matched_load_features = self._calculate_load_boost(
+                v["name"], 
+                req.detected_loads
+            )
+
+            # Base score: 既存のスコア (0-1.0)
+            base_score = need_score * 0.45 + feat_score * 0.25 + cons_score * 0.2 + ec_score * 0.1
+            
+            # Final score: base_score + load_boost (最大 1.20、表示時は 100 を上限とする)
+            total = base_score + load_boost
 
             reason_parts = []
             if need_score > 0.5:
@@ -268,18 +407,27 @@ class RecommendationEngine:
                 reason_parts.append(f"同様の家族構成の{len(similar)}名が選択")
             if ec_score > 0.3:
                 reason_parts.append(f"評価基準とのマッチ{int(ec_score*100)}%")
+            
+            # Load Boost による推薦理由を追加
+            if load_boost > 0 and matched_load_features:
+                load_reasons = self._generate_load_reason(req.detected_loads, matched_load_features)
+                if load_reasons:
+                    reason_parts.extend(load_reasons)
+            
             if not reason_parts:
                 reason_parts.append("総合的な推薦")
 
             scored.append(Recommendation(
                 model=v["name"],
-                score=round(total, 3),
+                score=round(min(total, 1.0), 3),  # 表示は 0-1.0 に正規化
                 reason="、".join(reason_parts),
                 need_score=round(need_score, 3),
                 feature_score=round(feat_score, 3),
                 consumer_score=round(cons_score, 3),
                 ec_score=round(ec_score, 3),
                 similar_consumers=similar,
+                load_boost=round(load_boost, 3),
+                matched_load_features=matched_load_features,
             ))
 
         scored.sort(key=lambda r: r.score, reverse=True)

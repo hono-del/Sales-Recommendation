@@ -111,6 +111,9 @@ def recommend_for_session(
     calc = DemoProfileCalculator()
     ui_needs = profile_data.get("ui_needs") or calc.profile_to_ui_needs(prof)
     usage = _infer_usage(prof, session.get("answers", []))
+    
+    # Load 検出結果を取得
+    detected_loads = profile_data.get("detected_loads") or []
 
     demo_fallback = False
     recommendations: list[dict[str, Any]] = []
@@ -125,6 +128,7 @@ def recommend_for_session(
                 budget=budget,
                 needs=ui_needs,
                 usage=usage,
+                detected_loads=detected_loads,  # Load を渡す
             )
             results = engine.recommend(req, top_k=3 + _MAX_EXCLUDED)
             for i, r in enumerate(results[:3]):
@@ -140,6 +144,8 @@ def recommend_for_session(
                     "fuel_type": meta.get("fuel_type", ""),
                     "seating_capacity": meta.get("seating_capacity", 0),
                     "appeal_points": meta.get("appeal_points", []),
+                    "load_boost": round(r.load_boost, 3),  # Load ブーストスコア
+                    "matched_load_features": r.matched_load_features[:3],  # マッチした Load 対応機能
                 })
             for r in results[3 : 3 + _MAX_EXCLUDED]:
                 excluded.append({
