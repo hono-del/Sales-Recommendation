@@ -50,9 +50,9 @@ export function RecommendClient() {
 
     (async () => {
       try {
-        if (answers.length < 5) {
+        if (answers.length < 4) {
           throw new Error(
-            "5問の回答が揃っていません。質問画面からやり直してください。",
+            "4問の回答が揃っていません。質問画面からやり直してください。",
           );
         }
 

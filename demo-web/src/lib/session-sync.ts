@@ -20,7 +20,7 @@ export async function ensureSessionSynced(): Promise<string> {
 
   try {
     const existing = await api.getSession(state.sessionId);
-    if (existing.answers_count >= 5 || answers.length >= 5) {
+    if (existing.answers_count >= 4 || answers.length >= 4) {
       return await syncAnswers(state.sessionId, answers);
     }
     if (answers.length > 0) {

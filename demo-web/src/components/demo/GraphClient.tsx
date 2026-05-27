@@ -50,7 +50,7 @@ export function GraphClient() {
         if (cancelled) return;
 
         let topModel: string | undefined;
-        if (answers.length >= 5) {
+        if (answers.length >= 4) {
           try {
             const rec = await api.postRecommend(sid);
             if (!cancelled && rec.recommendations?.length) {
