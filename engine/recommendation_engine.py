@@ -40,10 +40,12 @@ NEED_KEYWORDS: dict[str, list[str]] = {
 @dataclass
 class RecommendationRequest:
     family_size: int
-    budget: int  # yen
+    budget: int  # yen (deprecated: use budget_min/budget_max)
     needs: list[str]
     usage: str = ""
     detected_loads: list[str] = field(default_factory=list)  # Load 検出結果
+    budget_min: int = 0  # 予算下限（円）
+    budget_max: int = 0  # 予算上限（円）
 
 
 @dataclass
@@ -370,11 +372,21 @@ class RecommendationEngine:
             return []
 
         scored = []
+        
+        # 予算範囲を決定（budget_min/budget_max が指定されていればそちらを優先）
+        budget_min = req.budget_min if req.budget_min > 0 else req.budget
+        budget_max = req.budget_max if req.budget_max > 0 else req.budget * 1.2
+        
         for v in vehicles:
-            # Budget filter
-            _, max_price = self._parse_price_range(v.get("price_range") or "")
-            if req.budget > 0 and max_price > 0 and max_price > req.budget * 1.2:
-                continue  # way over budget, skip
+            # Budget filter（範囲ベース）
+            min_price, max_price = self._parse_price_range(v.get("price_range") or "")
+            if budget_min > 0 and max_price > 0:
+                # 車種の最低価格が予算上限の120%を超える場合はスキップ
+                if min_price > budget_max * 1.2:
+                    continue
+                # 車種の最高価格が予算下限の80%未満の場合はスキップ
+                if max_price < budget_min * 0.8:
+                    continue
 
             # Seating filter
             seating = v.get("seating") or 0

@@ -18,6 +18,16 @@ const FLOATING_TAGS: { label: string; left: string; top: string; delay: string }
   { label: "安全", left: "55%", top: "36%", delay: "2.8s" },
   { label: "デザイン", left: "72%", top: "40%", delay: "3.2s" },
   { label: "オプション", left: "88%", top: "34%", delay: "3.6s" },
+  { label: "価格", left: "15%", top: "58%", delay: "4s" },
+  { label: "家族", left: "38%", top: "62%", delay: "4.4s" },
+  { label: "趣味", left: "65%", top: "56%", delay: "4.8s" },
+  { label: "アップグレード", left: "85%", top: "60%", delay: "5.2s" },
+  { label: "維持費", left: "18%", top: "78%", delay: "5.6s" },
+  { label: "走行性能", left: "48%", top: "82%", delay: "6s" },
+  { label: "積載性", left: "78%", top: "76%", delay: "6.4s" },
+  { label: "4WD", left: "5%", top: "28%", delay: "6.8s" },
+  { label: "ハイブリッド", left: "90%", top: "26%", delay: "7.2s" },
+  { label: "快適性", left: "35%", top: "24%", delay: "7.6s" },
 ];
 
 export function OpeningClient() {
@@ -42,7 +52,7 @@ export function OpeningClient() {
 
       const session = await api.createSession();
       setSessionId(session.session_id);
-      router.push("/demo/questions");
+      router.push("/demo/profile");
     } catch (e) {
       setError(e instanceof Error ? e.message : "セッション開始に失敗しました");
       setLoading(false);
@@ -83,13 +93,14 @@ export function OpeningClient() {
               transform: "translate(-50%, -50%)",
               animationDelay: item.delay,
               whiteSpace: "nowrap",
-              padding: "6px 12px",
-              fontSize: "14px",
+              padding: "10px 18px",
+              fontSize: "16px",
+              fontWeight: 500,
               color: "var(--color-text-muted)",
-              background: "rgba(255, 255, 255, 0.88)",
+              background: "rgba(255, 255, 255, 0.92)",
               border: "1px solid var(--color-border)",
-              borderRadius: "6px",
-              boxShadow: "0 1px 3px rgba(0,0,0,0.07)",
+              borderRadius: "8px",
+              boxShadow: "0 2px 6px rgba(0,0,0,0.1)",
             }}
           >
             {item.label}
@@ -107,34 +118,52 @@ export function OpeningClient() {
       >
         <h1
           style={{
-            fontSize: "32px",
-            fontWeight: 300,
-            lineHeight: 1.3,
+            fontSize: "48px",
+            fontWeight: 700,
+            lineHeight: 1.2,
             color: "var(--color-navy)",
+            textShadow: "0 2px 4px rgba(255,255,255,0.8)",
           }}
         >
-          選択肢が多い時代
+          Decision Intelligence
         </h1>
         <p
           style={{
-            marginTop: "16px",
-            fontSize: "18px",
-            color: "var(--color-text-muted)",
+            marginTop: "20px",
+            fontSize: "22px",
+            fontWeight: 600,
+            color: "var(--color-navy)",
+            background: "rgba(255,255,255,0.85)",
+            padding: "8px 16px",
+            borderRadius: "8px",
+            display: "inline-block",
           }}
         >
           「最適なもの」を探すほど、決めることが難しくなる。
         </p>
         <p
           style={{
-            marginTop: "24px",
-            fontSize: "16px",
-            lineHeight: 1.6,
-            color: "var(--color-text)",
+            marginTop: "32px",
+            fontSize: "18px",
+            lineHeight: 1.7,
+            fontWeight: 500,
+            color: "var(--color-navy)",
+            background: "rgba(255,255,255,0.9)",
+            padding: "16px 24px",
+            borderRadius: "12px",
+            boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
           }}
         >
-          SDV の進化で車は機能の集合体から、生活体験のパートナーへ。
+          SDV の進化でモビリティは移動手段から、生活体験のパートナーへ。
           <br />
-          私たちは Knowledge Graph で、なぜその一台かを一緒に見つけます。
+          <br />
+          サービスや情報が溢れる世の中で、
+          <br />
+          私たちは
+          <strong style={{ fontWeight: 700, color: "var(--color-gold)" }}>
+            「感情的負荷のない納得できる選択」
+          </strong>
+          を支えます。
         </p>
         {error && (
           <p style={{ marginTop: "16px", fontSize: "14px", color: "var(--color-load)" }} role="alert">

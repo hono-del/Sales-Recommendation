@@ -114,6 +114,11 @@ def recommend_for_session(
     
     # Load 検出結果を取得
     detected_loads = profile_data.get("detected_loads") or []
+    
+    # セッションから人数・予算を取得（入力があれば優先、なければデフォルト値）
+    family_size = session.get("family_size") or family_size
+    budget_min = session.get("budget_min") or budget
+    budget_max = session.get("budget_max") or budget
 
     demo_fallback = False
     recommendations: list[dict[str, Any]] = []
@@ -129,6 +134,8 @@ def recommend_for_session(
                 needs=ui_needs,
                 usage=usage,
                 detected_loads=detected_loads,  # Load を渡す
+                budget_min=budget_min,  # 予算下限
+                budget_max=budget_max,  # 予算上限
             )
             results = engine.recommend(req, top_k=3 + _MAX_EXCLUDED)
             for i, r in enumerate(results[:3]):

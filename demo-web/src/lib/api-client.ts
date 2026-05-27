@@ -14,6 +14,19 @@ export type SessionCreateResponse = {
   status: string;
 };
 
+export type ProfileInputRequest = {
+  family_size: number;
+  budget_range: string;
+};
+
+export type ProfileInputResponse = {
+  session_id: string;
+  status: string;
+  family_size: number;
+  budget_min: number;
+  budget_max: number;
+};
+
 export type AnswerResponse = {
   session_id: string;
   profile: ProfileScores;
@@ -123,6 +136,12 @@ export const api = {
       answers_count: number;
       profile: unknown;
     }>(`/api/demo/sessions/${sessionId}`),
+
+  postProfileInput: (sessionId: string, body: ProfileInputRequest) =>
+    request<ProfileInputResponse>(`/api/demo/sessions/${sessionId}/profile`, {
+      method: "POST",
+      body: JSON.stringify(body),
+    }),
 
   postAnswer: (
     sessionId: string,

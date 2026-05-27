@@ -37,6 +37,11 @@ except Exception as e:
 
 # ── Request models ─────────────────────────────────────────────────────────
 
+class ProfileInputRequest(BaseModel):
+    family_size: int = Field(..., ge=1, le=10, description="乗車人数")
+    budget_range: str = Field(..., description="予算範囲（例: '300-400', '~200', '500~'）")
+
+
 class AnswerRequest(BaseModel):
     question_index: int = Field(..., ge=1, le=5)
     question_id: str
@@ -88,6 +93,20 @@ def get_session(session_id: str):
         "profile": session.get("profile"),
         "demo_fallback_used": session.get("demo_fallback_used", False),
     }
+
+
+@router.post("/sessions/{session_id}/profile")
+def post_profile_input(session_id: str, body: ProfileInputRequest):
+    """人数・予算を設定"""
+    store = get_session_store()
+    try:
+        return store.set_profile_input(
+            session_id,
+            body.family_size,
+            body.budget_range,
+        )
+    except KeyError:
+        raise HTTPException(status_code=404, detail=f"Session not found: {session_id}")
 
 
 @router.post("/sessions/{session_id}/answers")

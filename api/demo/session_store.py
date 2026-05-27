@@ -63,6 +63,10 @@ class DemoSessionStore:
             "status": "active",
             "delegation_level": None,
             "demo_fallback_used": False,
+            "family_size": None,
+            "budget_range": None,
+            "budget_min": None,
+            "budget_max": None,
             "answers": [],
             "profile": None,
             "events": [],
@@ -150,6 +154,77 @@ class DemoSessionStore:
         session = self.require_session(session_id)
         session["demo_fallback_used"] = True
         self._save()
+    
+    def set_profile_input(
+        self,
+        session_id: str,
+        family_size: int,
+        budget_range: str,
+    ) -> dict[str, Any]:
+        """
+        人数・予算を設定
+        
+        Args:
+            session_id: セッション ID
+            family_size: 乗車人数
+            budget_range: 予算範囲（例: "300-400"）
+        
+        Returns:
+            更新されたセッション情報
+        """
+        session = self.require_session(session_id)
+        
+        # 予算範囲をパース
+        budget_min, budget_max = self._parse_budget_range(budget_range)
+        
+        session["family_size"] = family_size
+        session["budget_range"] = budget_range
+        session["budget_min"] = budget_min
+        session["budget_max"] = budget_max
+        session["status"] = "profile_input_complete"
+        session["updated_at"] = _iso(_utc_now())
+        self._save()
+        
+        return {
+            "session_id": session_id,
+            "status": session["status"],
+            "family_size": family_size,
+            "budget_min": budget_min,
+            "budget_max": budget_max,
+        }
+    
+    def _parse_budget_range(self, budget_range: str) -> tuple[int, int]:
+        """
+        予算範囲文字列を最小値・最大値に変換（単位: 円）
+        
+        Args:
+            budget_range: 予算範囲（例: "300-400", "~200", "500~"）
+        
+        Returns:
+            (budget_min, budget_max) in yen
+        """
+        budget_range = budget_range.strip()
+        
+        # "~200" 形式
+        if budget_range.startswith("~"):
+            max_val = int(budget_range[1:])
+            return 0, max_val * 10_000
+        
+        # "500~" 形式
+        if budget_range.endswith("~"):
+            min_val = int(budget_range[:-1])
+            return min_val * 10_000, 99_999_999
+        
+        # "300-400" 形式
+        if "-" in budget_range:
+            parts = budget_range.split("-")
+            min_val = int(parts[0])
+            max_val = int(parts[1])
+            return min_val * 10_000, max_val * 10_000
+        
+        # 単一値 "300" 形式（±50万円の幅）
+        val = int(budget_range)
+        return (val - 50) * 10_000, (val + 50) * 10_000
 
 
 _store: Optional[DemoSessionStore] = None
