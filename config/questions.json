@@ -1,88 +1,65 @@
 {
-  "version": "1.2",
+  "version": "2.0",
+  "description": "生活者の価値観を判定する5問（車に関係ない質問）",
   "questions": [
     {
       "index": 1,
-      "id": "q1_value",
-      "text": "車に求める価値は？",
+      "id": "q1_decision_style",
+      "text": "大きな買い物を決めるとき、あなたに近いのは？",
       "choices": [
-        { "key": "safety", "label": "安心" },
-        { "key": "enjoyment", "label": "楽しさ" },
-        { "key": "family", "label": "家族時間" },
-        { "key": "efficiency", "label": "効率" },
-        { "key": "status", "label": "ステータス" }
+        { "key": "compare_thoroughly", "label": "たくさん比較して、最良の選択をしたい" },
+        { "key": "good_enough", "label": "必要な条件が揃えば、そこで決める" },
+        { "key": "trust_authority", "label": "専門家の評価やランキングを重視する" },
+        { "key": "ask_others", "label": "家族や友人の意見を聞いて決める" },
+        { "key": "intuition", "label": "第一印象や直感を大切にする" }
       ]
     },
     {
       "index": 2,
-      "id": "q2_weekend",
-      "text": "休日の過ごし方は？",
+      "id": "q2_information",
+      "text": "新しいことを始めるとき、どう情報を集めますか？",
       "choices": [
-        { "key": "family_center", "label": "家族中心" },
-        { "key": "solo", "label": "一人時間" },
-        { "key": "active", "label": "アクティブ" },
-        { "key": "learning", "label": "学び" },
-        { "key": "hobby", "label": "趣味" }
+        { "key": "deep_research", "label": "詳しく調べて、比較検討する" },
+        { "key": "summary", "label": "要点をまとめた情報を見る" },
+        { "key": "expert_review", "label": "専門家のレビューや評価を参考にする" },
+        { "key": "word_of_mouth", "label": "周りの人の経験談を聞く" },
+        { "key": "try_first", "label": "まず試してみてから判断する" }
       ]
     },
     {
       "index": 3,
-      "id": "q3_regret",
-      "text": "最も避けたい後悔は？",
+      "id": "q3_priority",
+      "text": "日々の生活で、最も大切にしていることは？",
       "choices": [
-        { "key": "unused", "label": "買ってから使わない" },
-        { "key": "family_dissatisfaction", "label": "家族不満" },
-        { "key": "maintenance", "label": "維持費" },
-        { "key": "boredom", "label": "すぐ飽きる" },
-        { "key": "feature_lack", "label": "機能不足" }
+        { "key": "safety_security", "label": "安全・安心" },
+        { "key": "efficiency", "label": "効率・合理性" },
+        { "key": "family_time", "label": "家族との時間" },
+        { "key": "self_growth", "label": "自己成長・学び" },
+        { "key": "enjoyment", "label": "楽しさ・充実感" }
       ]
     },
     {
       "index": 4,
-      "id": "q4_stress",
-      "text": "移動時のストレスは？",
+      "id": "q4_change",
+      "text": "変化や新しいことに対して、あなたは？",
       "choices": [
-        { "key": "fatigue", "label": "疲れる" },
-        { "key": "traffic", "label": "渋滞" },
-        { "key": "parking", "label": "駐車" },
-        { "key": "difficult_operation", "label": "操作が難しい" },
-        { "key": "too_much_info", "label": "情報が多い" }
+        { "key": "cautious", "label": "慎重に検討してから取り入れる" },
+        { "key": "practical", "label": "必要性を感じたら取り入れる" },
+        { "key": "follow_trend", "label": "評判が良ければ試してみる" },
+        { "key": "ask_advice", "label": "信頼できる人に相談してから決める" },
+        { "key": "try_new", "label": "積極的に新しいことを試したい" }
       ]
     },
     {
       "index": 5,
-      "id": "q5_ai",
-      "text": "車選びで AI に任せたいことは？",
+      "id": "q5_time_usage",
+      "text": "休日や自由な時間の過ごし方は？",
       "choices": [
-        { "key": "ai_decide", "label": "条件を伝えたら、最終案まで決めてほしい" },
-        { "key": "ai_candidates", "label": "候補を絞って、比較の材料を出してほしい" },
-        { "key": "self_decide", "label": "参考程度にして、最後は自分で決める" }
-      ]
-    },
-    {
-      "index": 6,
-      "id": "q6_decision_process",
-      "text": "これまで、車や高額な買い物を決めるとき、いちばん近いのは？",
-      "choices": [
-        { "key": "compare_many", "label": "候補をたくさん比較してから決める" },
-        { "key": "good_enough", "label": "必要な条件が揃ったら、そこで決める" },
-        { "key": "trust_expert", "label": "専門家の評価・ランキング・ブランドを重視する" },
-        { "key": "ask_others", "label": "家族や販売員の「おすすめ」で決める" },
-        { "key": "first_feeling", "label": "第一印象や試乗の「感触」で決める" },
-        { "key": "quick_deal", "label": "セールや雰囲気で、その場の勢いで決める" }
-      ]
-    },
-    {
-      "index": 7,
-      "id": "q7_info_preference",
-      "text": "車を選ぶとき、いちばん役立つ情報は？",
-      "choices": [
-        { "key": "spec_table", "label": "詳しいスペック表・複数車の比較" },
-        { "key": "shortlist", "label": "「おすすめ3台」の要点まとめ" },
-        { "key": "awards_expert", "label": "安全評価・受賞・専門家の解説" },
-        { "key": "people_pick", "label": "販売員・家族・友人のおすすめ" },
-        { "key": "experience", "label": "試乗・デザイン・乗った感じ" },
-        { "key": "offer_now", "label": "今だけのキャンペーン・在庫・値引き" }
+        { "key": "plan_optimize", "label": "計画を立てて、効率よく過ごす" },
+        { "key": "balance", "label": "やることと休むことのバランスを取る" },
+        { "key": "family_center", "label": "家族と一緒に過ごす" },
+        { "key": "learning_growth", "label": "学びや自己成長の時間にする" },
+        { "key": "relax_enjoy", "label": "リラックスや趣味を楽しむ" }
       ]
     }
   ]

@@ -54,7 +54,7 @@ export function DelegationClient() {
     } finally {
       setLoading(false);
     }
-    router.push("/demo/graph");
+    router.push("/demo/recommend");
   }
 
   return (
@@ -68,7 +68,7 @@ export function DelegationClient() {
       <p className="mt-2 text-sm text-text-muted">{IMPACT[delegationLevel]}</p>
       <div className="mt-10">
         <PrimaryButton onClick={handleContinue} disabled={loading}>
-          {loading ? "準備中…" : "納得の理由を見る"}
+          {loading ? "準備中…" : "あなたへのおすすめを見る"}
         </PrimaryButton>
       </div>
     </main>

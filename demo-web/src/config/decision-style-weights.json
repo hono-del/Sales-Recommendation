@@ -1,5 +1,6 @@
 {
-  "version": "1.0",
+  "version": "2.0",
+  "description": "生活者の価値観から意思決定スタイルを判定する重み",
   "decay_per_question": 0.92,
   "styles": [
     "Maximizer",
@@ -44,35 +45,40 @@
     }
   },
   "answer_weights": {
-    "q3_regret": {
-      "feature_lack": { "Maximizer": 8 },
-      "unused": { "Satisficer": 6 },
-      "boredom": { "Impulsive": 6, "Intuitive": 4 }
-    },
-    "q4_stress": {
-      "too_much_info": { "Satisficer": 10, "Maximizer": 4 },
-      "difficult_operation": { "Authority-driven": 6 }
-    },
-    "q5_ai": {
-      "ai_decide": { "Delegator": 12, "Satisficer": 8 },
-      "ai_candidates": { "Maximizer": 6, "Authority-driven": 6 },
-      "self_decide": { "Intuitive": 8, "Impulsive": 6 }
-    },
-    "q6_decision_process": {
-      "compare_many": { "Maximizer": 30 },
+    "q1_decision_style": {
+      "compare_thoroughly": { "Maximizer": 30 },
       "good_enough": { "Satisficer": 30 },
-      "trust_expert": { "Authority-driven": 30 },
+      "trust_authority": { "Authority-driven": 30 },
       "ask_others": { "Delegator": 28, "Authority-driven": 5 },
-      "first_feeling": { "Intuitive": 30 },
-      "quick_deal": { "Impulsive": 30 }
+      "intuition": { "Intuitive": 30 }
     },
-    "q7_info_preference": {
-      "spec_table": { "Maximizer": 25 },
-      "shortlist": { "Satisficer": 22, "Delegator": 8 },
-      "awards_expert": { "Authority-driven": 25 },
-      "people_pick": { "Delegator": 25, "Authority-driven": 5 },
-      "experience": { "Intuitive": 25 },
-      "offer_now": { "Impulsive": 25 }
+    "q2_information": {
+      "deep_research": { "Maximizer": 25 },
+      "summary": { "Satisficer": 22 },
+      "expert_review": { "Authority-driven": 25 },
+      "word_of_mouth": { "Delegator": 25, "Authority-driven": 5 },
+      "try_first": { "Intuitive": 25, "Impulsive": 8 }
+    },
+    "q3_priority": {
+      "safety_security": { "Authority-driven": 10, "Satisficer": 5 },
+      "efficiency": { "Satisficer": 12, "Maximizer": 8 },
+      "family_time": { "Delegator": 10, "Satisficer": 5 },
+      "self_growth": { "Maximizer": 8, "Authority-driven": 5 },
+      "enjoyment": { "Intuitive": 12, "Impulsive": 8 }
+    },
+    "q4_change": {
+      "cautious": { "Authority-driven": 15, "Satisficer": 8 },
+      "practical": { "Satisficer": 18, "Maximizer": 5 },
+      "follow_trend": { "Authority-driven": 10, "Impulsive": 8 },
+      "ask_advice": { "Delegator": 18 },
+      "try_new": { "Intuitive": 15, "Impulsive": 12 }
+    },
+    "q5_time_usage": {
+      "plan_optimize": { "Maximizer": 15, "Satisficer": 10 },
+      "balance": { "Satisficer": 15 },
+      "family_center": { "Delegator": 12, "Satisficer": 8 },
+      "learning_growth": { "Maximizer": 10, "Authority-driven": 8 },
+      "relax_enjoy": { "Intuitive": 15, "Impulsive": 5 }
     }
   }
 }

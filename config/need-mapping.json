@@ -1,38 +1,41 @@
 {
-  "version": "1.0",
+  "version": "2.0",
+  "description": "生活者の価値観からKG Needsへのマッピング",
   "answer_to_needs": {
-    "q1_value": {
-      "safety": ["ChildSafety", "DrivingConfidence", "AccidentAnxietyReduction", "EasyParking"],
-      "enjoyment": ["DrivingEnjoyment", "PersonalExpression", "RelaxingDrive"],
-      "family": ["FamilyComfort", "WeekendFamilyTrip", "ChildSafety", "EasyChildPickup"],
-      "efficiency": ["EfficientDailyMobility", "LowFuelAnxiety", "MaintenanceCostReduction"],
-      "status": ["PremiumFeeling", "PersonalExpression", "EmotionalAttachment"]
+    "q1_decision_style": {
+      "compare_thoroughly": ["DrivingConfidence", "LongTermReliability", "MaintenanceCostReduction"],
+      "good_enough": ["EfficientDailyMobility", "FamilyComfort", "LowFuelAnxiety"],
+      "trust_authority": ["ChildSafety", "AccidentAnxietyReduction", "LongTermReliability"],
+      "ask_others": ["FamilyComfort", "ChildSafety", "WeekendFamilyTrip"],
+      "intuition": ["DrivingEnjoyment", "PersonalExpression", "EmotionalAttachment"]
     },
-    "q2_weekend": {
-      "family_center": ["WeekendFamilyTrip", "FamilyComfort", "StressFreeSchoolPickup"],
-      "solo": ["RelaxingDrive", "QuietCabinExperience", "PersonalExpression"],
-      "active": ["OutdoorLifestyle", "AdventureLifestyle", "OutdoorGearTransport"],
-      "learning": ["EfficientDailyMobility", "UrbanManeuverability"],
-      "hobby": ["DrivingEnjoyment", "OutdoorLifestyle", "FlexibleCargoSpace"]
+    "q2_information": {
+      "deep_research": ["DrivingConfidence", "LongTermReliability", "EfficientDailyMobility"],
+      "summary": ["EfficientDailyMobility", "DrivingConfidence", "LowFuelAnxiety"],
+      "expert_review": ["ChildSafety", "AccidentAnxietyReduction", "DrivingConfidence"],
+      "word_of_mouth": ["FamilyComfort", "WeekendFamilyTrip", "ChildSafety"],
+      "try_first": ["DrivingEnjoyment", "PersonalExpression", "OutdoorLifestyle"]
     },
-    "q3_regret": {
-      "unused": ["EfficientDailyMobility", "LongTermReliability"],
-      "family_dissatisfaction": ["FamilyComfort", "ChildSafety", "WeekendFamilyTrip"],
-      "maintenance": ["MaintenanceCostReduction", "LowFuelAnxiety", "LongTermReliability"],
-      "boredom": ["DrivingEnjoyment", "PersonalExpression", "EmotionalAttachment"],
-      "feature_lack": ["DrivingConfidence", "TechInnovation"]
+    "q3_priority": {
+      "safety_security": ["ChildSafety", "DrivingConfidence", "AccidentAnxietyReduction", "EasyParking"],
+      "efficiency": ["EfficientDailyMobility", "LowFuelAnxiety", "MaintenanceCostReduction", "UrbanManeuverability"],
+      "family_time": ["FamilyComfort", "WeekendFamilyTrip", "ChildSafety", "EasyChildPickup"],
+      "self_growth": ["EfficientDailyMobility", "DrivingConfidence", "PersonalExpression"],
+      "enjoyment": ["DrivingEnjoyment", "PersonalExpression", "EmotionalAttachment", "RelaxingDrive"]
     },
-    "q4_stress": {
-      "fatigue": ["FatigueReduction", "SmoothRideComfort", "QuietCabinExperience"],
-      "traffic": ["EfficientDailyMobility", "UrbanManeuverability"],
-      "parking": ["EasyParking", "CompactParkingEase", "UrbanManeuverability"],
-      "difficult_operation": ["DrivingConfidence", "EasyParking", "VisibilityConfidence"],
-      "too_much_info": ["DrivingConfidence", "AccidentAnxietyReduction"]
+    "q4_change": {
+      "cautious": ["DrivingConfidence", "ChildSafety", "LongTermReliability"],
+      "practical": ["EfficientDailyMobility", "MaintenanceCostReduction", "LowFuelAnxiety"],
+      "follow_trend": ["DrivingEnjoyment", "PersonalExpression", "ChildSafety"],
+      "ask_advice": ["FamilyComfort", "ChildSafety", "DrivingConfidence"],
+      "try_new": ["OutdoorLifestyle", "AdventureLifestyle", "DrivingEnjoyment"]
     },
-    "q5_ai": {
-      "ai_decide": ["EfficientDailyMobility", "DrivingConfidence"],
-      "ai_candidates": ["DrivingConfidence", "FamilyComfort"],
-      "self_decide": ["DrivingEnjoyment", "PersonalExpression"]
+    "q5_time_usage": {
+      "plan_optimize": ["EfficientDailyMobility", "UrbanManeuverability", "LowFuelAnxiety"],
+      "balance": ["FamilyComfort", "EfficientDailyMobility", "RelaxingDrive"],
+      "family_center": ["FamilyComfort", "WeekendFamilyTrip", "ChildSafety", "EasyChildPickup"],
+      "learning_growth": ["EfficientDailyMobility", "DrivingConfidence", "PersonalExpression"],
+      "relax_enjoy": ["RelaxingDrive", "QuietCabinExperience", "DrivingEnjoyment", "PersonalExpression"]
     }
   },
   "need_to_capabilities": {

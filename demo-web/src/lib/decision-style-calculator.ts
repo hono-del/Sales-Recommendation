@@ -41,14 +41,12 @@ function applyGuards(
   byQid: Record<string, string>,
 ): DecisionStyleScores {
   const adjusted = { ...scores };
-  const q5 = byQid.q5_ai ?? "";
-  const q6 = byQid.q6_decision_process ?? "";
-  const q7 = byQid.q7_info_preference ?? "";
+  const q1 = byQid.q1_decision_style ?? "";
+  const q2 = byQid.q2_information ?? "";
 
+  // Delegator ガード：明示的に「他者に相談」を選んだ場合のみ高スコアを許可
   const delegatorOk =
-    q6 === "ask_others" ||
-    q7 === "people_pick" ||
-    (q5 === "ai_decide" && q7 === "shortlist");
+    q1 === "ask_others" || q2 === "word_of_mouth";
 
   const rerank = () =>
     Object.entries(adjusted).sort((a, b) => b[1] - a[1]);
@@ -59,10 +57,15 @@ function applyGuards(
     ranked = rerank();
   }
 
+  // Impulsive ガード：新しい質問構成では明示的な衝動型判定が難しいため、
+  // 他のスタイルが低い場合のみ許可
   ranked = rerank();
-  if (ranked[0]?.[0] === "Impulsive" && q6 !== "quick_deal") {
+  if (ranked[0]?.[0] === "Impulsive") {
     const second = ranked[1]?.[1] ?? 0;
-    adjusted.Impulsive = Math.max(0, second - 1);
+    if (second > 50) {
+      // 2位が高スコアの場合、Impulsiveを抑制
+      adjusted.Impulsive = Math.max(0, second - 5);
+    }
   }
 
   return adjusted;

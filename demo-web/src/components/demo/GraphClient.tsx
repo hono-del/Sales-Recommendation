@@ -53,7 +53,7 @@ export function GraphClient() {
         let topModel: string | undefined;
         if (recommendations.length >= 1) {
           topModel = recommendations[0].model;
-        } else if (answers.length >= 4) {
+        } else if (answers.length >= 5) {
           try {
             const rec = await api.postRecommend(sid);
             if (!cancelled && rec.recommendations?.length) {

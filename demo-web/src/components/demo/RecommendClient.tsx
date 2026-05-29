@@ -11,6 +11,8 @@ import { DELEGATION_SUBTITLES } from "@/lib/delegation-ui";
 import { DemoBanner } from "./DemoBanner";
 import { RecommendationCard } from "./RecommendationCard";
 import { PrimaryButton } from "./PrimaryButton";
+import { SalesTalkSection } from "./SalesTalkSection";
+import { GraphClient } from "./GraphClient";
 
 function RestartLink() {
   const reset = useDemoStore((s) => s.reset);
@@ -50,9 +52,9 @@ export function RecommendClient() {
 
     (async () => {
       try {
-        if (answers.length < 4) {
+        if (answers.length < 5) {
           throw new Error(
-            "4問の回答が揃っていません。質問画面からやり直してください。",
+            "5問の回答が揃っていません。質問画面からやり直してください。",
           );
         }
 
@@ -135,44 +137,69 @@ export function RecommendClient() {
     <>
       {demoFallback && <DemoBanner />}
       <main className="mx-auto max-w-[1280px] px-6 py-10">
-        <h1 className="text-center text-3xl font-light text-navy">
-          あなたへのおすすめ
-        </h1>
-        <p className="mt-2 text-center text-text-muted">
-          {DELEGATION_SUBTITLES[delegationLevel]}
-        </p>
-        <div className="mt-10 grid grid-cols-1 items-stretch gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {recommendations.map((item, i) => (
-            <RecommendationCard
-              key={item.model}
-              item={item}
-              rank={i + 1}
-              delegationLevel={delegationLevel}
-            />
-          ))}
-        </div>
-        {excluded.length > 0 && (
-          <div className="mt-10">
-            <button
-              type="button"
-              onClick={() => setShowExcluded((v) => !v)}
-              className="text-sm text-navy underline"
-            >
-              {showExcluded ? "閉じる" : "なぜ外した？"}
-            </button>
-            {showExcluded && (
-              <ul className="mt-4 space-y-2 rounded-md border border-border bg-surface p-4 text-sm">
-                {excluded.map((ex) => (
-                  <li key={ex.model} className="text-text-muted">
-                    <span className="font-medium text-text">{ex.model}</span>
-                    {" — "}
-                    {ex.reason}
-                  </li>
-                ))}
-              </ul>
-            )}
+        {/* セクション1: あなたへのおすすめ車種 */}
+        <section>
+          <h1 className="text-center text-3xl font-light text-navy">
+            あなたへのおすすめ
+          </h1>
+          <p className="mt-2 text-center text-text-muted">
+            {DELEGATION_SUBTITLES[delegationLevel]}
+          </p>
+          <div className="mt-10 grid grid-cols-1 items-stretch gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {recommendations.map((item, i) => (
+              <RecommendationCard
+                key={item.model}
+                item={item}
+                rank={i + 1}
+                delegationLevel={delegationLevel}
+              />
+            ))}
           </div>
+          {excluded.length > 0 && (
+            <div className="mt-10">
+              <button
+                type="button"
+                onClick={() => setShowExcluded((v) => !v)}
+                className="text-sm text-navy underline"
+              >
+                {showExcluded ? "閉じる" : "なぜ外した？"}
+              </button>
+              {showExcluded && (
+                <ul className="mt-4 space-y-2 rounded-md border border-border bg-surface p-4 text-sm">
+                  {excluded.map((ex) => (
+                    <li key={ex.model} className="text-text-muted">
+                      <span className="font-medium text-text">{ex.model}</span>
+                      {" — "}
+                      {ex.reason}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          )}
+        </section>
+
+        {/* セクション2: 営業トーク案 */}
+        {recommendations.length > 0 && (
+          <SalesTalkSection topRecommendation={recommendations[0]} />
         )}
+
+        {/* セクション3: なぜこの提案か（思考プロセス） */}
+        <section className="mt-16">
+          <div className="text-center">
+            <h2 className="text-2xl font-light text-navy">
+              なぜこの提案か？
+            </h2>
+            <p className="mt-2 text-sm text-text-muted">
+              あなたの価値観から最適な車種を導き出した思考プロセス
+            </p>
+          </div>
+          <div className="mt-8">
+            <GraphClient />
+          </div>
+        </section>
+
+        {/* アクションボタン */}
         <div
           className="mt-12 flex flex-col items-center gap-4"
           style={{ position: "relative", zIndex: 20 }}
@@ -180,20 +207,6 @@ export function RecommendClient() {
           <PrimaryButton onClick={() => router.push("/demo/dealer")}>
             販売店提案へ
           </PrimaryButton>
-          <button
-            type="button"
-            onClick={() => router.push("/demo/graph")}
-            style={{
-              background: "none",
-              border: "none",
-              color: "var(--color-navy)",
-              textDecoration: "underline",
-              cursor: "pointer",
-              fontSize: 14,
-            }}
-          >
-            ← 納得の理由を見る
-          </button>
           <RestartLink />
         </div>
       </main>
