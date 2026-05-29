@@ -8,6 +8,7 @@ const TYPE_PHASE: Record<string, number> = {
   value: 1,
   lifestyle: 1,
   experience: 2,
+  need: 2,
   load: 2,
   feature: 3,
   vehicle: 4,
@@ -59,12 +60,14 @@ export const NODE_STYLE: Record<
   lifestyle: { fill: "#EEF2F7", stroke: "#94A3B8", text: "#0D1B2A", pill: true },
   load: { fill: "rgba(197, 48, 48, 0.15)", stroke: "#C53030", text: "#0D1B2A" },
   experience: { fill: "#EEF2F7", stroke: "#2B6CB0", text: "#0D1B2A" },
+  need: { fill: "rgba(43, 108, 176, 0.18)", stroke: "#2B6CB0", text: "#0D1B2A" },
   feature: { fill: "rgba(43, 108, 176, 0.12)", stroke: "#2B6CB0", text: "#0D1B2A" },
   vehicle: { fill: "rgba(184, 146, 12, 0.2)", stroke: "#B8920C", text: "#0D1B2A" },
 };
 
 export const NARRATION_MESSAGES = [
-  "あなたの価値観とライフスタイルから、ニーズを読み取っています…",
-  "判断の負荷となっている要因を、グラフ上に可視化しました。",
-  "機能と車種のつながりから、納得のいく一台を導きます。",
+  "あなたの価値観を分析しています…",
+  "移動時のストレスや不安を検出しました。",
+  "必要な体験と機能を特定しています…",
+  "最適な車種を選定しています…",
 ];

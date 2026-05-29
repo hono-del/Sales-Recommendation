@@ -1,4 +1,4 @@
-const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000";
+const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://127.0.0.1:8000";
 
 export type ProfileScores = {
   score_safety: number;
@@ -27,12 +27,45 @@ export type ProfileInputResponse = {
   budget_max: number;
 };
 
+export type KgCatalogItem = {
+  name: string;
+  label?: string;
+  group?: string;
+  category?: string;
+  selected: boolean;
+  source?: string;
+  source_load?: string;
+  source_axis?: string;
+  weight?: number;
+  linked_needs?: string[];
+  capabilities?: string[];
+};
+
+export type KgCatalogResponse = {
+  kind: string;
+  total: number;
+  selected_count: number;
+  groups?: string[];
+  categories?: string[];
+  vehicle_name?: string;
+  items: KgCatalogItem[];
+};
+
 export type AnswerResponse = {
   session_id: string;
   profile: ProfileScores;
   mapped_needs: string[];
+  kg_needs?: KgCatalogItem[];
   mapped_capabilities: string[];
   detected_loads: string[];
+  decision_style?: string;
+  decision_style_label?: string;
+  decision_style_description?: string;
+  decision_style_scores?: Record<string, number>;
+  decision_style_confidence?: number;
+  decision_style_secondary?: string;
+  decision_style_secondary_label?: string;
+  decision_style_is_mixed?: boolean;
 };
 
 export type HealthResponse = {
@@ -124,10 +157,14 @@ export const api = {
   health: () => request<HealthResponse>("/health", undefined, 3000),
 
   createSession: () =>
-    request<SessionCreateResponse>("/api/demo/sessions", {
-      method: "POST",
-      body: "{}",
-    }),
+    request<SessionCreateResponse>(
+      "/api/demo/sessions",
+      {
+        method: "POST",
+        body: "{}",
+      },
+      15000,
+    ),
 
   getSession: (sessionId: string) =>
     request<{
@@ -135,13 +172,17 @@ export const api = {
       status: string;
       answers_count: number;
       profile: unknown;
-    }>(`/api/demo/sessions/${sessionId}`),
+    }>(`/api/demo/sessions/${sessionId}`, undefined, 15000),
 
   postProfileInput: (sessionId: string, body: ProfileInputRequest) =>
-    request<ProfileInputResponse>(`/api/demo/sessions/${sessionId}/profile`, {
-      method: "POST",
-      body: JSON.stringify(body),
-    }),
+    request<ProfileInputResponse>(
+      `/api/demo/sessions/${sessionId}/profile`,
+      {
+        method: "POST",
+        body: JSON.stringify(body),
+      },
+      15000,
+    ),
 
   postAnswer: (
     sessionId: string,
@@ -151,10 +192,14 @@ export const api = {
       answer_key: string;
     },
   ) =>
-    request<AnswerResponse>(`/api/demo/sessions/${sessionId}/answers`, {
-      method: "POST",
-      body: JSON.stringify(body),
-    }),
+    request<AnswerResponse>(
+      `/api/demo/sessions/${sessionId}/answers`,
+      {
+        method: "POST",
+        body: JSON.stringify(body),
+      },
+      15000,
+    ),
 
   setDelegation: (sessionId: string, delegation_level: string) =>
     request<{ session_id: string; delegation_level: string; message: string }>(
@@ -168,10 +213,14 @@ export const api = {
   getQuestions: () => request<QuestionMaster>("/api/demo/questions"),
 
   postRecommend: (sessionId: string) =>
-    request<RecommendResponse>(`/api/demo/sessions/${sessionId}/recommend`, {
-      method: "POST",
-      body: "{}",
-    }),
+    request<RecommendResponse>(
+      `/api/demo/sessions/${sessionId}/recommend`,
+      {
+        method: "POST",
+        body: "{}",
+      },
+      15000, // Claude API呼び出しを含むため15秒
+    ),
 
   getFallbackRecommend: () =>
     request<RecommendResponse>("/api/demo/fallback/recommend"),
@@ -180,6 +229,24 @@ export const api = {
     const q = topModel ? `?top_model=${encodeURIComponent(topModel)}` : "";
     return request<Record<string, unknown>>(
       `/api/demo/sessions/${sessionId}/graph-path${q}`,
+      undefined,
+      12000, // 推薦キャッシュ利用時は数秒以内
+    );
+  },
+
+  getKgNeedsCatalog: (sessionId: string) =>
+    request<KgCatalogResponse>(
+      `/api/demo/sessions/${sessionId}/kg-catalog/needs`,
+      undefined,
+      10000,
+    ),
+
+  getKgFeaturesCatalog: (sessionId: string, topModel?: string) => {
+    const q = topModel ? `?top_model=${encodeURIComponent(topModel)}` : "";
+    return request<KgCatalogResponse>(
+      `/api/demo/sessions/${sessionId}/kg-catalog/technical-features${q}`,
+      undefined,
+      15000,
     );
   },
 

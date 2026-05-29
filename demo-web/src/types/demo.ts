@@ -17,9 +17,11 @@ export type Recommendation = {
   archetype: string;
   similar_consumers?: string[];
   quick_grade?: string;
+  price_range?: string;
   fuel_type?: string;
   seating_capacity?: number;
   appeal_points?: string[];
+  gap_vs_top?: string[];
 };
 
 export type ExcludedModel = {

@@ -16,7 +16,7 @@ export function ProfileMap({ profile }: Props) {
   if (!profile) {
     return (
       <div className="rounded-md border border-border bg-surface p-6">
-        <h2 className="text-lg text-navy">あなた理解 MAP</h2>
+        <h2 className="text-lg text-navy">あなたの価値観</h2>
         <p className="mt-4 text-sm text-text-muted">回答すると表示されます</p>
       </div>
     );
@@ -24,7 +24,7 @@ export function ProfileMap({ profile }: Props) {
 
   return (
     <div className="rounded-md border border-border bg-surface p-6 shadow-sm">
-      <h2 className="text-lg font-medium text-navy">あなた理解 MAP</h2>
+      <h2 className="text-lg font-medium text-navy">あなたの価値観</h2>
       <ul className="mt-6 space-y-4">
         {AXES.map(({ key, label }) => {
           const value = Math.round(profile[key]);

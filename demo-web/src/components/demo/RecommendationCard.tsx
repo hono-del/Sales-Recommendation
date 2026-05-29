@@ -14,9 +14,9 @@ export function RecommendationCard({ item, rank, delegationLevel }: Props) {
       ? item.reason.split("、")[0] || item.reason
       : item.reason;
   const metaParts = [
+    item.price_range,
     item.fuel_type,
     item.seating_capacity ? `${item.seating_capacity}人乗り` : null,
-    item.quick_grade,
   ].filter(Boolean);
 
   return (
@@ -75,6 +75,20 @@ export function RecommendationCard({ item, rank, delegationLevel }: Props) {
         <p className="mt-2 text-xs text-text-muted">
           類似購入者: {item.similar_consumers.length}名
         </p>
+      )}
+      {item.gap_vs_top && item.gap_vs_top.length > 0 && (
+        <div className="mt-3 rounded-md bg-slate-50 px-3 py-2">
+          <p className="text-[10px] font-semibold uppercase text-slate-600">
+            第1推薦との違い
+          </p>
+          <ul className="mt-1 space-y-1">
+            {item.gap_vs_top.map((gap) => (
+              <li key={gap} className="text-xs text-slate-700">
+                · {gap}
+              </li>
+            ))}
+          </ul>
+        </div>
       )}
     </article>
   );

@@ -37,14 +37,29 @@ export default function ProfileInputClient({ sessionId }: ProfileInputClientProp
 
     setLoading(true);
     try {
-      await api.postProfileInput(sessionId, {
+      const payload = {
         family_size: familySize,
         budget_range: budgetRange,
-      });
+      };
+      try {
+        await api.postProfileInput(sessionId, payload);
+      } catch (first) {
+        // API 再起動直後などで1回目が失敗することがあるため1回リトライ
+        if (first instanceof Error && first.message.includes("タイムアウト")) {
+          await new Promise((r) => setTimeout(r, 1500));
+          await api.postProfileInput(sessionId, payload);
+        } else {
+          throw first;
+        }
+      }
       router.push("/demo/questions");
     } catch (error) {
       console.error("Failed to submit profile input:", error);
-      alert("エラーが発生しました。もう一度お試しください。");
+      const msg =
+        error instanceof Error && error.message.includes("タイムアウト")
+          ? "API の応答が遅いか再起動中です。数秒待ってからもう一度お試しください。\n（FastAPI port 8000 が起動しているか確認してください）"
+          : "エラーが発生しました。もう一度お試しください。";
+      alert(msg);
     } finally {
       setLoading(false);
     }

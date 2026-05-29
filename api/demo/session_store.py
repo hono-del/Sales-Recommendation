@@ -47,11 +47,12 @@ class DemoSessionStore:
             return {}
 
     def _save(self) -> None:
+        """アトミック書き込み（OneDrive 同期・uvicorn reload との競合を軽減）"""
         self._path.parent.mkdir(parents=True, exist_ok=True)
-        self._path.write_text(
-            json.dumps(self._sessions, ensure_ascii=False, indent=2),
-            encoding="utf-8",
-        )
+        payload = json.dumps(self._sessions, ensure_ascii=False, indent=2)
+        tmp = self._path.with_suffix(".json.tmp")
+        tmp.write_text(payload, encoding="utf-8")
+        tmp.replace(self._path)
 
     def create_session(self) -> dict[str, Any]:
         sid = str(uuid.uuid4())
@@ -112,6 +113,18 @@ class DemoSessionStore:
     def set_profile(self, session_id: str, profile_data: dict[str, Any]) -> None:
         session = self.require_session(session_id)
         session["profile"] = profile_data
+        session["updated_at"] = _iso(_utc_now())
+        self._save()
+
+    def set_cached_recommendations(
+        self, session_id: str, payload: dict[str, Any]
+    ) -> None:
+        """推薦結果をセッションにキャッシュ（graph-path の二重実行防止）。"""
+        session = self.require_session(session_id)
+        session["cached_recommendations"] = {
+            "cached_at": _iso(_utc_now()),
+            "payload": payload,
+        }
         session["updated_at"] = _iso(_utc_now())
         self._save()
 

@@ -3,10 +3,15 @@
 import { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { api } from "@/lib/api-client";
+import {
+  computeDecisionStyleFromAnswers,
+  decisionStyleFromApiResponse,
+} from "@/lib/decision-style-calculator";
 import { localProfileFromAnswer } from "@/lib/score-calculator";
 import { useRequireSession } from "@/hooks/useRequireSession";
 import { useDemoStore } from "@/stores/demoStore";
 import type { Question, QuestionChoice } from "@/types/demo";
+import { DecisionStylePanel } from "./DecisionStylePanel";
 import { ProfileMap } from "./ProfileMap";
 import { QuestionCard } from "./QuestionCard";
 
@@ -14,8 +19,10 @@ export function QuestionsClient() {
   const router = useRouter();
   const sessionId = useRequireSession();
   const profile = useDemoStore((s) => s.profile);
+  const decisionStyle = useDemoStore((s) => s.decisionStyle);
   const setProfile = useDemoStore((s) => s.setProfile);
   const addAnswer = useDemoStore((s) => s.addAnswer);
+  const answers = useDemoStore((s) => s.answers);
 
   const [questions, setQuestions] = useState<Question[]>([]);
   const [step, setStep] = useState(0);
@@ -40,18 +47,26 @@ export function QuestionsClient() {
         answer_key: choice.key,
       };
       addAnswer(answerPayload);
+      const nextAnswers = [
+        ...answers.filter((a) => a.question_index !== current.index),
+        answerPayload,
+      ].sort((a, b) => a.question_index - b.question_index);
       try {
         const res = await api.postAnswer(sessionId, answerPayload);
-        setProfile(res.profile, res.mapped_needs);
+        const style =
+          decisionStyleFromApiResponse(res) ??
+          computeDecisionStyleFromAnswers(nextAnswers);
+        setProfile(res.profile, res.mapped_needs, style);
       } catch {
         const fallback = localProfileFromAnswer(current.id, choice.key, profile);
-        setProfile(fallback, []);
+        const style = computeDecisionStyleFromAnswers(nextAnswers);
+        setProfile(fallback, [], style);
         setWarn("API に接続できません。回答は端末に保存済みです。推薦時に再送信します。");
       } finally {
         setLoading(false);
       }
     },
-    [sessionId, current, profile, setProfile, addAnswer],
+    [sessionId, current, profile, answers, setProfile, addAnswer],
   );
 
   async function handleSelect(choice: QuestionChoice) {
@@ -94,8 +109,9 @@ export function QuestionsClient() {
           loading={loading}
         />
       </div>
-      <div className="lg:col-span-2">
+      <div className="space-y-6 lg:col-span-2">
         <ProfileMap profile={profile} />
+        <DecisionStylePanel decisionStyle={decisionStyle} />
       </div>
     </div>
   );

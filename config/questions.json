@@ -1,5 +1,5 @@
 {
-  "version": "1.1",
+  "version": "1.2",
   "questions": [
     {
       "index": 1,
@@ -47,6 +47,42 @@
         { "key": "parking", "label": "駐車" },
         { "key": "difficult_operation", "label": "操作が難しい" },
         { "key": "too_much_info", "label": "情報が多い" }
+      ]
+    },
+    {
+      "index": 5,
+      "id": "q5_ai",
+      "text": "車選びで AI に任せたいことは？",
+      "choices": [
+        { "key": "ai_decide", "label": "条件を伝えたら、最終案まで決めてほしい" },
+        { "key": "ai_candidates", "label": "候補を絞って、比較の材料を出してほしい" },
+        { "key": "self_decide", "label": "参考程度にして、最後は自分で決める" }
+      ]
+    },
+    {
+      "index": 6,
+      "id": "q6_decision_process",
+      "text": "これまで、車や高額な買い物を決めるとき、いちばん近いのは？",
+      "choices": [
+        { "key": "compare_many", "label": "候補をたくさん比較してから決める" },
+        { "key": "good_enough", "label": "必要な条件が揃ったら、そこで決める" },
+        { "key": "trust_expert", "label": "専門家の評価・ランキング・ブランドを重視する" },
+        { "key": "ask_others", "label": "家族や販売員の「おすすめ」で決める" },
+        { "key": "first_feeling", "label": "第一印象や試乗の「感触」で決める" },
+        { "key": "quick_deal", "label": "セールや雰囲気で、その場の勢いで決める" }
+      ]
+    },
+    {
+      "index": 7,
+      "id": "q7_info_preference",
+      "text": "車を選ぶとき、いちばん役立つ情報は？",
+      "choices": [
+        { "key": "spec_table", "label": "詳しいスペック表・複数車の比較" },
+        { "key": "shortlist", "label": "「おすすめ3台」の要点まとめ" },
+        { "key": "awards_expert", "label": "安全評価・受賞・専門家の解説" },
+        { "key": "people_pick", "label": "販売員・家族・友人のおすすめ" },
+        { "key": "experience", "label": "試乗・デザイン・乗った感じ" },
+        { "key": "offer_now", "label": "今だけのキャンペーン・在庫・値引き" }
       ]
     }
   ]

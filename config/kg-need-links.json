@@ -1,0 +1,94 @@
+{
+  "version": "1.0",
+  "description": "価値観5軸・負荷ラベル → KG Need.name へのマッピング",
+  "value_axis_to_needs": {
+    "safety": [
+      "ChildSafety",
+      "DrivingConfidence",
+      "AccidentAnxietyReduction",
+      "EasyParking",
+      "VisibilityConfidence"
+    ],
+    "family": [
+      "FamilyComfort",
+      "ChildSafety",
+      "WeekendFamilyTrip",
+      "EasyChildPickup",
+      "StressFreeSchoolPickup"
+    ],
+    "efficiency": [
+      "EfficientDailyMobility",
+      "LowFuelAnxiety",
+      "MaintenanceCostReduction",
+      "ShortTripEfficiency"
+    ],
+    "enjoyment": [
+      "DrivingEnjoyment",
+      "RelaxingDrive",
+      "PersonalExpression",
+      "EmotionalAttachment"
+    ],
+    "adventure": [
+      "OutdoorLifestyle",
+      "AdventureLifestyle",
+      "OutdoorGearTransport",
+      "SnowDrivingConfidence"
+    ]
+  },
+  "load_label_to_needs": {
+    "長距離移動による疲労": [
+      "FatigueReduction",
+      "ComfortableLongDistanceTravel",
+      "SmoothRideComfort",
+      "QuietCabinExperience"
+    ],
+    "渋滞ストレス": [
+      "StressFreeCommute",
+      "EfficientDailyMobility",
+      "RelaxingDrive"
+    ],
+    "駐車・狭い道への不安": [
+      "EasyParking",
+      "CompactParkingEase",
+      "UrbanManeuverability",
+      "VisibilityConfidence"
+    ],
+    "操作の難しさ": [
+      "DrivingConfidence",
+      "BeginnerFriendlyDriving",
+      "EasyParking"
+    ],
+    "情報過多による判断負荷": [
+      "DrivingConfidence",
+      "EfficientDailyMobility",
+      "AccidentAnxietyReduction"
+    ],
+    "家族同乗時の不満リスク": [
+      "FamilyComfort",
+      "ChildSafety",
+      "FamilyConversation",
+      "QuietCabinExperience"
+    ],
+    "維持費への不安": [
+      "MaintenanceCostReduction",
+      "LowFuelAnxiety",
+      "EfficientDailyMobility",
+      "LongTermReliability"
+    ],
+    "機能不足による後悔": [
+      "DrivingConfidence",
+      "AccidentAnxietyReduction",
+      "FlexibleCargoSpace"
+    ],
+    "使わない設備への投資": [
+      "EfficientDailyMobility",
+      "LongTermReliability",
+      "ResaleValueRetention"
+    ],
+    "すぐ飽きるリスク": [
+      "DrivingEnjoyment",
+      "PersonalExpression",
+      "EmotionalAttachment"
+    ]
+  }
+}

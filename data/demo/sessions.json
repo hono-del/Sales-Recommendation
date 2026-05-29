@@ -2728,5 +2728,4648 @@
         "created_at": "2026-05-27T05:44:05Z"
       }
     ]
+  },
+  "a5ae2d70-b8aa-4a5c-b7d2-d2bbbfe959af": {
+    "session_id": "a5ae2d70-b8aa-4a5c-b7d2-d2bbbfe959af",
+    "created_at": "2026-05-27T06:52:17Z",
+    "updated_at": "2026-05-27T06:52:17Z",
+    "status": "active",
+    "delegation_level": null,
+    "demo_fallback_used": false,
+    "answers": [],
+    "profile": null,
+    "events": []
+  },
+  "8e2e4ebc-8b20-47ee-83d8-d83b9d7f4a3f": {
+    "session_id": "8e2e4ebc-8b20-47ee-83d8-d83b9d7f4a3f",
+    "created_at": "2026-05-27T07:08:41Z",
+    "updated_at": "2026-05-27T07:09:39Z",
+    "status": "active",
+    "delegation_level": null,
+    "demo_fallback_used": false,
+    "answers": [
+      {
+        "question_index": 1,
+        "question_id": "q1_value",
+        "answer_key": "enjoyment",
+        "answered_at": "2026-05-27T07:09:23Z"
+      },
+      {
+        "question_index": 2,
+        "question_id": "q2_weekend",
+        "answer_key": "family_center",
+        "answered_at": "2026-05-27T07:09:28Z"
+      },
+      {
+        "question_index": 3,
+        "question_id": "q3_regret",
+        "answer_key": "maintenance",
+        "answered_at": "2026-05-27T07:09:30Z"
+      },
+      {
+        "question_index": 4,
+        "question_id": "q4_stress",
+        "answer_key": "traffic",
+        "answered_at": "2026-05-27T07:09:33Z"
+      },
+      {
+        "question_index": 5,
+        "question_id": "q5_ai",
+        "answer_key": "ai_candidates",
+        "answered_at": "2026-05-27T07:09:39Z"
+      }
+    ],
+    "profile": {
+      "profile": {
+        "score_safety": 64.7,
+        "score_family": 57.1,
+        "score_efficiency": 100.0,
+        "score_enjoyment": 42.9,
+        "score_adventure": 15.3
+      },
+      "mapped_needs": [
+        "DrivingConfidence",
+        "DrivingEnjoyment",
+        "EfficientDailyMobility",
+        "FamilyComfort",
+        "LongTermReliability",
+        "LowFuelAnxiety",
+        "MaintenanceCostReduction",
+        "PersonalExpression",
+        "RelaxingDrive",
+        "StressFreeSchoolPickup",
+        "UrbanManeuverability",
+        "WeekendFamilyTrip"
+      ],
+      "mapped_capabilities": [
+        "SafetyPerformance",
+        "DesignAppeal",
+        "FuelEfficiency",
+        "FamilyFriendly",
+        "GeneralPerformance",
+        "RideComfort"
+      ],
+      "detected_loads": [
+        "維持費への不安",
+        "渋滞ストレス"
+      ],
+      "ui_needs": [
+        "fuel_efficiency",
+        "safety",
+        "family"
+      ]
+    },
+    "events": []
+  },
+  "ba5707ca-e1fc-4e15-beee-e8db86ee2f35": {
+    "session_id": "ba5707ca-e1fc-4e15-beee-e8db86ee2f35",
+    "created_at": "2026-05-27T07:26:10Z",
+    "updated_at": "2026-05-27T07:26:10Z",
+    "status": "active",
+    "delegation_level": null,
+    "demo_fallback_used": false,
+    "answers": [],
+    "profile": null,
+    "events": []
+  },
+  "431b34d3-ddfa-4afc-a8bd-9e877903ba16": {
+    "session_id": "431b34d3-ddfa-4afc-a8bd-9e877903ba16",
+    "created_at": "2026-05-27T07:36:16Z",
+    "updated_at": "2026-05-27T07:54:11Z",
+    "status": "active",
+    "delegation_level": "co_pilot",
+    "demo_fallback_used": false,
+    "answers": [
+      {
+        "question_index": 1,
+        "question_id": "q1_value",
+        "answer_key": "enjoyment",
+        "answered_at": "2026-05-27T07:54:11Z"
+      },
+      {
+        "question_index": 2,
+        "question_id": "q2_weekend",
+        "answer_key": "family_center",
+        "answered_at": "2026-05-27T07:54:11Z"
+      },
+      {
+        "question_index": 3,
+        "question_id": "q3_regret",
+        "answer_key": "maintenance",
+        "answered_at": "2026-05-27T07:54:11Z"
+      },
+      {
+        "question_index": 4,
+        "question_id": "q4_stress",
+        "answer_key": "traffic",
+        "answered_at": "2026-05-27T07:54:11Z"
+      },
+      {
+        "question_index": 5,
+        "question_id": "q5_ai",
+        "answer_key": "ai_candidates",
+        "answered_at": "2026-05-27T07:54:11Z"
+      }
+    ],
+    "profile": {
+      "profile": {
+        "score_safety": 64.7,
+        "score_family": 57.1,
+        "score_efficiency": 100.0,
+        "score_enjoyment": 42.9,
+        "score_adventure": 15.3
+      },
+      "mapped_needs": [
+        "DrivingConfidence",
+        "DrivingEnjoyment",
+        "EfficientDailyMobility",
+        "FamilyComfort",
+        "LongTermReliability",
+        "LowFuelAnxiety",
+        "MaintenanceCostReduction",
+        "PersonalExpression",
+        "RelaxingDrive",
+        "StressFreeSchoolPickup",
+        "UrbanManeuverability",
+        "WeekendFamilyTrip"
+      ],
+      "mapped_capabilities": [
+        "SafetyPerformance",
+        "DesignAppeal",
+        "FuelEfficiency",
+        "FamilyFriendly",
+        "GeneralPerformance",
+        "RideComfort"
+      ],
+      "detected_loads": [
+        "維持費への不安",
+        "渋滞ストレス"
+      ],
+      "ui_needs": [
+        "fuel_efficiency",
+        "safety",
+        "family"
+      ]
+    },
+    "events": [
+      {
+        "id": "1598d91d-a146-4fa2-a067-4fa11294a0f7",
+        "screen_id": "SCR-03",
+        "event_type": "cta_click",
+        "payload": {
+          "delegation_level": "co_pilot"
+        },
+        "duration_ms": null,
+        "created_at": "2026-05-27T07:36:32Z"
+      }
+    ]
+  },
+  "a7ff390c-d5a9-411d-8982-9686409de209": {
+    "session_id": "a7ff390c-d5a9-411d-8982-9686409de209",
+    "created_at": "2026-05-27T07:54:12Z",
+    "updated_at": "2026-05-27T07:58:58Z",
+    "status": "profile_input_complete",
+    "delegation_level": "guide",
+    "demo_fallback_used": false,
+    "family_size": 2,
+    "budget_range": "400-500",
+    "budget_min": 4000000,
+    "budget_max": 5000000,
+    "answers": [
+      {
+        "question_index": 1,
+        "question_id": "q1_value",
+        "answer_key": "enjoyment",
+        "answered_at": "2026-05-27T07:58:58Z"
+      },
+      {
+        "question_index": 2,
+        "question_id": "q2_weekend",
+        "answer_key": "active",
+        "answered_at": "2026-05-27T07:58:58Z"
+      },
+      {
+        "question_index": 3,
+        "question_id": "q3_regret",
+        "answer_key": "maintenance",
+        "answered_at": "2026-05-27T07:58:58Z"
+      },
+      {
+        "question_index": 4,
+        "question_id": "q4_stress",
+        "answer_key": "traffic",
+        "answered_at": "2026-05-27T07:58:58Z"
+      },
+      {
+        "question_index": 5,
+        "question_id": "q5_ai",
+        "answer_key": "ai_decide",
+        "answered_at": "2026-05-27T07:58:58Z"
+      }
+    ],
+    "profile": {
+      "profile": {
+        "score_safety": 42.6,
+        "score_family": 0.0,
+        "score_efficiency": 100.0,
+        "score_enjoyment": 55.8,
+        "score_adventure": 46.1
+      },
+      "mapped_needs": [
+        "AdventureLifestyle",
+        "DrivingConfidence",
+        "DrivingEnjoyment",
+        "EfficientDailyMobility",
+        "LongTermReliability",
+        "LowFuelAnxiety",
+        "MaintenanceCostReduction",
+        "OutdoorGearTransport",
+        "OutdoorLifestyle",
+        "PersonalExpression",
+        "RelaxingDrive",
+        "UrbanManeuverability"
+      ],
+      "mapped_capabilities": [
+        "OffRoadCapability",
+        "SafetyPerformance",
+        "DesignAppeal",
+        "FuelEfficiency",
+        "GeneralPerformance",
+        "SpaceUtility",
+        "RideComfort"
+      ],
+      "detected_loads": [
+        "維持費への不安",
+        "渋滞ストレス"
+      ],
+      "ui_needs": [
+        "fuel_efficiency",
+        "design",
+        "offroad"
+      ]
+    },
+    "events": [
+      {
+        "id": "52bbfca4-7ca9-4103-9d4d-f7598ec2b3e8",
+        "screen_id": "SCR-03",
+        "event_type": "cta_click",
+        "payload": {
+          "delegation_level": "guide"
+        },
+        "duration_ms": null,
+        "created_at": "2026-05-27T07:58:36Z"
+      }
+    ]
+  },
+  "6f568042-6076-44f7-83bd-d47d22f03ed3": {
+    "session_id": "6f568042-6076-44f7-83bd-d47d22f03ed3",
+    "created_at": "2026-05-27T08:02:40Z",
+    "updated_at": "2026-05-27T08:05:22Z",
+    "status": "profile_input_complete",
+    "delegation_level": "co_pilot",
+    "demo_fallback_used": true,
+    "family_size": 2,
+    "budget_range": "400-500",
+    "budget_min": 4000000,
+    "budget_max": 5000000,
+    "answers": [
+      {
+        "question_index": 1,
+        "question_id": "q1_value",
+        "answer_key": "enjoyment",
+        "answered_at": "2026-05-27T08:05:22Z"
+      },
+      {
+        "question_index": 2,
+        "question_id": "q2_weekend",
+        "answer_key": "family_center",
+        "answered_at": "2026-05-27T08:05:22Z"
+      },
+      {
+        "question_index": 3,
+        "question_id": "q3_regret",
+        "answer_key": "maintenance",
+        "answered_at": "2026-05-27T08:05:22Z"
+      },
+      {
+        "question_index": 4,
+        "question_id": "q4_stress",
+        "answer_key": "traffic",
+        "answered_at": "2026-05-27T08:05:22Z"
+      }
+    ],
+    "profile": {
+      "profile": {
+        "score_safety": 52.2,
+        "score_family": 48.3,
+        "score_efficiency": 100.0,
+        "score_enjoyment": 51.8,
+        "score_adventure": 18.5
+      },
+      "mapped_needs": [
+        "DrivingEnjoyment",
+        "EfficientDailyMobility",
+        "FamilyComfort",
+        "LongTermReliability",
+        "LowFuelAnxiety",
+        "MaintenanceCostReduction",
+        "PersonalExpression",
+        "RelaxingDrive",
+        "StressFreeSchoolPickup",
+        "UrbanManeuverability",
+        "WeekendFamilyTrip"
+      ],
+      "mapped_capabilities": [
+        "DesignAppeal",
+        "FuelEfficiency",
+        "FamilyFriendly",
+        "GeneralPerformance",
+        "RideComfort"
+      ],
+      "detected_loads": [
+        "維持費への不安",
+        "渋滞ストレス"
+      ],
+      "ui_needs": [
+        "fuel_efficiency",
+        "safety",
+        "design"
+      ]
+    },
+    "events": [
+      {
+        "id": "2116f920-fe27-41de-b9ff-2819a54b58a5",
+        "screen_id": "SCR-03",
+        "event_type": "cta_click",
+        "payload": {
+          "delegation_level": "co_pilot"
+        },
+        "duration_ms": null,
+        "created_at": "2026-05-27T08:03:05Z"
+      }
+    ]
+  },
+  "3b8cc4a1-919d-4f48-9dc6-4fbf4a8fc2d4": {
+    "session_id": "3b8cc4a1-919d-4f48-9dc6-4fbf4a8fc2d4",
+    "created_at": "2026-05-27T08:05:23Z",
+    "updated_at": "2026-05-27T08:13:40Z",
+    "status": "profile_input_complete",
+    "delegation_level": "co_pilot",
+    "demo_fallback_used": true,
+    "family_size": 2,
+    "budget_range": "400-500",
+    "budget_min": 4000000,
+    "budget_max": 5000000,
+    "answers": [
+      {
+        "question_index": 1,
+        "question_id": "q1_value",
+        "answer_key": "enjoyment",
+        "answered_at": "2026-05-27T08:13:40Z"
+      },
+      {
+        "question_index": 2,
+        "question_id": "q2_weekend",
+        "answer_key": "active",
+        "answered_at": "2026-05-27T08:13:40Z"
+      },
+      {
+        "question_index": 3,
+        "question_id": "q3_regret",
+        "answer_key": "maintenance",
+        "answered_at": "2026-05-27T08:13:40Z"
+      },
+      {
+        "question_index": 4,
+        "question_id": "q4_stress",
+        "answer_key": "traffic",
+        "answered_at": "2026-05-27T08:13:40Z"
+      }
+    ],
+    "profile": {
+      "profile": {
+        "score_safety": 32.1,
+        "score_family": 0.0,
+        "score_efficiency": 100.0,
+        "score_enjoyment": 76.0,
+        "score_adventure": 62.8
+      },
+      "mapped_needs": [
+        "AdventureLifestyle",
+        "DrivingEnjoyment",
+        "EfficientDailyMobility",
+        "LongTermReliability",
+        "LowFuelAnxiety",
+        "MaintenanceCostReduction",
+        "OutdoorGearTransport",
+        "OutdoorLifestyle",
+        "PersonalExpression",
+        "RelaxingDrive",
+        "UrbanManeuverability"
+      ],
+      "mapped_capabilities": [
+        "OffRoadCapability",
+        "DesignAppeal",
+        "FuelEfficiency",
+        "GeneralPerformance",
+        "SpaceUtility",
+        "RideComfort"
+      ],
+      "detected_loads": [
+        "維持費への不安",
+        "渋滞ストレス"
+      ],
+      "ui_needs": [
+        "fuel_efficiency",
+        "design",
+        "offroad"
+      ]
+    },
+    "events": [
+      {
+        "id": "4473216d-e0f5-41bc-a763-d1a4c50e7518",
+        "screen_id": "SCR-03",
+        "event_type": "cta_click",
+        "payload": {
+          "delegation_level": "co_pilot"
+        },
+        "duration_ms": null,
+        "created_at": "2026-05-27T08:05:39Z"
+      }
+    ]
+  },
+  "af1f01e4-e944-47f6-82d1-ae96879fc985": {
+    "session_id": "af1f01e4-e944-47f6-82d1-ae96879fc985",
+    "created_at": "2026-05-27T08:13:42Z",
+    "updated_at": "2026-05-27T08:16:36Z",
+    "status": "profile_input_complete",
+    "delegation_level": "co_pilot",
+    "demo_fallback_used": false,
+    "family_size": 2,
+    "budget_range": "400-500",
+    "budget_min": 4000000,
+    "budget_max": 5000000,
+    "answers": [
+      {
+        "question_index": 1,
+        "question_id": "q1_value",
+        "answer_key": "enjoyment",
+        "answered_at": "2026-05-27T08:16:36Z"
+      },
+      {
+        "question_index": 2,
+        "question_id": "q2_weekend",
+        "answer_key": "active",
+        "answered_at": "2026-05-27T08:16:36Z"
+      },
+      {
+        "question_index": 3,
+        "question_id": "q3_regret",
+        "answer_key": "maintenance",
+        "answered_at": "2026-05-27T08:16:36Z"
+      },
+      {
+        "question_index": 4,
+        "question_id": "q4_stress",
+        "answer_key": "traffic",
+        "answered_at": "2026-05-27T08:16:36Z"
+      }
+    ],
+    "profile": {
+      "profile": {
+        "score_safety": 32.1,
+        "score_family": 0.0,
+        "score_efficiency": 100.0,
+        "score_enjoyment": 76.0,
+        "score_adventure": 62.8
+      },
+      "mapped_needs": [
+        "AdventureLifestyle",
+        "DrivingEnjoyment",
+        "EfficientDailyMobility",
+        "LongTermReliability",
+        "LowFuelAnxiety",
+        "MaintenanceCostReduction",
+        "OutdoorGearTransport",
+        "OutdoorLifestyle",
+        "PersonalExpression",
+        "RelaxingDrive",
+        "UrbanManeuverability"
+      ],
+      "mapped_capabilities": [
+        "OffRoadCapability",
+        "DesignAppeal",
+        "FuelEfficiency",
+        "GeneralPerformance",
+        "SpaceUtility",
+        "RideComfort"
+      ],
+      "detected_loads": [
+        "維持費への不安",
+        "渋滞ストレス"
+      ],
+      "ui_needs": [
+        "fuel_efficiency",
+        "design",
+        "offroad"
+      ]
+    },
+    "events": [
+      {
+        "id": "90c8ae27-9d36-4b02-976c-64e0250c0abd",
+        "screen_id": "SCR-03",
+        "event_type": "cta_click",
+        "payload": {
+          "delegation_level": "co_pilot"
+        },
+        "duration_ms": null,
+        "created_at": "2026-05-27T08:13:55Z"
+      }
+    ]
+  },
+  "f13b6ad4-5c01-4727-a2f8-1cebdab09e72": {
+    "session_id": "f13b6ad4-5c01-4727-a2f8-1cebdab09e72",
+    "created_at": "2026-05-27T08:16:40Z",
+    "updated_at": "2026-05-27T08:19:31Z",
+    "status": "profile_input_complete",
+    "delegation_level": "co_pilot",
+    "demo_fallback_used": false,
+    "family_size": 2,
+    "budget_range": "400-500",
+    "budget_min": 4000000,
+    "budget_max": 5000000,
+    "answers": [
+      {
+        "question_index": 1,
+        "question_id": "q1_value",
+        "answer_key": "enjoyment",
+        "answered_at": "2026-05-27T08:19:31Z"
+      },
+      {
+        "question_index": 2,
+        "question_id": "q2_weekend",
+        "answer_key": "solo",
+        "answered_at": "2026-05-27T08:19:31Z"
+      },
+      {
+        "question_index": 3,
+        "question_id": "q3_regret",
+        "answer_key": "family_dissatisfaction",
+        "answered_at": "2026-05-27T08:19:31Z"
+      },
+      {
+        "question_index": 4,
+        "question_id": "q4_stress",
+        "answer_key": "difficult_operation",
+        "answered_at": "2026-05-27T08:19:31Z"
+      }
+    ],
+    "profile": {
+      "profile": {
+        "score_safety": 98.7,
+        "score_family": 62.5,
+        "score_efficiency": 51.4,
+        "score_enjoyment": 100.0,
+        "score_adventure": 22.0
+      },
+      "mapped_needs": [
+        "ChildSafety",
+        "DrivingConfidence",
+        "DrivingEnjoyment",
+        "EasyParking",
+        "FamilyComfort",
+        "PersonalExpression",
+        "QuietCabinExperience",
+        "RelaxingDrive",
+        "VisibilityConfidence",
+        "WeekendFamilyTrip"
+      ],
+      "mapped_capabilities": [
+        "SafetyPerformance",
+        "DesignAppeal",
+        "FamilyFriendly",
+        "RideComfort"
+      ],
+      "detected_loads": [
+        "家族同乗時の不満リスク",
+        "操作の難しさ"
+      ],
+      "ui_needs": [
+        "design",
+        "safety",
+        "family"
+      ]
+    },
+    "events": [
+      {
+        "id": "56cf01b1-6969-490f-bc2b-c099a7877318",
+        "screen_id": "SCR-03",
+        "event_type": "cta_click",
+        "payload": {
+          "delegation_level": "co_pilot"
+        },
+        "duration_ms": null,
+        "created_at": "2026-05-27T08:16:57Z"
+      }
+    ]
+  },
+  "f905ec85-30ce-4486-9971-fea6ea773bd0": {
+    "session_id": "f905ec85-30ce-4486-9971-fea6ea773bd0",
+    "created_at": "2026-05-27T08:19:36Z",
+    "updated_at": "2026-05-27T10:43:02Z",
+    "status": "profile_input_complete",
+    "delegation_level": "co_pilot",
+    "demo_fallback_used": true,
+    "family_size": 2,
+    "budget_range": "400-500",
+    "budget_min": 4000000,
+    "budget_max": 5000000,
+    "answers": [
+      {
+        "question_index": 1,
+        "question_id": "q1_value",
+        "answer_key": "enjoyment",
+        "answered_at": "2026-05-27T10:43:02Z"
+      },
+      {
+        "question_index": 2,
+        "question_id": "q2_weekend",
+        "answer_key": "family_center",
+        "answered_at": "2026-05-27T10:43:02Z"
+      },
+      {
+        "question_index": 3,
+        "question_id": "q3_regret",
+        "answer_key": "maintenance",
+        "answered_at": "2026-05-27T10:43:02Z"
+      },
+      {
+        "question_index": 4,
+        "question_id": "q4_stress",
+        "answer_key": "traffic",
+        "answered_at": "2026-05-27T10:43:02Z"
+      }
+    ],
+    "profile": {
+      "profile": {
+        "score_safety": 52.2,
+        "score_family": 48.3,
+        "score_efficiency": 100.0,
+        "score_enjoyment": 51.8,
+        "score_adventure": 18.5
+      },
+      "mapped_needs": [
+        "DrivingEnjoyment",
+        "EfficientDailyMobility",
+        "FamilyComfort",
+        "LongTermReliability",
+        "LowFuelAnxiety",
+        "MaintenanceCostReduction",
+        "PersonalExpression",
+        "RelaxingDrive",
+        "StressFreeSchoolPickup",
+        "UrbanManeuverability",
+        "WeekendFamilyTrip"
+      ],
+      "mapped_capabilities": [
+        "DesignAppeal",
+        "FuelEfficiency",
+        "FamilyFriendly",
+        "GeneralPerformance",
+        "RideComfort"
+      ],
+      "detected_loads": [
+        "維持費への不安",
+        "渋滞ストレス"
+      ],
+      "ui_needs": [
+        "fuel_efficiency",
+        "safety",
+        "design"
+      ]
+    },
+    "events": [
+      {
+        "id": "ff06ca72-c1c8-4a7f-afe2-a09f234b1576",
+        "screen_id": "SCR-03",
+        "event_type": "cta_click",
+        "payload": {
+          "delegation_level": "co_pilot"
+        },
+        "duration_ms": null,
+        "created_at": "2026-05-27T08:19:53Z"
+      }
+    ]
+  },
+  "8f4269a3-31df-4a1d-a349-db4bb2406975": {
+    "session_id": "8f4269a3-31df-4a1d-a349-db4bb2406975",
+    "created_at": "2026-05-27T10:43:05Z",
+    "updated_at": "2026-05-27T10:43:52Z",
+    "status": "profile_input_complete",
+    "delegation_level": "co_pilot",
+    "demo_fallback_used": true,
+    "family_size": 2,
+    "budget_range": "400-500",
+    "budget_min": 4000000,
+    "budget_max": 5000000,
+    "answers": [
+      {
+        "question_index": 1,
+        "question_id": "q1_value",
+        "answer_key": "enjoyment",
+        "answered_at": "2026-05-27T10:43:52Z"
+      },
+      {
+        "question_index": 2,
+        "question_id": "q2_weekend",
+        "answer_key": "active",
+        "answered_at": "2026-05-27T10:43:52Z"
+      },
+      {
+        "question_index": 3,
+        "question_id": "q3_regret",
+        "answer_key": "maintenance",
+        "answered_at": "2026-05-27T10:43:52Z"
+      },
+      {
+        "question_index": 4,
+        "question_id": "q4_stress",
+        "answer_key": "traffic",
+        "answered_at": "2026-05-27T10:43:52Z"
+      }
+    ],
+    "profile": {
+      "profile": {
+        "score_safety": 32.1,
+        "score_family": 0.0,
+        "score_efficiency": 100.0,
+        "score_enjoyment": 76.0,
+        "score_adventure": 62.8
+      },
+      "mapped_needs": [
+        "AdventureLifestyle",
+        "DrivingEnjoyment",
+        "EfficientDailyMobility",
+        "LongTermReliability",
+        "LowFuelAnxiety",
+        "MaintenanceCostReduction",
+        "OutdoorGearTransport",
+        "OutdoorLifestyle",
+        "PersonalExpression",
+        "RelaxingDrive",
+        "UrbanManeuverability"
+      ],
+      "mapped_capabilities": [
+        "OffRoadCapability",
+        "DesignAppeal",
+        "FuelEfficiency",
+        "GeneralPerformance",
+        "SpaceUtility",
+        "RideComfort"
+      ],
+      "detected_loads": [
+        "維持費への不安",
+        "渋滞ストレス"
+      ],
+      "ui_needs": [
+        "fuel_efficiency",
+        "design",
+        "offroad"
+      ]
+    },
+    "events": [
+      {
+        "id": "f62e95b7-ee1d-4b6b-b64a-beffca8b1b36",
+        "screen_id": "SCR-03",
+        "event_type": "cta_click",
+        "payload": {
+          "delegation_level": "co_pilot"
+        },
+        "duration_ms": null,
+        "created_at": "2026-05-27T10:43:21Z"
+      }
+    ]
+  },
+  "de65e0d6-5817-4d3f-be4c-d2161957e059": {
+    "session_id": "de65e0d6-5817-4d3f-be4c-d2161957e059",
+    "created_at": "2026-05-27T10:43:54Z",
+    "updated_at": "2026-05-27T10:47:19Z",
+    "status": "profile_input_complete",
+    "delegation_level": "co_pilot",
+    "demo_fallback_used": false,
+    "family_size": 2,
+    "budget_range": "400-500",
+    "budget_min": 4000000,
+    "budget_max": 5000000,
+    "answers": [
+      {
+        "question_index": 1,
+        "question_id": "q1_value",
+        "answer_key": "enjoyment",
+        "answered_at": "2026-05-27T10:47:19Z"
+      },
+      {
+        "question_index": 2,
+        "question_id": "q2_weekend",
+        "answer_key": "active",
+        "answered_at": "2026-05-27T10:47:19Z"
+      },
+      {
+        "question_index": 3,
+        "question_id": "q3_regret",
+        "answer_key": "maintenance",
+        "answered_at": "2026-05-27T10:47:19Z"
+      },
+      {
+        "question_index": 4,
+        "question_id": "q4_stress",
+        "answer_key": "traffic",
+        "answered_at": "2026-05-27T10:47:19Z"
+      }
+    ],
+    "profile": {
+      "profile": {
+        "score_safety": 32.1,
+        "score_family": 0.0,
+        "score_efficiency": 100.0,
+        "score_enjoyment": 76.0,
+        "score_adventure": 62.8
+      },
+      "mapped_needs": [
+        "AdventureLifestyle",
+        "DrivingEnjoyment",
+        "EfficientDailyMobility",
+        "LongTermReliability",
+        "LowFuelAnxiety",
+        "MaintenanceCostReduction",
+        "OutdoorGearTransport",
+        "OutdoorLifestyle",
+        "PersonalExpression",
+        "RelaxingDrive",
+        "UrbanManeuverability"
+      ],
+      "mapped_capabilities": [
+        "OffRoadCapability",
+        "DesignAppeal",
+        "FuelEfficiency",
+        "GeneralPerformance",
+        "SpaceUtility",
+        "RideComfort"
+      ],
+      "detected_loads": [
+        "維持費への不安",
+        "渋滞ストレス"
+      ],
+      "ui_needs": [
+        "fuel_efficiency",
+        "design",
+        "offroad"
+      ]
+    },
+    "events": [
+      {
+        "id": "e709f04d-4647-4ff9-894f-360095f658d4",
+        "screen_id": "SCR-03",
+        "event_type": "cta_click",
+        "payload": {
+          "delegation_level": "co_pilot"
+        },
+        "duration_ms": null,
+        "created_at": "2026-05-27T10:44:12Z"
+      }
+    ]
+  },
+  "6ff5aade-1164-48bc-bdc4-ad705759dcd1": {
+    "session_id": "6ff5aade-1164-48bc-bdc4-ad705759dcd1",
+    "created_at": "2026-05-27T10:47:24Z",
+    "updated_at": "2026-05-27T10:50:40Z",
+    "status": "profile_input_complete",
+    "delegation_level": "co_pilot",
+    "demo_fallback_used": false,
+    "family_size": 2,
+    "budget_range": "400-500",
+    "budget_min": 4000000,
+    "budget_max": 5000000,
+    "answers": [
+      {
+        "question_index": 1,
+        "question_id": "q1_value",
+        "answer_key": "enjoyment",
+        "answered_at": "2026-05-27T10:50:40Z"
+      },
+      {
+        "question_index": 2,
+        "question_id": "q2_weekend",
+        "answer_key": "active",
+        "answered_at": "2026-05-27T10:50:40Z"
+      },
+      {
+        "question_index": 3,
+        "question_id": "q3_regret",
+        "answer_key": "maintenance",
+        "answered_at": "2026-05-27T10:50:40Z"
+      },
+      {
+        "question_index": 4,
+        "question_id": "q4_stress",
+        "answer_key": "traffic",
+        "answered_at": "2026-05-27T10:50:40Z"
+      }
+    ],
+    "profile": {
+      "profile": {
+        "score_safety": 32.1,
+        "score_family": 0.0,
+        "score_efficiency": 100.0,
+        "score_enjoyment": 76.0,
+        "score_adventure": 62.8
+      },
+      "mapped_needs": [
+        "AdventureLifestyle",
+        "DrivingEnjoyment",
+        "EfficientDailyMobility",
+        "LongTermReliability",
+        "LowFuelAnxiety",
+        "MaintenanceCostReduction",
+        "OutdoorGearTransport",
+        "OutdoorLifestyle",
+        "PersonalExpression",
+        "RelaxingDrive",
+        "UrbanManeuverability"
+      ],
+      "mapped_capabilities": [
+        "OffRoadCapability",
+        "DesignAppeal",
+        "FuelEfficiency",
+        "GeneralPerformance",
+        "SpaceUtility",
+        "RideComfort"
+      ],
+      "detected_loads": [
+        "維持費への不安",
+        "渋滞ストレス"
+      ],
+      "ui_needs": [
+        "fuel_efficiency",
+        "design",
+        "offroad"
+      ]
+    },
+    "events": [
+      {
+        "id": "d9155eca-cc08-4342-8d2c-65c80ad344a7",
+        "screen_id": "SCR-03",
+        "event_type": "cta_click",
+        "payload": {
+          "delegation_level": "co_pilot"
+        },
+        "duration_ms": null,
+        "created_at": "2026-05-27T10:47:38Z"
+      }
+    ]
+  },
+  "6958db8d-2762-4b48-af90-03427bc5e674": {
+    "session_id": "6958db8d-2762-4b48-af90-03427bc5e674",
+    "created_at": "2026-05-27T10:52:33Z",
+    "updated_at": "2026-05-27T10:58:49Z",
+    "status": "profile_input_complete",
+    "delegation_level": "co_pilot",
+    "demo_fallback_used": false,
+    "family_size": 2,
+    "budget_range": "400-500",
+    "budget_min": 4000000,
+    "budget_max": 5000000,
+    "answers": [
+      {
+        "question_index": 1,
+        "question_id": "q1_value",
+        "answer_key": "enjoyment",
+        "answered_at": "2026-05-27T10:58:49Z"
+      },
+      {
+        "question_index": 2,
+        "question_id": "q2_weekend",
+        "answer_key": "learning",
+        "answered_at": "2026-05-27T10:58:49Z"
+      },
+      {
+        "question_index": 3,
+        "question_id": "q3_regret",
+        "answer_key": "maintenance",
+        "answered_at": "2026-05-27T10:58:49Z"
+      },
+      {
+        "question_index": 4,
+        "question_id": "q4_stress",
+        "answer_key": "traffic",
+        "answered_at": "2026-05-27T10:58:49Z"
+      }
+    ],
+    "profile": {
+      "profile": {
+        "score_safety": 23.6,
+        "score_family": 0.0,
+        "score_efficiency": 100.0,
+        "score_enjoyment": 49.9,
+        "score_adventure": 13.6
+      },
+      "mapped_needs": [
+        "DrivingEnjoyment",
+        "EfficientDailyMobility",
+        "LongTermReliability",
+        "LowFuelAnxiety",
+        "MaintenanceCostReduction",
+        "PersonalExpression",
+        "RelaxingDrive",
+        "UrbanManeuverability"
+      ],
+      "mapped_capabilities": [
+        "DesignAppeal",
+        "FuelEfficiency",
+        "GeneralPerformance",
+        "RideComfort"
+      ],
+      "detected_loads": [
+        "維持費への不安",
+        "渋滞ストレス"
+      ],
+      "ui_needs": [
+        "fuel_efficiency",
+        "design",
+        "safety"
+      ]
+    },
+    "events": [
+      {
+        "id": "e9b53f1a-c1a5-4aed-8faa-efdc8775f8a6",
+        "screen_id": "SCR-03",
+        "event_type": "cta_click",
+        "payload": {
+          "delegation_level": "co_pilot"
+        },
+        "duration_ms": null,
+        "created_at": "2026-05-27T10:52:44Z"
+      }
+    ]
+  },
+  "6a8fec86-2931-4cb1-be11-c23c5a410e8a": {
+    "session_id": "6a8fec86-2931-4cb1-be11-c23c5a410e8a",
+    "created_at": "2026-05-27T11:09:46Z",
+    "updated_at": "2026-05-27T11:09:46Z",
+    "status": "active",
+    "delegation_level": null,
+    "demo_fallback_used": false,
+    "family_size": null,
+    "budget_range": null,
+    "budget_min": null,
+    "budget_max": null,
+    "answers": [],
+    "profile": null,
+    "events": []
+  },
+  "0e943f45-0a2c-4610-91f2-21ccf7b0d5f3": {
+    "session_id": "0e943f45-0a2c-4610-91f2-21ccf7b0d5f3",
+    "created_at": "2026-05-27T11:09:52Z",
+    "updated_at": "2026-05-27T11:12:14Z",
+    "status": "profile_input_complete",
+    "delegation_level": "co_pilot",
+    "demo_fallback_used": false,
+    "family_size": 2,
+    "budget_range": "400-500",
+    "budget_min": 4000000,
+    "budget_max": 5000000,
+    "answers": [
+      {
+        "question_index": 1,
+        "question_id": "q1_value",
+        "answer_key": "enjoyment",
+        "answered_at": "2026-05-27T11:12:14Z"
+      },
+      {
+        "question_index": 2,
+        "question_id": "q2_weekend",
+        "answer_key": "active",
+        "answered_at": "2026-05-27T11:12:14Z"
+      },
+      {
+        "question_index": 3,
+        "question_id": "q3_regret",
+        "answer_key": "maintenance",
+        "answered_at": "2026-05-27T11:12:14Z"
+      },
+      {
+        "question_index": 4,
+        "question_id": "q4_stress",
+        "answer_key": "traffic",
+        "answered_at": "2026-05-27T11:12:14Z"
+      }
+    ],
+    "profile": {
+      "profile": {
+        "score_safety": 32.1,
+        "score_family": 0.0,
+        "score_efficiency": 100.0,
+        "score_enjoyment": 76.0,
+        "score_adventure": 62.8
+      },
+      "mapped_needs": [
+        "AdventureLifestyle",
+        "DrivingEnjoyment",
+        "EfficientDailyMobility",
+        "LongTermReliability",
+        "LowFuelAnxiety",
+        "MaintenanceCostReduction",
+        "OutdoorGearTransport",
+        "OutdoorLifestyle",
+        "PersonalExpression",
+        "RelaxingDrive",
+        "UrbanManeuverability"
+      ],
+      "mapped_capabilities": [
+        "OffRoadCapability",
+        "DesignAppeal",
+        "FuelEfficiency",
+        "GeneralPerformance",
+        "SpaceUtility",
+        "RideComfort"
+      ],
+      "detected_loads": [
+        "維持費への不安",
+        "渋滞ストレス"
+      ],
+      "ui_needs": [
+        "fuel_efficiency",
+        "design",
+        "offroad"
+      ]
+    },
+    "events": [
+      {
+        "id": "c8ab11f3-b474-4f10-a279-24bb9ef7b9b1",
+        "screen_id": "SCR-03",
+        "event_type": "cta_click",
+        "payload": {
+          "delegation_level": "co_pilot"
+        },
+        "duration_ms": null,
+        "created_at": "2026-05-27T11:10:05Z"
+      }
+    ]
+  },
+  "0f932c09-fcab-4f04-a19c-17d127796363": {
+    "session_id": "0f932c09-fcab-4f04-a19c-17d127796363",
+    "created_at": "2026-05-27T11:12:21Z",
+    "updated_at": "2026-05-27T11:16:55Z",
+    "status": "profile_input_complete",
+    "delegation_level": "co_pilot",
+    "demo_fallback_used": false,
+    "family_size": 2,
+    "budget_range": "400-500",
+    "budget_min": 4000000,
+    "budget_max": 5000000,
+    "answers": [
+      {
+        "question_index": 1,
+        "question_id": "q1_value",
+        "answer_key": "safety",
+        "answered_at": "2026-05-27T11:16:55Z"
+      },
+      {
+        "question_index": 2,
+        "question_id": "q2_weekend",
+        "answer_key": "hobby",
+        "answered_at": "2026-05-27T11:16:55Z"
+      },
+      {
+        "question_index": 3,
+        "question_id": "q3_regret",
+        "answer_key": "family_dissatisfaction",
+        "answered_at": "2026-05-27T11:16:55Z"
+      },
+      {
+        "question_index": 4,
+        "question_id": "q4_stress",
+        "answer_key": "fatigue",
+        "answered_at": "2026-05-27T11:16:55Z"
+      }
+    ],
+    "profile": {
+      "profile": {
+        "score_safety": 100.0,
+        "score_family": 68.9,
+        "score_efficiency": 11.4,
+        "score_enjoyment": 32.1,
+        "score_adventure": 22.5
+      },
+      "mapped_needs": [
+        "AccidentAnxietyReduction",
+        "ChildSafety",
+        "DrivingConfidence",
+        "DrivingEnjoyment",
+        "EasyParking",
+        "FamilyComfort",
+        "FatigueReduction",
+        "FlexibleCargoSpace",
+        "OutdoorLifestyle",
+        "QuietCabinExperience",
+        "SmoothRideComfort",
+        "WeekendFamilyTrip"
+      ],
+      "mapped_capabilities": [
+        "SafetyPerformance",
+        "DesignAppeal",
+        "FamilyFriendly",
+        "RideComfort",
+        "SpaceUtility",
+        "OffRoadCapability"
+      ],
+      "detected_loads": [
+        "家族同乗時の不満リスク",
+        "長距離移動による疲労"
+      ],
+      "ui_needs": [
+        "safety",
+        "family",
+        "design"
+      ]
+    },
+    "events": [
+      {
+        "id": "383217be-800d-441b-a85f-29ae8038a263",
+        "screen_id": "SCR-03",
+        "event_type": "cta_click",
+        "payload": {
+          "delegation_level": "co_pilot"
+        },
+        "duration_ms": null,
+        "created_at": "2026-05-27T11:12:34Z"
+      }
+    ]
+  },
+  "a3bedfcf-8f7e-4995-8ecb-a8496a1ce3b2": {
+    "session_id": "a3bedfcf-8f7e-4995-8ecb-a8496a1ce3b2",
+    "created_at": "2026-05-27T11:16:57Z",
+    "updated_at": "2026-05-27T11:17:13Z",
+    "status": "profile_input_complete",
+    "delegation_level": "co_pilot",
+    "demo_fallback_used": false,
+    "family_size": 2,
+    "budget_range": "400-500",
+    "budget_min": 4000000,
+    "budget_max": 5000000,
+    "answers": [
+      {
+        "question_index": 1,
+        "question_id": "q1_value",
+        "answer_key": "enjoyment",
+        "answered_at": "2026-05-27T11:17:13Z"
+      },
+      {
+        "question_index": 2,
+        "question_id": "q2_weekend",
+        "answer_key": "active",
+        "answered_at": "2026-05-27T11:17:13Z"
+      },
+      {
+        "question_index": 3,
+        "question_id": "q3_regret",
+        "answer_key": "maintenance",
+        "answered_at": "2026-05-27T11:17:13Z"
+      },
+      {
+        "question_index": 4,
+        "question_id": "q4_stress",
+        "answer_key": "traffic",
+        "answered_at": "2026-05-27T11:17:13Z"
+      }
+    ],
+    "profile": {
+      "profile": {
+        "score_safety": 32.1,
+        "score_family": 0.0,
+        "score_efficiency": 100.0,
+        "score_enjoyment": 76.0,
+        "score_adventure": 62.8
+      },
+      "mapped_needs": [
+        "AdventureLifestyle",
+        "DrivingEnjoyment",
+        "EfficientDailyMobility",
+        "LongTermReliability",
+        "LowFuelAnxiety",
+        "MaintenanceCostReduction",
+        "OutdoorGearTransport",
+        "OutdoorLifestyle",
+        "PersonalExpression",
+        "RelaxingDrive",
+        "UrbanManeuverability"
+      ],
+      "mapped_capabilities": [
+        "OffRoadCapability",
+        "DesignAppeal",
+        "FuelEfficiency",
+        "GeneralPerformance",
+        "SpaceUtility",
+        "RideComfort"
+      ],
+      "detected_loads": [
+        "維持費への不安",
+        "渋滞ストレス"
+      ],
+      "ui_needs": [
+        "fuel_efficiency",
+        "design",
+        "offroad"
+      ]
+    },
+    "events": [
+      {
+        "id": "71b4c501-d895-4ed7-a990-e70fc1d761c5",
+        "screen_id": "SCR-03",
+        "event_type": "cta_click",
+        "payload": {
+          "delegation_level": "co_pilot"
+        },
+        "duration_ms": null,
+        "created_at": "2026-05-27T11:17:13Z"
+      }
+    ]
+  },
+  "2f0dbc79-7478-438e-80d2-7134d761c451": {
+    "session_id": "2f0dbc79-7478-438e-80d2-7134d761c451",
+    "created_at": "2026-05-28T00:19:01Z",
+    "updated_at": "2026-05-28T00:19:01Z",
+    "status": "active",
+    "delegation_level": null,
+    "demo_fallback_used": false,
+    "family_size": null,
+    "budget_range": null,
+    "budget_min": null,
+    "budget_max": null,
+    "answers": [],
+    "profile": null,
+    "events": []
+  },
+  "ad1a12ec-0016-4ffc-a65a-7c55d6a8b17b": {
+    "session_id": "ad1a12ec-0016-4ffc-a65a-7c55d6a8b17b",
+    "created_at": "2026-05-28T00:19:20Z",
+    "updated_at": "2026-05-28T00:19:20Z",
+    "status": "active",
+    "delegation_level": null,
+    "demo_fallback_used": false,
+    "family_size": null,
+    "budget_range": null,
+    "budget_min": null,
+    "budget_max": null,
+    "answers": [],
+    "profile": null,
+    "events": []
+  },
+  "a43ecd3f-ebac-4821-b822-323ef33d64f7": {
+    "session_id": "a43ecd3f-ebac-4821-b822-323ef33d64f7",
+    "created_at": "2026-05-28T00:19:37Z",
+    "updated_at": "2026-05-28T00:19:39Z",
+    "status": "profile_input_complete",
+    "delegation_level": null,
+    "demo_fallback_used": false,
+    "family_size": 4,
+    "budget_range": "300-400",
+    "budget_min": 3000000,
+    "budget_max": 4000000,
+    "answers": [],
+    "profile": null,
+    "events": []
+  },
+  "75b01f0e-904f-4126-b211-f264d3e7353d": {
+    "session_id": "75b01f0e-904f-4126-b211-f264d3e7353d",
+    "created_at": "2026-05-28T00:19:53Z",
+    "updated_at": "2026-05-28T00:19:55Z",
+    "status": "profile_input_complete",
+    "delegation_level": null,
+    "demo_fallback_used": false,
+    "family_size": 4,
+    "budget_range": "300-400",
+    "budget_min": 3000000,
+    "budget_max": 4000000,
+    "answers": [],
+    "profile": null,
+    "events": []
+  },
+  "3ef28436-ea16-43f0-9410-803e2c8ff4c0": {
+    "session_id": "3ef28436-ea16-43f0-9410-803e2c8ff4c0",
+    "created_at": "2026-05-28T00:20:19Z",
+    "updated_at": "2026-05-28T00:20:23Z",
+    "status": "profile_input_complete",
+    "delegation_level": null,
+    "demo_fallback_used": false,
+    "family_size": 4,
+    "budget_range": "300-400",
+    "budget_min": 3000000,
+    "budget_max": 4000000,
+    "answers": [
+      {
+        "question_index": 1,
+        "question_id": "q1",
+        "answer_key": "family_time",
+        "answered_at": "2026-05-28T00:20:23Z"
+      }
+    ],
+    "profile": {
+      "profile": {
+        "score_safety": 20.0,
+        "score_family": 20.0,
+        "score_efficiency": 20.0,
+        "score_enjoyment": 20.0,
+        "score_adventure": 20.0
+      },
+      "mapped_needs": [],
+      "mapped_capabilities": [],
+      "detected_loads": [],
+      "ui_needs": [
+        "safety",
+        "family",
+        "fuel_efficiency"
+      ]
+    },
+    "events": []
+  },
+  "48a79bca-e825-4f29-bd23-6ea9a2732a45": {
+    "session_id": "48a79bca-e825-4f29-bd23-6ea9a2732a45",
+    "created_at": "2026-05-28T00:20:33Z",
+    "updated_at": "2026-05-28T00:25:46Z",
+    "status": "profile_input_complete",
+    "delegation_level": "co_pilot",
+    "demo_fallback_used": false,
+    "family_size": 2,
+    "budget_range": "400-500",
+    "budget_min": 4000000,
+    "budget_max": 5000000,
+    "answers": [
+      {
+        "question_index": 1,
+        "question_id": "q1_value",
+        "answer_key": "enjoyment",
+        "answered_at": "2026-05-28T00:25:46Z"
+      },
+      {
+        "question_index": 2,
+        "question_id": "q2_weekend",
+        "answer_key": "active",
+        "answered_at": "2026-05-28T00:25:46Z"
+      },
+      {
+        "question_index": 3,
+        "question_id": "q3_regret",
+        "answer_key": "maintenance",
+        "answered_at": "2026-05-28T00:25:46Z"
+      },
+      {
+        "question_index": 4,
+        "question_id": "q4_stress",
+        "answer_key": "traffic",
+        "answered_at": "2026-05-28T00:25:46Z"
+      }
+    ],
+    "profile": {
+      "profile": {
+        "score_safety": 32.1,
+        "score_family": 0.0,
+        "score_efficiency": 100.0,
+        "score_enjoyment": 76.0,
+        "score_adventure": 62.8
+      },
+      "mapped_needs": [
+        "AdventureLifestyle",
+        "DrivingEnjoyment",
+        "EfficientDailyMobility",
+        "LongTermReliability",
+        "LowFuelAnxiety",
+        "MaintenanceCostReduction",
+        "OutdoorGearTransport",
+        "OutdoorLifestyle",
+        "PersonalExpression",
+        "RelaxingDrive",
+        "UrbanManeuverability"
+      ],
+      "mapped_capabilities": [
+        "OffRoadCapability",
+        "DesignAppeal",
+        "FuelEfficiency",
+        "GeneralPerformance",
+        "SpaceUtility",
+        "RideComfort"
+      ],
+      "detected_loads": [
+        "維持費への不安",
+        "渋滞ストレス"
+      ],
+      "ui_needs": [
+        "fuel_efficiency",
+        "design",
+        "offroad"
+      ]
+    },
+    "events": [
+      {
+        "id": "c780ea15-ef1c-42e6-953e-b682c8a63306",
+        "screen_id": "SCR-03",
+        "event_type": "cta_click",
+        "payload": {
+          "delegation_level": "co_pilot"
+        },
+        "duration_ms": null,
+        "created_at": "2026-05-28T00:21:18Z"
+      }
+    ]
+  },
+  "881a660d-a0e8-45b0-8787-13833d2694e3": {
+    "session_id": "881a660d-a0e8-45b0-8787-13833d2694e3",
+    "created_at": "2026-05-28T00:20:50Z",
+    "updated_at": "2026-05-28T00:20:54Z",
+    "status": "profile_input_complete",
+    "delegation_level": null,
+    "demo_fallback_used": false,
+    "family_size": 4,
+    "budget_range": "300-400",
+    "budget_min": 3000000,
+    "budget_max": 4000000,
+    "answers": [
+      {
+        "question_index": 1,
+        "question_id": "q1",
+        "answer_key": "family_time",
+        "answered_at": "2026-05-28T00:20:54Z"
+      }
+    ],
+    "profile": {
+      "profile": {
+        "score_safety": 20.0,
+        "score_family": 20.0,
+        "score_efficiency": 20.0,
+        "score_enjoyment": 20.0,
+        "score_adventure": 20.0
+      },
+      "mapped_needs": [],
+      "mapped_capabilities": [],
+      "detected_loads": [],
+      "ui_needs": [
+        "safety",
+        "family",
+        "fuel_efficiency"
+      ]
+    },
+    "events": []
+  },
+  "5ba0ebaa-a55c-4999-b559-801e4722d6f8": {
+    "session_id": "5ba0ebaa-a55c-4999-b559-801e4722d6f8",
+    "created_at": "2026-05-28T00:25:49Z",
+    "updated_at": "2026-05-28T09:21:02Z",
+    "status": "profile_input_complete",
+    "delegation_level": "co_pilot",
+    "demo_fallback_used": false,
+    "family_size": 4,
+    "budget_range": "300-400",
+    "budget_min": 3000000,
+    "budget_max": 4000000,
+    "answers": [
+      {
+        "question_index": 1,
+        "question_id": "q1_value",
+        "answer_key": "efficiency",
+        "answered_at": "2026-05-28T09:21:01Z"
+      },
+      {
+        "question_index": 2,
+        "question_id": "q2_weekend",
+        "answer_key": "hobby",
+        "answered_at": "2026-05-28T09:21:01Z"
+      },
+      {
+        "question_index": 3,
+        "question_id": "q3_regret",
+        "answer_key": "family_dissatisfaction",
+        "answered_at": "2026-05-28T09:21:02Z"
+      },
+      {
+        "question_index": 4,
+        "question_id": "q4_stress",
+        "answer_key": "fatigue",
+        "answered_at": "2026-05-28T09:21:02Z"
+      }
+    ],
+    "profile": {
+      "profile": {
+        "score_safety": 100.0,
+        "score_family": 84.6,
+        "score_efficiency": 78.2,
+        "score_enjoyment": 47.6,
+        "score_adventure": 33.3
+      },
+      "mapped_needs": [
+        "ChildSafety",
+        "DrivingEnjoyment",
+        "EfficientDailyMobility",
+        "FamilyComfort",
+        "FatigueReduction",
+        "FlexibleCargoSpace",
+        "LowFuelAnxiety",
+        "MaintenanceCostReduction",
+        "OutdoorLifestyle",
+        "QuietCabinExperience",
+        "SmoothRideComfort",
+        "WeekendFamilyTrip"
+      ],
+      "mapped_capabilities": [
+        "SafetyPerformance",
+        "DesignAppeal",
+        "FuelEfficiency",
+        "FamilyFriendly",
+        "RideComfort",
+        "SpaceUtility",
+        "OffRoadCapability"
+      ],
+      "detected_loads": [
+        "家族同乗時の不満リスク",
+        "長距離移動による疲労"
+      ],
+      "ui_needs": [
+        "safety",
+        "family",
+        "fuel_efficiency"
+      ]
+    },
+    "events": [
+      {
+        "id": "931fdebe-8aa3-4c96-a3b9-dba96136b3b4",
+        "screen_id": "SCR-03",
+        "event_type": "cta_click",
+        "payload": {
+          "delegation_level": "co_pilot"
+        },
+        "duration_ms": null,
+        "created_at": "2026-05-28T00:26:02Z"
+      }
+    ]
+  },
+  "65fa48bc-d4ab-4afa-bcd3-f6f940e39200": {
+    "session_id": "65fa48bc-d4ab-4afa-bcd3-f6f940e39200",
+    "created_at": "2026-05-28T09:10:22Z",
+    "updated_at": "2026-05-28T09:10:22Z",
+    "status": "active",
+    "delegation_level": null,
+    "demo_fallback_used": false,
+    "family_size": null,
+    "budget_range": null,
+    "budget_min": null,
+    "budget_max": null,
+    "answers": [],
+    "profile": null,
+    "events": []
+  },
+  "6f82f0ae-b108-447d-90fd-7b67fb5fb471": {
+    "session_id": "6f82f0ae-b108-447d-90fd-7b67fb5fb471",
+    "created_at": "2026-05-28T09:21:04Z",
+    "updated_at": "2026-05-28T09:36:35Z",
+    "status": "profile_input_complete",
+    "delegation_level": "co_pilot",
+    "demo_fallback_used": false,
+    "family_size": 2,
+    "budget_range": "400-500",
+    "budget_min": 4000000,
+    "budget_max": 5000000,
+    "answers": [
+      {
+        "question_index": 1,
+        "question_id": "q1_value",
+        "answer_key": "enjoyment",
+        "answered_at": "2026-05-28T09:36:35Z"
+      },
+      {
+        "question_index": 2,
+        "question_id": "q2_weekend",
+        "answer_key": "active",
+        "answered_at": "2026-05-28T09:36:35Z"
+      },
+      {
+        "question_index": 3,
+        "question_id": "q3_regret",
+        "answer_key": "maintenance",
+        "answered_at": "2026-05-28T09:36:35Z"
+      },
+      {
+        "question_index": 4,
+        "question_id": "q4_stress",
+        "answer_key": "traffic",
+        "answered_at": "2026-05-28T09:36:35Z"
+      }
+    ],
+    "profile": {
+      "profile": {
+        "score_safety": 32.1,
+        "score_family": 0.0,
+        "score_efficiency": 100.0,
+        "score_enjoyment": 76.0,
+        "score_adventure": 62.8
+      },
+      "mapped_needs": [
+        "AdventureLifestyle",
+        "DrivingEnjoyment",
+        "EfficientDailyMobility",
+        "LongTermReliability",
+        "LowFuelAnxiety",
+        "MaintenanceCostReduction",
+        "OutdoorGearTransport",
+        "OutdoorLifestyle",
+        "PersonalExpression",
+        "RelaxingDrive",
+        "UrbanManeuverability"
+      ],
+      "mapped_capabilities": [
+        "OffRoadCapability",
+        "DesignAppeal",
+        "FuelEfficiency",
+        "GeneralPerformance",
+        "SpaceUtility",
+        "RideComfort"
+      ],
+      "detected_loads": [
+        "維持費への不安",
+        "渋滞ストレス"
+      ],
+      "ui_needs": [
+        "fuel_efficiency",
+        "design",
+        "offroad"
+      ]
+    },
+    "events": [
+      {
+        "id": "adbbbc72-9df1-4261-a35a-eaf8c003896d",
+        "screen_id": "SCR-03",
+        "event_type": "cta_click",
+        "payload": {
+          "delegation_level": "co_pilot"
+        },
+        "duration_ms": null,
+        "created_at": "2026-05-28T09:21:19Z"
+      }
+    ]
+  },
+  "3ff73598-3d04-4d72-b5b7-f4f940b58c8f": {
+    "session_id": "3ff73598-3d04-4d72-b5b7-f4f940b58c8f",
+    "created_at": "2026-05-28T09:33:23Z",
+    "updated_at": "2026-05-28T09:34:36Z",
+    "status": "profile_input_complete",
+    "delegation_level": null,
+    "demo_fallback_used": false,
+    "family_size": 2,
+    "budget_range": "400-500",
+    "budget_min": 4000000,
+    "budget_max": 5000000,
+    "answers": [
+      {
+        "question_index": 1,
+        "question_id": "q1_value",
+        "answer_key": "enjoyment",
+        "answered_at": "2026-05-28T09:33:55Z"
+      },
+      {
+        "question_index": 2,
+        "question_id": "q2_weekend",
+        "answer_key": "active",
+        "answered_at": "2026-05-28T09:34:01Z"
+      },
+      {
+        "question_index": 3,
+        "question_id": "q3_regret",
+        "answer_key": "maintenance",
+        "answered_at": "2026-05-28T09:34:14Z"
+      },
+      {
+        "question_index": 4,
+        "question_id": "q4_stress",
+        "answer_key": "traffic",
+        "answered_at": "2026-05-28T09:34:36Z"
+      }
+    ],
+    "profile": {
+      "profile": {
+        "score_safety": 32.1,
+        "score_family": 0.0,
+        "score_efficiency": 100.0,
+        "score_enjoyment": 76.0,
+        "score_adventure": 62.8
+      },
+      "mapped_needs": [
+        "AdventureLifestyle",
+        "DrivingEnjoyment",
+        "EfficientDailyMobility",
+        "LongTermReliability",
+        "LowFuelAnxiety",
+        "MaintenanceCostReduction",
+        "OutdoorGearTransport",
+        "OutdoorLifestyle",
+        "PersonalExpression",
+        "RelaxingDrive",
+        "UrbanManeuverability"
+      ],
+      "mapped_capabilities": [
+        "OffRoadCapability",
+        "DesignAppeal",
+        "FuelEfficiency",
+        "GeneralPerformance",
+        "SpaceUtility",
+        "RideComfort"
+      ],
+      "detected_loads": [
+        "維持費への不安",
+        "渋滞ストレス"
+      ],
+      "ui_needs": [
+        "fuel_efficiency",
+        "design",
+        "offroad"
+      ]
+    },
+    "events": []
+  },
+  "7c4456cf-ed76-495f-ab2a-b97a05e7e310": {
+    "session_id": "7c4456cf-ed76-495f-ab2a-b97a05e7e310",
+    "created_at": "2026-05-28T09:36:37Z",
+    "updated_at": "2026-05-28T09:59:19Z",
+    "status": "profile_input_complete",
+    "delegation_level": "co_pilot",
+    "demo_fallback_used": false,
+    "family_size": 4,
+    "budget_range": "200-300",
+    "budget_min": 2000000,
+    "budget_max": 3000000,
+    "answers": [
+      {
+        "question_index": 1,
+        "question_id": "q1_value",
+        "answer_key": "safety",
+        "answered_at": "2026-05-28T09:59:19Z"
+      },
+      {
+        "question_index": 2,
+        "question_id": "q2_weekend",
+        "answer_key": "learning",
+        "answered_at": "2026-05-28T09:59:19Z"
+      },
+      {
+        "question_index": 3,
+        "question_id": "q3_regret",
+        "answer_key": "maintenance",
+        "answered_at": "2026-05-28T09:59:19Z"
+      },
+      {
+        "question_index": 4,
+        "question_id": "q4_stress",
+        "answer_key": "difficult_operation",
+        "answered_at": "2026-05-28T09:59:19Z"
+      }
+    ],
+    "profile": {
+      "profile": {
+        "score_safety": 100.0,
+        "score_family": 12.6,
+        "score_efficiency": 91.9,
+        "score_enjoyment": 13.7,
+        "score_adventure": 0.0
+      },
+      "mapped_needs": [
+        "AccidentAnxietyReduction",
+        "ChildSafety",
+        "DrivingConfidence",
+        "EasyParking",
+        "EfficientDailyMobility",
+        "LongTermReliability",
+        "LowFuelAnxiety",
+        "MaintenanceCostReduction",
+        "UrbanManeuverability",
+        "VisibilityConfidence"
+      ],
+      "mapped_capabilities": [
+        "SafetyPerformance",
+        "FuelEfficiency",
+        "GeneralPerformance"
+      ],
+      "detected_loads": [
+        "維持費への不安",
+        "操作の難しさ"
+      ],
+      "ui_needs": [
+        "safety",
+        "fuel_efficiency",
+        "design"
+      ]
+    },
+    "events": [
+      {
+        "id": "04e9836e-7c03-4896-b816-cd2cd392fb54",
+        "screen_id": "SCR-03",
+        "event_type": "cta_click",
+        "payload": {
+          "delegation_level": "co_pilot"
+        },
+        "duration_ms": null,
+        "created_at": "2026-05-28T09:40:24Z"
+      }
+    ]
+  },
+  "cb42bbfc-f71f-458f-9098-7e8553c70425": {
+    "session_id": "cb42bbfc-f71f-458f-9098-7e8553c70425",
+    "created_at": "2026-05-28T09:38:41Z",
+    "updated_at": "2026-05-28T09:38:43Z",
+    "status": "profile_input_complete",
+    "delegation_level": null,
+    "demo_fallback_used": false,
+    "family_size": 4,
+    "budget_range": "300-400",
+    "budget_min": 3000000,
+    "budget_max": 4000000,
+    "answers": [],
+    "profile": null,
+    "events": []
+  },
+  "6bcdb99c-bd88-4f84-946c-de1c39261362": {
+    "session_id": "6bcdb99c-bd88-4f84-946c-de1c39261362",
+    "created_at": "2026-05-28T09:40:07Z",
+    "updated_at": "2026-05-28T09:40:09Z",
+    "status": "profile_input_complete",
+    "delegation_level": null,
+    "demo_fallback_used": false,
+    "family_size": 4,
+    "budget_range": "300-400",
+    "budget_min": 3000000,
+    "budget_max": 4000000,
+    "answers": [],
+    "profile": null,
+    "events": []
+  },
+  "acb2a492-e026-480f-b371-38131f9fcaa1": {
+    "session_id": "acb2a492-e026-480f-b371-38131f9fcaa1",
+    "created_at": "2026-05-28T09:59:21Z",
+    "updated_at": "2026-05-28T09:59:32Z",
+    "status": "profile_input_complete",
+    "delegation_level": null,
+    "demo_fallback_used": false,
+    "family_size": 4,
+    "budget_range": "400-500",
+    "budget_min": 4000000,
+    "budget_max": 5000000,
+    "answers": [
+      {
+        "question_index": 1,
+        "question_id": "q1_value",
+        "answer_key": "enjoyment",
+        "answered_at": "2026-05-28T09:59:27Z"
+      },
+      {
+        "question_index": 2,
+        "question_id": "q2_weekend",
+        "answer_key": "active",
+        "answered_at": "2026-05-28T09:59:29Z"
+      },
+      {
+        "question_index": 3,
+        "question_id": "q3_regret",
+        "answer_key": "maintenance",
+        "answered_at": "2026-05-28T09:59:30Z"
+      },
+      {
+        "question_index": 4,
+        "question_id": "q4_stress",
+        "answer_key": "traffic",
+        "answered_at": "2026-05-28T09:59:32Z"
+      }
+    ],
+    "profile": {
+      "profile": {
+        "score_safety": 32.1,
+        "score_family": 0.0,
+        "score_efficiency": 100.0,
+        "score_enjoyment": 76.0,
+        "score_adventure": 62.8
+      },
+      "mapped_needs": [
+        "AdventureLifestyle",
+        "DrivingEnjoyment",
+        "EfficientDailyMobility",
+        "LongTermReliability",
+        "LowFuelAnxiety",
+        "MaintenanceCostReduction",
+        "OutdoorGearTransport",
+        "OutdoorLifestyle",
+        "PersonalExpression",
+        "RelaxingDrive",
+        "UrbanManeuverability"
+      ],
+      "mapped_capabilities": [
+        "OffRoadCapability",
+        "DesignAppeal",
+        "FuelEfficiency",
+        "GeneralPerformance",
+        "SpaceUtility",
+        "RideComfort"
+      ],
+      "detected_loads": [
+        "維持費への不安",
+        "渋滞ストレス"
+      ],
+      "ui_needs": [
+        "fuel_efficiency",
+        "design",
+        "offroad"
+      ]
+    },
+    "events": []
+  },
+  "1844025d-459a-4036-9473-fcd80053b7e3": {
+    "session_id": "1844025d-459a-4036-9473-fcd80053b7e3",
+    "created_at": "2026-05-28T10:09:28Z",
+    "updated_at": "2026-05-28T10:09:33Z",
+    "status": "profile_input_complete",
+    "delegation_level": null,
+    "demo_fallback_used": false,
+    "family_size": 4,
+    "budget_range": "300-400",
+    "budget_min": 3000000,
+    "budget_max": 4000000,
+    "answers": [
+      {
+        "question_index": 1,
+        "question_id": "q1_value",
+        "answer_key": "enjoyment",
+        "answered_at": "2026-05-28T10:09:33Z"
+      }
+    ],
+    "profile": {
+      "profile": {
+        "score_safety": 0.0,
+        "score_family": 0.0,
+        "score_efficiency": 0.0,
+        "score_enjoyment": 100.0,
+        "score_adventure": 35.7
+      },
+      "mapped_needs": [
+        "DrivingEnjoyment",
+        "PersonalExpression",
+        "RelaxingDrive"
+      ],
+      "mapped_capabilities": [
+        "DesignAppeal",
+        "RideComfort"
+      ],
+      "detected_loads": [],
+      "ui_needs": [
+        "design",
+        "offroad",
+        "safety"
+      ]
+    },
+    "events": []
+  },
+  "f78d7eb2-615e-4396-a7e1-6672be7e4730": {
+    "session_id": "f78d7eb2-615e-4396-a7e1-6672be7e4730",
+    "created_at": "2026-05-28T10:18:26Z",
+    "updated_at": "2026-05-28T10:37:36Z",
+    "status": "profile_input_complete",
+    "delegation_level": "co_pilot",
+    "demo_fallback_used": false,
+    "family_size": 4,
+    "budget_range": "300-400",
+    "budget_min": 3000000,
+    "budget_max": 4000000,
+    "answers": [
+      {
+        "question_index": 1,
+        "question_id": "q1_value",
+        "answer_key": "enjoyment",
+        "answered_at": "2026-05-28T10:37:36Z"
+      },
+      {
+        "question_index": 2,
+        "question_id": "q2_weekend",
+        "answer_key": "active",
+        "answered_at": "2026-05-28T10:37:36Z"
+      },
+      {
+        "question_index": 3,
+        "question_id": "q3_regret",
+        "answer_key": "maintenance",
+        "answered_at": "2026-05-28T10:37:36Z"
+      },
+      {
+        "question_index": 4,
+        "question_id": "q4_stress",
+        "answer_key": "traffic",
+        "answered_at": "2026-05-28T10:37:36Z"
+      },
+      {
+        "question_index": 5,
+        "question_id": "q5_ai",
+        "answer_key": "self_decide",
+        "answered_at": "2026-05-28T10:37:36Z"
+      },
+      {
+        "question_index": 6,
+        "question_id": "q6_decision_process",
+        "answer_key": "good_enough",
+        "answered_at": "2026-05-28T10:37:36Z"
+      },
+      {
+        "question_index": 7,
+        "question_id": "q7_info_preference",
+        "answer_key": "experience",
+        "answered_at": "2026-05-28T10:37:36Z"
+      }
+    ],
+    "profile": {
+      "profile": {
+        "score_safety": 30.0,
+        "score_family": 0.0,
+        "score_efficiency": 93.5,
+        "score_enjoyment": 100.0,
+        "score_adventure": 82.8
+      },
+      "mapped_needs": [
+        "AdventureLifestyle",
+        "DrivingEnjoyment",
+        "EfficientDailyMobility",
+        "LongTermReliability",
+        "LowFuelAnxiety",
+        "MaintenanceCostReduction",
+        "OutdoorGearTransport",
+        "OutdoorLifestyle",
+        "PersonalExpression",
+        "RelaxingDrive",
+        "UrbanManeuverability"
+      ],
+      "mapped_capabilities": [
+        "OffRoadCapability",
+        "DesignAppeal",
+        "FuelEfficiency",
+        "GeneralPerformance",
+        "SpaceUtility",
+        "RideComfort"
+      ],
+      "detected_loads": [
+        "維持費への不安",
+        "渋滞ストレス"
+      ],
+      "ui_needs": [
+        "design",
+        "fuel_efficiency",
+        "offroad"
+      ],
+      "decision_style": "Intuitive",
+      "decision_style_label": "直感型",
+      "decision_style_description": "試乗の感触やデザインなど、フィーリングで決める",
+      "decision_style_scores": {
+        "Maximizer": 0.0,
+        "Satisficer": 86.9,
+        "Authority-driven": 0.0,
+        "Delegator": 0.0,
+        "Intuitive": 100.0,
+        "Impulsive": 16.0
+      },
+      "decision_style_confidence": 32.7,
+      "decision_style_secondary": "Satisficer",
+      "decision_style_secondary_label": "十分型",
+      "decision_style_is_mixed": false
+    },
+    "events": [
+      {
+        "id": "d299937e-1df5-49e4-a93b-fd8548bb3a7d",
+        "screen_id": "SCR-03",
+        "event_type": "cta_click",
+        "payload": {
+          "delegation_level": "co_pilot"
+        },
+        "duration_ms": null,
+        "created_at": "2026-05-28T10:20:34Z"
+      }
+    ]
+  },
+  "81ad93e3-7582-44dc-8af2-09274481a5cb": {
+    "session_id": "81ad93e3-7582-44dc-8af2-09274481a5cb",
+    "created_at": "2026-05-28T10:37:37Z",
+    "updated_at": "2026-05-28T10:42:33Z",
+    "status": "profile_input_complete",
+    "delegation_level": "co_pilot",
+    "demo_fallback_used": false,
+    "family_size": 4,
+    "budget_range": "300-400",
+    "budget_min": 3000000,
+    "budget_max": 4000000,
+    "answers": [
+      {
+        "question_index": 1,
+        "question_id": "q1_value",
+        "answer_key": "safety",
+        "answered_at": "2026-05-28T10:42:33Z"
+      },
+      {
+        "question_index": 2,
+        "question_id": "q2_weekend",
+        "answer_key": "hobby",
+        "answered_at": "2026-05-28T10:42:33Z"
+      },
+      {
+        "question_index": 3,
+        "question_id": "q3_regret",
+        "answer_key": "family_dissatisfaction",
+        "answered_at": "2026-05-28T10:42:33Z"
+      },
+      {
+        "question_index": 4,
+        "question_id": "q4_stress",
+        "answer_key": "parking",
+        "answered_at": "2026-05-28T10:42:33Z"
+      },
+      {
+        "question_index": 5,
+        "question_id": "q5_ai",
+        "answer_key": "ai_candidates",
+        "answered_at": "2026-05-28T10:42:33Z"
+      },
+      {
+        "question_index": 6,
+        "question_id": "q6_decision_process",
+        "answer_key": "compare_many",
+        "answered_at": "2026-05-28T10:42:33Z"
+      },
+      {
+        "question_index": 7,
+        "question_id": "q7_info_preference",
+        "answer_key": "shortlist",
+        "answered_at": "2026-05-28T10:42:33Z"
+      }
+    ],
+    "profile": {
+      "profile": {
+        "score_safety": 100.0,
+        "score_family": 56.5,
+        "score_efficiency": 28.5,
+        "score_enjoyment": 25.8,
+        "score_adventure": 18.1
+      },
+      "mapped_needs": [
+        "AccidentAnxietyReduction",
+        "ChildSafety",
+        "CompactParkingEase",
+        "DrivingConfidence",
+        "DrivingEnjoyment",
+        "EasyParking",
+        "FamilyComfort",
+        "FlexibleCargoSpace",
+        "OutdoorLifestyle",
+        "UrbanManeuverability",
+        "WeekendFamilyTrip"
+      ],
+      "mapped_capabilities": [
+        "SafetyPerformance",
+        "GeneralPerformance",
+        "DesignAppeal",
+        "FamilyFriendly",
+        "SpaceUtility",
+        "OffRoadCapability"
+      ],
+      "detected_loads": [
+        "家族同乗時の不満リスク",
+        "駐車・狭い道への不安"
+      ],
+      "ui_needs": [
+        "safety",
+        "family",
+        "fuel_efficiency"
+      ],
+      "decision_style": "Maximizer",
+      "decision_style_label": "徹底比較型",
+      "decision_style_description": "複数モデルを徹底的に比較・スペック重視",
+      "decision_style_scores": {
+        "Maximizer": 100.0,
+        "Satisficer": 67.3,
+        "Authority-driven": 15.5,
+        "Delegator": 24.5,
+        "Intuitive": 0.0,
+        "Impulsive": 0.0
+      },
+      "decision_style_confidence": 81.8,
+      "decision_style_secondary": "Satisficer",
+      "decision_style_secondary_label": "十分型",
+      "decision_style_is_mixed": false
+    },
+    "events": [
+      {
+        "id": "1fd530d2-1882-45b2-b8a8-973712222cbe",
+        "screen_id": "SCR-03",
+        "event_type": "cta_click",
+        "payload": {
+          "delegation_level": "co_pilot"
+        },
+        "duration_ms": null,
+        "created_at": "2026-05-28T10:38:21Z"
+      }
+    ]
+  },
+  "0b8e7f2d-5a3c-4f29-a979-28806238545b": {
+    "session_id": "0b8e7f2d-5a3c-4f29-a979-28806238545b",
+    "created_at": "2026-05-28T11:08:11Z",
+    "updated_at": "2026-05-28T11:15:11Z",
+    "status": "profile_input_complete",
+    "delegation_level": "co_pilot",
+    "demo_fallback_used": true,
+    "family_size": 4,
+    "budget_range": "300-400",
+    "budget_min": 3000000,
+    "budget_max": 4000000,
+    "answers": [
+      {
+        "question_index": 1,
+        "question_id": "q1_value",
+        "answer_key": "enjoyment",
+        "answered_at": "2026-05-28T11:15:11Z"
+      },
+      {
+        "question_index": 2,
+        "question_id": "q2_weekend",
+        "answer_key": "family_center",
+        "answered_at": "2026-05-28T11:15:11Z"
+      },
+      {
+        "question_index": 3,
+        "question_id": "q3_regret",
+        "answer_key": "maintenance",
+        "answered_at": "2026-05-28T11:15:11Z"
+      },
+      {
+        "question_index": 4,
+        "question_id": "q4_stress",
+        "answer_key": "traffic",
+        "answered_at": "2026-05-28T11:15:11Z"
+      },
+      {
+        "question_index": 5,
+        "question_id": "q5_ai",
+        "answer_key": "ai_candidates",
+        "answered_at": "2026-05-28T11:15:11Z"
+      },
+      {
+        "question_index": 6,
+        "question_id": "q6_decision_process",
+        "answer_key": "ask_others",
+        "answered_at": "2026-05-28T11:15:11Z"
+      },
+      {
+        "question_index": 7,
+        "question_id": "q7_info_preference",
+        "answer_key": "people_pick",
+        "answered_at": "2026-05-28T11:15:11Z"
+      }
+    ],
+    "profile": {
+      "profile": {
+        "score_safety": 64.7,
+        "score_family": 57.1,
+        "score_efficiency": 100.0,
+        "score_enjoyment": 42.9,
+        "score_adventure": 15.3
+      },
+      "mapped_needs": [
+        "EfficientDailyMobility",
+        "MaintenanceCostReduction",
+        "LowFuelAnxiety",
+        "RelaxingDrive",
+        "LongTermReliability",
+        "FamilyComfort",
+        "StressFreeCommute",
+        "ChildSafety",
+        "DrivingConfidence",
+        "DrivingEnjoyment",
+        "PersonalExpression",
+        "StressFreeSchoolPickup",
+        "UrbanManeuverability",
+        "WeekendFamilyTrip"
+      ],
+      "kg_needs": [
+        {
+          "name": "EfficientDailyMobility",
+          "label": "日常移動コストを抑えたい",
+          "group": "Economy",
+          "source": "load",
+          "weight": 71.34,
+          "source_load": "渋滞ストレス",
+          "source_axis": "efficiency"
+        },
+        {
+          "name": "MaintenanceCostReduction",
+          "label": "維持費を抑えたい",
+          "group": "Economy",
+          "source": "load",
+          "weight": 48.6,
+          "source_load": "維持費への不安",
+          "source_axis": "efficiency"
+        },
+        {
+          "name": "LowFuelAnxiety",
+          "label": "燃料代不安を減らしたい",
+          "group": "Economy",
+          "source": "load",
+          "weight": 48.6,
+          "source_load": "維持費への不安",
+          "source_axis": "efficiency"
+        },
+        {
+          "name": "RelaxingDrive",
+          "label": "リラックスして運転したい",
+          "group": "Comfort",
+          "source": "load",
+          "weight": 37.0,
+          "source_load": "渋滞ストレス",
+          "source_axis": "enjoyment"
+        },
+        {
+          "name": "LongTermReliability",
+          "label": "長く安心して乗りたい",
+          "group": "Economy",
+          "source": "load",
+          "weight": 30.6,
+          "source_load": "維持費への不安",
+          "source_axis": ""
+        },
+        {
+          "name": "FamilyComfort",
+          "label": "家族全員が快適に移動したい",
+          "group": "Family",
+          "source": "value",
+          "weight": 28.34,
+          "source_load": "",
+          "source_axis": "family"
+        },
+        {
+          "name": "StressFreeCommute",
+          "label": "通勤ストレスを減らしたい",
+          "group": "Comfort",
+          "source": "load",
+          "weight": 22,
+          "source_load": "渋滞ストレス",
+          "source_axis": ""
+        },
+        {
+          "name": "ChildSafety",
+          "label": "子供を安全に乗せたい",
+          "group": "Family",
+          "source": "value",
+          "weight": 21.92,
+          "source_load": "",
+          "source_axis": "family"
+        }
+      ],
+      "mapped_capabilities": [
+        "FuelEfficiency",
+        "RideComfort",
+        "GeneralPerformance",
+        "FamilyFriendly",
+        "SafetyPerformance",
+        "DesignAppeal"
+      ],
+      "detected_loads": [
+        "維持費への不安",
+        "渋滞ストレス"
+      ],
+      "ui_needs": [
+        "fuel_efficiency",
+        "safety",
+        "EfficientDailyMobility",
+        "MaintenanceCostReduction",
+        "LowFuelAnxiety",
+        "RelaxingDrive",
+        "LongTermReliability"
+      ],
+      "decision_style": "Delegator",
+      "decision_style_label": "委任型",
+      "decision_style_description": "家族や販売員など、信頼する人のおすすめで決める",
+      "decision_style_scores": {
+        "Maximizer": 10.0,
+        "Satisficer": 0.0,
+        "Authority-driven": 28.9,
+        "Delegator": 100.0,
+        "Intuitive": 0.0,
+        "Impulsive": 0.0
+      },
+      "decision_style_confidence": 100.0,
+      "decision_style_secondary": "Authority-driven",
+      "decision_style_secondary_label": "権威依存型",
+      "decision_style_is_mixed": false
+    },
+    "events": [
+      {
+        "id": "276eeda9-1861-4577-a96b-073e1d5377f7",
+        "screen_id": "SCR-03",
+        "event_type": "cta_click",
+        "payload": {
+          "delegation_level": "co_pilot"
+        },
+        "duration_ms": null,
+        "created_at": "2026-05-28T11:09:03Z"
+      }
+    ]
+  },
+  "10f6c380-daf5-4ef3-9d05-17f5e6e87db6": {
+    "session_id": "10f6c380-daf5-4ef3-9d05-17f5e6e87db6",
+    "created_at": "2026-05-28T11:15:13Z",
+    "updated_at": "2026-05-28T11:41:34Z",
+    "status": "profile_input_complete",
+    "delegation_level": "co_pilot",
+    "demo_fallback_used": false,
+    "family_size": 2,
+    "budget_range": "300-400",
+    "budget_min": 3000000,
+    "budget_max": 4000000,
+    "answers": [
+      {
+        "question_index": 1,
+        "question_id": "q1_value",
+        "answer_key": "enjoyment",
+        "answered_at": "2026-05-28T11:41:34Z"
+      },
+      {
+        "question_index": 2,
+        "question_id": "q2_weekend",
+        "answer_key": "learning",
+        "answered_at": "2026-05-28T11:41:34Z"
+      },
+      {
+        "question_index": 3,
+        "question_id": "q3_regret",
+        "answer_key": "maintenance",
+        "answered_at": "2026-05-28T11:41:34Z"
+      },
+      {
+        "question_index": 4,
+        "question_id": "q4_stress",
+        "answer_key": "traffic",
+        "answered_at": "2026-05-28T11:41:34Z"
+      },
+      {
+        "question_index": 5,
+        "question_id": "q5_ai",
+        "answer_key": "ai_candidates",
+        "answered_at": "2026-05-28T11:41:34Z"
+      },
+      {
+        "question_index": 6,
+        "question_id": "q6_decision_process",
+        "answer_key": "ask_others",
+        "answered_at": "2026-05-28T11:41:34Z"
+      },
+      {
+        "question_index": 7,
+        "question_id": "q7_info_preference",
+        "answer_key": "people_pick",
+        "answered_at": "2026-05-28T11:41:34Z"
+      }
+    ],
+    "profile": {
+      "profile": {
+        "score_safety": 36.9,
+        "score_family": 13.2,
+        "score_efficiency": 100.0,
+        "score_enjoyment": 43.3,
+        "score_adventure": 11.8
+      },
+      "mapped_needs": [
+        "EfficientDailyMobility",
+        "MaintenanceCostReduction",
+        "LowFuelAnxiety",
+        "RelaxingDrive",
+        "LongTermReliability",
+        "StressFreeCommute",
+        "ShortTripEfficiency",
+        "UrbanManeuverability",
+        "DrivingConfidence",
+        "DrivingEnjoyment",
+        "FamilyComfort",
+        "PersonalExpression"
+      ],
+      "kg_needs": [
+        {
+          "name": "EfficientDailyMobility",
+          "label": "日常移動コストを抑えたい",
+          "group": "Economy",
+          "source": "load",
+          "weight": 79.25,
+          "source_load": "渋滞ストレス",
+          "source_axis": "efficiency"
+        },
+        {
+          "name": "MaintenanceCostReduction",
+          "label": "維持費を抑えたい",
+          "group": "Economy",
+          "source": "load",
+          "weight": 48.6,
+          "source_load": "維持費への不安",
+          "source_axis": "efficiency"
+        },
+        {
+          "name": "LowFuelAnxiety",
+          "label": "燃料代不安を減らしたい",
+          "group": "Economy",
+          "source": "load",
+          "weight": 48.6,
+          "source_load": "維持費への不安",
+          "source_axis": "efficiency"
+        },
+        {
+          "name": "RelaxingDrive",
+          "label": "リラックスして運転したい",
+          "group": "Comfort",
+          "source": "load",
+          "weight": 37.07,
+          "source_load": "渋滞ストレス",
+          "source_axis": "enjoyment"
+        },
+        {
+          "name": "LongTermReliability",
+          "label": "長く安心して乗りたい",
+          "group": "Economy",
+          "source": "load",
+          "weight": 30.6,
+          "source_load": "維持費への不安",
+          "source_axis": ""
+        },
+        {
+          "name": "StressFreeCommute",
+          "label": "通勤ストレスを減らしたい",
+          "group": "Comfort",
+          "source": "load",
+          "weight": 22,
+          "source_load": "渋滞ストレス",
+          "source_axis": ""
+        },
+        {
+          "name": "ShortTripEfficiency",
+          "label": "短距離移動を効率化したい",
+          "group": "Urban",
+          "source": "value",
+          "weight": 18.0,
+          "source_load": "",
+          "source_axis": "efficiency"
+        },
+        {
+          "name": "UrbanManeuverability",
+          "label": "狭い道でも扱いやすくしたい",
+          "group": "Urban",
+          "source": "question",
+          "weight": 17.25,
+          "source_load": "",
+          "source_axis": ""
+        }
+      ],
+      "mapped_capabilities": [
+        "FuelEfficiency",
+        "RideComfort",
+        "GeneralPerformance",
+        "SafetyPerformance",
+        "DesignAppeal",
+        "FamilyFriendly"
+      ],
+      "detected_loads": [
+        "維持費への不安",
+        "渋滞ストレス"
+      ],
+      "ui_needs": [
+        "fuel_efficiency",
+        "design",
+        "EfficientDailyMobility",
+        "MaintenanceCostReduction",
+        "LowFuelAnxiety",
+        "RelaxingDrive",
+        "LongTermReliability"
+      ],
+      "decision_style": "Delegator",
+      "decision_style_label": "委任型",
+      "decision_style_description": "家族や販売員など、信頼する人のおすすめで決める",
+      "decision_style_scores": {
+        "Maximizer": 10.0,
+        "Satisficer": 0.0,
+        "Authority-driven": 28.9,
+        "Delegator": 100.0,
+        "Intuitive": 0.0,
+        "Impulsive": 0.0
+      },
+      "decision_style_confidence": 100.0,
+      "decision_style_secondary": "Authority-driven",
+      "decision_style_secondary_label": "権威依存型",
+      "decision_style_is_mixed": false
+    },
+    "events": [
+      {
+        "id": "0cae6384-252e-460b-8805-33e94d408a5d",
+        "screen_id": "SCR-03",
+        "event_type": "cta_click",
+        "payload": {
+          "delegation_level": "co_pilot"
+        },
+        "duration_ms": null,
+        "created_at": "2026-05-28T11:15:38Z"
+      }
+    ],
+    "cached_recommendations": {
+      "cached_at": "2026-05-28T11:15:45Z",
+      "payload": {
+        "demo_fallback": false,
+        "recommendations": [
+          {
+            "model": "FIT",
+            "score": 0.672,
+            "reason": "ニーズに85%マッチ、同様の家族構成の3名が選択",
+            "archetype": "委任型",
+            "similar_consumers": [
+              "honda_web_3450",
+              "honda_web_3206",
+              "honda_web_3654"
+            ],
+            "quick_grade": "",
+            "price_range": "1,776,500〜2,929,300円",
+            "fuel_type": "Gasoline",
+            "seating_capacity": 5,
+            "appeal_points": [
+              "Honda CONNECT（コネクテッド技術）",
+              "パーキングセンサーシステム",
+              "歩行者事故低減ステアリング"
+            ],
+            "load_boost": 0.0,
+            "matched_load_features": [],
+            "gap_vs_top": []
+          },
+          {
+            "model": "CIVIC",
+            "score": 0.659,
+            "reason": "ニーズに85%マッチ、同様の家族構成の3名が選択",
+            "archetype": "バランス型",
+            "similar_consumers": [
+              "honda_web_1962",
+              "honda_web_1961",
+              "honda_web_1960"
+            ],
+            "quick_grade": "",
+            "price_range": "3,544,200〜4,403,300円",
+            "fuel_type": "Gasoline",
+            "seating_capacity": 5,
+            "appeal_points": [
+              "Honda CONNECT（コネクテッド技術）",
+              "アクティブサウンドコントロール",
+              "歩行者事故低減ステアリング"
+            ],
+            "load_boost": 0.0,
+            "matched_load_features": [],
+            "gap_vs_top": [
+              "価格が第1推薦より高め（約176万円高）"
+            ]
+          },
+          {
+            "model": "VEZEL",
+            "score": 0.57,
+            "reason": "ニーズに71%マッチ、同様の家族構成の3名が選択",
+            "archetype": "楽しさ重視型",
+            "similar_consumers": [
+              "honda_web_1092",
+              "honda_web_1166",
+              "honda_web_1156"
+            ],
+            "quick_grade": "",
+            "price_range": "2,758,800〜3,968,800円",
+            "fuel_type": "Hybrid",
+            "seating_capacity": 5,
+            "appeal_points": [
+              "Honda CONNECT（コネクテッド技術）",
+              "歩行者事故低減ステアリング",
+              "マルチビューカメラシステム"
+            ],
+            "load_boost": 0.0,
+            "matched_load_features": [],
+            "gap_vs_top": [
+              "総合スコアが第1推薦より 10% 低い",
+              "価格が第1推薦より高め（約98万円高）"
+            ]
+          }
+        ],
+        "excluded": [
+          {
+            "model": "ZR-V",
+            "reason": "重視する価値観・利用シーンとの適合度が、上位3台より低いため"
+          },
+          {
+            "model": "FREED",
+            "reason": "重視する価値観・利用シーンとの適合度が、上位3台より低いため"
+          },
+          {
+            "model": "NEW",
+            "reason": "重視する価値観・利用シーンとの適合度が、上位3台より低いため"
+          }
+        ],
+        "ui_needs": [
+          "fuel_efficiency",
+          "design",
+          "EfficientDailyMobility",
+          "MaintenanceCostReduction",
+          "LowFuelAnxiety",
+          "RelaxingDrive",
+          "LongTermReliability"
+        ]
+      }
+    }
+  },
+  "5a65b987-0bad-4b57-834d-6ec1874879d1": {
+    "session_id": "5a65b987-0bad-4b57-834d-6ec1874879d1",
+    "created_at": "2026-05-28T11:41:46Z",
+    "updated_at": "2026-05-28T11:42:48Z",
+    "status": "profile_input_complete",
+    "delegation_level": "co_pilot",
+    "demo_fallback_used": false,
+    "family_size": 2,
+    "budget_range": "400-500",
+    "budget_min": 4000000,
+    "budget_max": 5000000,
+    "answers": [
+      {
+        "question_index": 1,
+        "question_id": "q1_value",
+        "answer_key": "enjoyment",
+        "answered_at": "2026-05-28T11:42:48Z"
+      },
+      {
+        "question_index": 2,
+        "question_id": "q2_weekend",
+        "answer_key": "learning",
+        "answered_at": "2026-05-28T11:42:48Z"
+      },
+      {
+        "question_index": 3,
+        "question_id": "q3_regret",
+        "answer_key": "maintenance",
+        "answered_at": "2026-05-28T11:42:48Z"
+      },
+      {
+        "question_index": 4,
+        "question_id": "q4_stress",
+        "answer_key": "traffic",
+        "answered_at": "2026-05-28T11:42:48Z"
+      },
+      {
+        "question_index": 5,
+        "question_id": "q5_ai",
+        "answer_key": "ai_candidates",
+        "answered_at": "2026-05-28T11:42:48Z"
+      },
+      {
+        "question_index": 6,
+        "question_id": "q6_decision_process",
+        "answer_key": "good_enough",
+        "answered_at": "2026-05-28T11:42:48Z"
+      },
+      {
+        "question_index": 7,
+        "question_id": "q7_info_preference",
+        "answer_key": "people_pick",
+        "answered_at": "2026-05-28T11:42:48Z"
+      }
+    ],
+    "profile": {
+      "profile": {
+        "score_safety": 36.9,
+        "score_family": 13.2,
+        "score_efficiency": 100.0,
+        "score_enjoyment": 43.3,
+        "score_adventure": 11.8
+      },
+      "mapped_needs": [
+        "EfficientDailyMobility",
+        "MaintenanceCostReduction",
+        "LowFuelAnxiety",
+        "RelaxingDrive",
+        "LongTermReliability",
+        "StressFreeCommute",
+        "ShortTripEfficiency",
+        "UrbanManeuverability",
+        "DrivingConfidence",
+        "DrivingEnjoyment",
+        "FamilyComfort",
+        "PersonalExpression"
+      ],
+      "kg_needs": [
+        {
+          "name": "EfficientDailyMobility",
+          "label": "日常移動コストを抑えたい",
+          "group": "Economy",
+          "source": "load",
+          "weight": 79.25,
+          "source_load": "渋滞ストレス",
+          "source_axis": "efficiency"
+        },
+        {
+          "name": "MaintenanceCostReduction",
+          "label": "維持費を抑えたい",
+          "group": "Economy",
+          "source": "load",
+          "weight": 48.6,
+          "source_load": "維持費への不安",
+          "source_axis": "efficiency"
+        },
+        {
+          "name": "LowFuelAnxiety",
+          "label": "燃料代不安を減らしたい",
+          "group": "Economy",
+          "source": "load",
+          "weight": 48.6,
+          "source_load": "維持費への不安",
+          "source_axis": "efficiency"
+        },
+        {
+          "name": "RelaxingDrive",
+          "label": "リラックスして運転したい",
+          "group": "Comfort",
+          "source": "load",
+          "weight": 37.07,
+          "source_load": "渋滞ストレス",
+          "source_axis": "enjoyment"
+        },
+        {
+          "name": "LongTermReliability",
+          "label": "長く安心して乗りたい",
+          "group": "Economy",
+          "source": "load",
+          "weight": 30.6,
+          "source_load": "維持費への不安",
+          "source_axis": ""
+        },
+        {
+          "name": "StressFreeCommute",
+          "label": "通勤ストレスを減らしたい",
+          "group": "Comfort",
+          "source": "load",
+          "weight": 22,
+          "source_load": "渋滞ストレス",
+          "source_axis": ""
+        },
+        {
+          "name": "ShortTripEfficiency",
+          "label": "短距離移動を効率化したい",
+          "group": "Urban",
+          "source": "value",
+          "weight": 18.0,
+          "source_load": "",
+          "source_axis": "efficiency"
+        },
+        {
+          "name": "UrbanManeuverability",
+          "label": "狭い道でも扱いやすくしたい",
+          "group": "Urban",
+          "source": "question",
+          "weight": 17.25,
+          "source_load": "",
+          "source_axis": ""
+        }
+      ],
+      "mapped_capabilities": [
+        "FuelEfficiency",
+        "RideComfort",
+        "GeneralPerformance",
+        "SafetyPerformance",
+        "DesignAppeal",
+        "FamilyFriendly"
+      ],
+      "detected_loads": [
+        "維持費への不安",
+        "渋滞ストレス"
+      ],
+      "ui_needs": [
+        "fuel_efficiency",
+        "design",
+        "EfficientDailyMobility",
+        "MaintenanceCostReduction",
+        "LowFuelAnxiety",
+        "RelaxingDrive",
+        "LongTermReliability"
+      ],
+      "decision_style": "Satisficer",
+      "decision_style_label": "十分型",
+      "decision_style_description": "一定基準を満たしたら決定する十分満足型",
+      "decision_style_scores": {
+        "Maximizer": 18.4,
+        "Satisficer": 100.0,
+        "Authority-driven": 36.5,
+        "Delegator": 90.6,
+        "Intuitive": 0.0,
+        "Impulsive": 0.0
+      },
+      "decision_style_confidence": 23.5,
+      "decision_style_secondary": "Delegator",
+      "decision_style_secondary_label": "委任型",
+      "decision_style_is_mixed": true
+    },
+    "events": [
+      {
+        "id": "63652f0b-5d22-4248-a77c-0b6f3971f740",
+        "screen_id": "SCR-03",
+        "event_type": "cta_click",
+        "payload": {
+          "delegation_level": "co_pilot"
+        },
+        "duration_ms": null,
+        "created_at": "2026-05-28T11:42:33Z"
+      }
+    ],
+    "cached_recommendations": {
+      "cached_at": "2026-05-28T11:42:48Z",
+      "payload": {
+        "demo_fallback": false,
+        "recommendations": [
+          {
+            "model": "CIVIC",
+            "score": 0.659,
+            "reason": "ニーズに85%マッチ、同様の家族構成の3名が選択",
+            "archetype": "十分型",
+            "similar_consumers": [
+              "honda_web_1962",
+              "honda_web_1961",
+              "honda_web_1960"
+            ],
+            "quick_grade": "",
+            "price_range": "3,544,200〜4,403,300円",
+            "fuel_type": "Gasoline",
+            "seating_capacity": 5,
+            "appeal_points": [
+              "Honda CONNECT（コネクテッド技術）",
+              "アクティブサウンドコントロール",
+              "歩行者事故低減ステアリング"
+            ],
+            "load_boost": 0.0,
+            "matched_load_features": [],
+            "gap_vs_top": []
+          },
+          {
+            "model": "CR-V",
+            "score": 0.659,
+            "reason": "ニーズに85%マッチ、同様の家族構成の3名が選択",
+            "archetype": "バランス型",
+            "similar_consumers": [
+              "honda_web_065",
+              "honda_web_037",
+              "honda_web_046"
+            ],
+            "quick_grade": "",
+            "price_range": "5,122,700〜5,779,400円",
+            "fuel_type": "Gasoline",
+            "seating_capacity": 5,
+            "appeal_points": [
+              "アクティブノイズコントロール",
+              "アクティブサウンドコントロール",
+              "歩行者事故低減ステアリング"
+            ],
+            "load_boost": 0.0,
+            "matched_load_features": [],
+            "gap_vs_top": [
+              "価格が第1推薦より高め（約157万円高）"
+            ]
+          },
+          {
+            "model": "ACCORD",
+            "score": 0.623,
+            "reason": "ニーズに85%マッチ、同様の家族構成の3名が選択",
+            "archetype": "楽しさ重視型",
+            "similar_consumers": [
+              "honda_web_834",
+              "honda_web_831",
+              "honda_web_822"
+            ],
+            "quick_grade": "",
+            "price_range": "5,599,000〜5,999,400円",
+            "fuel_type": "Hybrid",
+            "seating_capacity": 5,
+            "appeal_points": [
+              "ドライバー異常時対応システム",
+              "Honda CONNECT（コネクテッド技術）",
+              "衝突軽減ブレーキ(CMBS)"
+            ],
+            "load_boost": 0.0,
+            "matched_load_features": [],
+            "gap_vs_top": [
+              "価格が第1推薦より高め（約205万円高）"
+            ]
+          }
+        ],
+        "excluded": [
+          {
+            "model": "VEZEL",
+            "reason": "重視する価値観・利用シーンとの適合度が、上位3台より低いため"
+          },
+          {
+            "model": "ZR-V",
+            "reason": "重視する価値観・利用シーンとの適合度が、上位3台より低いため"
+          },
+          {
+            "model": "FREED",
+            "reason": "重視する価値観・利用シーンとの適合度が、上位3台より低いため"
+          }
+        ],
+        "ui_needs": [
+          "fuel_efficiency",
+          "design",
+          "EfficientDailyMobility",
+          "MaintenanceCostReduction",
+          "LowFuelAnxiety",
+          "RelaxingDrive",
+          "LongTermReliability"
+        ]
+      }
+    }
+  },
+  "cb070724-a909-4a04-a063-100568038db5": {
+    "session_id": "cb070724-a909-4a04-a063-100568038db5",
+    "created_at": "2026-05-28T23:43:44Z",
+    "updated_at": "2026-05-28T23:43:44Z",
+    "status": "active",
+    "delegation_level": null,
+    "demo_fallback_used": false,
+    "family_size": null,
+    "budget_range": null,
+    "budget_min": null,
+    "budget_max": null,
+    "answers": [],
+    "profile": null,
+    "events": []
+  },
+  "5093ef7a-2e4e-45cf-aa5b-ac50b1b8ac5d": {
+    "session_id": "5093ef7a-2e4e-45cf-aa5b-ac50b1b8ac5d",
+    "created_at": "2026-05-29T00:16:19Z",
+    "updated_at": "2026-05-29T00:20:16Z",
+    "status": "profile_input_complete",
+    "delegation_level": "co_pilot",
+    "demo_fallback_used": true,
+    "family_size": 2,
+    "budget_range": "400-500",
+    "budget_min": 4000000,
+    "budget_max": 5000000,
+    "answers": [
+      {
+        "question_index": 1,
+        "question_id": "q1_value",
+        "answer_key": "enjoyment",
+        "answered_at": "2026-05-29T00:20:15Z"
+      },
+      {
+        "question_index": 2,
+        "question_id": "q2_weekend",
+        "answer_key": "active",
+        "answered_at": "2026-05-29T00:20:16Z"
+      },
+      {
+        "question_index": 3,
+        "question_id": "q3_regret",
+        "answer_key": "maintenance",
+        "answered_at": "2026-05-29T00:20:16Z"
+      },
+      {
+        "question_index": 4,
+        "question_id": "q4_stress",
+        "answer_key": "traffic",
+        "answered_at": "2026-05-29T00:20:16Z"
+      },
+      {
+        "question_index": 5,
+        "question_id": "q5_ai",
+        "answer_key": "ai_candidates",
+        "answered_at": "2026-05-29T00:20:16Z"
+      },
+      {
+        "question_index": 6,
+        "question_id": "q6_decision_process",
+        "answer_key": "good_enough",
+        "answered_at": "2026-05-29T00:20:16Z"
+      },
+      {
+        "question_index": 7,
+        "question_id": "q7_info_preference",
+        "answer_key": "shortlist",
+        "answered_at": "2026-05-29T00:20:16Z"
+      }
+    ],
+    "profile": {
+      "profile": {
+        "score_safety": 48.0,
+        "score_family": 17.1,
+        "score_efficiency": 100.0,
+        "score_enjoyment": 62.9,
+        "score_adventure": 52.0
+      },
+      "mapped_needs": [
+        "EfficientDailyMobility",
+        "MaintenanceCostReduction",
+        "LowFuelAnxiety",
+        "RelaxingDrive",
+        "LongTermReliability",
+        "StressFreeCommute",
+        "DrivingConfidence",
+        "DrivingEnjoyment",
+        "AdventureLifestyle",
+        "FamilyComfort",
+        "OutdoorGearTransport",
+        "OutdoorLifestyle",
+        "PersonalExpression",
+        "UrbanManeuverability"
+      ],
+      "kg_needs": [
+        {
+          "name": "EfficientDailyMobility",
+          "label": "日常移動コストを抑えたい",
+          "group": "Economy",
+          "source": "load",
+          "weight": 71.34,
+          "source_load": "渋滞ストレス",
+          "source_axis": "efficiency"
+        },
+        {
+          "name": "MaintenanceCostReduction",
+          "label": "維持費を抑えたい",
+          "group": "Economy",
+          "source": "load",
+          "weight": 48.6,
+          "source_load": "維持費への不安",
+          "source_axis": "efficiency"
+        },
+        {
+          "name": "LowFuelAnxiety",
+          "label": "燃料代不安を減らしたい",
+          "group": "Economy",
+          "source": "load",
+          "weight": 48.6,
+          "source_load": "維持費への不安",
+          "source_axis": "efficiency"
+        },
+        {
+          "name": "RelaxingDrive",
+          "label": "リラックスして運転したい",
+          "group": "Comfort",
+          "source": "load",
+          "weight": 40.6,
+          "source_load": "渋滞ストレス",
+          "source_axis": "enjoyment"
+        },
+        {
+          "name": "LongTermReliability",
+          "label": "長く安心して乗りたい",
+          "group": "Economy",
+          "source": "load",
+          "weight": 30.6,
+          "source_load": "維持費への不安",
+          "source_axis": ""
+        },
+        {
+          "name": "StressFreeCommute",
+          "label": "通勤ストレスを減らしたい",
+          "group": "Comfort",
+          "source": "load",
+          "weight": 22,
+          "source_load": "渋滞ストレス",
+          "source_axis": ""
+        },
+        {
+          "name": "DrivingConfidence",
+          "label": "運転への不安を減らしたい",
+          "group": "Safety",
+          "source": "value",
+          "weight": 18.8,
+          "source_load": "",
+          "source_axis": "safety"
+        },
+        {
+          "name": "DrivingEnjoyment",
+          "label": "運転そのものを楽しみたい",
+          "group": "Lifestyle",
+          "source": "value",
+          "weight": 18.6,
+          "source_load": "",
+          "source_axis": "enjoyment"
+        }
+      ],
+      "mapped_capabilities": [
+        "FuelEfficiency",
+        "RideComfort",
+        "GeneralPerformance",
+        "SafetyPerformance",
+        "DesignAppeal",
+        "OffRoadCapability",
+        "FamilyFriendly",
+        "SpaceUtility"
+      ],
+      "detected_loads": [
+        "維持費への不安",
+        "渋滞ストレス"
+      ],
+      "ui_needs": [
+        "fuel_efficiency",
+        "design",
+        "EfficientDailyMobility",
+        "MaintenanceCostReduction",
+        "LowFuelAnxiety",
+        "RelaxingDrive",
+        "LongTermReliability"
+      ],
+      "decision_style": "Satisficer",
+      "decision_style_label": "十分型",
+      "decision_style_description": "一定基準を満たしたら決定する十分満足型",
+      "decision_style_scores": {
+        "Maximizer": 10.2,
+        "Satisficer": 100.0,
+        "Authority-driven": 10.2,
+        "Delegator": 16.1,
+        "Intuitive": 0.0,
+        "Impulsive": 0.0
+      },
+      "decision_style_confidence": 100.0,
+      "decision_style_secondary": "Delegator",
+      "decision_style_secondary_label": "委任型",
+      "decision_style_is_mixed": false
+    },
+    "events": [
+      {
+        "id": "ec82a0ef-04b4-49ca-ad01-5eb57db29d4b",
+        "screen_id": "SCR-03",
+        "event_type": "cta_click",
+        "payload": {
+          "delegation_level": "co_pilot"
+        },
+        "duration_ms": null,
+        "created_at": "2026-05-29T00:17:22Z"
+      }
+    ],
+    "cached_recommendations": {
+      "cached_at": "2026-05-29T00:17:31Z",
+      "payload": {
+        "demo_fallback": true,
+        "recommendations": [
+          {
+            "model": "VEZEL",
+            "score": 0.92,
+            "reason": "安心・家族ニーズに高い適合度（デモデータ）",
+            "archetype": "効率重視型",
+            "similar_consumers": [],
+            "quick_grade": "e:HEV",
+            "price_range": "",
+            "fuel_type": "Hybrid",
+            "seating_capacity": 5,
+            "appeal_points": []
+          },
+          {
+            "model": "FIT",
+            "score": 0.88,
+            "reason": "効率と都市部利用にバランスが良い（デモデータ）",
+            "archetype": "バランス型",
+            "similar_consumers": [],
+            "quick_grade": "HOME",
+            "price_range": "",
+            "fuel_type": "Hybrid",
+            "seating_capacity": 5,
+            "appeal_points": []
+          },
+          {
+            "model": "ステップワゴン",
+            "score": 0.85,
+            "reason": "ファミリー利用シーンに適合（デモデータ）",
+            "archetype": "楽しさ重視型",
+            "similar_consumers": [],
+            "quick_grade": "EX",
+            "price_range": "",
+            "fuel_type": "Hybrid",
+            "seating_capacity": 7,
+            "appeal_points": []
+          }
+        ],
+        "excluded": [
+          {
+            "model": "NSX",
+            "reason": "利用文脈との一致度が低い"
+          },
+          {
+            "model": "S660",
+            "reason": "ファミリー利用には不向き"
+          },
+          {
+            "model": "N-ONE",
+            "reason": "重視する価値軸との適合度が低い"
+          }
+        ],
+        "ui_needs": [
+          "fuel_efficiency",
+          "design",
+          "EfficientDailyMobility",
+          "MaintenanceCostReduction",
+          "LowFuelAnxiety",
+          "RelaxingDrive",
+          "LongTermReliability"
+        ]
+      }
+    }
+  },
+  "c0a950f1-7a56-41d0-bbe8-c251a15be54e": {
+    "session_id": "c0a950f1-7a56-41d0-bbe8-c251a15be54e",
+    "created_at": "2026-05-29T00:20:22Z",
+    "updated_at": "2026-05-29T00:25:00Z",
+    "status": "profile_input_complete",
+    "delegation_level": "co_pilot",
+    "demo_fallback_used": true,
+    "family_size": 4,
+    "budget_range": "300-400",
+    "budget_min": 3000000,
+    "budget_max": 4000000,
+    "answers": [
+      {
+        "question_index": 1,
+        "question_id": "q1_value",
+        "answer_key": "enjoyment",
+        "answered_at": "2026-05-29T00:24:59Z"
+      },
+      {
+        "question_index": 2,
+        "question_id": "q2_weekend",
+        "answer_key": "learning",
+        "answered_at": "2026-05-29T00:24:59Z"
+      },
+      {
+        "question_index": 3,
+        "question_id": "q3_regret",
+        "answer_key": "maintenance",
+        "answered_at": "2026-05-29T00:24:59Z"
+      },
+      {
+        "question_index": 4,
+        "question_id": "q4_stress",
+        "answer_key": "traffic",
+        "answered_at": "2026-05-29T00:25:00Z"
+      },
+      {
+        "question_index": 5,
+        "question_id": "q5_ai",
+        "answer_key": "ai_candidates",
+        "answered_at": "2026-05-29T00:25:00Z"
+      },
+      {
+        "question_index": 6,
+        "question_id": "q6_decision_process",
+        "answer_key": "good_enough",
+        "answered_at": "2026-05-29T00:25:00Z"
+      },
+      {
+        "question_index": 7,
+        "question_id": "q7_info_preference",
+        "answer_key": "awards_expert",
+        "answered_at": "2026-05-29T00:25:00Z"
+      }
+    ],
+    "profile": {
+      "profile": {
+        "score_safety": 36.9,
+        "score_family": 13.2,
+        "score_efficiency": 100.0,
+        "score_enjoyment": 43.3,
+        "score_adventure": 11.8
+      },
+      "mapped_needs": [
+        "EfficientDailyMobility",
+        "MaintenanceCostReduction",
+        "LowFuelAnxiety",
+        "RelaxingDrive",
+        "LongTermReliability",
+        "StressFreeCommute",
+        "ShortTripEfficiency",
+        "UrbanManeuverability",
+        "DrivingConfidence",
+        "DrivingEnjoyment",
+        "FamilyComfort",
+        "PersonalExpression"
+      ],
+      "kg_needs": [
+        {
+          "name": "EfficientDailyMobility",
+          "label": "日常移動コストを抑えたい",
+          "group": "Economy",
+          "source": "load",
+          "weight": 79.25,
+          "source_load": "渋滞ストレス",
+          "source_axis": "efficiency"
+        },
+        {
+          "name": "MaintenanceCostReduction",
+          "label": "維持費を抑えたい",
+          "group": "Economy",
+          "source": "load",
+          "weight": 48.6,
+          "source_load": "維持費への不安",
+          "source_axis": "efficiency"
+        },
+        {
+          "name": "LowFuelAnxiety",
+          "label": "燃料代不安を減らしたい",
+          "group": "Economy",
+          "source": "load",
+          "weight": 48.6,
+          "source_load": "維持費への不安",
+          "source_axis": "efficiency"
+        },
+        {
+          "name": "RelaxingDrive",
+          "label": "リラックスして運転したい",
+          "group": "Comfort",
+          "source": "load",
+          "weight": 37.07,
+          "source_load": "渋滞ストレス",
+          "source_axis": "enjoyment"
+        },
+        {
+          "name": "LongTermReliability",
+          "label": "長く安心して乗りたい",
+          "group": "Economy",
+          "source": "load",
+          "weight": 30.6,
+          "source_load": "維持費への不安",
+          "source_axis": ""
+        },
+        {
+          "name": "StressFreeCommute",
+          "label": "通勤ストレスを減らしたい",
+          "group": "Comfort",
+          "source": "load",
+          "weight": 22,
+          "source_load": "渋滞ストレス",
+          "source_axis": ""
+        },
+        {
+          "name": "ShortTripEfficiency",
+          "label": "短距離移動を効率化したい",
+          "group": "Urban",
+          "source": "value",
+          "weight": 18.0,
+          "source_load": "",
+          "source_axis": "efficiency"
+        },
+        {
+          "name": "UrbanManeuverability",
+          "label": "狭い道でも扱いやすくしたい",
+          "group": "Urban",
+          "source": "question",
+          "weight": 17.25,
+          "source_load": "",
+          "source_axis": ""
+        }
+      ],
+      "mapped_capabilities": [
+        "FuelEfficiency",
+        "RideComfort",
+        "GeneralPerformance",
+        "SafetyPerformance",
+        "DesignAppeal",
+        "FamilyFriendly"
+      ],
+      "detected_loads": [
+        "維持費への不安",
+        "渋滞ストレス"
+      ],
+      "ui_needs": [
+        "fuel_efficiency",
+        "design",
+        "EfficientDailyMobility",
+        "MaintenanceCostReduction",
+        "LowFuelAnxiety",
+        "RelaxingDrive",
+        "LongTermReliability"
+      ],
+      "decision_style": "Authority-driven",
+      "decision_style_label": "権威依存型",
+      "decision_style_description": "専門家・評価・ブランドの意見を重視",
+      "decision_style_scores": {
+        "Maximizer": 16.9,
+        "Satisficer": 91.8,
+        "Authority-driven": 100.0,
+        "Delegator": 0.0,
+        "Intuitive": 0.0,
+        "Impulsive": 0.0
+      },
+      "decision_style_confidence": 20.5,
+      "decision_style_secondary": "Satisficer",
+      "decision_style_secondary_label": "十分型",
+      "decision_style_is_mixed": true
+    },
+    "events": [
+      {
+        "id": "ca04f2fe-438b-4027-9d05-56320a9f85ce",
+        "screen_id": "SCR-03",
+        "event_type": "cta_click",
+        "payload": {
+          "delegation_level": "co_pilot"
+        },
+        "duration_ms": null,
+        "created_at": "2026-05-29T00:21:06Z"
+      }
+    ],
+    "cached_recommendations": {
+      "cached_at": "2026-05-29T00:21:11Z",
+      "payload": {
+        "demo_fallback": true,
+        "recommendations": [
+          {
+            "model": "VEZEL",
+            "score": 0.92,
+            "reason": "安心・家族ニーズに高い適合度（デモデータ）",
+            "archetype": "効率重視型",
+            "similar_consumers": [],
+            "quick_grade": "e:HEV",
+            "price_range": "",
+            "fuel_type": "Hybrid",
+            "seating_capacity": 5,
+            "appeal_points": []
+          },
+          {
+            "model": "FIT",
+            "score": 0.88,
+            "reason": "効率と都市部利用にバランスが良い（デモデータ）",
+            "archetype": "バランス型",
+            "similar_consumers": [],
+            "quick_grade": "HOME",
+            "price_range": "",
+            "fuel_type": "Hybrid",
+            "seating_capacity": 5,
+            "appeal_points": []
+          },
+          {
+            "model": "ステップワゴン",
+            "score": 0.85,
+            "reason": "ファミリー利用シーンに適合（デモデータ）",
+            "archetype": "楽しさ重視型",
+            "similar_consumers": [],
+            "quick_grade": "EX",
+            "price_range": "",
+            "fuel_type": "Hybrid",
+            "seating_capacity": 7,
+            "appeal_points": []
+          }
+        ],
+        "excluded": [
+          {
+            "model": "NSX",
+            "reason": "利用文脈との一致度が低い"
+          },
+          {
+            "model": "S660",
+            "reason": "ファミリー利用には不向き"
+          },
+          {
+            "model": "N-ONE",
+            "reason": "重視する価値軸との適合度が低い"
+          }
+        ],
+        "ui_needs": [
+          "fuel_efficiency",
+          "design",
+          "EfficientDailyMobility",
+          "MaintenanceCostReduction",
+          "LowFuelAnxiety",
+          "RelaxingDrive",
+          "LongTermReliability"
+        ]
+      }
+    }
+  },
+  "15ebbb2d-b93f-4c52-97e8-b7db206c17b4": {
+    "session_id": "15ebbb2d-b93f-4c52-97e8-b7db206c17b4",
+    "created_at": "2026-05-29T00:25:01Z",
+    "updated_at": "2026-05-29T00:35:19Z",
+    "status": "profile_input_complete",
+    "delegation_level": "co_pilot",
+    "demo_fallback_used": false,
+    "family_size": 4,
+    "budget_range": "300-400",
+    "budget_min": 3000000,
+    "budget_max": 4000000,
+    "answers": [
+      {
+        "question_index": 1,
+        "question_id": "q1_value",
+        "answer_key": "family",
+        "answered_at": "2026-05-29T00:35:19Z"
+      },
+      {
+        "question_index": 2,
+        "question_id": "q2_weekend",
+        "answer_key": "active",
+        "answered_at": "2026-05-29T00:35:19Z"
+      },
+      {
+        "question_index": 3,
+        "question_id": "q3_regret",
+        "answer_key": "maintenance",
+        "answered_at": "2026-05-29T00:35:19Z"
+      },
+      {
+        "question_index": 4,
+        "question_id": "q4_stress",
+        "answer_key": "traffic",
+        "answered_at": "2026-05-29T00:35:19Z"
+      },
+      {
+        "question_index": 5,
+        "question_id": "q5_ai",
+        "answer_key": "ai_candidates",
+        "answered_at": "2026-05-29T00:35:19Z"
+      },
+      {
+        "question_index": 6,
+        "question_id": "q6_decision_process",
+        "answer_key": "ask_others",
+        "answered_at": "2026-05-29T00:35:19Z"
+      },
+      {
+        "question_index": 7,
+        "question_id": "q7_info_preference",
+        "answer_key": "people_pick",
+        "answered_at": "2026-05-29T00:35:19Z"
+      }
+    ],
+    "profile": {
+      "profile": {
+        "score_safety": 66.4,
+        "score_family": 60.1,
+        "score_efficiency": 100.0,
+        "score_enjoyment": 20.0,
+        "score_adventure": 36.7
+      },
+      "mapped_needs": [
+        "EfficientDailyMobility",
+        "MaintenanceCostReduction",
+        "LowFuelAnxiety",
+        "LongTermReliability",
+        "ChildSafety",
+        "FamilyComfort",
+        "RelaxingDrive",
+        "DrivingConfidence",
+        "AdventureLifestyle",
+        "EasyChildPickup",
+        "OutdoorGearTransport",
+        "OutdoorLifestyle",
+        "UrbanManeuverability",
+        "WeekendFamilyTrip"
+      ],
+      "kg_needs": [
+        {
+          "name": "EfficientDailyMobility",
+          "label": "日常移動コストを抑えたい",
+          "group": "Economy",
+          "source": "load",
+          "weight": 71.34,
+          "source_load": "渋滞ストレス",
+          "source_axis": "efficiency"
+        },
+        {
+          "name": "MaintenanceCostReduction",
+          "label": "維持費を抑えたい",
+          "group": "Economy",
+          "source": "load",
+          "weight": 48.6,
+          "source_load": "維持費への不安",
+          "source_axis": "efficiency"
+        },
+        {
+          "name": "LowFuelAnxiety",
+          "label": "燃料代不安を減らしたい",
+          "group": "Economy",
+          "source": "load",
+          "weight": 48.6,
+          "source_load": "維持費への不安",
+          "source_axis": "efficiency"
+        },
+        {
+          "name": "LongTermReliability",
+          "label": "長く安心して乗りたい",
+          "group": "Economy",
+          "source": "load",
+          "weight": 30.6,
+          "source_load": "維持費への不安",
+          "source_axis": ""
+        },
+        {
+          "name": "ChildSafety",
+          "label": "子供を安全に乗せたい",
+          "group": "Family",
+          "source": "value",
+          "weight": 30.05,
+          "source_load": "",
+          "source_axis": "family"
+        },
+        {
+          "name": "FamilyComfort",
+          "label": "家族全員が快適に移動したい",
+          "group": "Family",
+          "source": "value",
+          "weight": 28.25,
+          "source_load": "",
+          "source_axis": "family"
+        },
+        {
+          "name": "RelaxingDrive",
+          "label": "リラックスして運転したい",
+          "group": "Comfort",
+          "source": "load",
+          "weight": 25.6,
+          "source_load": "渋滞ストレス",
+          "source_axis": "enjoyment"
+        },
+        {
+          "name": "DrivingConfidence",
+          "label": "運転への不安を減らしたい",
+          "group": "Safety",
+          "source": "value",
+          "weight": 22.11,
+          "source_load": "",
+          "source_axis": "safety"
+        }
+      ],
+      "mapped_capabilities": [
+        "FuelEfficiency",
+        "GeneralPerformance",
+        "SafetyPerformance",
+        "FamilyFriendly",
+        "RideComfort",
+        "OffRoadCapability",
+        "SpaceUtility"
+      ],
+      "detected_loads": [
+        "維持費への不安",
+        "渋滞ストレス"
+      ],
+      "ui_needs": [
+        "fuel_efficiency",
+        "safety",
+        "EfficientDailyMobility",
+        "MaintenanceCostReduction",
+        "LowFuelAnxiety",
+        "LongTermReliability",
+        "ChildSafety"
+      ],
+      "decision_style": "Delegator",
+      "decision_style_label": "委任型",
+      "decision_style_description": "家族や販売員など、信頼する人のおすすめで決める",
+      "decision_style_scores": {
+        "Maximizer": 10.0,
+        "Satisficer": 0.0,
+        "Authority-driven": 28.9,
+        "Delegator": 100.0,
+        "Intuitive": 0.0,
+        "Impulsive": 0.0
+      },
+      "decision_style_confidence": 100.0,
+      "decision_style_secondary": "Authority-driven",
+      "decision_style_secondary_label": "権威依存型",
+      "decision_style_is_mixed": false
+    },
+    "events": [
+      {
+        "id": "24b88856-e0f0-44ce-a5e7-1ab9a6c9e1b2",
+        "screen_id": "SCR-03",
+        "event_type": "cta_click",
+        "payload": {
+          "delegation_level": "co_pilot"
+        },
+        "duration_ms": null,
+        "created_at": "2026-05-29T00:25:50Z"
+      }
+    ],
+    "cached_recommendations": {
+      "cached_at": "2026-05-29T00:26:22Z",
+      "payload": {
+        "demo_fallback": false,
+        "recommendations": [
+          {
+            "model": "FIT",
+            "score": 0.726,
+            "reason": "ニーズに100%マッチ、同様の家族構成の3名が選択",
+            "archetype": "委任型",
+            "similar_consumers": [
+              "honda_web_2909",
+              "honda_web_3622",
+              "honda_web_3417"
+            ],
+            "quick_grade": "",
+            "price_range": "1,776,500〜2,929,300円",
+            "fuel_type": "Gasoline",
+            "seating_capacity": 5,
+            "appeal_points": [
+              "Honda CONNECT（コネクテッド技術）",
+              "パーキングセンサーシステム",
+              "歩行者事故低減ステアリング"
+            ],
+            "load_boost": 0.0,
+            "matched_load_features": [],
+            "gap_vs_top": []
+          },
+          {
+            "model": "VEZEL",
+            "score": 0.714,
+            "reason": "ニーズに100%マッチ、同様の家族構成の3名が選択",
+            "archetype": "バランス型",
+            "similar_consumers": [
+              "honda_web_1096",
+              "honda_web_1069",
+              "honda_web_1075"
+            ],
+            "quick_grade": "",
+            "price_range": "2,758,800〜3,968,800円",
+            "fuel_type": "Hybrid",
+            "seating_capacity": 5,
+            "appeal_points": [
+              "Honda CONNECT（コネクテッド技術）",
+              "歩行者事故低減ステアリング",
+              "マルチビューカメラシステム"
+            ],
+            "load_boost": 0.0,
+            "matched_load_features": [],
+            "gap_vs_top": [
+              "価格が第1推薦より高め（約98万円高）"
+            ]
+          },
+          {
+            "model": "CIVIC",
+            "score": 0.662,
+            "reason": "ニーズに100%マッチ、同様の家族構成の3名が選択",
+            "archetype": "楽しさ重視型",
+            "similar_consumers": [
+              "honda_web_1956",
+              "honda_web_1955",
+              "honda_web_1959"
+            ],
+            "quick_grade": "",
+            "price_range": "3,544,200〜4,403,300円",
+            "fuel_type": "Gasoline",
+            "seating_capacity": 5,
+            "appeal_points": [
+              "Honda CONNECT（コネクテッド技術）",
+              "アクティブサウンドコントロール",
+              "歩行者事故低減ステアリング"
+            ],
+            "load_boost": 0.0,
+            "matched_load_features": [],
+            "gap_vs_top": [
+              "総合スコアが第1推薦より 6% 低い",
+              "価格が第1推薦より高め（約176万円高）"
+            ]
+          }
+        ],
+        "excluded": [
+          {
+            "model": "FREED",
+            "reason": "重視する価値観・利用シーンとの適合度が、上位3台より低いため"
+          },
+          {
+            "model": "LBX",
+            "reason": "重視する価値観・利用シーンとの適合度が、上位3台より低いため"
+          },
+          {
+            "model": "STEPWGN",
+            "reason": "重視する価値観・利用シーンとの適合度が、上位3台より低いため"
+          }
+        ],
+        "ui_needs": [
+          "fuel_efficiency",
+          "safety",
+          "EfficientDailyMobility",
+          "MaintenanceCostReduction",
+          "LowFuelAnxiety",
+          "LongTermReliability",
+          "ChildSafety"
+        ]
+      }
+    }
+  },
+  "34e039a4-e6c6-4463-8994-b87c13d46cae": {
+    "session_id": "34e039a4-e6c6-4463-8994-b87c13d46cae",
+    "created_at": "2026-05-29T00:35:51Z",
+    "updated_at": "2026-05-29T00:41:33Z",
+    "status": "profile_input_complete",
+    "delegation_level": "co_pilot",
+    "demo_fallback_used": false,
+    "family_size": 4,
+    "budget_range": "300-400",
+    "budget_min": 3000000,
+    "budget_max": 4000000,
+    "answers": [
+      {
+        "question_index": 1,
+        "question_id": "q1_value",
+        "answer_key": "enjoyment",
+        "answered_at": "2026-05-29T00:41:32Z"
+      },
+      {
+        "question_index": 2,
+        "question_id": "q2_weekend",
+        "answer_key": "active",
+        "answered_at": "2026-05-29T00:41:32Z"
+      },
+      {
+        "question_index": 3,
+        "question_id": "q3_regret",
+        "answer_key": "family_dissatisfaction",
+        "answered_at": "2026-05-29T00:41:32Z"
+      },
+      {
+        "question_index": 4,
+        "question_id": "q4_stress",
+        "answer_key": "traffic",
+        "answered_at": "2026-05-29T00:41:32Z"
+      },
+      {
+        "question_index": 5,
+        "question_id": "q5_ai",
+        "answer_key": "ai_candidates",
+        "answered_at": "2026-05-29T00:41:32Z"
+      },
+      {
+        "question_index": 6,
+        "question_id": "q6_decision_process",
+        "answer_key": "ask_others",
+        "answered_at": "2026-05-29T00:41:33Z"
+      },
+      {
+        "question_index": 7,
+        "question_id": "q7_info_preference",
+        "answer_key": "people_pick",
+        "answered_at": "2026-05-29T00:41:33Z"
+      }
+    ],
+    "profile": {
+      "profile": {
+        "score_safety": 99.3,
+        "score_family": 96.3,
+        "score_efficiency": 89.8,
+        "score_enjoyment": 100.0,
+        "score_adventure": 82.6
+      },
+      "mapped_needs": [
+        "ChildSafety",
+        "FamilyComfort",
+        "EfficientDailyMobility",
+        "RelaxingDrive",
+        "DrivingConfidence",
+        "WeekendFamilyTrip",
+        "DrivingEnjoyment",
+        "PersonalExpression",
+        "AdventureLifestyle",
+        "OutdoorGearTransport",
+        "OutdoorLifestyle",
+        "UrbanManeuverability"
+      ],
+      "kg_needs": [
+        {
+          "name": "ChildSafety",
+          "label": "子供を安全に乗せたい",
+          "group": "Family",
+          "source": "load",
+          "weight": 65.8,
+          "source_load": "家族同乗時の不満リスク",
+          "source_axis": "family"
+        },
+        {
+          "name": "FamilyComfort",
+          "label": "家族全員が快適に移動したい",
+          "group": "Family",
+          "source": "load",
+          "weight": 58.09,
+          "source_load": "家族同乗時の不満リスク",
+          "source_axis": "family"
+        },
+        {
+          "name": "EfficientDailyMobility",
+          "label": "日常移動コストを抑えたい",
+          "group": "Economy",
+          "source": "load",
+          "weight": 47.51,
+          "source_load": "渋滞ストレス",
+          "source_axis": "efficiency"
+        },
+        {
+          "name": "RelaxingDrive",
+          "label": "リラックスして運転したい",
+          "group": "Comfort",
+          "source": "load",
+          "weight": 47.28,
+          "source_load": "渋滞ストレス",
+          "source_axis": "enjoyment"
+        },
+        {
+          "name": "DrivingConfidence",
+          "label": "運転への不安を減らしたい",
+          "group": "Safety",
+          "source": "value",
+          "weight": 28.03,
+          "source_load": "",
+          "source_axis": "safety"
+        },
+        {
+          "name": "WeekendFamilyTrip",
+          "label": "家族旅行を楽しみたい",
+          "group": "Family",
+          "source": "value",
+          "weight": 25.93,
+          "source_load": "",
+          "source_axis": "family"
+        },
+        {
+          "name": "DrivingEnjoyment",
+          "label": "運転そのものを楽しみたい",
+          "group": "Lifestyle",
+          "source": "value",
+          "weight": 25.28,
+          "source_load": "",
+          "source_axis": "enjoyment"
+        },
+        {
+          "name": "PersonalExpression",
+          "label": "自分らしさを表現したい",
+          "group": "Lifestyle",
+          "source": "value",
+          "weight": 25.28,
+          "source_load": "",
+          "source_axis": "enjoyment"
+        }
+      ],
+      "mapped_capabilities": [
+        "SafetyPerformance",
+        "FamilyFriendly",
+        "FuelEfficiency",
+        "RideComfort",
+        "DesignAppeal",
+        "OffRoadCapability",
+        "SpaceUtility",
+        "GeneralPerformance"
+      ],
+      "detected_loads": [
+        "家族同乗時の不満リスク",
+        "渋滞ストレス"
+      ],
+      "ui_needs": [
+        "design",
+        "safety",
+        "ChildSafety",
+        "FamilyComfort",
+        "EfficientDailyMobility",
+        "RelaxingDrive",
+        "DrivingConfidence"
+      ],
+      "decision_style": "Delegator",
+      "decision_style_label": "委任型",
+      "decision_style_description": "家族や販売員など、信頼する人のおすすめで決める",
+      "decision_style_scores": {
+        "Maximizer": 10.0,
+        "Satisficer": 0.0,
+        "Authority-driven": 28.9,
+        "Delegator": 100.0,
+        "Intuitive": 0.0,
+        "Impulsive": 0.0
+      },
+      "decision_style_confidence": 100.0,
+      "decision_style_secondary": "Authority-driven",
+      "decision_style_secondary_label": "権威依存型",
+      "decision_style_is_mixed": false
+    },
+    "events": [
+      {
+        "id": "b4de5451-1b27-467e-8ec4-c4c357050b65",
+        "screen_id": "SCR-03",
+        "event_type": "cta_click",
+        "payload": {
+          "delegation_level": "co_pilot"
+        },
+        "duration_ms": null,
+        "created_at": "2026-05-29T00:37:06Z"
+      }
+    ],
+    "cached_recommendations": {
+      "cached_at": "2026-05-29T00:37:20Z",
+      "payload": {
+        "demo_fallback": false,
+        "recommendations": [
+          {
+            "model": "FIT",
+            "score": 0.653,
+            "reason": "ニーズに85%マッチ、同様の家族構成の3名が選択",
+            "archetype": "委任型",
+            "similar_consumers": [
+              "honda_web_2984",
+              "honda_web_3475",
+              "honda_web_3327"
+            ],
+            "quick_grade": "",
+            "price_range": "1,776,500〜2,929,300円",
+            "fuel_type": "Gasoline",
+            "seating_capacity": 5,
+            "appeal_points": [
+              "Honda CONNECT（コネクテッド技術）",
+              "パーキングセンサーシステム",
+              "歩行者事故低減ステアリング"
+            ],
+            "load_boost": 0.0,
+            "matched_load_features": [],
+            "gap_vs_top": []
+          },
+          {
+            "model": "CIVIC",
+            "score": 0.573,
+            "reason": "ニーズに71%マッチ、同様の家族構成の3名が選択",
+            "archetype": "バランス型",
+            "similar_consumers": [
+              "honda_web_1956",
+              "honda_web_1955",
+              "honda_web_1959"
+            ],
+            "quick_grade": "",
+            "price_range": "3,544,200〜4,403,300円",
+            "fuel_type": "Gasoline",
+            "seating_capacity": 5,
+            "appeal_points": [
+              "Honda CONNECT（コネクテッド技術）",
+              "アクティブサウンドコントロール",
+              "歩行者事故低減ステアリング"
+            ],
+            "load_boost": 0.0,
+            "matched_load_features": [],
+            "gap_vs_top": [
+              "総合スコアが第1推薦より 8% 低い",
+              "価格が第1推薦より高め（約176万円高）"
+            ]
+          },
+          {
+            "model": "VEZEL",
+            "score": 0.553,
+            "reason": "ニーズに71%マッチ、同様の家族構成の3名が選択",
+            "archetype": "楽しさ重視型",
+            "similar_consumers": [
+              "honda_web_1146",
+              "honda_web_1163",
+              "honda_web_1150"
+            ],
+            "quick_grade": "",
+            "price_range": "2,758,800〜3,968,800円",
+            "fuel_type": "Hybrid",
+            "seating_capacity": 5,
+            "appeal_points": [
+              "Honda CONNECT（コネクテッド技術）",
+              "歩行者事故低減ステアリング",
+              "マルチビューカメラシステム"
+            ],
+            "load_boost": 0.0,
+            "matched_load_features": [],
+            "gap_vs_top": [
+              "総合スコアが第1推薦より 9% 低い",
+              "価格が第1推薦より高め（約98万円高）"
+            ]
+          }
+        ],
+        "excluded": [
+          {
+            "model": "FREED",
+            "reason": "重視する価値観・利用シーンとの適合度が、上位3台より低いため"
+          },
+          {
+            "model": "NBOX",
+            "reason": "重視する価値観・利用シーンとの適合度が、上位3台より低いため"
+          },
+          {
+            "model": "NEW",
+            "reason": "重視する価値観・利用シーンとの適合度が、上位3台より低いため"
+          }
+        ],
+        "ui_needs": [
+          "design",
+          "safety",
+          "ChildSafety",
+          "FamilyComfort",
+          "EfficientDailyMobility",
+          "RelaxingDrive",
+          "DrivingConfidence"
+        ]
+      }
+    }
+  },
+  "94b0f9c6-9494-40fa-89c6-3762e38695ad": {
+    "session_id": "94b0f9c6-9494-40fa-89c6-3762e38695ad",
+    "created_at": "2026-05-29T00:41:39Z",
+    "updated_at": "2026-05-29T00:45:57Z",
+    "status": "profile_input_complete",
+    "delegation_level": "co_pilot",
+    "demo_fallback_used": false,
+    "family_size": 4,
+    "budget_range": "300-400",
+    "budget_min": 3000000,
+    "budget_max": 4000000,
+    "answers": [
+      {
+        "question_index": 1,
+        "question_id": "q1_value",
+        "answer_key": "safety",
+        "answered_at": "2026-05-29T00:45:57Z"
+      },
+      {
+        "question_index": 2,
+        "question_id": "q2_weekend",
+        "answer_key": "active",
+        "answered_at": "2026-05-29T00:45:57Z"
+      },
+      {
+        "question_index": 3,
+        "question_id": "q3_regret",
+        "answer_key": "maintenance",
+        "answered_at": "2026-05-29T00:45:57Z"
+      },
+      {
+        "question_index": 4,
+        "question_id": "q4_stress",
+        "answer_key": "difficult_operation",
+        "answered_at": "2026-05-29T00:45:57Z"
+      },
+      {
+        "question_index": 5,
+        "question_id": "q5_ai",
+        "answer_key": "self_decide",
+        "answered_at": "2026-05-29T00:45:57Z"
+      },
+      {
+        "question_index": 6,
+        "question_id": "q6_decision_process",
+        "answer_key": "trust_expert",
+        "answered_at": "2026-05-29T00:45:57Z"
+      },
+      {
+        "question_index": 7,
+        "question_id": "q7_info_preference",
+        "answer_key": "experience",
+        "answered_at": "2026-05-29T00:45:57Z"
+      }
+    ],
+    "profile": {
+      "profile": {
+        "score_safety": 100.0,
+        "score_family": 12.6,
+        "score_efficiency": 61.0,
+        "score_enjoyment": 47.0,
+        "score_adventure": 59.8
+      },
+      "mapped_needs": [
+        "DrivingConfidence",
+        "EasyParking",
+        "MaintenanceCostReduction",
+        "LowFuelAnxiety",
+        "EfficientDailyMobility",
+        "LongTermReliability",
+        "ChildSafety",
+        "VisibilityConfidence",
+        "AccidentAnxietyReduction",
+        "AdventureLifestyle",
+        "DrivingEnjoyment",
+        "OutdoorGearTransport",
+        "OutdoorLifestyle",
+        "PersonalExpression"
+      ],
+      "kg_needs": [
+        {
+          "name": "DrivingConfidence",
+          "label": "運転への不安を減らしたい",
+          "group": "Safety",
+          "source": "load",
+          "weight": 56.62,
+          "source_load": "操作の難しさ",
+          "source_axis": "safety"
+        },
+        {
+          "name": "EasyParking",
+          "label": "駐車を楽にしたい",
+          "group": "Safety",
+          "source": "load",
+          "weight": 56.62,
+          "source_load": "操作の難しさ",
+          "source_axis": "safety"
+        },
+        {
+          "name": "MaintenanceCostReduction",
+          "label": "維持費を抑えたい",
+          "group": "Economy",
+          "source": "load",
+          "weight": 41.58,
+          "source_load": "維持費への不安",
+          "source_axis": "efficiency"
+        },
+        {
+          "name": "LowFuelAnxiety",
+          "label": "燃料代不安を減らしたい",
+          "group": "Economy",
+          "source": "load",
+          "weight": 41.58,
+          "source_load": "維持費への不安",
+          "source_axis": "efficiency"
+        },
+        {
+          "name": "EfficientDailyMobility",
+          "label": "日常移動コストを抑えたい",
+          "group": "Economy",
+          "source": "load",
+          "weight": 32.98,
+          "source_load": "維持費への不安",
+          "source_axis": "efficiency"
+        },
+        {
+          "name": "LongTermReliability",
+          "label": "長く安心して乗りたい",
+          "group": "Economy",
+          "source": "load",
+          "weight": 30.6,
+          "source_load": "維持費への不安",
+          "source_axis": ""
+        },
+        {
+          "name": "ChildSafety",
+          "label": "子供を安全に乗せたい",
+          "group": "Family",
+          "source": "value",
+          "weight": 27.54,
+          "source_load": "",
+          "source_axis": "family"
+        },
+        {
+          "name": "VisibilityConfidence",
+          "label": "周囲を見やすくしたい",
+          "group": "Safety",
+          "source": "value",
+          "weight": 27.34,
+          "source_load": "",
+          "source_axis": "safety"
+        }
+      ],
+      "mapped_capabilities": [
+        "SafetyPerformance",
+        "FuelEfficiency",
+        "GeneralPerformance",
+        "OffRoadCapability",
+        "DesignAppeal",
+        "SpaceUtility"
+      ],
+      "detected_loads": [
+        "維持費への不安",
+        "操作の難しさ"
+      ],
+      "ui_needs": [
+        "safety",
+        "fuel_efficiency",
+        "DrivingConfidence",
+        "EasyParking",
+        "MaintenanceCostReduction",
+        "LowFuelAnxiety",
+        "EfficientDailyMobility"
+      ],
+      "decision_style": "Authority-driven",
+      "decision_style_label": "権威依存型",
+      "decision_style_description": "専門家・評価・ブランドの意見を重視",
+      "decision_style_scores": {
+        "Maximizer": 0.0,
+        "Satisficer": 0.0,
+        "Authority-driven": 100.0,
+        "Delegator": 0.0,
+        "Intuitive": 98.4,
+        "Impulsive": 15.7
+      },
+      "decision_style_confidence": 4.0,
+      "decision_style_secondary": "Intuitive",
+      "decision_style_secondary_label": "直感型",
+      "decision_style_is_mixed": true
+    },
+    "events": [
+      {
+        "id": "d0e9fc45-670e-4a2a-bc8b-84bf054f713f",
+        "screen_id": "SCR-03",
+        "event_type": "cta_click",
+        "payload": {
+          "delegation_level": "co_pilot"
+        },
+        "duration_ms": null,
+        "created_at": "2026-05-29T00:45:43Z"
+      }
+    ],
+    "cached_recommendations": {
+      "cached_at": "2026-05-29T00:45:57Z",
+      "payload": {
+        "demo_fallback": false,
+        "recommendations": [
+          {
+            "model": "VEZEL",
+            "score": 0.735,
+            "reason": "ニーズに100%マッチ、同様の家族構成の3名が選択",
+            "archetype": "権威依存型",
+            "similar_consumers": [
+              "honda_web_1096",
+              "honda_web_1164",
+              "honda_web_1080"
+            ],
+            "quick_grade": "",
+            "price_range": "2,758,800〜3,968,800円",
+            "fuel_type": "Hybrid",
+            "seating_capacity": 5,
+            "appeal_points": [
+              "Honda CONNECT（コネクテッド技術）",
+              "歩行者事故低減ステアリング",
+              "マルチビューカメラシステム"
+            ],
+            "load_boost": 0.0,
+            "matched_load_features": [],
+            "gap_vs_top": []
+          },
+          {
+            "model": "FIT",
+            "score": 0.735,
+            "reason": "ニーズに100%マッチ、同様の家族構成の3名が選択",
+            "archetype": "バランス型",
+            "similar_consumers": [
+              "honda_web_2909",
+              "honda_web_3622",
+              "honda_web_3417"
+            ],
+            "quick_grade": "",
+            "price_range": "1,776,500〜2,929,300円",
+            "fuel_type": "Gasoline",
+            "seating_capacity": 5,
+            "appeal_points": [
+              "Honda CONNECT（コネクテッド技術）",
+              "パーキングセンサーシステム",
+              "歩行者事故低減ステアリング"
+            ],
+            "load_boost": 0.0,
+            "matched_load_features": [],
+            "gap_vs_top": [
+              "装備・性能が第1推薦より抑えめ（約98万円安）",
+              "ハイブリッドではないため燃費効率がやや劣る"
+            ]
+          },
+          {
+            "model": "CIVIC",
+            "score": 0.674,
+            "reason": "ニーズに100%マッチ、同様の家族構成の3名が選択",
+            "archetype": "楽しさ重視型",
+            "similar_consumers": [
+              "honda_web_1956",
+              "honda_web_1962",
+              "honda_web_1959"
+            ],
+            "quick_grade": "",
+            "price_range": "3,544,200〜4,403,300円",
+            "fuel_type": "Gasoline",
+            "seating_capacity": 5,
+            "appeal_points": [
+              "Honda CONNECT（コネクテッド技術）",
+              "アクティブサウンドコントロール",
+              "歩行者事故低減ステアリング"
+            ],
+            "load_boost": 0.0,
+            "matched_load_features": [],
+            "gap_vs_top": [
+              "総合スコアが第1推薦より 6% 低い",
+              "価格が第1推薦より高め（約78万円高）",
+              "ハイブリッドではないため燃費効率がやや劣る"
+            ]
+          }
+        ],
+        "excluded": [
+          {
+            "model": "FREED",
+            "reason": "重視する価値観・利用シーンとの適合度が、上位3台より低いため"
+          },
+          {
+            "model": "LBX",
+            "reason": "重視する価値観・利用シーンとの適合度が、上位3台より低いため"
+          },
+          {
+            "model": "STEPWGN",
+            "reason": "重視する価値観・利用シーンとの適合度が、上位3台より低いため"
+          }
+        ],
+        "ui_needs": [
+          "safety",
+          "fuel_efficiency",
+          "DrivingConfidence",
+          "EasyParking",
+          "MaintenanceCostReduction",
+          "LowFuelAnxiety",
+          "EfficientDailyMobility"
+        ]
+      }
+    }
   }
 }

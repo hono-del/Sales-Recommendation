@@ -5,10 +5,13 @@
     { "id": "value_safety", "type": "value", "label": "安心" },
     { "id": "value_family", "type": "value", "label": "家族時間" },
     { "id": "lifestyle_weekend", "type": "lifestyle", "label": "週末ファミリー" },
-    { "id": "load_fatigue", "type": "load", "label": "疲労" },
+    { "id": "load_fatigue", "type": "load", "label": "長距離移動による疲労" },
     { "id": "load_info", "type": "load", "label": "判断負荷" },
+    { "id": "experience_0", "type": "experience", "label": "長距離でも疲れにくい" },
     { "id": "feature_adas", "type": "feature", "label": "Honda SENSING" },
+    { "id": "benefit_0", "type": "emotional_benefit", "label": "余裕" },
     { "id": "feature_quiet", "type": "feature", "label": "静粛性" },
+    { "id": "benefit_1", "type": "emotional_benefit", "label": "静かな余裕" },
     { "id": "vehicle_vezel", "type": "vehicle", "label": "VEZEL", "score": 0.92 }
   ],
   "edges": [
@@ -17,10 +20,14 @@
     { "source": "person", "target": "lifestyle_weekend", "label": "ライフスタイル" },
     { "source": "value_safety", "target": "load_fatigue", "label": "軽減したい" },
     { "source": "value_family", "target": "load_info", "label": "軽減したい" },
-    { "source": "load_fatigue", "target": "feature_adas", "label": "実現" },
+    { "source": "load_fatigue", "target": "experience_0", "label": "必要な体験" },
+    { "source": "experience_0", "target": "feature_adas", "label": "実現" },
+    { "source": "feature_adas", "target": "benefit_0", "label": "もたらす" },
     { "source": "load_info", "target": "feature_quiet", "label": "実現" },
-    { "source": "feature_adas", "target": "vehicle_vezel", "label": "搭載" },
-    { "source": "feature_quiet", "target": "vehicle_vezel", "label": "搭載" }
+    { "source": "feature_quiet", "target": "benefit_1", "label": "もたらす" },
+    { "source": "feature_adas", "target": "vehicle_vezel", "label": "搭載", "highlighted": true },
+    { "source": "benefit_0", "target": "vehicle_vezel", "label": "満たす", "highlighted": true },
+    { "source": "feature_quiet", "target": "vehicle_vezel", "label": "搭載", "highlighted": true }
   ],
   "why_panel": {
     "values": [
@@ -34,5 +41,112 @@
       "家族同乗時の安心ニーズ"
     ],
     "logic": "家族利用 × 疲労軽減 × 後悔回避 → ADAS, 静粛性, 操作支援を重視"
+  },
+  "thinking_process": {
+    "filter_funnel": {
+      "input": {
+        "family_size": 4,
+        "budget_label": "300〜400万円",
+        "lifestyle": "週末ファミリー"
+      },
+      "stages": [
+        { "label": "初期候補", "count": 32, "filter_key": "initial" },
+        {
+          "label": "乗員人数：4人以上",
+          "count": 18,
+          "filter_key": "seating",
+          "excluded_reason": "4人以上乗車が必要 → コンパクト2列車を除外"
+        },
+        {
+          "label": "予算：300〜400万円",
+          "count": 8,
+          "filter_key": "budget",
+          "excluded_reason": "予算帯に合わない上位SUVを除外"
+        },
+        {
+          "label": "利用シーン・価値観との一致",
+          "count": 3,
+          "filter_key": "scene",
+          "excluded_reason": "重視する価値軸との適合度が低い車種を除外"
+        }
+      ],
+      "exclusion_notes": [
+        "4人以上乗車が必要 → コンパクト2列車を除外",
+        "予算帯に合わない上位SUVを除外",
+        "重視する価値軸との適合度が低い車種を除外"
+      ]
+    },
+    "values": [
+      { "key": "safety", "label": "安心", "percent": 92 },
+      { "key": "family", "label": "家族時間", "percent": 84 },
+      { "key": "efficiency", "label": "効率", "percent": 65 }
+    ],
+    "loads": [
+      "長距離移動による疲労",
+      "情報量増加による判断負荷"
+    ],
+    "experiences": [
+      {
+        "label": "長距離でも疲れにくい",
+        "load_source": "長距離移動による疲労",
+        "value_axes": ["family", "safety"],
+        "why_title": "なぜこの体験なのか？",
+        "why_body": "あなたは「家族時間」を大切にしているため、\n移動で疲れてしまうと、本来楽しみたい時間が損なわれます。\n\nそのため、疲れにくさが重要になります。"
+      },
+      {
+        "label": "判断負担が少ない",
+        "load_source": "情報量増加による判断負荷",
+        "value_axes": ["safety", "efficiency"],
+        "why_title": "なぜこの体験なのか？",
+        "why_body": "あなたは「安心」を重視し、\n選択肢が多すぎると疲れてしまう傾向があります。\n\nそのため、迷わない移動体験が必要です。"
+      }
+    ],
+    "features": [
+      {
+        "name": "Honda SENSING",
+        "headline": "長距離でも、神経を張り続けなくていい",
+        "body": "高速道路や渋滞時の運転負荷を軽減。家族との会話や景色に、少し余裕を持てます。",
+        "emotional_benefit": "余裕",
+        "icon": "shield"
+      },
+      {
+        "name": "静粛性",
+        "headline": "移動中、会話が途切れにくい",
+        "body": "静かな車内で、家族との時間や音楽を楽しめます。",
+        "emotional_benefit": "静かな余裕",
+        "icon": "quiet"
+      },
+      {
+        "name": "e:HEVシステム",
+        "headline": "維持費を気にしすぎない安心感",
+        "body": "燃費効率が高く、日常利用時のコスト不安を軽減。",
+        "emotional_benefit": "安心感",
+        "icon": "leaf"
+      }
+    ],
+    "vehicle": {
+      "name": "VEZEL",
+      "display_name": "VEZEL",
+      "score": 0.92,
+      "reason": "安心 × 家族時間と長距離移動による疲労、情報量増加による判断負荷との相性が高いため",
+      "lifestyle_fit": "週末ファミリーに適したボディサイズと使い勝手",
+      "seating_capacity": 5,
+      "price_range": "2,758,800〜3,968,800円",
+      "fuel_type": "Hybrid",
+      "confidence_points": [
+        "維持費が想定内に収まりやすい",
+        "家族利用との相性が良い",
+        "日常使いで後悔しにくい"
+      ]
+    },
+    "reason_trace": {
+      "steps": [
+        { "step": "価値観の抽出", "summary": "安心、家族時間、効率" },
+        { "step": "負荷の検出", "summary": "長距離移動による疲労、情報量増加による判断負荷" },
+        { "step": "必要な体験の導出", "summary": "長距離でも疲れにくい × 判断負担が少ない" },
+        { "step": "体験を支える機能", "summary": "Honda SENSING、静粛性、e:HEVシステム" },
+        { "step": "最終提案", "summary": "VEZEL（マッチ 92%）" }
+      ]
+    }
   }
 }

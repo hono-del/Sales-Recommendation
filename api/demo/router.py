@@ -13,6 +13,7 @@ from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, Field
 
 from api.demo.graph_path_service import get_graph_path
+from api.demo.kg_catalog_service import build_feature_catalog_view, build_need_catalog_view
 from api.demo.recommend_service import recommend_for_session
 from api.demo.session_store import get_session_store
 from engine.demo_profile import DemoProfileCalculator
@@ -43,7 +44,7 @@ class ProfileInputRequest(BaseModel):
 
 
 class AnswerRequest(BaseModel):
-    question_index: int = Field(..., ge=1, le=4)
+    question_index: int = Field(..., ge=1, le=7)
     question_id: str
     answer_key: str
 
@@ -129,8 +130,17 @@ def post_answer(session_id: str, body: AnswerRequest):
         "session_id": session_id,
         "profile": computed["profile"],
         "mapped_needs": computed["mapped_needs"],
+        "kg_needs": computed.get("kg_needs", []),
         "mapped_capabilities": computed["mapped_capabilities"],
         "detected_loads": computed["detected_loads"],
+        "decision_style": computed.get("decision_style"),
+        "decision_style_label": computed.get("decision_style_label"),
+        "decision_style_description": computed.get("decision_style_description"),
+        "decision_style_scores": computed.get("decision_style_scores"),
+        "decision_style_confidence": computed.get("decision_style_confidence"),
+        "decision_style_secondary": computed.get("decision_style_secondary"),
+        "decision_style_secondary_label": computed.get("decision_style_secondary_label"),
+        "decision_style_is_mixed": computed.get("decision_style_is_mixed", False),
     }
 
 
@@ -154,6 +164,35 @@ def get_session_graph_path(session_id: str, top_model: Optional[str] = None):
     if data.get("demo_fallback"):
         store.mark_fallback(session_id)
     return data
+
+
+@router.get("/sessions/{session_id}/kg-catalog/needs")
+def get_session_kg_needs_catalog(session_id: str):
+    """全 Need 一覧と、当セッションで特定された Need のハイライト。"""
+    store = get_session_store()
+    session = store.get_session(session_id)
+    if not session:
+        raise HTTPException(status_code=404, detail=f"Session not found: {session_id}")
+    return build_need_catalog_view(session)
+
+
+@router.get("/sessions/{session_id}/kg-catalog/technical-features")
+def get_session_kg_features_catalog(
+    session_id: str,
+    top_model: Optional[str] = None,
+):
+    """全 TechnicalFeature 一覧と、Need・車種から特定された機能のハイライト。"""
+    store = get_session_store()
+    session = store.get_session(session_id)
+    if not session:
+        raise HTTPException(status_code=404, detail=f"Session not found: {session_id}")
+    vehicle = top_model
+    if not vehicle:
+        cached = session.get("cached_recommendations") or {}
+        recs = (cached.get("payload") or {}).get("recommendations") or []
+        if recs:
+            vehicle = recs[0].get("model")
+    return build_feature_catalog_view(session, vehicle_name=vehicle)
 
 
 @router.post("/sessions/{session_id}/events", status_code=201)
@@ -188,6 +227,7 @@ def post_session_recommend(session_id: str):
         )
 
     result = recommend_for_session(session)
+    store.set_cached_recommendations(session_id, result)
     if result["demo_fallback"]:
         store.mark_fallback(session_id)
 

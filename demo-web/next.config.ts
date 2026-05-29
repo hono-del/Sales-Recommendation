@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // distDir はプロジェクト相対パスのみ有効（絶対パス不可）
 };
 
 export default nextConfig;

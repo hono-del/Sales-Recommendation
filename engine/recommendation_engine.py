@@ -64,7 +64,12 @@ class Recommendation:
 
 class RecommendationEngine:
     def __init__(self):
-        self.driver = GraphDatabase.driver(NEO4J_URI, auth=(NEO4J_USER, NEO4J_PASSWORD))
+        self.driver = GraphDatabase.driver(
+            NEO4J_URI,
+            auth=(NEO4J_USER, NEO4J_PASSWORD),
+            connection_timeout=5.0,
+            connection_acquisition_timeout=5.0,
+        )
         
         # Load マッピング設定を読み込み
         config_path = Path(__file__).parent.parent / "config" / "load-feature-mapping.json"
@@ -77,13 +82,16 @@ class RecommendationEngine:
         self.driver.close()
 
     def _expand_ui_needs(self, needs: list[str]) -> set[str]:
-        """UI の needs キーを v3 Need.name の集合に展開する。"""
+        """UI needs キーまたは KG Need.name を v3 Need.name 集合に展開する。"""
         expanded: set[str] = set()
         for need in needs:
             key = need.lower()
-            for graph_need in UI_TO_GRAPH_NEEDS.get(key, []):
-                expanded.add(graph_need.lower())
-            expanded.add(key)
+            mapped = UI_TO_GRAPH_NEEDS.get(key, [])
+            if mapped:
+                for graph_need in mapped:
+                    expanded.add(graph_need.lower())
+            else:
+                expanded.add(key)
         return expanded
 
     def _get_all_vehicles(self) -> list[dict]:
@@ -128,6 +136,8 @@ class RecommendationEngine:
         matched_ui = 0
         for need in needs:
             graph_names = {n.lower() for n in UI_TO_GRAPH_NEEDS.get(need.lower(), [])}
+            if not graph_names:
+                graph_names = {need.lower()}
             if graph_names & vehicle_needs:
                 matched_ui += 1
         return min(matched_ui / len(needs), 1.0)

@@ -11,6 +11,13 @@ const notoSans = Noto_Sans_JP({
 export const metadata: Metadata = {
   title: "迷わせないレコメンド | Decision Intelligence",
   description: "説明可能な Knowledge Graph レコメンド体験デモ",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+    ],
+    shortcut: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({

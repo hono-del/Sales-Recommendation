@@ -1,0 +1,37 @@
+{
+  "version": "1.0",
+  "description": "アップグレード/ダウングレードサービス案カタログ。作業手順は docs/SERVICE_OFFERING_CATALOG_WORK_GUIDE.md を参照。",
+  "offerings": [
+    {
+      "id": "svc_example_fixed_maintenance",
+      "title": "【記入例・削除可】定額メンテナンスプラン",
+      "one_liner": "月額固定で、突然の整備費不安を減らす",
+      "direction": "upgrade",
+      "domain": "maintenance",
+      "lifecycle": "ownership",
+      "status": "draft",
+      "contributor": "記入者名",
+      "updated_at": "2026-05-28",
+      "primary_needs": [
+        { "name": "MaintenanceCostReduction", "weight": 1.0 },
+        { "name": "LongTermReliability", "weight": 0.8 }
+      ],
+      "secondary_needs": [],
+      "load_labels": ["維持費への不安"],
+      "value_axes": ["efficiency", "safety"],
+      "burden_addressed": ["維持費への不安"],
+      "value_shift": ["risk_down", "simplicity_up"],
+      "trade_off": "月額は増えるが、突発的な整備費の不安が減る",
+      "need_rationale": "維持費の見通しが立つことで、長く乗る安心感にもつながる",
+      "analog": {
+        "name": "携帯電話の定額プラン",
+        "pattern": "predictable_cost",
+        "why": "変動費を固定費化して判断負荷を下げる構造が同じ",
+        "pitch_template": "携帯の定額プランのように、クルマの維持費を毎月一定に"
+      },
+      "eligibility": "既存オーナー",
+      "combinability": "stackable",
+      "notes": ""
+    }
+  ]
+}

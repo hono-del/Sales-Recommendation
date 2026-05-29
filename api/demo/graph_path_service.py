@@ -9,7 +9,20 @@ import time
 from pathlib import Path
 from typing import Any, Optional
 
-from api.demo.recommend_service import recommend_for_session
+from api.demo.decision_style_presentation import (
+    build_style_presentation,
+    enrich_reason_trace,
+    _style_from_session,
+)
+from api.demo.explainability import (
+    build_experience_items,
+    build_experience_items_from_kg_needs,
+    build_feature_cards,
+    build_filter_funnel,
+    build_reason_trace,
+    build_vehicle_detail,
+)
+from api.demo.recommend_service import recommend_for_session, _vehicle_meta
 from engine.recommendation_engine import RecommendationEngine
 
 _FALLBACK_PATH = (
@@ -17,6 +30,7 @@ _FALLBACK_PATH = (
 )
 _MAX_NODES = 50
 _CACHE_TTL_SEC = 120.0
+_NEO4J_PATH_TIMEOUT_SEC = 4.0
 _graph_cache: dict[str, tuple[float, dict[str, Any]]] = {}
 
 _VALUE_LABELS = {
@@ -41,6 +55,27 @@ _LIFESTYLE_BY_ANSWER = {
     "active": "アウトドア",
     "learning": "日常・通勤",
     "hobby": "趣味ドライブ",
+}
+
+_LOAD_TO_EXPERIENCE = {
+    "駐車・狭い道への不安": "駐車を気にせず移動できる",
+    "長距離移動による疲労": "長距離でも疲れにくい",
+    "維持費への不安": "維持費を気にしすぎない",
+    "渋滞ストレス": "渋滞でも快適に過ごせる",
+    "車内の狭さ": "車内空間にゆとりがある",
+    "運転操作の負担": "運転中の操作が楽になる",
+}
+
+_FEATURE_TO_REASON = {
+    "Honda SENSING": "安全運転支援で負担軽減",
+    "パノラミックビューモニター": "駐車ストレス軽減",
+    "Google Map統合": "渋滞ストレス軽減",
+    "Google Assistant": "運転中操作負荷軽減",
+    "Google Play対応": "日常体験の快適性向上",
+    "e:HEVシステム": "維持費バランス改善",
+    "電動パーキングブレーキ": "操作負担軽減",
+    "3列シート": "家族全員が快適に移動",
+    "低床フロア": "乗り降りの負担軽減",
 }
 
 
@@ -96,6 +131,27 @@ def _lifestyle_label(session: dict[str, Any]) -> Optional[str]:
     return None
 
 
+def _kg_needs_from_session(session: dict[str, Any]) -> list[dict[str, Any]]:
+    profile_data = session.get("profile") or {}
+    return list(profile_data.get("kg_needs") or [])
+
+
+def _recommendations_payload(
+    session: dict[str, Any], *, top_model: Optional[str] = None
+) -> dict[str, Any]:
+    """セッションキャッシュの推薦結果を取得。無ければ1回だけ計算。"""
+    cached = session.get("cached_recommendations")
+    if isinstance(cached, dict) and cached.get("payload"):
+        return cached["payload"]
+    if top_model:
+        return {
+            "demo_fallback": True,
+            "recommendations": [{"model": top_model, "score": 0.85}],
+            "excluded": [],
+        }
+    return recommend_for_session(session)
+
+
 def _build_logic(
     prof: dict[str, float],
     loads: list[str],
@@ -111,16 +167,91 @@ def _build_logic(
     return f"{head} × {load_part} → {feat_part} → {vehicle}"
 
 
+def _attach_style_presentation(
+    session: dict[str, Any],
+    thinking: dict[str, Any],
+    recommendations: Optional[list[dict[str, Any]]],
+) -> dict[str, Any]:
+    """意思決定スタイルに応じたプレゼン層を thinking_process に付与。"""
+    style = _style_from_session(session)
+    if style:
+        thinking["decision_style"] = style
+    if not recommendations:
+        return thinking
+    presentation = build_style_presentation(session, thinking, recommendations)
+    if presentation:
+        thinking["style_presentation"] = presentation
+        if thinking.get("reason_trace"):
+            thinking["reason_trace"] = enrich_reason_trace(
+                thinking["reason_trace"], presentation
+            )
+    return thinking
+
+
+def _build_thinking_process(
+    session: dict[str, Any],
+    prof: dict[str, float],
+    loads: list[str],
+    features: list[str],
+    vehicle_name: str,
+    vehicle_score: float,
+    vehicle_meta: Optional[dict[str, Any]] = None,
+    recommendations: Optional[list[dict[str, Any]]] = None,
+) -> dict[str, Any]:
+    """STEP0〜5 + Reason Trace の思考プロセスデータを生成"""
+
+    ranked_values = sorted(prof.items(), key=lambda x: -x[1])
+    values = [
+        {"key": k, "label": _VALUE_LABELS.get(k, k), "percent": int(v)}
+        for k, v in ranked_values[:3]
+        if v > 0
+    ]
+
+    load_items = loads[:3]
+    kg_needs = _kg_needs_from_session(session)
+    if kg_needs:
+        experiences = build_experience_items_from_kg_needs(kg_needs, prof)
+    else:
+        experiences = build_experience_items(prof, load_items)
+    feature_items = build_feature_cards(features)
+    vehicle_item = build_vehicle_detail(
+        session, prof, load_items, vehicle_name, vehicle_score, vehicle_meta
+    )
+    filter_funnel = build_filter_funnel(session, final_count=3, fast=True)
+    reason_trace = build_reason_trace(
+        prof, load_items, experiences, feature_items, vehicle_item, kg_needs=kg_needs or None
+    )
+
+    thinking = {
+        "filter_funnel": filter_funnel,
+        "values": values,
+        "loads": load_items,
+        "experiences": experiences,
+        "features": feature_items,
+        "vehicle": vehicle_item,
+        "reason_trace": reason_trace,
+    }
+    return _attach_style_presentation(session, thinking, recommendations)
+
+
 def _resolve_vehicle(
     session: dict[str, Any],
     top_model: Optional[str],
+    rec_payload: dict[str, Any],
 ) -> tuple[str, float, bool]:
+    recs = rec_payload.get("recommendations") or []
+    demo_fb = bool(rec_payload.get("demo_fallback"))
     if top_model:
-        return top_model, 0.9, False
-    rec = recommend_for_session(session)
-    if rec.get("recommendations"):
-        top = rec["recommendations"][0]
-        return top["model"], float(top.get("score", 0.85)), bool(rec.get("demo_fallback"))
+        score = 0.85
+        for r in recs:
+            if r.get("model") == top_model:
+                score = float(r.get("score", 0.85))
+                break
+        return top_model, score, demo_fb
+    if recs:
+        top = recs[0]
+        return top["model"], float(top.get("score", 0.85)), demo_fb
+
     fb = _load_fallback()
     for node in fb.get("nodes", []):
         if node.get("type") == "vehicle":
@@ -131,12 +262,12 @@ def _resolve_vehicle(
 def _query_neo4j_path(
     vehicle_name: str,
     mapped_needs: list[str],
+    engine: RecommendationEngine,
 ) -> list[dict[str, Any]]:
     if not mapped_needs:
         return []
-    engine = RecommendationEngine()
+    deadline = time.time() + _NEO4J_PATH_TIMEOUT_SEC
     try:
-        engine.driver.verify_connectivity()
         with engine.driver.session() as session:
             result = session.run(
                 """
@@ -150,14 +281,17 @@ def _query_neo4j_path(
                        n.name AS need_name,
                        n.label AS need_label
                 ORDER BY tf.name
-                LIMIT 50
+                LIMIT 12
                 """,
                 vehicle_name=vehicle_name,
-                mapped_needs=mapped_needs,
+                mapped_needs=mapped_needs[:8],
             )
-            return [dict(r) for r in result]
-    finally:
-        engine.close()
+            rows = [dict(r) for r in result]
+            if time.time() > deadline:
+                return rows[:6]
+            return rows
+    except Exception:
+        return []
 
 
 def _assemble_from_neo4j(
@@ -166,6 +300,9 @@ def _assemble_from_neo4j(
     vehicle_name: str,
     vehicle_score: float,
     demo_fallback: bool,
+    *,
+    engine: Optional[RecommendationEngine] = None,
+    recs: Optional[list[dict[str, Any]]] = None,
 ) -> dict[str, Any]:
     prof = _profile_dict(session)
     profile_data = session.get("profile") or {}
@@ -220,9 +357,106 @@ def _assemble_from_neo4j(
         else:
             edges.append({"source": "person", "target": lid, "label": "負荷"})
 
+    kg_needs = _kg_needs_from_session(session)
+    if kg_needs:
+        experiences_data = build_experience_items_from_kg_needs(kg_needs, prof)
+    else:
+        experiences_data = build_experience_items(prof, loads)
+
+    need_ids: list[str] = []
+    exp_ids: list[str] = []
+    need_id_by_name: dict[str, str] = {}
+
+    if kg_needs:
+        for i, need in enumerate(kg_needs[:3]):
+            name = need.get("name", f"need_{i}")
+            nid = f"need_{_slug(name)}"
+            need_ids.append(nid)
+            need_id_by_name[name] = nid
+            nodes.append(
+                {
+                    "id": nid,
+                    "type": "need",
+                    "label": (need.get("label") or name)[:28],
+                    "subtype": need.get("group", ""),
+                }
+            )
+            linked = False
+            src_load = need.get("source_load", "")
+            if src_load:
+                for j, load_text in enumerate(loads):
+                    if load_text == src_load and j < len(load_ids):
+                        edges.append(
+                            {
+                                "source": load_ids[j],
+                                "target": nid,
+                                "label": "ゆらぎ",
+                            }
+                        )
+                        linked = True
+                        break
+            src_axis = need.get("source_axis", "")
+            if not linked and src_axis:
+                vid = f"value_{src_axis}"
+                if any(n["id"] == vid for n in nodes):
+                    edges.append(
+                        {"source": vid, "target": nid, "label": "重視"}
+                    )
+                    linked = True
+            if not linked:
+                if load_ids:
+                    edges.append(
+                        {
+                            "source": load_ids[i % len(load_ids)],
+                            "target": nid,
+                            "label": "欲求",
+                        }
+                    )
+                elif value_ids:
+                    edges.append(
+                        {
+                            "source": value_ids[i % len(value_ids)],
+                            "target": nid,
+                            "label": "欲求",
+                        }
+                    )
+                else:
+                    edges.append(
+                        {"source": "person", "target": nid, "label": "欲求"}
+                    )
+    else:
+        for i, exp in enumerate(experiences_data[:3]):
+            eid = f"experience_{i}"
+            exp_ids.append(eid)
+            nodes.append(
+                {
+                    "id": eid,
+                    "type": "experience",
+                    "label": exp["label"][:28],
+                }
+            )
+            if load_ids:
+                edges.append(
+                    {
+                        "source": load_ids[i % len(load_ids)],
+                        "target": eid,
+                        "label": "必要な体験",
+                    }
+                )
+            elif value_ids:
+                edges.append(
+                    {
+                        "source": value_ids[i % len(value_ids)],
+                        "target": eid,
+                        "label": "求める体験",
+                    }
+                )
+
     features: list[str] = []
     feature_ids: list[str] = []
+    benefit_ids: list[str] = []
     seen_feat: set[str] = set()
+    bridge_ids = need_ids if need_ids else exp_ids
     for row in rows:
         feat_name = (row.get("feature") or "").strip()
         if not feat_name or feat_name in seen_feat:
@@ -232,7 +466,21 @@ def _assemble_from_neo4j(
         fid = f"feature_{_slug(feat_name)}"
         feature_ids.append(fid)
         nodes.append({"id": fid, "type": "feature", "label": feat_name[:32]})
-        if load_ids:
+        need_name = (row.get("need_name") or "").strip()
+        src_id: Optional[str] = None
+        if need_name and need_name in need_id_by_name:
+            src_id = need_id_by_name[need_name]
+        elif bridge_ids:
+            src_id = bridge_ids[len(feature_ids) % len(bridge_ids)]
+        if src_id:
+            edges.append(
+                {
+                    "source": src_id,
+                    "target": fid,
+                    "label": "SUPPORTS" if need_ids else "実現",
+                }
+            )
+        elif load_ids:
             edges.append(
                 {
                     "source": load_ids[len(feature_ids) % len(load_ids)],
@@ -242,6 +490,21 @@ def _assemble_from_neo4j(
             )
         if len(feature_ids) >= 3:
             break
+
+    feature_cards = build_feature_cards(features)
+    for i, card in enumerate(feature_cards):
+        bid = f"benefit_{i}"
+        benefit_ids.append(bid)
+        benefit_label = card.get("emotional_benefit", "快適さ")[:20]
+        nodes.append({"id": bid, "type": "emotional_benefit", "label": benefit_label})
+        if i < len(feature_ids):
+            edges.append(
+                {
+                    "source": feature_ids[i],
+                    "target": bid,
+                    "label": "もたらす",
+                }
+            )
 
     vid = f"vehicle_{_slug(vehicle_name)}"
     nodes.append(
@@ -261,16 +524,46 @@ def _assemble_from_neo4j(
                 "highlighted": True,
             }
         )
+    for bid in benefit_ids:
+        edges.append(
+            {
+                "source": bid,
+                "target": vid,
+                "label": "満たす",
+                "highlighted": True,
+            }
+        )
 
     if len(nodes) > _MAX_NODES:
+        keep_ids = {n["id"] for n in nodes[:_MAX_NODES]}
         nodes = nodes[:_MAX_NODES]
+        edges = [e for e in edges if e["source"] in keep_ids and e["target"] in keep_ids]
 
     logic = _build_logic(prof, loads, features, vehicle_name)
+    vmeta: dict[str, Any] = {}
+    if engine:
+        try:
+            vmeta = _vehicle_meta(engine, vehicle_name)
+        except Exception:
+            pass
+
+    thinking_process = _build_thinking_process(
+        session,
+        prof,
+        loads,
+        features,
+        vehicle_name,
+        vehicle_score,
+        vmeta,
+        recs or [],
+    )
+
     return {
         "demo_fallback": demo_fallback,
         "nodes": nodes,
         "edges": edges,
         "why_panel": _why_panel(session, logic),
+        "thinking_process": thinking_process,
         "source": "neo4j",
     }
 
@@ -280,6 +573,8 @@ def _personalize_fallback(
     vehicle_name: str,
     vehicle_score: float,
     demo_fallback: bool,
+    *,
+    recs: Optional[list[dict[str, Any]]] = None,
 ) -> dict[str, Any]:
     import copy
 
@@ -306,7 +601,20 @@ def _personalize_fallback(
         if n.get("type") == "feature"
     ]
     logic = _build_logic(prof, list(loads), features, vehicle_name)
+
+    thinking_process = _build_thinking_process(
+        session,
+        prof,
+        list(loads),
+        features,
+        vehicle_name,
+        vehicle_score,
+        None,
+        recs or [],
+    )
+
     data["why_panel"] = _why_panel(session, logic)
+    data["thinking_process"] = thinking_process
     data["demo_fallback"] = demo_fallback
     data["source"] = "fallback"
     return data
@@ -315,7 +623,10 @@ def _personalize_fallback(
 def _cache_key(session_id: str, top_model: Optional[str], session: dict[str, Any]) -> str:
     profile_data = session.get("profile") or {}
     needs = ",".join(profile_data.get("mapped_needs") or [])
-    return f"{session_id}:{top_model or ''}:{needs}"
+    kg = ",".join(
+        n.get("name", "") for n in (profile_data.get("kg_needs") or [])[:5]
+    )
+    return f"{session_id}:{top_model or ''}:{needs}:{kg}"
 
 
 def get_graph_path(
@@ -331,13 +642,19 @@ def get_graph_path(
     if cached and now - cached[0] < _CACHE_TTL_SEC:
         return cached[1]
 
-    vehicle_name, vehicle_score, rec_fallback = _resolve_vehicle(session, top_model)
+    rec_payload = _recommendations_payload(session, top_model=top_model)
+    recs = list(rec_payload.get("recommendations") or [])[:3]
+    vehicle_name, vehicle_score, rec_fallback = _resolve_vehicle(
+        session, top_model, rec_payload
+    )
     profile_data = session.get("profile") or {}
-    mapped_needs: list[str] = list(profile_data.get("mapped_needs") or [])
+    mapped_needs: list[str] = list(profile_data.get("mapped_needs") or [])[:8]
 
     result: dict[str, Any]
+    engine: Optional[RecommendationEngine] = None
     try:
-        rows = _query_neo4j_path(vehicle_name, mapped_needs)
+        engine = RecommendationEngine()
+        rows = _query_neo4j_path(vehicle_name, mapped_needs, engine)
         if rows:
             result = _assemble_from_neo4j(
                 session,
@@ -345,15 +662,28 @@ def get_graph_path(
                 vehicle_name,
                 vehicle_score,
                 rec_fallback,
+                engine=engine,
+                recs=recs,
             )
         else:
             result = _personalize_fallback(
-                session, vehicle_name, vehicle_score, True
+                session,
+                vehicle_name,
+                vehicle_score,
+                True,
+                recs=recs,
             )
     except Exception:
         result = _personalize_fallback(
-            session, vehicle_name, vehicle_score, True
+            session,
+            vehicle_name,
+            vehicle_score,
+            True,
+            recs=recs,
         )
+    finally:
+        if engine:
+            engine.close()
 
     _graph_cache[key] = (now, result)
     return result

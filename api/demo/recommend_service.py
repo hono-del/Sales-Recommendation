@@ -22,11 +22,80 @@ _ARCHETYPE_BY_AXIS = {
     "adventure": "冒険重視型",
 }
 
-_EXCLUDE_REASONS = [
-    "利用文脈との一致度が低い",
-    "重視する価値軸との適合度が低い",
-    "利用頻度に対してオーバースペック",
-]
+def _generate_exclude_reason(
+    vehicle_name: str,
+    req: "RecommendationRequest",
+    engine: "RecommendationEngine",
+    top_models: list[str],
+) -> str:
+    """除外理由を具体的に生成"""
+    try:
+        with engine.driver.session() as session:
+            result = session.run(
+                """
+                MATCH (v:VehicleModel {name: $name})
+                RETURN v.seating_capacity AS seating,
+                       v.price_range AS price_range,
+                       v.segment AS segment,
+                       v.body_type AS body_type
+                """,
+                name=vehicle_name,
+            ).single()
+            if not result:
+                return "データ不足のため候補から除外"
+            
+            seating = result.get("seating") or 0
+            price_range = result.get("price_range") or ""
+            segment = result.get("segment") or ""
+            body_type = result.get("body_type") or ""
+            
+            # 定員不足
+            if req.family_size > 0 and seating > 0 and seating < req.family_size:
+                return f"乗車定員{seating}人では家族{req.family_size}人の移動に不足するため"
+            
+            # 予算オーバー
+            if price_range and req.budget_min > 0:
+                import re
+                nums = re.findall(r"[\d,]+", price_range.replace("万円", "0000"))
+                nums = [int(n.replace(",", "")) for n in nums]
+                if nums:
+                    min_price = min(nums) if len(nums) >= 2 else nums[0]
+                    if min_price > req.budget_max * 1.3:
+                        return f"予算上限（{req.budget_max // 10000}万円）に対し価格帯が高すぎるため"
+            
+            # セグメント・ボディタイプの不一致
+            top_segments = []
+            top_body_types = []
+            for top_m in top_models[:2]:
+                r = session.run(
+                    "MATCH (v:VehicleModel {name: $name}) RETURN v.segment AS seg, v.body_type AS bt",
+                    name=top_m,
+                ).single()
+                if r:
+                    if r.get("seg"):
+                        top_segments.append(r.get("seg"))
+                    if r.get("bt"):
+                        top_body_types.append(r.get("bt"))
+            
+            if top_segments and segment and segment not in top_segments:
+                if "Luxury" in segment or "Performance" in segment:
+                    return "日常利用の観点から、より実用的なセグメントが適しているため"
+                if "Kei" in segment and req.family_size >= 4:
+                    return "家族人数に対してボディサイズが小さすぎるため"
+            
+            # ニーズ不一致（デフォルト）
+            if "offroad" in req.needs or "adventure" in req.needs:
+                if body_type in ("Sedan", "Hatchback"):
+                    return "アクティブな利用シーンに対し、セダン/ハッチバックは適合度が低いため"
+            
+            if "family" in req.needs:
+                if seating < 5:
+                    return "家族利用を重視する場合、より多人数対応の車種が適しているため"
+            
+            return "重視する価値観・利用シーンとの適合度が、上位3台より低いため"
+    
+    except Exception:
+        return "総合的な適合度が上位3台より低いため"
 _MAX_EXCLUDED = 3
 
 
@@ -127,7 +196,6 @@ def recommend_for_session(
     try:
         engine = RecommendationEngine()
         try:
-            engine.driver.verify_connectivity()
             req = RecommendationRequest(
                 family_size=family_size,
                 budget=budget,
@@ -138,27 +206,70 @@ def recommend_for_session(
                 budget_max=budget_max,  # 予算上限
             )
             results = engine.recommend(req, top_k=3 + _MAX_EXCLUDED)
+            top_score = results[0].score if results else 0
+            top_meta = _vehicle_meta(engine, results[0].model) if results else {}
+            
             for i, r in enumerate(results[:3]):
                 meta = _vehicle_meta(engine, r.model)
+                gap_vs_top = []
+                if i > 0:
+                    # 第1推薦との差分
+                    score_diff = top_score - r.score
+                    if score_diff > 0.05:
+                        gap_vs_top.append(f"総合スコアが第1推薦より {int(score_diff * 100)}% 低い")
+                    
+                    # 価格差
+                    if top_meta.get("price_range") and meta.get("price_range"):
+                        try:
+                            import re
+                            def extract_min_price(pr: str) -> int:
+                                nums = re.findall(r"[\d,]+", pr.replace("万円", "0000"))
+                                if nums:
+                                    return int(nums[0].replace(",", ""))
+                                return 0
+                            top_min = extract_min_price(top_meta["price_range"])
+                            cur_min = extract_min_price(meta["price_range"])
+                            if cur_min > top_min * 1.2:
+                                gap_vs_top.append(f"価格が第1推薦より高め（約{(cur_min - top_min) // 10000}万円高）")
+                            elif cur_min < top_min * 0.8:
+                                gap_vs_top.append(f"装備・性能が第1推薦より抑えめ（約{(top_min - cur_min) // 10000}万円安）")
+                        except Exception:
+                            pass
+                    
+                    # 燃費タイプ差
+                    if top_meta.get("fuel_type") == "Hybrid" and meta.get("fuel_type") != "Hybrid":
+                        gap_vs_top.append("ハイブリッドではないため燃費効率がやや劣る")
+                    
+                    # 定員差
+                    if top_meta.get("seating_capacity", 0) > meta.get("seating_capacity", 0):
+                        gap_vs_top.append("定員が第1推薦より少ない")
+                
+                profile_data = session.get("profile") or {}
+                style_label = profile_data.get("decision_style_label")
+                archetype = (
+                    style_label
+                    if i == 0 and style_label
+                    else _archetype_for_rank(prof, i)
+                )
                 recommendations.append({
                     "model": r.model,
                     "score": round(r.score, 3),
                     "reason": r.reason,
-                    "archetype": _archetype_for_rank(prof, i),
+                    "archetype": archetype,
                     "similar_consumers": r.similar_consumers[:3],
                     "quick_grade": meta.get("quick_grade", ""),
                     "price_range": meta.get("price_range", ""),
                     "fuel_type": meta.get("fuel_type", ""),
                     "seating_capacity": meta.get("seating_capacity", 0),
                     "appeal_points": meta.get("appeal_points", []),
-                    "load_boost": round(r.load_boost, 3),  # Load ブーストスコア
-                    "matched_load_features": r.matched_load_features[:3],  # マッチした Load 対応機能
+                    "load_boost": round(r.load_boost, 3),
+                    "matched_load_features": r.matched_load_features[:3],
+                    "gap_vs_top": gap_vs_top if i > 0 else [],
                 })
+            top_models = [r.model for r in results[:3]]
             for r in results[3 : 3 + _MAX_EXCLUDED]:
-                excluded.append({
-                    "model": r.model,
-                    "reason": _EXCLUDE_REASONS[len(excluded) % len(_EXCLUDE_REASONS)],
-                })
+                reason = _generate_exclude_reason(r.model, req, engine, top_models)
+                excluded.append({"model": r.model, "reason": reason})
         finally:
             engine.close()
     except Exception:

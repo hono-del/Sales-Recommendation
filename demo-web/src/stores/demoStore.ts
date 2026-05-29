@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import type { ProfileScores } from "@/lib/api-client";
+import type { DecisionStyleResult } from "@/lib/decision-style-calculator";
 import type { ExcludedModel, Recommendation } from "@/types/demo";
 
 type DelegationLevel = "guide" | "co_pilot" | "auto";
@@ -16,6 +17,7 @@ type DemoState = {
   neo4jConnected: boolean | null;
   demoFallback: boolean;
   profile: ProfileScores | null;
+  decisionStyle: DecisionStyleResult | null;
   mappedNeeds: string[];
   answers: StoredAnswer[];
   answersCount: number;
@@ -25,7 +27,11 @@ type DemoState = {
   setSessionId: (id: string) => void;
   setNeo4jConnected: (v: boolean) => void;
   setDemoFallback: (v: boolean) => void;
-  setProfile: (profile: ProfileScores, needs: string[]) => void;
+  setProfile: (
+    profile: ProfileScores,
+    needs: string[],
+    decisionStyle?: DecisionStyleResult | null,
+  ) => void;
   addAnswer: (answer: StoredAnswer) => void;
   setDelegationLevel: (level: DelegationLevel) => void;
   setRecommendations: (recs: Recommendation[], excluded: ExcludedModel[], fallback: boolean) => void;
@@ -37,6 +43,7 @@ const initialState = {
   neo4jConnected: null,
   demoFallback: false,
   profile: null,
+  decisionStyle: null,
   mappedNeeds: [] as string[],
   answers: [] as StoredAnswer[],
   answersCount: 0,
@@ -52,7 +59,12 @@ export const useDemoStore = create<DemoState>()(
       setSessionId: (id) => set({ sessionId: id }),
       setNeo4jConnected: (v) => set({ neo4jConnected: v }),
       setDemoFallback: (v) => set({ demoFallback: v }),
-      setProfile: (profile, mappedNeeds) => set({ profile, mappedNeeds }),
+      setProfile: (profile, mappedNeeds, decisionStyle) =>
+        set({
+          profile,
+          mappedNeeds,
+          ...(decisionStyle !== undefined ? { decisionStyle } : {}),
+        }),
       addAnswer: (answer) =>
         set((s) => {
           const answers = [
@@ -74,6 +86,7 @@ export const useDemoStore = create<DemoState>()(
       partialize: (s) => ({
         sessionId: s.sessionId,
         profile: s.profile,
+        decisionStyle: s.decisionStyle,
         mappedNeeds: s.mappedNeeds,
         answers: s.answers,
         answersCount: s.answersCount,

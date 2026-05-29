@@ -34,6 +34,7 @@ const COL_X: Record<string, number> = {
   value: -50,
   lifestyle: 20,
   experience: 90,
+  need: 120,
   load: 90,
   feature: 180,
   vehicle: 280,

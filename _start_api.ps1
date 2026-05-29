@@ -13,4 +13,4 @@ foreach ($line in Get-Content "$ROOT\.env") {
 Write-Host "▶ API Server starting on http://0.0.0.0:8000" -ForegroundColor Cyan
 Write-Host "  Swagger UI: http://localhost:8000/docs" -ForegroundColor DarkGray
 Write-Host ""
-uvicorn api.api_server:app --host 0.0.0.0 --port 8000 --reload
+uvicorn api.api_server:app --host 0.0.0.0 --port 8000 --reload --reload-exclude "data/demo/sessions.json" --reload-exclude "data/demo/*.json"

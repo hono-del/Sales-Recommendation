@@ -1,4 +1,5 @@
 import { api } from "@/lib/api-client";
+import { decisionStyleFromApiResponse } from "@/lib/decision-style-calculator";
 import { useDemoStore } from "@/stores/demoStore";
 
 export type StoredAnswer = {
@@ -41,7 +42,8 @@ async function syncAnswers(
   for (const a of answers) {
     try {
       const res = await api.postAnswer(sessionId, a);
-      useDemoStore.getState().setProfile(res.profile, res.mapped_needs);
+      const style = decisionStyleFromApiResponse(res);
+      useDemoStore.getState().setProfile(res.profile, res.mapped_needs, style);
     } catch {
       /* 個別失敗は続行 */
     }
