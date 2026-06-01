@@ -9,12 +9,12 @@
       "ask_others": ["FamilyComfort", "ChildSafety", "WeekendFamilyTrip"],
       "intuition": ["DrivingEnjoyment", "PersonalExpression", "EmotionalAttachment"]
     },
-    "q2_information": {
-      "deep_research": ["DrivingConfidence", "LongTermReliability", "EfficientDailyMobility"],
-      "summary": ["EfficientDailyMobility", "DrivingConfidence", "LowFuelAnxiety"],
-      "expert_review": ["ChildSafety", "AccidentAnxietyReduction", "DrivingConfidence"],
-      "word_of_mouth": ["FamilyComfort", "WeekendFamilyTrip", "ChildSafety"],
-      "try_first": ["DrivingEnjoyment", "PersonalExpression", "OutdoorLifestyle"]
+    "q2_stress_handling": {
+      "analyze_solve": ["DrivingConfidence", "MaintenanceCostReduction", "LongTermReliability"],
+      "accept_adapt": ["FamilyComfort", "RelaxingDrive", "EfficientDailyMobility"],
+      "seek_support": ["FamilyComfort", "ChildSafety", "WeekendFamilyTrip"],
+      "distance_refresh": ["RelaxingDrive", "QuietCabinExperience", "DrivingEnjoyment"],
+      "challenge_growth": ["OutdoorLifestyle", "AdventureLifestyle", "DrivingEnjoyment"]
     },
     "q3_priority": {
       "safety_security": ["ChildSafety", "DrivingConfidence", "AccidentAnxietyReduction", "EasyParking"],

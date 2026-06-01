@@ -42,11 +42,11 @@ function applyGuards(
 ): DecisionStyleScores {
   const adjusted = { ...scores };
   const q1 = byQid.q1_decision_style ?? "";
-  const q2 = byQid.q2_information ?? "";
+  const q2 = byQid.q2_stress_handling ?? "";
 
   // Delegator ガード：明示的に「他者に相談」を選んだ場合のみ高スコアを許可
   const delegatorOk =
-    q1 === "ask_others" || q2 === "word_of_mouth";
+    q1 === "ask_others" || q2 === "seek_support";
 
   const rerank = () =>
     Object.entries(adjusted).sort((a, b) => b[1] - a[1]);

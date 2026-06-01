@@ -7371,5 +7371,623 @@
         ]
       }
     }
+  },
+  "1ee17e71-f632-435c-a5f4-8437923ae6ca": {
+    "session_id": "1ee17e71-f632-435c-a5f4-8437923ae6ca",
+    "created_at": "2026-06-01T07:09:15Z",
+    "updated_at": "2026-06-01T07:10:41Z",
+    "status": "profile_input_complete",
+    "delegation_level": "co_pilot",
+    "demo_fallback_used": true,
+    "family_size": 2,
+    "budget_range": "400-500",
+    "budget_min": 4000000,
+    "budget_max": 5000000,
+    "answers": [
+      {
+        "question_index": 1,
+        "question_id": "q1_decision_style",
+        "answer_key": "good_enough",
+        "answered_at": "2026-06-01T07:10:35Z"
+      },
+      {
+        "question_index": 2,
+        "question_id": "q2_information",
+        "answer_key": "expert_review",
+        "answered_at": "2026-06-01T07:10:35Z"
+      },
+      {
+        "question_index": 3,
+        "question_id": "q3_priority",
+        "answer_key": "safety_security",
+        "answered_at": "2026-06-01T07:10:35Z"
+      },
+      {
+        "question_index": 4,
+        "question_id": "q4_change",
+        "answer_key": "ask_advice",
+        "answered_at": "2026-06-01T07:10:35Z"
+      },
+      {
+        "question_index": 5,
+        "question_id": "q5_time_usage",
+        "answer_key": "relax_enjoy",
+        "answered_at": "2026-06-01T07:10:35Z"
+      }
+    ],
+    "profile": {
+      "profile": {
+        "score_safety": 100.0,
+        "score_family": 69.1,
+        "score_efficiency": 48.2,
+        "score_enjoyment": 50.1,
+        "score_adventure": 23.1
+      },
+      "mapped_needs": [
+        "ChildSafety",
+        "DrivingConfidence",
+        "AccidentAnxietyReduction",
+        "FamilyComfort",
+        "EasyParking",
+        "RelaxingDrive",
+        "DrivingEnjoyment",
+        "PersonalExpression",
+        "EfficientDailyMobility",
+        "LowFuelAnxiety",
+        "QuietCabinExperience"
+      ],
+      "kg_needs": [
+        {
+          "name": "ChildSafety",
+          "label": "子供を安全に乗せたい",
+          "group": "Family",
+          "source": "value",
+          "weight": 60.98,
+          "source_load": "",
+          "source_axis": "family"
+        },
+        {
+          "name": "DrivingConfidence",
+          "label": "運転への不安を減らしたい",
+          "group": "Safety",
+          "source": "value",
+          "weight": 48.54,
+          "source_load": "",
+          "source_axis": "safety"
+        },
+        {
+          "name": "AccidentAnxietyReduction",
+          "label": "事故不安を減らしたい",
+          "group": "Safety",
+          "source": "value",
+          "weight": 37.5,
+          "source_load": "",
+          "source_axis": "safety"
+        },
+        {
+          "name": "FamilyComfort",
+          "label": "家族全員が快適に移動したい",
+          "group": "Family",
+          "source": "value",
+          "weight": 32.07,
+          "source_load": "",
+          "source_axis": "family"
+        },
+        {
+          "name": "EasyParking",
+          "label": "駐車を楽にしたい",
+          "group": "Safety",
+          "source": "value",
+          "weight": 28.16,
+          "source_load": "",
+          "source_axis": "safety"
+        },
+        {
+          "name": "RelaxingDrive",
+          "label": "リラックスして運転したい",
+          "group": "Comfort",
+          "source": "value",
+          "weight": 21.02,
+          "source_load": "",
+          "source_axis": "enjoyment"
+        },
+        {
+          "name": "DrivingEnjoyment",
+          "label": "運転そのものを楽しみたい",
+          "group": "Lifestyle",
+          "source": "value",
+          "weight": 21.02,
+          "source_load": "",
+          "source_axis": "enjoyment"
+        },
+        {
+          "name": "PersonalExpression",
+          "label": "自分らしさを表現したい",
+          "group": "Lifestyle",
+          "source": "value",
+          "weight": 21.02,
+          "source_load": "",
+          "source_axis": "enjoyment"
+        }
+      ],
+      "mapped_capabilities": [
+        "SafetyPerformance",
+        "FamilyFriendly",
+        "RideComfort",
+        "DesignAppeal",
+        "FuelEfficiency"
+      ],
+      "detected_loads": [
+        "他者の意見重視"
+      ],
+      "ui_needs": [
+        "safety",
+        "family",
+        "ChildSafety",
+        "DrivingConfidence",
+        "AccidentAnxietyReduction",
+        "FamilyComfort",
+        "EasyParking"
+      ],
+      "decision_style": "Authority-driven",
+      "decision_style_label": "権威依存型",
+      "decision_style_description": "専門家・評価・ブランドの意見を重視",
+      "decision_style_scores": {
+        "Maximizer": 0.0,
+        "Satisficer": 92.1,
+        "Authority-driven": 100.0,
+        "Delegator": 59.3,
+        "Intuitive": 53.7,
+        "Impulsive": 17.9
+      },
+      "decision_style_confidence": 19.8,
+      "decision_style_secondary": "Satisficer",
+      "decision_style_secondary_label": "十分型",
+      "decision_style_is_mixed": true
+    },
+    "events": [
+      {
+        "id": "1a9920bb-50d3-4943-a65a-d8d67bc16b80",
+        "screen_id": "SCR-03",
+        "event_type": "cta_click",
+        "payload": {
+          "delegation_level": "co_pilot"
+        },
+        "duration_ms": null,
+        "created_at": "2026-06-01T07:10:17Z"
+      }
+    ],
+    "cached_recommendations": {
+      "cached_at": "2026-06-01T07:10:41Z",
+      "payload": {
+        "demo_fallback": false,
+        "recommendations": [
+          {
+            "model": "CR-V",
+            "score": 0.714,
+            "reason": "ニーズに100%マッチ、同様の家族構成の3名が選択",
+            "archetype": "権威依存型",
+            "similar_consumers": [
+              "honda_web_116",
+              "honda_web_109",
+              "honda_web_097"
+            ],
+            "quick_grade": "",
+            "price_range": "5,122,700〜5,779,400円",
+            "fuel_type": "Gasoline",
+            "seating_capacity": 5,
+            "appeal_points": [
+              "アクティブノイズコントロール",
+              "アクティブサウンドコントロール",
+              "歩行者事故低減ステアリング"
+            ],
+            "load_boost": 0.0,
+            "matched_load_features": [],
+            "gap_vs_top": []
+          },
+          {
+            "model": "VEZEL",
+            "score": 0.682,
+            "reason": "ニーズに100%マッチ、同様の家族構成の3名が選択",
+            "archetype": "バランス型",
+            "similar_consumers": [
+              "honda_web_1073",
+              "honda_web_1164",
+              "honda_web_1151"
+            ],
+            "quick_grade": "",
+            "price_range": "2,758,800〜3,968,800円",
+            "fuel_type": "Hybrid",
+            "seating_capacity": 5,
+            "appeal_points": [
+              "Honda CONNECT（コネクテッド技術）",
+              "歩行者事故低減ステアリング",
+              "マルチビューカメラシステム"
+            ],
+            "load_boost": 0.0,
+            "matched_load_features": [],
+            "gap_vs_top": [
+              "装備・性能が第1推薦より抑えめ（約236万円安）"
+            ]
+          },
+          {
+            "model": "ACCORD",
+            "score": 0.634,
+            "reason": "ニーズに85%マッチ、同様の家族構成の3名が選択",
+            "archetype": "楽しさ重視型",
+            "similar_consumers": [
+              "honda_web_897",
+              "honda_web_901",
+              "honda_web_882"
+            ],
+            "quick_grade": "",
+            "price_range": "5,599,000〜5,999,400円",
+            "fuel_type": "Hybrid",
+            "seating_capacity": 5,
+            "appeal_points": [
+              "ドライバー異常時対応システム",
+              "Honda CONNECT（コネクテッド技術）",
+              "衝突軽減ブレーキ(CMBS)"
+            ],
+            "load_boost": 0.0,
+            "matched_load_features": [],
+            "gap_vs_top": [
+              "総合スコアが第1推薦より 7% 低い"
+            ]
+          }
+        ],
+        "excluded": [
+          {
+            "model": "CIVIC",
+            "reason": "重視する価値観・利用シーンとの適合度が、上位3台より低いため"
+          },
+          {
+            "model": "FREED",
+            "reason": "家族利用を重視する場合、より多人数対応の車種が適しているため"
+          },
+          {
+            "model": "INSIGHT",
+            "reason": "家族利用を重視する場合、より多人数対応の車種が適しているため"
+          }
+        ],
+        "ui_needs": [
+          "safety",
+          "family",
+          "ChildSafety",
+          "DrivingConfidence",
+          "AccidentAnxietyReduction",
+          "FamilyComfort",
+          "EasyParking"
+        ]
+      }
+    }
+  },
+  "c74fc929-e493-4053-b91c-34d434c6445a": {
+    "session_id": "c74fc929-e493-4053-b91c-34d434c6445a",
+    "created_at": "2026-06-01T07:16:52Z",
+    "updated_at": "2026-06-01T07:16:55Z",
+    "status": "profile_input_complete",
+    "delegation_level": null,
+    "demo_fallback_used": false,
+    "family_size": 4,
+    "budget_range": "300-400",
+    "budget_min": 3000000,
+    "budget_max": 4000000,
+    "answers": [],
+    "profile": null,
+    "events": []
+  },
+  "d50f51bd-87e4-4a68-ad80-b159996917dc": {
+    "session_id": "d50f51bd-87e4-4a68-ad80-b159996917dc",
+    "created_at": "2026-06-01T07:17:14Z",
+    "updated_at": "2026-06-01T07:17:14Z",
+    "status": "active",
+    "delegation_level": null,
+    "demo_fallback_used": false,
+    "family_size": null,
+    "budget_range": null,
+    "budget_min": null,
+    "budget_max": null,
+    "answers": [],
+    "profile": null,
+    "events": []
+  },
+  "499c7e42-3647-4982-a14a-06ad402000ad": {
+    "session_id": "499c7e42-3647-4982-a14a-06ad402000ad",
+    "created_at": "2026-06-01T07:18:03Z",
+    "updated_at": "2026-06-01T07:21:01Z",
+    "status": "profile_input_complete",
+    "delegation_level": "co_pilot",
+    "demo_fallback_used": false,
+    "family_size": 4,
+    "budget_range": "300-400",
+    "budget_min": 3000000,
+    "budget_max": 4000000,
+    "answers": [
+      {
+        "question_index": 1,
+        "question_id": "q1_decision_style",
+        "answer_key": "trust_authority",
+        "answered_at": "2026-06-01T07:21:01Z"
+      },
+      {
+        "question_index": 2,
+        "question_id": "q2_information",
+        "answer_key": "word_of_mouth",
+        "answered_at": "2026-06-01T07:21:01Z"
+      },
+      {
+        "question_index": 3,
+        "question_id": "q3_priority",
+        "answer_key": "self_growth",
+        "answered_at": "2026-06-01T07:21:01Z"
+      },
+      {
+        "question_index": 4,
+        "question_id": "q4_change",
+        "answer_key": "ask_advice",
+        "answered_at": "2026-06-01T07:21:01Z"
+      },
+      {
+        "question_index": 5,
+        "question_id": "q5_time_usage",
+        "answer_key": "relax_enjoy",
+        "answered_at": "2026-06-01T07:21:01Z"
+      }
+    ],
+    "profile": {
+      "profile": {
+        "score_safety": 88.8,
+        "score_family": 100.0,
+        "score_efficiency": 61.2,
+        "score_enjoyment": 92.9,
+        "score_adventure": 30.8
+      },
+      "mapped_needs": [
+        "ChildSafety",
+        "PersonalExpression",
+        "DrivingConfidence",
+        "FamilyComfort",
+        "RelaxingDrive",
+        "DrivingEnjoyment",
+        "AccidentAnxietyReduction",
+        "EfficientDailyMobility",
+        "LongTermReliability",
+        "QuietCabinExperience",
+        "WeekendFamilyTrip"
+      ],
+      "kg_needs": [
+        {
+          "name": "ChildSafety",
+          "label": "子供を安全に乗せたい",
+          "group": "Family",
+          "source": "value",
+          "weight": 53.62,
+          "source_load": "",
+          "source_axis": "family"
+        },
+        {
+          "name": "PersonalExpression",
+          "label": "自分らしさを表現したい",
+          "group": "Lifestyle",
+          "source": "value",
+          "weight": 38.88,
+          "source_load": "",
+          "source_axis": "enjoyment"
+        },
+        {
+          "name": "DrivingConfidence",
+          "label": "運転への不安を減らしたい",
+          "group": "Safety",
+          "source": "value",
+          "weight": 37.18,
+          "source_load": "",
+          "source_axis": "safety"
+        },
+        {
+          "name": "FamilyComfort",
+          "label": "家族全員が快適に移動したい",
+          "group": "Family",
+          "source": "value",
+          "weight": 29.04,
+          "source_load": "",
+          "source_axis": "family"
+        },
+        {
+          "name": "RelaxingDrive",
+          "label": "リラックスして運転したい",
+          "group": "Comfort",
+          "source": "value",
+          "weight": 28.72,
+          "source_load": "",
+          "source_axis": "enjoyment"
+        },
+        {
+          "name": "DrivingEnjoyment",
+          "label": "運転そのものを楽しみたい",
+          "group": "Lifestyle",
+          "source": "value",
+          "weight": 28.72,
+          "source_load": "",
+          "source_axis": "enjoyment"
+        },
+        {
+          "name": "AccidentAnxietyReduction",
+          "label": "事故不安を減らしたい",
+          "group": "Safety",
+          "source": "value",
+          "weight": 24.58,
+          "source_load": "",
+          "source_axis": "safety"
+        },
+        {
+          "name": "EfficientDailyMobility",
+          "label": "日常移動コストを抑えたい",
+          "group": "Economy",
+          "source": "value",
+          "weight": 21.17,
+          "source_load": "",
+          "source_axis": "efficiency"
+        }
+      ],
+      "mapped_capabilities": [
+        "SafetyPerformance",
+        "DesignAppeal",
+        "FamilyFriendly",
+        "RideComfort",
+        "FuelEfficiency",
+        "GeneralPerformance"
+      ],
+      "detected_loads": [
+        "他者の意見重視"
+      ],
+      "ui_needs": [
+        "family",
+        "design",
+        "ChildSafety",
+        "PersonalExpression",
+        "DrivingConfidence",
+        "FamilyComfort",
+        "RelaxingDrive"
+      ],
+      "decision_style": "Authority-driven",
+      "decision_style_label": "権威依存型",
+      "decision_style_description": "専門家・評価・ブランドの意見を重視",
+      "decision_style_scores": {
+        "Maximizer": 18.8,
+        "Satisficer": 0.0,
+        "Authority-driven": 82.2,
+        "Delegator": 0.0,
+        "Intuitive": 41.6,
+        "Impulsive": 13.9
+      },
+      "decision_style_confidence": 100.0,
+      "decision_style_secondary": "Intuitive",
+      "decision_style_secondary_label": "直感型",
+      "decision_style_is_mixed": false
+    },
+    "events": [
+      {
+        "id": "e5b03484-ba0c-4466-a9c4-1aa36f5757a7",
+        "screen_id": "SCR-03",
+        "event_type": "cta_click",
+        "payload": {
+          "delegation_level": "co_pilot"
+        },
+        "duration_ms": null,
+        "created_at": "2026-06-01T07:20:52Z"
+      },
+      {
+        "id": "27836df9-1bf0-45c7-a7f5-a74bf5e50f05",
+        "screen_id": "SCR-05",
+        "event_type": "enter",
+        "payload": {},
+        "duration_ms": null,
+        "created_at": "2026-06-01T07:21:01Z"
+      }
+    ],
+    "cached_recommendations": {
+      "cached_at": "2026-06-01T07:21:01Z",
+      "payload": {
+        "demo_fallback": false,
+        "recommendations": [
+          {
+            "model": "FIT",
+            "score": 0.637,
+            "reason": "ニーズに85%マッチ、同様の家族構成の3名が選択",
+            "archetype": "権威依存型",
+            "similar_consumers": [
+              "honda_web_2984",
+              "honda_web_3583",
+              "honda_web_3265"
+            ],
+            "quick_grade": "",
+            "price_range": "1,776,500〜2,929,300円",
+            "fuel_type": "Gasoline",
+            "seating_capacity": 5,
+            "appeal_points": [
+              "Honda CONNECT（コネクテッド技術）",
+              "パーキングセンサーシステム",
+              "歩行者事故低減ステアリング"
+            ],
+            "load_boost": 0.0,
+            "matched_load_features": [],
+            "gap_vs_top": []
+          },
+          {
+            "model": "CIVIC",
+            "score": 0.556,
+            "reason": "ニーズに71%マッチ、同様の家族構成の3名が選択",
+            "archetype": "バランス型",
+            "similar_consumers": [
+              "honda_web_1955",
+              "honda_web_1954",
+              "honda_web_002"
+            ],
+            "quick_grade": "",
+            "price_range": "3,544,200〜4,403,300円",
+            "fuel_type": "Gasoline",
+            "seating_capacity": 5,
+            "appeal_points": [
+              "Honda CONNECT（コネクテッド技術）",
+              "アクティブサウンドコントロール",
+              "歩行者事故低減ステアリング"
+            ],
+            "load_boost": 0.0,
+            "matched_load_features": [],
+            "gap_vs_top": [
+              "総合スコアが第1推薦より 8% 低い",
+              "価格が第1推薦より高め（約176万円高）"
+            ]
+          },
+          {
+            "model": "FREED",
+            "score": 0.479,
+            "reason": "ニーズに100%マッチ",
+            "archetype": "楽しさ重視型",
+            "similar_consumers": [],
+            "quick_grade": "",
+            "price_range": "2,623,500〜3,602,500円",
+            "fuel_type": "",
+            "seating_capacity": 0,
+            "appeal_points": [
+              "Honda CONNECT（コネクテッド技術）",
+              "衝突軽減ブレーキ（CMBS）",
+              "車線維持支援システム（LKAS）"
+            ],
+            "load_boost": 0.0,
+            "matched_load_features": [],
+            "gap_vs_top": [
+              "総合スコアが第1推薦より 15% 低い",
+              "価格が第1推薦より高め（約84万円高）",
+              "定員が第1推薦より少ない"
+            ]
+          }
+        ],
+        "excluded": [
+          {
+            "model": "NBOX",
+            "reason": "家族利用を重視する場合、より多人数対応の車種が適しているため"
+          },
+          {
+            "model": "VEZEL",
+            "reason": "重視する価値観・利用シーンとの適合度が、上位3台より低いため"
+          },
+          {
+            "model": "NEW",
+            "reason": "家族利用を重視する場合、より多人数対応の車種が適しているため"
+          }
+        ],
+        "ui_needs": [
+          "family",
+          "design",
+          "ChildSafety",
+          "PersonalExpression",
+          "DrivingConfidence",
+          "FamilyComfort",
+          "RelaxingDrive"
+        ]
+      }
+    }
   }
 }

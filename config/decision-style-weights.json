@@ -52,12 +52,12 @@
       "ask_others": { "Delegator": 28, "Authority-driven": 5 },
       "intuition": { "Intuitive": 30 }
     },
-    "q2_information": {
-      "deep_research": { "Maximizer": 25 },
-      "summary": { "Satisficer": 22 },
-      "expert_review": { "Authority-driven": 25 },
-      "word_of_mouth": { "Delegator": 25, "Authority-driven": 5 },
-      "try_first": { "Intuitive": 25, "Impulsive": 8 }
+    "q2_stress_handling": {
+      "analyze_solve": { "Maximizer": 20, "Authority-driven": 8 },
+      "accept_adapt": { "Satisficer": 22 },
+      "seek_support": { "Delegator": 25, "Authority-driven": 5 },
+      "distance_refresh": { "Intuitive": 18, "Satisficer": 10 },
+      "challenge_growth": { "Intuitive": 12, "Impulsive": 15 }
     },
     "q3_priority": {
       "safety_security": { "Authority-driven": 10, "Satisficer": 5 },

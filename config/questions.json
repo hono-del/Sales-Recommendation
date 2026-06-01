@@ -16,14 +16,14 @@
     },
     {
       "index": 2,
-      "id": "q2_information",
-      "text": "新しいことを始めるとき、どう情報を集めますか？",
+      "id": "q2_stress_handling",
+      "text": "ストレスや困難な状況に直面したとき、あなたは？",
       "choices": [
-        { "key": "deep_research", "label": "詳しく調べて、比較検討する" },
-        { "key": "summary", "label": "要点をまとめた情報を見る" },
-        { "key": "expert_review", "label": "専門家のレビューや評価を参考にする" },
-        { "key": "word_of_mouth", "label": "周りの人の経験談を聞く" },
-        { "key": "try_first", "label": "まず試してみてから判断する" }
+        { "key": "analyze_solve", "label": "原因を分析して、解決策を考える" },
+        { "key": "accept_adapt", "label": "受け入れて、柔軟に対応する" },
+        { "key": "seek_support", "label": "信頼できる人に相談する" },
+        { "key": "distance_refresh", "label": "一旦距離を置いて、気分転換する" },
+        { "key": "challenge_growth", "label": "成長の機会と捉えて、挑戦する" }
       ]
     },
     {

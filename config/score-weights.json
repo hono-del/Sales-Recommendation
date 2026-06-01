@@ -11,12 +11,12 @@
       "ask_others": { "family": 26, "safety": 10 },
       "intuition": { "enjoyment": 24, "adventure": 14 }
     },
-    "q2_information": {
-      "deep_research": { "efficiency": 24, "safety": 12 },
-      "summary": { "efficiency": 20, "safety": 8 },
-      "expert_review": { "safety": 22, "efficiency": 10 },
-      "word_of_mouth": { "family": 24, "safety": 10 },
-      "try_first": { "enjoyment": 22, "adventure": 12 }
+    "q2_stress_handling": {
+      "analyze_solve": { "efficiency": 24, "safety": 12 },
+      "accept_adapt": { "family": 18, "enjoyment": 12 },
+      "seek_support": { "family": 26, "safety": 10 },
+      "distance_refresh": { "enjoyment": 22, "adventure": 10 },
+      "challenge_growth": { "adventure": 24, "enjoyment": 12 }
     },
     "q3_priority": {
       "safety_security": { "safety": 28, "family": 10 },
@@ -41,6 +41,11 @@
     }
   },
   "load_labels": {
+    "analyze_solve": "問題解決への負荷",
+    "accept_adapt": "柔軟な適応の必要性",
+    "seek_support": "他者への依存",
+    "distance_refresh": "気分転換の時間確保",
+    "challenge_growth": "挑戦への心理的負荷",
     "cautious": "慎重な検討が必要",
     "practical": "実用性重視",
     "follow_trend": "評判・トレンド重視",
