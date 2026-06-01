@@ -2,12 +2,40 @@ import type { ProfileScores } from "@/lib/api-client";
 
 /** API 失敗時のローカル fallback（config と同じ重みを簡略移植） */
 const WEIGHTS: Record<string, Record<string, Partial<ProfileScores>>> = {
-  q1_value: {
-    safety: { score_safety: 28, score_family: 8 },
-    enjoyment: { score_enjoyment: 28, score_adventure: 10 },
-    family: { score_family: 28, score_safety: 12 },
-    efficiency: { score_efficiency: 28, score_safety: 6 },
-    status: { score_enjoyment: 14, score_adventure: 18, score_efficiency: 8 },
+  q1_decision_style: {
+    compare_thoroughly: { score_efficiency: 26, score_safety: 14 },
+    good_enough: { score_efficiency: 24, score_family: 10 },
+    trust_authority: { score_safety: 22, score_efficiency: 12 },
+    ask_others: { score_family: 26, score_safety: 10 },
+    intuition: { score_enjoyment: 24, score_adventure: 14 },
+  },
+  q2_stress_handling: {
+    analyze_solve: { score_efficiency: 24, score_safety: 12 },
+    accept_adapt: { score_family: 18, score_enjoyment: 12 },
+    seek_support: { score_family: 26, score_safety: 10 },
+    distance_refresh: { score_enjoyment: 22, score_adventure: 10 },
+    challenge_growth: { score_adventure: 24, score_enjoyment: 12 },
+  },
+  q3_priority: {
+    safety_security: { score_safety: 28, score_family: 10 },
+    efficiency: { score_efficiency: 28, score_safety: 8 },
+    family_time: { score_family: 28, score_safety: 10 },
+    self_growth: { score_efficiency: 18, score_enjoyment: 12 },
+    enjoyment: { score_enjoyment: 26, score_adventure: 14 },
+  },
+  q4_change: {
+    cautious: { score_safety: 24, score_efficiency: 12 },
+    practical: { score_efficiency: 22, score_safety: 10 },
+    follow_trend: { score_enjoyment: 18, score_safety: 10 },
+    ask_advice: { score_family: 22, score_safety: 12 },
+    try_new: { score_adventure: 24, score_enjoyment: 14 },
+  },
+  q5_time_usage: {
+    plan_optimize: { score_efficiency: 26, score_safety: 10 },
+    balance: { score_efficiency: 18, score_family: 14, score_enjoyment: 10 },
+    family_center: { score_family: 28, score_safety: 10 },
+    learning_growth: { score_efficiency: 20, score_enjoyment: 12 },
+    relax_enjoy: { score_enjoyment: 26, score_adventure: 12 },
   },
 };
 
