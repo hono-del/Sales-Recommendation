@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
 import { api } from "@/lib/api-client";
 import { DELEGATION_GRAPH_HINT } from "@/lib/delegation-ui";
 import { ensureSessionSynced } from "@/lib/session-sync";
@@ -11,11 +12,13 @@ import { ThinkingStoryView, STEP_COUNT } from "./ThinkingStoryView";
 import { NarrationBar } from "./NarrationBar";
 import { PrimaryButton } from "./PrimaryButton";
 import { StyleAwareRecommendSection } from "./StyleAwareRecommendSection";
+import { SalesTalkSection } from "./SalesTalkSection";
 import type { GraphPathData } from "@/types/graph";
 
 const STEP_DURATION_MS = 900;
 
 export function GraphClient() {
+  const router = useRouter();
   const sessionId = useRequireSession();
   const demoFallback = useDemoStore((s) => s.demoFallback);
   const delegationLevel = useDemoStore((s) => s.delegationLevel);
@@ -228,6 +231,24 @@ export function GraphClient() {
             )}
           </div>
         )}
+
+        {/* 販売店サポート（提案トーク） */}
+        {recommendations.length > 0 && (
+          <SalesTalkSection topRecommendation={recommendations[0]} />
+        )}
+
+        {/* アクションボタン */}
+        <div className="mt-12 flex flex-col items-center gap-4">
+          <PrimaryButton onClick={() => router.push("/demo/dealer")}>
+            販売店提案へ
+          </PrimaryButton>
+          <button
+            onClick={() => router.push("/demo/recommend")}
+            className="text-sm text-text-muted underline hover:text-navy"
+          >
+            推薦結果に戻る
+          </button>
+        </div>
       </main>
     </>
   );

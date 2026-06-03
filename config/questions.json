@@ -7,11 +7,11 @@
       "id": "q1_decision_style",
       "text": "大きな買い物を決めるとき、あなたに近いのは？",
       "choices": [
-        { "key": "compare_thoroughly", "label": "たくさん比較して、最良の選択をしたい" },
-        { "key": "good_enough", "label": "必要な条件が揃えば、そこで決める" },
+        { "key": "intuition", "label": "第一印象や直感を大切にする" },
         { "key": "trust_authority", "label": "専門家の評価やランキングを重視する" },
+        { "key": "compare_thoroughly", "label": "たくさん比較して、最良の選択をしたい" },
         { "key": "ask_others", "label": "家族や友人の意見を聞いて決める" },
-        { "key": "intuition", "label": "第一印象や直感を大切にする" }
+        { "key": "good_enough", "label": "必要な条件が揃えば、そこで決める" }
       ]
     },
     {
@@ -19,11 +19,11 @@
       "id": "q2_stress_handling",
       "text": "ストレスや困難な状況に直面したとき、あなたは？",
       "choices": [
-        { "key": "analyze_solve", "label": "原因を分析して、解決策を考える" },
-        { "key": "accept_adapt", "label": "受け入れて、柔軟に対応する" },
-        { "key": "seek_support", "label": "信頼できる人に相談する" },
         { "key": "distance_refresh", "label": "一旦距離を置いて、気分転換する" },
-        { "key": "challenge_growth", "label": "成長の機会と捉えて、挑戦する" }
+        { "key": "challenge_growth", "label": "成長の機会と捉えて、挑戦する" },
+        { "key": "analyze_solve", "label": "原因を分析して、解決策を考える" },
+        { "key": "seek_support", "label": "信頼できる人に相談する" },
+        { "key": "accept_adapt", "label": "受け入れて、柔軟に対応する" }
       ]
     },
     {
@@ -31,11 +31,11 @@
       "id": "q3_priority",
       "text": "日々の生活で、最も大切にしていることは？",
       "choices": [
-        { "key": "safety_security", "label": "安全・安心" },
-        { "key": "efficiency", "label": "効率・合理性" },
-        { "key": "family_time", "label": "家族との時間" },
+        { "key": "enjoyment", "label": "楽しさ・充実感" },
         { "key": "self_growth", "label": "自己成長・学び" },
-        { "key": "enjoyment", "label": "楽しさ・充実感" }
+        { "key": "safety_security", "label": "安全・安心" },
+        { "key": "family_time", "label": "家族との時間" },
+        { "key": "efficiency", "label": "効率・合理性" }
       ]
     },
     {
@@ -43,11 +43,11 @@
       "id": "q4_change",
       "text": "変化や新しいことに対して、あなたは？",
       "choices": [
-        { "key": "cautious", "label": "慎重に検討してから取り入れる" },
+        { "key": "try_new", "label": "積極的に新しいことを試したい" },
         { "key": "practical", "label": "必要性を感じたら取り入れる" },
-        { "key": "follow_trend", "label": "評判が良ければ試してみる" },
         { "key": "ask_advice", "label": "信頼できる人に相談してから決める" },
-        { "key": "try_new", "label": "積極的に新しいことを試したい" }
+        { "key": "cautious", "label": "慎重に検討してから取り入れる" },
+        { "key": "follow_trend", "label": "評判が良ければ試してみる" }
       ]
     },
     {
@@ -55,11 +55,11 @@
       "id": "q5_time_usage",
       "text": "休日や自由な時間の過ごし方は？",
       "choices": [
-        { "key": "plan_optimize", "label": "計画を立てて、効率よく過ごす" },
-        { "key": "balance", "label": "やることと休むことのバランスを取る" },
+        { "key": "relax_enjoy", "label": "リラックスや趣味を楽しむ" },
         { "key": "family_center", "label": "家族と一緒に過ごす" },
         { "key": "learning_growth", "label": "学びや自己成長の時間にする" },
-        { "key": "relax_enjoy", "label": "リラックスや趣味を楽しむ" }
+        { "key": "balance", "label": "やることと休むことのバランスを取る" },
+        { "key": "plan_optimize", "label": "計画を立てて、効率よく過ごす" }
       ]
     }
   ]

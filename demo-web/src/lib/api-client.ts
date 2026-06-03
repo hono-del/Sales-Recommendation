@@ -212,6 +212,8 @@ export const api = {
 
   getQuestions: () => request<QuestionMaster>("/api/demo/questions"),
 
+  getServiceQuestions: () => request<QuestionMaster>("/api/demo/service-questions"),
+
   postRecommend: (sessionId: string) =>
     request<RecommendResponse>(
       `/api/demo/sessions/${sessionId}/recommend`,
@@ -230,7 +232,7 @@ export const api = {
     return request<Record<string, unknown>>(
       `/api/demo/sessions/${sessionId}/graph-path${q}`,
       undefined,
-      12000, // 推薦キャッシュ利用時は数秒以内
+      30000, // graph-path は重い処理のため30秒に延長
     );
   },
 
@@ -283,4 +285,54 @@ export const api = {
         body: JSON.stringify(body),
       },
     ).catch(() => ({ id: "", created_at: "" })),
+
+  getServiceRecommendations: (sessionId: string) =>
+    request<{
+      services: Array<{
+        id: string;
+        title: string;
+        one_liner: string;
+        direction: string;
+        domain: string;
+        score: number;
+        matched_needs: string[];
+        matched_loads: string[];
+        value_alignment: number;
+        pitch: string;
+        need_rationale: string;
+      }>;
+      fallback: boolean;
+    }>(
+      `/api/demo/sessions/${sessionId}/services`,
+      undefined,
+      10000,
+    ),
+
+  getNeedMapping: () =>
+    request<{
+      version: string;
+      description: string;
+      answer_to_needs: Record<string, Record<string, string[]>>;
+      need_to_capabilities: Record<string, string>;
+      profile_to_ui_needs: Record<string, string>;
+      capability_labels_ja: Record<string, string>;
+    }>("/api/demo/need-mapping", undefined, 5000),
+
+  getMasterData: () =>
+    request<{
+      all_needs: string[];
+      all_loads: string[];
+      all_services: Array<{
+        id: string;
+        title: string;
+        one_liner: string;
+        direction: string;
+        domain: string;
+        lifecycle: string;
+        pitch_template: string;
+        need_rationale: string;
+        load_labels: string[];
+        value_axes: string[];
+      }>;
+    }>("/api/demo/master-data", undefined, 5000),
 };

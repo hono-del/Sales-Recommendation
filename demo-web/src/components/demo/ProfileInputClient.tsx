@@ -123,7 +123,6 @@ export default function ProfileInputClient({ sessionId }: ProfileInputClientProp
                     familySize === option.value
                       ? "white"
                       : "var(--color-navy)",
-                  ringColor: "var(--color-gold)",
                 }}
               >
                 {option.label}
@@ -165,7 +164,6 @@ export default function ProfileInputClient({ sessionId }: ProfileInputClientProp
                     budgetRange === option.value
                       ? "white"
                       : "var(--color-navy)",
-                  ringColor: "var(--color-gold)",
                 }}
               >
                 {option.label}

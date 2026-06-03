@@ -9,8 +9,7 @@ foreach ($line in Get-Content "$ROOT\.env") {
     [System.Environment]::SetEnvironmentVariable($key.Trim(), $val.Trim(), "Process")
 }
 
-& "$ROOT\.venv\Scripts\Activate.ps1"
 Write-Host "▶ API Server starting on http://0.0.0.0:8000" -ForegroundColor Cyan
 Write-Host "  Swagger UI: http://localhost:8000/docs" -ForegroundColor DarkGray
 Write-Host ""
-uvicorn api.api_server:app --host 0.0.0.0 --port 8000 --reload --reload-exclude "data/demo/sessions.json" --reload-exclude "data/demo/*.json"
+py -m uvicorn api.api_server:app --host 0.0.0.0 --port 8000 --reload --reload-exclude "data/demo/sessions.json" --reload-exclude "data/demo/*.json"

@@ -74,6 +74,59 @@ def list_questions():
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+@router.get("/service-questions")
+def list_service_questions():
+    """サービスレコメンド用質問マスタを返す。"""
+    path = Path(__file__).resolve().parent.parent.parent / "config" / "service-questions.json"
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+@router.get("/need-mapping")
+def get_need_mapping():
+    """Need マッピング設定を返す。"""
+    path = Path(__file__).resolve().parent.parent.parent / "config" / "need-mapping.json"
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+@router.get("/master-data")
+def get_master_data():
+    """全マスターデータを返す（ニーズ、Load、サービス）。"""
+    from engine.service_recommendation_engine import ServiceRecommendationEngine
+    
+    # Load検出ルール
+    load_path = Path(__file__).resolve().parent.parent.parent / "config" / "load-detection-rules.json"
+    load_data = json.loads(load_path.read_text(encoding="utf-8"))
+    all_loads = list(load_data.get("detection_rules", {}).keys())
+    
+    # 全ニーズ（NEED_LABELSから取得）
+    all_needs = [
+        "LowPhysicalBurden", "EasyEntryExit", "EfficientDailyMobility", "StressFreeCommute",
+        "PremiumFeeling", "SmoothRideComfort", "QuietCabinExperience", "RelaxingDrive",
+        "FamilyConversation", "WeekendFamilyTrip", "OutdoorLifestyle",
+        "MaintenanceCostReduction", "LowFuelAnxiety", "FlexibleCargoSpace",
+        "FlatSeatUtility", "ShortTripEfficiency", "UrbanManeuverability",
+        "CompactParkingEase", "EasyParking", "DrivingConfidence", "AccidentAnxietyReduction",
+        "SnowDrivingConfidence", "ChildSafety", "EasyChildPickup", "FamilyComfort",
+        "LongTermReliability", "AdventureLifestyle", "EnvironmentalResponsibility",
+        "ChargingConfidence", "QuietElectricExperience", "EmotionalAttachment",
+        "DrivingEnjoyment", "OutdoorGearTransport", "CaregiverSupport"
+    ]
+    
+    # 全サービス（Neo4jから取得）
+    try:
+        engine = ServiceRecommendationEngine()
+        all_services_data = engine._fetch_all_services()
+    except Exception as e:
+        print(f"[ERROR] Failed to fetch services from Neo4j: {e}")
+        all_services_data = []
+    
+    return {
+        "all_needs": all_needs,
+        "all_loads": all_loads,
+        "all_services": all_services_data,
+    }
+
+
 @router.post("/sessions", status_code=201)
 def create_session():
     store = get_session_store()
@@ -389,3 +442,53 @@ def fallback_recommend():
     """Neo4j 不可時の固定推薦 JSON。"""
     path = _FALLBACK_DIR / "recommend.json"
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+@router.get("/sessions/{session_id}/services")
+def get_service_recommendations(session_id: str):
+    """
+    セッションに基づいたサービス推薦
+    
+    Returns:
+        {
+          "services": [
+            {
+              "id": "S-1",
+              "title": "定額メンテナンスプラン",
+              "one_liner": "月額固定で、突然の整備費不安を減らす",
+              "direction": "upgrade",
+              "domain": "maintenance",
+              "score": 0.85,
+              "matched_needs": ["MaintenanceCostReduction", ...],
+              "matched_loads": ["維持費への不安"],
+              "value_alignment": 0.7,
+              "pitch": "携帯の定額プランのように...",
+              "need_rationale": "維持費の見通しが立つことで..."
+            },
+            ...
+          ],
+          "fallback": false
+        }
+    """
+    store = get_session_store()
+    session = store.get_session(session_id)
+    
+    if not session:
+        raise HTTPException(status_code=404, detail="Session not found")
+    
+    # サービス推薦を生成
+    from engine.service_recommendation_engine import recommend_services_for_session
+    
+    try:
+        services = recommend_services_for_session(session, top_k=5)
+        fallback = False
+    except Exception as e:
+        print(f"[ERROR] Service recommendation failed: {e}")
+        # Fallback: 空リスト
+        services = []
+        fallback = True
+    
+    return {
+        "services": services,
+        "fallback": fallback,
+    }

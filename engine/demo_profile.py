@@ -47,6 +47,7 @@ class DemoProfileCalculator:
         self._weights = _load_json("score-weights.json")
         self._mapping = _load_json("need-mapping.json")
         self._style_weights = _load_json("decision-style-weights.json")
+        self._load_rules = _load_json("load-detection-rules.json")
 
     def compute_from_answers(
         self, answers: list[dict[str, Any]]
@@ -57,12 +58,11 @@ class DemoProfileCalculator:
         raw_scores: dict[str, float] = {axis: 0.0 for axis in _AXES}
         decay = float(self._weights.get("decay_per_question", 1.0))
         answer_weights: dict = self._weights.get("answer_weights", {})
-        load_labels: dict = self._weights.get("load_labels", {})
         answer_to_needs: dict = self._mapping.get("answer_to_needs", {})
         need_to_cap: dict = self._mapping.get("need_to_capabilities", {})
 
         needs_set: set[str] = set()
-        loads: list[str] = []
+        need_sources: dict[str, list[dict[str, str]]] = {}  # Need → 導出元の回答リスト
         sorted_answers = sorted(answers, key=lambda a: a.get("question_index", 0))
 
         for i, ans in enumerate(sorted_answers):
@@ -77,14 +77,22 @@ class DemoProfileCalculator:
 
             for need in answer_to_needs.get(qid, {}).get(key, []):
                 needs_set.add(need)
-
-            if key in load_labels and load_labels[key] not in loads:
-                loads.append(load_labels[key])
-
+                # ニーズの導出元を記録
+                if need not in need_sources:
+                    need_sources[need] = []
+                need_sources[need].append({
+                    "question_id": qid,
+                    "answer_key": key,
+                })
+        
         profile_scores = _normalize_scores(raw_scores)
+        
+        # ルールベースLoad検出（profile_scoresを渡す）
+        load_details = self._detect_loads_from_rules(sorted_answers, profile_scores)
+        load_names = [load["name"] for load in load_details]
         style_result = self.compute_decision_style(answers)
 
-        kg_needs = resolve_kg_needs(profile_scores, loads, sorted_answers)
+        kg_needs = resolve_kg_needs(profile_scores, load_names, sorted_answers)
         kg_need_names_list = graph_need_names(kg_needs)
         for n in sorted(needs_set):
             if n not in kg_need_names_list:
@@ -100,6 +108,20 @@ class DemoProfileCalculator:
 
         ui_needs = ui_needs_from_kg_needs(kg_needs, profile_scores, self._mapping)
 
+        # ニーズ → 価値観軸のマッピングを作成
+        need_to_values: dict[str, list[str]] = {}
+        for need, sources in need_sources.items():
+            value_axes: set[str] = set()
+            for source in sources:
+                qid = source["question_id"]
+                key = source["answer_key"]
+                # この回答がどの価値観軸に寄与しているかを取得
+                q_weights = answer_weights.get(qid, {}).get(key, {})
+                for axis, delta in q_weights.items():
+                    if axis in _AXES and float(delta) > 0:
+                        value_axes.add(axis)
+            need_to_values[need] = list(value_axes)
+
         return {
             "profile": {
                 "score_safety": profile_scores["safety"],
@@ -111,8 +133,10 @@ class DemoProfileCalculator:
             "mapped_needs": kg_need_names_list,
             "kg_needs": kg_needs,
             "mapped_capabilities": capabilities,
-            "detected_loads": loads,
+            "detected_loads": load_details,  # Load詳細情報を含む
             "ui_needs": ui_needs,
+            "need_sources": need_sources,  # ニーズの導出元情報
+            "need_to_values": need_to_values,  # ニーズ → 価値観軸のマッピング
             **style_result,
         }
 
@@ -221,3 +245,58 @@ class DemoProfileCalculator:
             if need_key and need_key not in ui:
                 ui.append(need_key)
         return ui or ["safety", "family", "comfort"]
+    
+    def _detect_loads_from_rules(self, answers: list[dict[str, Any]], profile_scores: dict[str, float]) -> list[dict[str, Any]]:
+        """ルールベースでLoadsを検出し、詳細情報を返す。"""
+        rules = self._load_rules.get("detection_rules", {})
+        answer_map = {
+            ans.get("question_id"): ans.get("answer_key")
+            for ans in answers
+        }
+        
+        answer_weights: dict = self._weights.get("answer_weights", {})
+        detected_loads: list[dict[str, Any]] = []
+        
+        for load_name, rule in rules.items():
+            triggers = rule.get("triggers", [])
+            threshold = rule.get("threshold", 1)
+            description = rule.get("description", "")
+            match_count = 0
+            matched_questions: list[str] = []
+            related_values: set[str] = set()
+            
+            for trigger in triggers:
+                q_id = trigger.get("question_id")
+                answer_keys = trigger.get("answer_keys", [])
+                
+                if q_id in answer_map and answer_map[q_id] in answer_keys:
+                    match_count += 1
+                    matched_questions.append(q_id)
+                    
+                    # この回答が寄与する価値観軸を取得
+                    answer_key = answer_map[q_id]
+                    q_weights = answer_weights.get(q_id, {}).get(answer_key, {})
+                    for axis, delta in q_weights.items():
+                        if axis in _AXES and float(delta) > 0:
+                            related_values.add(axis)
+            
+            if match_count >= threshold:
+                # 関連する価値観を日本語ラベルに変換
+                value_labels_map = {
+                    "safety": "安全・安心",
+                    "family": "家族との時間",
+                    "efficiency": "効率・合理性",
+                    "enjoyment": "楽しさ・充実感",
+                    "adventure": "自己成長・学び",
+                }
+                related_value_labels = [value_labels_map.get(v, v) for v in related_values]
+                
+                detected_loads.append({
+                    "name": load_name,
+                    "description": description,
+                    "related_values": related_value_labels,
+                    "trigger_count": match_count,
+                    "threshold": threshold,
+                })
+        
+        return detected_loads

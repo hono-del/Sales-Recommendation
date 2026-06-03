@@ -48,6 +48,15 @@ from crawler.web_scraper import (
 
 app = FastAPI(title="Decision Intelligence PoC", version="1.0.0")
 
+# CORS設定を追加
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000", "http://127.0.0.1:3000"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 _cors_origins = os.environ.get(
     "CORS_ORIGINS",
     "http://localhost:3000,http://localhost:3001,http://localhost:8501",

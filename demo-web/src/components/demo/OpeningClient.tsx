@@ -34,16 +34,18 @@ export function OpeningClient() {
   const router = useRouter();
   const reset = useDemoStore((s) => s.reset);
   const setSessionId = useDemoStore((s) => s.setSessionId);
+  const setRecommendationType = useDemoStore((s) => s.setRecommendationType);
   const setNeo4jConnected = useDemoStore((s) => s.setNeo4jConnected);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  async function handleStart() {
+  async function handleStart(type: "vehicle" | "service") {
     if (loading) return;
     setLoading(true);
     setError(null);
     try {
       reset();
+      setRecommendationType(type);
       // health は Neo4j 確認で遅いため待たずバックグラウンド実行
       api
         .health()
@@ -52,7 +54,13 @@ export function OpeningClient() {
 
       const session = await api.createSession();
       setSessionId(session.session_id);
-      router.push("/demo/profile");
+      
+      // サービスレコメンドの場合は質問ページへ直行
+      if (type === "service") {
+        router.push("/demo/service/questions");
+      } else {
+        router.push("/demo/profile");
+      }
     } catch (e) {
       setError(e instanceof Error ? e.message : "セッション開始に失敗しました");
       setLoading(false);
@@ -171,9 +179,24 @@ export function OpeningClient() {
           </p>
         )}
         <div style={{ marginTop: "40px", position: "relative", zIndex: 20 }}>
-          <PrimaryButton onClick={handleStart} disabled={loading}>
-            {loading ? "準備中…" : "体験を開始する"}
-          </PrimaryButton>
+          <div style={{ display: "flex", gap: "20px", justifyContent: "center", flexWrap: "wrap" }}>
+            <div style={{ minWidth: "240px", textAlign: "center" }}>
+              <PrimaryButton onClick={() => handleStart("vehicle")} disabled={loading}>
+                {loading ? "準備中…" : "車種レコメンド"}
+              </PrimaryButton>
+              <p style={{ marginTop: "8px", fontSize: "14px", color: "var(--color-text-muted)" }}>
+                あなたに最適な車種を提案
+              </p>
+            </div>
+            <div style={{ minWidth: "240px", textAlign: "center" }}>
+              <PrimaryButton onClick={() => handleStart("service")} disabled={loading}>
+                {loading ? "準備中…" : "サービスレコメンド"}
+              </PrimaryButton>
+              <p style={{ marginTop: "8px", fontSize: "14px", color: "var(--color-text-muted)" }}>
+                最適なサービスを提案
+              </p>
+            </div>
+          </div>
           {loading && (
             <p style={{ marginTop: "12px", fontSize: "13px", color: "var(--color-text-muted)" }}>
               セッションを準備しています…

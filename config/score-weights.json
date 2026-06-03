@@ -38,6 +38,41 @@
       "family_center": { "family": 28, "safety": 10 },
       "learning_growth": { "efficiency": 20, "enjoyment": 12 },
       "relax_enjoy": { "enjoyment": 26, "adventure": 12 }
+    },
+    "sq1_lifestyle_satisfaction": {
+      "reduce_hassle": { "efficiency": 28, "safety": 10 },
+      "enhance_experience": { "enjoyment": 28, "adventure": 10 },
+      "connect_community": { "family": 28, "enjoyment": 10 },
+      "save_cost": { "safety": 26, "efficiency": 12 },
+      "flexible_usage": { "adventure": 26, "efficiency": 10 }
+    },
+    "sq2_technology_stance": {
+      "enthusiast": { "adventure": 28, "enjoyment": 12 },
+      "pragmatic": { "efficiency": 26, "safety": 10 },
+      "selective": { "safety": 26, "efficiency": 10 },
+      "cautious": { "family": 24, "safety": 12 },
+      "minimal": { "enjoyment": 26, "adventure": 10 }
+    },
+    "sq3_community_value": {
+      "active_member": { "family": 26, "enjoyment": 12 },
+      "share_knowledge": { "adventure": 24, "family": 10 },
+      "observe_learn": { "efficiency": 24, "adventure": 10 },
+      "need_based": { "safety": 26, "efficiency": 10 },
+      "independent": { "enjoyment": 26, "adventure": 10 }
+    },
+    "sq4_ownership_usage": {
+      "ownership": { "enjoyment": 28, "safety": 10 },
+      "subscription": { "efficiency": 28, "safety": 8 },
+      "pay_per_use": { "safety": 26, "efficiency": 10 },
+      "sharing": { "family": 26, "enjoyment": 10 },
+      "hybrid": { "adventure": 24, "enjoyment": 12 }
+    },
+    "sq5_life_change": {
+      "anticipate_prepare": { "safety": 28, "efficiency": 10 },
+      "explore_options": { "adventure": 28, "enjoyment": 10 },
+      "upgrade_quality": { "enjoyment": 28, "adventure": 10 },
+      "simplify_optimize": { "efficiency": 28, "safety": 10 },
+      "maintain_stable": { "family": 26, "safety": 12 }
     }
   },
   "load_labels": {
@@ -54,6 +89,30 @@
     "family_center": "家族時間の優先",
     "learning_growth": "学び・成長の時間確保",
     "efficiency_priority": "効率的な時間活用",
-    "safety_priority": "安全・安心の確保"
+    "safety_priority": "安全・安心の確保",
+    "reduce_hassle": "手間・負担の削減",
+    "enhance_experience": "体験の質向上",
+    "connect_community": "つながりの拡大",
+    "save_cost": "コスト最適化",
+    "flexible_usage": "柔軟な使い分け",
+    "enthusiast": "新技術への期待",
+    "pragmatic": "実用性重視",
+    "selective": "厳選志向",
+    "minimal": "シンプル志向",
+    "active_member": "積極的参加",
+    "share_knowledge": "知識共有",
+    "observe_learn": "学習・情報収集",
+    "need_based": "必要時のみ接続",
+    "independent": "独立志向",
+    "ownership": "所有志向",
+    "subscription": "定額利用志向",
+    "pay_per_use": "従量課金志向",
+    "sharing": "シェアリング志向",
+    "hybrid": "ハイブリッド志向",
+    "anticipate_prepare": "予測・準備",
+    "explore_options": "選択肢拡大",
+    "upgrade_quality": "アップグレード志向",
+    "simplify_optimize": "最適化志向",
+    "maintain_stable": "安定維持"
   }
 }

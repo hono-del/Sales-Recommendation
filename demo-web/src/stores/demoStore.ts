@@ -4,7 +4,7 @@ import type { ProfileScores } from "@/lib/api-client";
 import type { DecisionStyleResult } from "@/lib/decision-style-calculator";
 import type { ExcludedModel, Recommendation } from "@/types/demo";
 
-type DelegationLevel = "guide" | "co_pilot" | "auto";
+export type DelegationLevel = "guide" | "co_pilot" | "auto";
 
 export type StoredAnswer = {
   question_index: number;
@@ -14,6 +14,7 @@ export type StoredAnswer = {
 
 type DemoState = {
   sessionId: string | null;
+  recommendationType: "vehicle" | "service";
   neo4jConnected: boolean | null;
   demoFallback: boolean;
   profile: ProfileScores | null;
@@ -25,6 +26,7 @@ type DemoState = {
   recommendations: Recommendation[];
   excluded: ExcludedModel[];
   setSessionId: (id: string) => void;
+  setRecommendationType: (type: "vehicle" | "service") => void;
   setNeo4jConnected: (v: boolean) => void;
   setDemoFallback: (v: boolean) => void;
   setProfile: (
@@ -40,6 +42,7 @@ type DemoState = {
 
 const initialState = {
   sessionId: null,
+  recommendationType: "vehicle" as "vehicle" | "service",
   neo4jConnected: null,
   demoFallback: false,
   profile: null,
@@ -57,6 +60,7 @@ export const useDemoStore = create<DemoState>()(
     (set) => ({
       ...initialState,
       setSessionId: (id) => set({ sessionId: id }),
+      setRecommendationType: (type) => set({ recommendationType: type }),
       setNeo4jConnected: (v) => set({ neo4jConnected: v }),
       setDemoFallback: (v) => set({ demoFallback: v }),
       setProfile: (profile, mappedNeeds, decisionStyle) =>
@@ -85,6 +89,7 @@ export const useDemoStore = create<DemoState>()(
       name: "decision-intelligence-demo",
       partialize: (s) => ({
         sessionId: s.sessionId,
+        recommendationType: s.recommendationType,
         profile: s.profile,
         decisionStyle: s.decisionStyle,
         mappedNeeds: s.mappedNeeds,

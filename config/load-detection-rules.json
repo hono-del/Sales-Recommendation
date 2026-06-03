@@ -1,0 +1,126 @@
+{
+  "version": "1.0",
+  "description": "ユーザーの回答パターンから懸念事項（Load）を検出するルール",
+  "detection_rules": {
+    "すぐ飽きるリスク": {
+      "triggers": [
+        {"question_id": "q4_change", "answer_keys": ["follow_trend", "try_new"]},
+        {"question_id": "q5_time_usage", "answer_keys": ["relax_enjoy"]},
+        {"question_id": "sq2_technology_stance", "answer_keys": ["enthusiast"]},
+        {"question_id": "sq5_life_change", "answer_keys": ["explore_options"]}
+      ],
+      "threshold": 2,
+      "description": "新しいもの好き・トレンド追従・探索志向が強い → 飽きやすいリスク"
+    },
+    "機能不足による後悔": {
+      "triggers": [
+        {"question_id": "q3_priority", "answer_keys": ["efficiency"]},
+        {"question_id": "q5_time_usage", "answer_keys": ["plan_optimize"]},
+        {"question_id": "sq1_lifestyle_satisfaction", "answer_keys": ["save_cost"]},
+        {"question_id": "sq4_ownership_usage", "answer_keys": ["pay_per_use"]},
+        {"question_id": "sq5_life_change", "answer_keys": ["simplify_optimize"]}
+      ],
+      "threshold": 2,
+      "description": "効率・コスト重視・最適化志向 → 機能不足を後悔しやすい"
+    },
+    "短期間で乗り換えるリスク": {
+      "triggers": [
+        {"question_id": "q4_change", "answer_keys": ["try_new", "follow_trend"]},
+        {"question_id": "sq2_technology_stance", "answer_keys": ["enthusiast"]},
+        {"question_id": "sq4_ownership_usage", "answer_keys": ["subscription", "pay_per_use", "hybrid"]},
+        {"question_id": "sq5_life_change", "answer_keys": ["explore_options", "upgrade_quality"]}
+      ],
+      "threshold": 2,
+      "description": "新技術好き・柔軟な所有形態・探索/アップグレード志向 → 短期間で乗り換えリスク"
+    },
+    "維持費への不安": {
+      "triggers": [
+        {"question_id": "q3_priority", "answer_keys": ["efficiency"]},
+        {"question_id": "sq1_lifestyle_satisfaction", "answer_keys": ["save_cost"]},
+        {"question_id": "sq4_ownership_usage", "answer_keys": ["pay_per_use"]},
+        {"question_id": "sq5_life_change", "answer_keys": ["simplify_optimize"]}
+      ],
+      "threshold": 2,
+      "description": "コスト最適化 → 維持費への不安"
+    },
+    "時間・手間への不安": {
+      "triggers": [
+        {"question_id": "q2_stress_handling", "answer_keys": ["analyze_solve"]},
+        {"question_id": "q3_priority", "answer_keys": ["efficiency"]},
+        {"question_id": "q5_time_usage", "answer_keys": ["plan_optimize"]},
+        {"question_id": "sq1_lifestyle_satisfaction", "answer_keys": ["reduce_hassle"]},
+        {"question_id": "sq5_life_change", "answer_keys": ["simplify_optimize"]}
+      ],
+      "threshold": 2,
+      "description": "効率重視・計画的・手間削減志向 → 時間・手間への不安"
+    },
+    "使いこなせない不安": {
+      "triggers": [
+        {"question_id": "q4_change", "answer_keys": ["cautious", "ask_advice"]},
+        {"question_id": "sq2_technology_stance", "answer_keys": ["cautious", "selective", "minimal"]},
+        {"question_id": "sq3_community_value", "answer_keys": ["need_based"]},
+        {"question_id": "sq4_ownership_usage", "answer_keys": ["ownership"]}
+      ],
+      "threshold": 2,
+      "description": "慎重派・技術消極的・ミニマル志向 → 使いこなせない不安"
+    },
+    "短期利用による割高感": {
+      "triggers": [
+        {"question_id": "sq1_lifestyle_satisfaction", "answer_keys": ["save_cost"]},
+        {"question_id": "sq4_ownership_usage", "answer_keys": ["pay_per_use"]},
+        {"question_id": "sq5_life_change", "answer_keys": ["simplify_optimize"]}
+      ],
+      "threshold": 2,
+      "description": "コスト重視・従量課金志向 → 短期利用による割高感"
+    },
+    "家族同意への不安": {
+      "triggers": [
+        {"question_id": "q1_decision_style", "answer_keys": ["ask_others"]},
+        {"question_id": "q2_stress_handling", "answer_keys": ["seek_support"]},
+        {"question_id": "q3_priority", "answer_keys": ["family_time"]},
+        {"question_id": "q4_change", "answer_keys": ["ask_advice"]},
+        {"question_id": "sq3_community_value", "answer_keys": ["active_member", "share_knowledge"]}
+      ],
+      "threshold": 2,
+      "description": "家族・他者重視・意見収集型 → 家族同意への不安"
+    },
+    "孤独感の懸念": {
+      "triggers": [
+        {"question_id": "q2_stress_handling", "answer_keys": ["distance_refresh", "challenge_growth"]},
+        {"question_id": "q3_priority", "answer_keys": ["self_growth", "enjoyment"]},
+        {"question_id": "sq3_community_value", "answer_keys": ["independent"]},
+        {"question_id": "sq4_ownership_usage", "answer_keys": ["ownership"]}
+      ],
+      "threshold": 2,
+      "description": "独立志向・個人的成長重視 → 孤独感の懸念"
+    },
+    "契約ストレス": {
+      "triggers": [
+        {"question_id": "q2_stress_handling", "answer_keys": ["distance_refresh"]},
+        {"question_id": "q4_change", "answer_keys": ["cautious"]},
+        {"question_id": "sq4_ownership_usage", "answer_keys": ["ownership", "pay_per_use"]},
+        {"question_id": "sq5_life_change", "answer_keys": ["maintain_stable"]}
+      ],
+      "threshold": 2,
+      "description": "慎重派・安定維持志向 → 契約ストレス"
+    },
+    "選択肢過多への不安": {
+      "triggers": [
+        {"question_id": "q1_decision_style", "answer_keys": ["good_enough", "ask_others"]},
+        {"question_id": "sq2_technology_stance", "answer_keys": ["selective", "cautious"]},
+        {"question_id": "sq5_life_change", "answer_keys": ["simplify_optimize"]}
+      ],
+      "threshold": 2,
+      "description": "選択に悩むタイプ → 選択肢過多への不安"
+    },
+    "品質低下への懸念": {
+      "triggers": [
+        {"question_id": "sq1_lifestyle_satisfaction", "answer_keys": ["enhance_experience"]},
+        {"question_id": "sq2_technology_stance", "answer_keys": ["selective"]},
+        {"question_id": "sq5_life_change", "answer_keys": ["upgrade_quality"]}
+      ],
+      "threshold": 2,
+      "description": "品質・体験重視 → 品質低下への懸念"
+    }
+  }
+}

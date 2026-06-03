@@ -251,6 +251,7 @@ NEW_NEED_MASTER = [
     {"name": "SnowDrivingConfidence",    "label": "雪道でも安心したい",            "group": "Safety"},
     {"name": "BeginnerFriendlyDriving", "label": "運転初心者でも扱いやすくしたい", "group": "Safety"},
     {"name": "ElderlyDrivingSupport",    "label": "高齢でも安全に運転したい",      "group": "Safety"},
+    {"name": "CrimeAnxietyReduction",    "label": "防犯不安を減らしたい",          "group": "Safety"},
     # Comfort
     {"name": "FatigueReduction",              "label": "長時間運転で疲れたくない",    "group": "Comfort"},
     {"name": "QuietCabinExperience",          "label": "静かな空間で移動したい",      "group": "Comfort"},
@@ -312,6 +313,7 @@ EC_TO_NEW_NEEDS: list[tuple[str, list[str]]] = [
     ("EasyParking",            ["駐車", "バックカメラ", "パーキングセンサー", "駐車支援", "縦列駐車", "立体駐車"]),
     ("VisibilityConfidence",   ["視界", "見やすい", "周囲確認", "バックモニター", "全周囲"]),
     ("AccidentAnxietyReduction",["事故不安", "衝突", "Honda SENSING", "緊急ブレーキ", "追突防止"]),
+    ("CrimeAnxietyReduction",   ["防犯", "盗難", "セキュリティ", "イモビライザー", "防犯アラーム", "車上荒らし"]),
     ("NightDrivingConfidence", ["夜間", "夜道", "暗い道", "LEDライト", "ハイビーム"]),
     ("SnowDrivingConfidence",  ["雪道", "雪", "凍結", "4WD", "AWD", "スリップ", "冬道"]),
     ("BeginnerFriendlyDriving",["初心者", "ペーパードライバー", "扱いやすい", "運転しやすい"]),
