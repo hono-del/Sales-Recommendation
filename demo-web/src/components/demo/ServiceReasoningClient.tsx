@@ -166,10 +166,16 @@ export function ServiceReasoningClient() {
         const answerToNeeds = mappingData.answer_to_needs || {};
         setNeedMapping(answerToNeeds);
 
+        // サービス質問（sq1-sq5）のみをフィルタリング
+        const serviceAnswers = answers.filter(a => a.question_id.startsWith('sq'));
+        console.log("[ServiceReasoning] serviceAnswers:", serviceAnswers);
+        console.log("[ServiceReasoning] answerToNeeds:", answerToNeeds);
+
         // 質問分析結果を生成（Need マッピング適用）
-        const results: AnalysisResult[] = answers.map((answer) => {
+        const results: AnalysisResult[] = serviceAnswers.map((answer) => {
           const questionMapping = answerToNeeds[answer.question_id] || {};
           const needs = questionMapping[answer.answer_key] || [];
+          console.log(`[ServiceReasoning] ${answer.question_id} -> ${answer.answer_key} -> needs:`, needs);
           return {
             question_id: answer.question_id,
             question_text: answer.question_id,
