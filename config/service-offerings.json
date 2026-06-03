@@ -3,166 +3,2198 @@
   "description": "アップグレード/ダウングレードサービス案カタログ（正本）",
   "offerings": [
     {
-      "id": "S-1",
-      "title": "定額メンテナンスプラン",
-      "one_liner": "月額固定で、突然の整備費不安を減らす",
+      "id": "S-2",
+      "title": "ボディカラーオンデマンド変更",
+      "one_liner": "スマホで外装色を変更でき、気分や服装に合わせるワクワク感が体感できる",
       "direction": "upgrade",
-      "domain": "maintenance",
+      "domain": "upgrade_path",
       "lifecycle": "ownership",
-      "status": "active",
-      "contributor": "システム",
-      "updated_at": "2026-06-03",
+      "status": "draft",
+      "contributor": "",
+      "updated_at": "2026-06-04",
       "primary_needs": [
-        { "name": "MaintenanceCostReduction", "weight": 1.0 },
-        { "name": "LongTermReliability", "weight": 0.8 }
+        {
+          "name": "PersonalExpression",
+          "weight": 1.0
+        },
+        {
+          "name": "EmotionalAttachment",
+          "weight": 1.0
+        },
+        {
+          "name": "PremiumFeeling",
+          "weight": 1.0
+        }
       ],
       "secondary_needs": [],
-      "load_labels": ["維持費への不安"],
-      "value_axes": ["efficiency", "safety"],
-      "burden_addressed": ["維持費への不安"],
-      "value_shift": ["risk_down", "simplicity_up"],
-      "trade_off": "月額は増えるが、突発的な整備費の不安が減る",
-      "need_rationale": "維持費の見通しが立つことで、長く乗る安心感にもつながる",
-      "analog": {
-        "name": "携帯電話の定額プラン",
-        "pattern": "predictable_cost",
-        "why": "変動費を固定費化して判断負荷を下げる構造が同じ",
-        "pitch_template": "携帯の定額プランのように、クルマの維持費を毎月一定に"
-      },
+      "load_labels": [
+        "すぐ飽きるリスク",
+        "機能不足による後悔"
+      ],
+      "value_axes": [
+        "enjoyment",
+        "adventure"
+      ],
+      "burden_addressed": [
+        "気分に合わない外装への飽き",
+        "所有満足の低下"
+      ],
+      "value_shift": [
+        "prestige_up"
+      ],
+      "need_rationale": "外装色を気分やシーンに合わせて変えられるため、自分らしさや所有満足を高められる。",
+      "trade_off": "",
+      "analog": null,
       "eligibility": "既存オーナー",
-      "combinability": "stackable",
-      "notes": ""
-    },
-    {
-      "id": "S-2",
-      "title": "Honda ドライビングレッスン",
-      "one_liner": "運転への不安を減らし、安心して楽しめる",
-      "direction": "upgrade",
-      "domain": "experience",
-      "lifecycle": "ownership",
-      "status": "active",
-      "contributor": "システム",
-      "updated_at": "2026-06-03",
-      "primary_needs": [
-        { "name": "DrivingConfidence", "weight": 1.0 },
-        { "name": "AccidentAnxietyReduction", "weight": 0.9 }
-      ],
-      "secondary_needs": [
-        { "name": "DrivingEnjoyment", "weight": 0.7 }
-      ],
-      "load_labels": ["運転への不安", "事故への不安"],
-      "value_axes": ["safety", "enjoyment"],
-      "burden_addressed": ["運転への不安"],
-      "value_shift": ["confidence_up", "enjoyment_up"],
-      "trade_off": "時間と費用がかかるが、安心感と運転スキルが向上",
-      "need_rationale": "プロの指導で正しい運転技術を身につけ、自信を持って運転できるようになる",
-      "analog": {
-        "name": "スポーツジムのパーソナルトレーニング",
-        "pattern": "skill_enhancement",
-        "why": "プロの指導で基礎から学び、自信をつける",
-        "pitch_template": "ジムのパーソナルトレーニングのように、運転技術を基礎から学ぶ"
-      },
-      "eligibility": "新規購入者・既存オーナー",
-      "combinability": "standalone",
+      "combinability": null,
       "notes": ""
     },
     {
       "id": "S-3",
-      "title": "Honda オーナーズクラブ",
-      "one_liner": "仲間と一緒に、クルマライフを楽しむ",
+      "title": "オーディオスマートチューニング",
+      "one_liner": "音楽の種類やアーティストによって自動で音響を合わせ、車内を最高のライブ空間に",
       "direction": "upgrade",
-      "domain": "community",
+      "domain": "upgrade_path",
       "lifecycle": "ownership",
-      "status": "active",
-      "contributor": "システム",
-      "updated_at": "2026-06-03",
+      "status": "draft",
+      "contributor": "",
+      "updated_at": "2026-06-04",
       "primary_needs": [
-        { "name": "OutdoorLifestyle", "weight": 1.0 },
-        { "name": "WeekendFamilyTrip", "weight": 0.8 }
+        {
+          "name": "PremiumFeeling",
+          "weight": 1.0
+        },
+        {
+          "name": "QuietCabinExperience",
+          "weight": 1.0
+        },
+        {
+          "name": "EmotionalAttachment",
+          "weight": 1.0
+        }
       ],
       "secondary_needs": [
-        { "name": "EmotionalAttachment", "weight": 0.7 }
+        {
+          "name": "DrivingEnjoyment",
+          "weight": 0.5
+        }
       ],
-      "load_labels": [],
-      "value_axes": ["enjoyment", "adventure", "family"],
-      "burden_addressed": [],
-      "value_shift": ["enjoyment_up", "connection_up"],
-      "trade_off": "参加の手間はあるが、新しい体験とつながりが得られる",
-      "need_rationale": "同じクルマを愛する仲間との交流で、より豊かなカーライフを送れる",
-      "analog": {
-        "name": "趣味のコミュニティ（登山サークルなど）",
-        "pattern": "community_engagement",
-        "why": "共通の興味でつながり、一緒に楽しむ",
-        "pitch_template": "趣味のサークルのように、Honda オーナー同士でつながる"
-      },
+      "load_labels": [
+        "すぐ飽きるリスク",
+        "機能不足による後悔"
+      ],
+      "value_axes": [
+        "enjoyment",
+        "family"
+      ],
+      "burden_addressed": [
+        "音響設定の手間",
+        "車内体験の物足りなさ"
+      ],
+      "value_shift": [
+        "convenience_up"
+      ],
+      "need_rationale": "音楽やアーティストに合わせて音響を最適化し、車内空間の上質感と移動体験の楽しさを高める。",
+      "trade_off": "",
+      "analog": null,
       "eligibility": "既存オーナー",
-      "combinability": "stackable",
+      "combinability": null,
       "notes": ""
     },
     {
       "id": "S-4",
-      "title": "Honda カーシェアリング",
-      "one_liner": "必要なときだけ使って、コストを最適化",
-      "direction": "downgrade",
-      "domain": "ownership",
-      "lifecycle": "consideration",
-      "status": "active",
-      "contributor": "システム",
-      "updated_at": "2026-06-03",
+      "title": "匂い検知・急速車内換気サービス",
+      "one_liner": "食べ物の匂いを自動検知して強力排気し、車内を常に快適に保つ",
+      "direction": "upgrade",
+      "domain": "upgrade_path",
+      "lifecycle": "ownership",
+      "status": "draft",
+      "contributor": "",
+      "updated_at": "2026-06-04",
       "primary_needs": [
-        { "name": "EfficientDailyMobility", "weight": 1.0 },
-        { "name": "MaintenanceCostReduction", "weight": 0.9 }
+        {
+          "name": "FamilyComfort",
+          "weight": 1.0
+        },
+        {
+          "name": "ClimateComfort",
+          "weight": 1.0
+        },
+        {
+          "name": "PetFriendlyTravel",
+          "weight": 1.0
+        }
       ],
       "secondary_needs": [
-        { "name": "ShortTripEfficiency", "weight": 0.7 }
+        {
+          "name": "SmoothRideComfort",
+          "weight": 0.5
+        }
       ],
-      "load_labels": ["維持費への不安", "使用頻度の低さ"],
-      "value_axes": ["efficiency"],
-      "burden_addressed": ["維持費への不安"],
-      "value_shift": ["cost_down", "flexibility_up"],
-      "trade_off": "所有感は減るが、使った分だけ払う合理性がある",
-      "need_rationale": "使用頻度が低い場合、シェアリングの方が経済的で環境にも優しい",
-      "analog": {
-        "name": "サブスク型音楽・動画サービス",
-        "pattern": "pay_per_use",
-        "why": "必要なときだけ使って、固定費を削減",
-        "pitch_template": "サブスクサービスのように、必要なときだけ Honda 車を使う"
-      },
-      "eligibility": "検討中の顧客",
-      "combinability": "alternative",
+      "load_labels": [
+        "家族同乗時の不満リスク",
+        "操作の難しさ"
+      ],
+      "value_axes": [
+        "family",
+        "efficiency"
+      ],
+      "burden_addressed": [
+        "匂いによる同乗者の不快感",
+        "換気操作の手間"
+      ],
+      "value_shift": [
+        "convenience_up"
+      ],
+      "need_rationale": "匂いを自動で検知・換気することで、家族やペットと過ごす車内の快適性を維持できる。",
+      "trade_off": "",
+      "analog": null,
+      "eligibility": "既存オーナー",
+      "combinability": null,
       "notes": ""
     },
     {
       "id": "S-5",
-      "title": "Honda コネクト サブスクリプション",
-      "one_liner": "デジタルサービスで、カーライフをもっと便利に",
+      "title": "ブレーキフィールカスタム",
+      "one_liner": "ブレーキの利きをソフト上で調整し、自分好みのブレーキフィーリングへ変更できる",
       "direction": "upgrade",
-      "domain": "technology",
+      "domain": "upgrade_path",
       "lifecycle": "ownership",
-      "status": "active",
-      "contributor": "システム",
-      "updated_at": "2026-06-03",
+      "status": "draft",
+      "contributor": "",
+      "updated_at": "2026-06-04",
       "primary_needs": [
-        { "name": "StressFreeCommute", "weight": 1.0 },
-        { "name": "EasyParking", "weight": 0.8 }
+        {
+          "name": "DrivingEnjoyment",
+          "weight": 1.0
+        },
+        {
+          "name": "SmoothRideComfort",
+          "weight": 1.0
+        },
+        {
+          "name": "DrivingConfidence",
+          "weight": 1.0
+        }
+      ],
+      "secondary_needs": [],
+      "load_labels": [
+        "操作の難しさ",
+        "機能不足による後悔"
+      ],
+      "value_axes": [
+        "enjoyment",
+        "safety"
+      ],
+      "burden_addressed": [
+        "ブレーキ操作の違和感",
+        "自分に合わない操作感"
+      ],
+      "value_shift": [
+        "control_up"
+      ],
+      "need_rationale": "ブレーキフィールを好みに合わせることで、運転の楽しさと扱いやすさの両方を高められる。",
+      "trade_off": "",
+      "analog": null,
+      "eligibility": "既存オーナー",
+      "combinability": null,
+      "notes": ""
+    },
+    {
+      "id": "S-6",
+      "title": "インテリア・デザインパック",
+      "one_liner": "四季・時間帯・気分に合わせて車内の柄や色を自在に変えることができる",
+      "direction": "upgrade",
+      "domain": "upgrade_path",
+      "lifecycle": "ownership",
+      "status": "draft",
+      "contributor": "",
+      "updated_at": "2026-06-04",
+      "primary_needs": [
+        {
+          "name": "PersonalExpression",
+          "weight": 1.0
+        },
+        {
+          "name": "PremiumFeeling",
+          "weight": 1.0
+        },
+        {
+          "name": "EmotionalAttachment",
+          "weight": 1.0
+        }
       ],
       "secondary_needs": [
-        { "name": "EnvironmentalResponsibility", "weight": 0.6 }
+        {
+          "name": "FamilyComfort",
+          "weight": 0.5
+        }
       ],
-      "load_labels": ["駐車への不安", "渋滞ストレス"],
-      "value_axes": ["efficiency", "enjoyment"],
-      "burden_addressed": ["駐車への不安"],
-      "value_shift": ["convenience_up", "stress_down"],
-      "trade_off": "月額料金がかかるが、運転の利便性が大きく向上",
-      "need_rationale": "リアルタイムの交通情報や駐車場検索で、ストレスフリーな運転を実現",
-      "analog": {
-        "name": "ナビアプリの有料版（Google Maps Premium）",
-        "pattern": "digital_enhancement",
-        "why": "基本機能に加えて、便利な機能を追加",
-        "pitch_template": "ナビアプリの有料版のように、運転をもっとスマートに"
-      },
+      "load_labels": [
+        "すぐ飽きるリスク",
+        "機能不足による後悔"
+      ],
+      "value_axes": [
+        "enjoyment",
+        "family"
+      ],
+      "burden_addressed": [
+        "内装の飽き",
+        "同乗者との雰囲気づくりの難しさ"
+      ],
+      "value_shift": [
+        "prestige_up"
+      ],
+      "need_rationale": "季節・時間帯・気分に合わせて内装を変えられるため、自分らしさと車内の上質感を高められる。",
+      "trade_off": "",
+      "analog": null,
       "eligibility": "既存オーナー",
-      "combinability": "stackable",
+      "combinability": null,
+      "notes": ""
+    },
+    {
+      "id": "S-7",
+      "title": "ライフステージ自動アップグレード",
+      "one_liner": "家族の成長に合わせて車が自動アップグレード",
+      "direction": "upgrade",
+      "domain": "upgrade_path",
+      "lifecycle": "ownership",
+      "status": "draft",
+      "contributor": "",
+      "updated_at": "2026-06-04",
+      "primary_needs": [
+        {
+          "name": "FamilyComfort",
+          "weight": 1.0
+        },
+        {
+          "name": "ChildSafety",
+          "weight": 1.0
+        },
+        {
+          "name": "EasyChildPickup",
+          "weight": 1.0
+        }
+      ],
+      "secondary_needs": [
+        {
+          "name": "CaregiverSupport",
+          "weight": 0.5
+        },
+        {
+          "name": "LongTermReliability",
+          "weight": 0.5
+        }
+      ],
+      "load_labels": [
+        "家族同乗時の不満リスク",
+        "機能不足による後悔"
+      ],
+      "value_axes": [
+        "family",
+        "safety"
+      ],
+      "burden_addressed": [
+        "家族構成変化への対応負荷",
+        "将来の使い勝手への不安"
+      ],
+      "value_shift": [
+        "convenience_up"
+      ],
+      "need_rationale": "家族の成長や生活変化に合わせて機能を更新できるため、長く快適に使い続けられる。",
+      "trade_off": "",
+      "analog": null,
+      "eligibility": "既存オーナー",
+      "combinability": null,
+      "notes": ""
+    },
+    {
+      "id": "S-8",
+      "title": "バードガード",
+      "one_liner": "駐車中の鳥害を検知し忌避制御で被害軽減",
+      "direction": "upgrade",
+      "domain": "upgrade_path",
+      "lifecycle": "ownership",
+      "status": "draft",
+      "contributor": "",
+      "updated_at": "2026-06-04",
+      "primary_needs": [
+        {
+          "name": "EmotionalAttachment",
+          "weight": 1.0
+        },
+        {
+          "name": "MaintenanceCostReduction",
+          "weight": 1.0
+        },
+        {
+          "name": "LongTermReliability",
+          "weight": 1.0
+        }
+      ],
+      "secondary_needs": [],
+      "load_labels": [
+        "家族同乗時の不満リスク",
+        "維持費への不安"
+      ],
+      "value_axes": [
+        "efficiency",
+        "enjoyment"
+      ],
+      "burden_addressed": [
+        "鳥害による清掃負担",
+        "外装汚れによる所有満足低下"
+      ],
+      "value_shift": [
+        "risk_down"
+      ],
+      "need_rationale": "駐車中の鳥害を抑えることで、清掃負担や外装劣化への不安を減らし、愛着を保ちやすくする。",
+      "trade_off": "",
+      "analog": null,
+      "eligibility": "既存オーナー",
+      "combinability": null,
+      "notes": ""
+    },
+    {
+      "id": "S-9",
+      "title": "家族間シェア・スマートポジションメモリ",
+      "one_liner": "乗車時にシート・ハンドル・ミラー位置等を自動復元し、いつでもマイカー感覚で乗れる",
+      "direction": "upgrade",
+      "domain": "upgrade_path",
+      "lifecycle": "ownership",
+      "status": "draft",
+      "contributor": "",
+      "updated_at": "2026-06-04",
+      "primary_needs": [
+        {
+          "name": "SmoothRideComfort",
+          "weight": 1.0
+        },
+        {
+          "name": "FamilyComfort",
+          "weight": 1.0
+        },
+        {
+          "name": "EasyEntryExit",
+          "weight": 1.0
+        }
+      ],
+      "secondary_needs": [
+        {
+          "name": "DrivingConfidence",
+          "weight": 0.5
+        }
+      ],
+      "load_labels": [
+        "操作の難しさ",
+        "家族同乗時の不満リスク"
+      ],
+      "value_axes": [
+        "family",
+        "efficiency"
+      ],
+      "burden_addressed": [
+        "乗車のたびの調整手間",
+        "家族共有時の使いにくさ"
+      ],
+      "value_shift": [
+        "convenience_up"
+      ],
+      "need_rationale": "家族ごとのポジションを自動復元することで、共有利用時の手間を減らし快適に乗り始められる。",
+      "trade_off": "",
+      "analog": null,
+      "eligibility": "既存オーナー",
+      "combinability": null,
+      "notes": ""
+    },
+    {
+      "id": "S-10",
+      "title": "エアコンパーソナル個別制御",
+      "one_liner": "乗員の体感温度に合わせて風量を切り分け、全員が快適で過ごせる",
+      "direction": "upgrade",
+      "domain": "upgrade_path",
+      "lifecycle": "ownership",
+      "status": "draft",
+      "contributor": "",
+      "updated_at": "2026-06-04",
+      "primary_needs": [
+        {
+          "name": "ClimateComfort",
+          "weight": 1.0
+        },
+        {
+          "name": "FamilyComfort",
+          "weight": 1.0
+        },
+        {
+          "name": "PetFriendlyTravel",
+          "weight": 1.0
+        }
+      ],
+      "secondary_needs": [
+        {
+          "name": "SmoothRideComfort",
+          "weight": 0.5
+        }
+      ],
+      "load_labels": [
+        "家族同乗時の不満リスク",
+        "操作の難しさ"
+      ],
+      "value_axes": [
+        "family",
+        "efficiency"
+      ],
+      "burden_addressed": [
+        "乗員ごとの暑い寒いの不満",
+        "空調調整の手間"
+      ],
+      "value_shift": [
+        "convenience_up"
+      ],
+      "need_rationale": "乗員ごとの体感温度に合わせて調整できるため、家族全員の快適性を高められる。",
+      "trade_off": "",
+      "analog": null,
+      "eligibility": "既存オーナー",
+      "combinability": null,
+      "notes": ""
+    },
+    {
+      "id": "S-11",
+      "title": "プレクールアシスト",
+      "one_liner": "車内環境を事前に整え快適な乗車を実現",
+      "direction": "upgrade",
+      "domain": "upgrade_path",
+      "lifecycle": "ownership",
+      "status": "draft",
+      "contributor": "",
+      "updated_at": "2026-06-04",
+      "primary_needs": [
+        {
+          "name": "ClimateComfort",
+          "weight": 1.0
+        },
+        {
+          "name": "FamilyComfort",
+          "weight": 1.0
+        },
+        {
+          "name": "EasyChildPickup",
+          "weight": 1.0
+        }
+      ],
+      "secondary_needs": [
+        {
+          "name": "PetFriendlyTravel",
+          "weight": 0.5
+        }
+      ],
+      "load_labels": [
+        "家族同乗時の不満リスク",
+        "操作の難しさ"
+      ],
+      "value_axes": [
+        "family",
+        "efficiency"
+      ],
+      "burden_addressed": [
+        "乗車直後の暑さ寒さ",
+        "出発前準備の手間"
+      ],
+      "value_shift": [
+        "convenience_up"
+      ],
+      "need_rationale": "乗車前に車内温度を整えることで、家族やペットが乗った瞬間から快適に移動できる。",
+      "trade_off": "",
+      "analog": null,
+      "eligibility": "既存オーナー",
+      "combinability": null,
+      "notes": ""
+    },
+    {
+      "id": "S-12",
+      "title": "地図カスタマイズプラン",
+      "one_liner": "道幅や一方通行などの詳細情報を追加し、運転環境に合った地図を提供",
+      "direction": "upgrade",
+      "domain": "connectivity",
+      "lifecycle": "ownership",
+      "status": "draft",
+      "contributor": "",
+      "updated_at": "2026-06-04",
+      "primary_needs": [
+        {
+          "name": "DrivingConfidence",
+          "weight": 1.0
+        },
+        {
+          "name": "VisibilityConfidence",
+          "weight": 1.0
+        },
+        {
+          "name": "UrbanManeuverability",
+          "weight": 1.0
+        }
+      ],
+      "secondary_needs": [
+        {
+          "name": "EasyParking",
+          "weight": 0.5
+        }
+      ],
+      "load_labels": [
+        "駐車・狭い道への不安",
+        "情報過多による判断負荷"
+      ],
+      "value_axes": [
+        "safety",
+        "efficiency"
+      ],
+      "burden_addressed": [
+        "道幅・規制確認の不安",
+        "知らない道での判断負荷"
+      ],
+      "value_shift": [
+        "risk_down"
+      ],
+      "need_rationale": "道幅や一方通行などの情報を補足することで、知らない道や狭い道でも安心して運転できる。",
+      "trade_off": "",
+      "analog": null,
+      "eligibility": "既存オーナー",
+      "combinability": null,
+      "notes": ""
+    },
+    {
+      "id": "S-13",
+      "title": "ドラレコ選択プラン",
+      "one_liner": "必要な人だけがドラレコを利用でき、車両価格を抑えられる",
+      "direction": "downgrade",
+      "domain": "downgrade_path",
+      "lifecycle": "ownership",
+      "status": "draft",
+      "contributor": "",
+      "updated_at": "2026-06-04",
+      "primary_needs": [
+        {
+          "name": "MaintenanceCostReduction",
+          "weight": 1.0
+        },
+        {
+          "name": "EfficientDailyMobility",
+          "weight": 1.0
+        }
+      ],
+      "secondary_needs": [],
+      "load_labels": [
+        "使わない設備への投資",
+        "維持費への不安"
+      ],
+      "value_axes": [
+        "efficiency"
+      ],
+      "burden_addressed": [
+        "不要機能への支出",
+        "購入時価格への不満"
+      ],
+      "value_shift": [
+        "cost_down"
+      ],
+      "need_rationale": "必要な人だけがドラレコを選べるようにすることで、使わない設備への投資を抑えられる。",
+      "trade_off": "",
+      "analog": null,
+      "eligibility": "新規購入者",
+      "combinability": null,
+      "notes": ""
+    },
+    {
+      "id": "S-14",
+      "title": "ホームセキュリティ連携",
+      "one_liner": "駐車中の車両カメラを活用し、自宅周辺の防犯を支援する",
+      "direction": "upgrade",
+      "domain": "upgrade_path",
+      "lifecycle": "ownership",
+      "status": "draft",
+      "contributor": "",
+      "updated_at": "2026-06-04",
+      "primary_needs": [
+        {
+          "name": "SecurityAnxietyReduction",
+          "weight": 1.0
+        },
+        {
+          "name": "LongTermReliability",
+          "weight": 1.0
+        },
+        {
+          "name": "FamilyComfort",
+          "weight": 1.0
+        }
+      ],
+      "secondary_needs": [],
+      "load_labels": [
+        "情報過多による判断負荷",
+        "機能不足による後悔"
+      ],
+      "value_axes": [
+        "safety",
+        "family"
+      ],
+      "burden_addressed": [
+        "外出中の自宅防犯不安",
+        "異常確認の手間"
+      ],
+      "value_shift": [
+        "risk_down"
+      ],
+      "need_rationale": "既存Needでは事故不安に近い安心系ニーズに紐づける。自宅防犯は将来的にSecurityAnxietyReductionの追加も検討余地がある。",
+      "trade_off": "",
+      "analog": null,
+      "eligibility": "既存オーナー",
+      "combinability": null,
+      "notes": "防犯系Needが未定義のため、現状はAccidentAnxietyReductionで代替。"
+    },
+    {
+      "id": "S-15",
+      "title": "思い出再生プラン",
+      "one_liner": "CD、カセット、昔のプレイリストなど、昔使っていたメディアや体験を車内で楽しめる",
+      "direction": "downgrade",
+      "domain": "downgrade_path",
+      "lifecycle": "ownership",
+      "status": "draft",
+      "contributor": "",
+      "updated_at": "2026-06-04",
+      "primary_needs": [
+        {
+          "name": "EmotionalAttachment",
+          "weight": 1.0
+        },
+        {
+          "name": "QuietCabinExperience",
+          "weight": 1.0
+        },
+        {
+          "name": "DrivingEnjoyment",
+          "weight": 1.0
+        }
+      ],
+      "secondary_needs": [],
+      "load_labels": [
+        "すぐ飽きるリスク"
+      ],
+      "value_axes": [
+        "enjoyment",
+        "family"
+      ],
+      "burden_addressed": [
+        "新しい機能だけでは満たせない懐かしさ",
+        "車内時間の単調さ"
+      ],
+      "value_shift": [
+        "prestige_up"
+      ],
+      "need_rationale": "昔の音楽やメディア体験を再現できるため、車への愛着や車内時間の楽しさを高められる。",
+      "trade_off": "",
+      "analog": null,
+      "eligibility": "既存オーナー",
+      "combinability": null,
+      "notes": ""
+    },
+    {
+      "id": "S-16",
+      "title": "サウンドカスタマイズプラン",
+      "one_liner": "車両の各種サウンドを好みに合わせて変更できる",
+      "direction": "upgrade",
+      "domain": "upgrade_path",
+      "lifecycle": "ownership",
+      "status": "draft",
+      "contributor": "",
+      "updated_at": "2026-06-04",
+      "primary_needs": [
+        {
+          "name": "DrivingEnjoyment",
+          "weight": 1.0
+        },
+        {
+          "name": "PersonalExpression",
+          "weight": 1.0
+        },
+        {
+          "name": "EmotionalAttachment",
+          "weight": 1.0
+        }
+      ],
+      "secondary_needs": [],
+      "load_labels": [
+        "すぐ飽きるリスク",
+        "機能不足による後悔"
+      ],
+      "value_axes": [
+        "enjoyment"
+      ],
+      "burden_addressed": [
+        "車両音への飽き",
+        "自分好みでない操作音"
+      ],
+      "value_shift": [
+        "control_up"
+      ],
+      "need_rationale": "車両サウンドを好みに合わせて変更できることで、運転そのものの楽しさと自分らしさを高める。",
+      "trade_off": "",
+      "analog": null,
+      "eligibility": "既存オーナー",
+      "combinability": null,
+      "notes": ""
+    },
+    {
+      "id": "S-17",
+      "title": "シーン別レイアウトプラン",
+      "one_liner": "キャンプ・送迎などの利用シーンに応じて車内レイアウトを自動で切り替える",
+      "direction": "upgrade",
+      "domain": "upgrade_path",
+      "lifecycle": "ownership",
+      "status": "draft",
+      "contributor": "",
+      "updated_at": "2026-06-04",
+      "primary_needs": [
+        {
+          "name": "FlexibleCargoSpace",
+          "weight": 1.0
+        },
+        {
+          "name": "OutdoorGearTransport",
+          "weight": 1.0
+        },
+        {
+          "name": "FlatSeatUtility",
+          "weight": 1.0
+        }
+      ],
+      "secondary_needs": [
+        {
+          "name": "FamilyComfort",
+          "weight": 0.5
+        },
+        {
+          "name": "WeekendFamilyTrip",
+          "weight": 0.5
+        }
+      ],
+      "load_labels": [
+        "家族同乗時の不満リスク",
+        "操作の難しさ"
+      ],
+      "value_axes": [
+        "family",
+        "adventure"
+      ],
+      "burden_addressed": [
+        "シーンごとの準備負担",
+        "荷室・車内レイアウトの使いにくさ"
+      ],
+      "value_shift": [
+        "convenience_up"
+      ],
+      "need_rationale": "キャンプや送迎など用途に応じて車内を切り替えられるため、荷物や家族移動に柔軟に対応できる。",
+      "trade_off": "",
+      "analog": null,
+      "eligibility": "既存オーナー",
+      "combinability": null,
+      "notes": ""
+    },
+    {
+      "id": "S-18",
+      "title": "パーソナルセーフティアシストプラン",
+      "one_liner": "体調やドライバー属性に応じて運転支援を最適化する",
+      "direction": "upgrade",
+      "domain": "upgrade_path",
+      "lifecycle": "ownership",
+      "status": "draft",
+      "contributor": "",
+      "updated_at": "2026-06-04",
+      "primary_needs": [
+        {
+          "name": "DrivingConfidence",
+          "weight": 1.0
+        },
+        {
+          "name": "ElderlyDrivingSupport",
+          "weight": 1.0
+        },
+        {
+          "name": "AccidentAnxietyReduction",
+          "weight": 1.0
+        }
+      ],
+      "secondary_needs": [
+        {
+          "name": "BeginnerFriendlyDriving",
+          "weight": 0.5
+        },
+        {
+          "name": "FatigueReduction",
+          "weight": 0.5
+        }
+      ],
+      "load_labels": [
+        "操作の難しさ",
+        "情報過多による判断負荷"
+      ],
+      "value_axes": [
+        "safety",
+        "efficiency"
+      ],
+      "burden_addressed": [
+        "自分の体調・属性に合わない運転支援",
+        "事故への不安"
+      ],
+      "value_shift": [
+        "risk_down"
+      ],
+      "need_rationale": "ドライバーの状態や属性に応じて支援を最適化し、安全に運転できる安心感を高める。",
+      "trade_off": "",
+      "analog": null,
+      "eligibility": "既存オーナー",
+      "combinability": null,
+      "notes": ""
+    },
+    {
+      "id": "S-19",
+      "title": "モビリティラーニングプラン",
+      "one_liner": "車窓の景色を活用し移動中の学びを促進する",
+      "direction": "upgrade",
+      "domain": "upgrade_path",
+      "lifecycle": "ownership",
+      "status": "draft",
+      "contributor": "",
+      "updated_at": "2026-06-04",
+      "primary_needs": [
+        {
+          "name": "FamilyConversation",
+          "weight": 1.0
+        },
+        {
+          "name": "WeekendFamilyTrip",
+          "weight": 1.0
+        },
+        {
+          "name": "ChildMonitoringEase",
+          "weight": 1.0
+        }
+      ],
+      "secondary_needs": [
+        {
+          "name": "FamilyComfort",
+          "weight": 0.5
+        }
+      ],
+      "load_labels": [
+        "家族同乗時の不満リスク",
+        "すぐ飽きるリスク"
+      ],
+      "value_axes": [
+        "family",
+        "enjoyment"
+      ],
+      "burden_addressed": [
+        "移動時間の退屈",
+        "家族会話のきっかけ不足"
+      ],
+      "value_shift": [
+        "convenience_up"
+      ],
+      "need_rationale": "車窓の景色を学びに変えることで、移動時間を家族で楽しむ会話のきっかけにできる。",
+      "trade_off": "",
+      "analog": null,
+      "eligibility": "既存オーナー",
+      "combinability": null,
+      "notes": ""
+    },
+    {
+      "id": "S-20",
+      "title": "地域限定・歴史ナビマップ",
+      "one_liner": "地図に歴史ある古地図を重ねて表示し、ドライブを歴史旅に変える",
+      "direction": "upgrade",
+      "domain": "upgrade_path",
+      "lifecycle": "ownership",
+      "status": "draft",
+      "contributor": "",
+      "updated_at": "2026-06-04",
+      "primary_needs": [
+        {
+          "name": "AdventureLifestyle",
+          "weight": 1.0
+        },
+        {
+          "name": "WeekendFamilyTrip",
+          "weight": 1.0
+        },
+        {
+          "name": "DrivingEnjoyment",
+          "weight": 1.0
+        }
+      ],
+      "secondary_needs": [
+        {
+          "name": "FamilyConversation",
+          "weight": 0.5
+        }
+      ],
+      "load_labels": [
+        "すぐ飽きるリスク",
+        "情報過多による判断負荷"
+      ],
+      "value_axes": [
+        "adventure",
+        "enjoyment"
+      ],
+      "burden_addressed": [
+        "目的地選びのマンネリ",
+        "地域情報を探す手間"
+      ],
+      "value_shift": [
+        "convenience_up"
+      ],
+      "need_rationale": "古地図や歴史情報を重ねることで、いつものドライブに冒険感や発見を加えられる。",
+      "trade_off": "",
+      "analog": null,
+      "eligibility": "既存オーナー",
+      "combinability": null,
+      "notes": ""
+    },
+    {
+      "id": "S-21",
+      "title": "お出かけスポット・周辺環境提案ナビ",
+      "one_liner": "車内の会話や声を拾って分析し、最高の寄り道スポットを自動提案",
+      "direction": "upgrade",
+      "domain": "concierge_support",
+      "lifecycle": "ownership",
+      "status": "draft",
+      "contributor": "",
+      "updated_at": "2026-06-04",
+      "primary_needs": [
+        {
+          "name": "WeekendFamilyTrip",
+          "weight": 1.0
+        },
+        {
+          "name": "FamilyComfort",
+          "weight": 1.0
+        },
+        {
+          "name": "StressFreeCommute",
+          "weight": 1.0
+        }
+      ],
+      "secondary_needs": [
+        {
+          "name": "FamilyConversation",
+          "weight": 0.5
+        }
+      ],
+      "load_labels": [
+        "情報過多による判断負荷",
+        "家族同乗時の不満リスク"
+      ],
+      "value_axes": [
+        "family",
+        "efficiency"
+      ],
+      "burden_addressed": [
+        "寄り道先を探す手間",
+        "同乗者の満足度低下"
+      ],
+      "value_shift": [
+        "convenience_up"
+      ],
+      "need_rationale": "会話や状況から寄り道先を提案し、家族移動の判断負荷を減らしながら楽しさを高められる。",
+      "trade_off": "",
+      "analog": null,
+      "eligibility": "既存オーナー",
+      "combinability": null,
+      "notes": ""
+    },
+    {
+      "id": "S-22",
+      "title": "ドライビングスコア共有プラン",
+      "one_liner": "走行データをもとに運転評価を共有する仕組み\n免許更新とも連携",
+      "direction": "upgrade",
+      "domain": "upgrade_path",
+      "lifecycle": "ownership",
+      "status": "draft",
+      "contributor": "",
+      "updated_at": "2026-06-04",
+      "primary_needs": [
+        {
+          "name": "ElderlyDrivingSupport",
+          "weight": 1.0
+        },
+        {
+          "name": "AccidentAnxietyReduction",
+          "weight": 1.0
+        },
+        {
+          "name": "DrivingConfidence",
+          "weight": 1.0
+        }
+      ],
+      "secondary_needs": [
+        {
+          "name": "LongTermReliability",
+          "weight": 0.5
+        }
+      ],
+      "load_labels": [
+        "情報過多による判断負荷",
+        "機能不足による後悔"
+      ],
+      "value_axes": [
+        "safety",
+        "family"
+      ],
+      "burden_addressed": [
+        "高齢ドライバーの運転不安",
+        "家族が状況を把握できない不安"
+      ],
+      "value_shift": [
+        "risk_down"
+      ],
+      "need_rationale": "運転状況を評価・共有することで、高齢ドライバー本人と家族の安全不安を軽減できる。",
+      "trade_off": "",
+      "analog": null,
+      "eligibility": "既存オーナー",
+      "combinability": null,
+      "notes": ""
+    },
+    {
+      "id": "S-23",
+      "title": "シーズナルメンテ自動化プラン",
+      "one_liner": "季節に応じてタイヤ管理と交換を自動化する",
+      "direction": "upgrade",
+      "domain": "maintenance",
+      "lifecycle": "ownership",
+      "status": "draft",
+      "contributor": "",
+      "updated_at": "2026-06-04",
+      "primary_needs": [
+        {
+          "name": "SnowDrivingConfidence",
+          "weight": 1.0
+        },
+        {
+          "name": "MaintenanceCostReduction",
+          "weight": 1.0
+        },
+        {
+          "name": "LongTermReliability",
+          "weight": 1.0
+        }
+      ],
+      "secondary_needs": [
+        {
+          "name": "DrivingConfidence",
+          "weight": 0.5
+        }
+      ],
+      "load_labels": [
+        "操作の難しさ",
+        "維持費への不安"
+      ],
+      "value_axes": [
+        "safety",
+        "efficiency"
+      ],
+      "burden_addressed": [
+        "季節タイヤ管理の手間",
+        "雪道運転への不安"
+      ],
+      "value_shift": [
+        "convenience_up"
+      ],
+      "need_rationale": "季節に応じたタイヤ管理を自動化することで、雪道への不安とメンテナンス負担を減らせる。",
+      "trade_off": "",
+      "analog": null,
+      "eligibility": "既存オーナー",
+      "combinability": null,
+      "notes": ""
+    },
+    {
+      "id": "S-24",
+      "title": "オート車高コントロールプラン",
+      "one_liner": "路面状況・走行環境に応じて車高を自動調整する",
+      "direction": "upgrade",
+      "domain": "upgrade_path",
+      "lifecycle": "ownership",
+      "status": "draft",
+      "contributor": "",
+      "updated_at": "2026-06-04",
+      "primary_needs": [
+        {
+          "name": "SmoothRideComfort",
+          "weight": 1.0
+        },
+        {
+          "name": "DrivingConfidence",
+          "weight": 1.0
+        },
+        {
+          "name": "OutdoorLifestyle",
+          "weight": 1.0
+        }
+      ],
+      "secondary_needs": [
+        {
+          "name": "UrbanManeuverability",
+          "weight": 0.5
+        }
+      ],
+      "load_labels": [
+        "操作の難しさ",
+        "機能不足による後悔"
+      ],
+      "value_axes": [
+        "safety",
+        "adventure"
+      ],
+      "burden_addressed": [
+        "路面状況への対応不安",
+        "乗り心地の悪化"
+      ],
+      "value_shift": [
+        "control_up"
+      ],
+      "need_rationale": "路面や走行環境に応じて車高を調整し、乗り心地と走行時の安心感を高められる。",
+      "trade_off": "",
+      "analog": null,
+      "eligibility": "既存オーナー",
+      "combinability": null,
+      "notes": ""
+    },
+    {
+      "id": "S-25",
+      "title": "インビジブルビュープラン",
+      "one_liner": "雨天時などに路面状況を下から可視化する",
+      "direction": "upgrade",
+      "domain": "upgrade_path",
+      "lifecycle": "ownership",
+      "status": "draft",
+      "contributor": "",
+      "updated_at": "2026-06-04",
+      "primary_needs": [
+        {
+          "name": "VisibilityConfidence",
+          "weight": 1.0
+        },
+        {
+          "name": "DrivingConfidence",
+          "weight": 1.0
+        },
+        {
+          "name": "AccidentAnxietyReduction",
+          "weight": 1.0
+        }
+      ],
+      "secondary_needs": [
+        {
+          "name": "NightDrivingConfidence",
+          "weight": 0.5
+        }
+      ],
+      "load_labels": [
+        "駐車・狭い道への不安",
+        "情報過多による判断負荷"
+      ],
+      "value_axes": [
+        "safety"
+      ],
+      "burden_addressed": [
+        "見えない路面状況への不安",
+        "雨天時の判断負荷"
+      ],
+      "value_shift": [
+        "risk_down"
+      ],
+      "need_rationale": "路面状況を可視化することで、雨天や不整地での視認不安と事故不安を軽減できる。",
+      "trade_off": "",
+      "analog": null,
+      "eligibility": "既存オーナー",
+      "combinability": null,
+      "notes": ""
+    },
+    {
+      "id": "S-26",
+      "title": "メンテナンス予測アラートプラン",
+      "one_liner": "消耗部品の交換時期を予測し事前に通知する",
+      "direction": "upgrade",
+      "domain": "maintenance",
+      "lifecycle": "ownership",
+      "status": "draft",
+      "contributor": "",
+      "updated_at": "2026-06-04",
+      "primary_needs": [
+        {
+          "name": "LongTermReliability",
+          "weight": 1.0
+        },
+        {
+          "name": "MaintenanceCostReduction",
+          "weight": 1.0
+        },
+        {
+          "name": "ResaleValueRetention",
+          "weight": 1.0
+        }
+      ],
+      "secondary_needs": [],
+      "load_labels": [
+        "維持費への不安",
+        "情報過多による判断負荷"
+      ],
+      "value_axes": [
+        "efficiency",
+        "safety"
+      ],
+      "burden_addressed": [
+        "交換時期の見落とし",
+        "突発修理費への不安"
+      ],
+      "value_shift": [
+        "risk_down"
+      ],
+      "need_rationale": "消耗部品の交換時期を予測することで、突発的な故障や費用不安を減らし、長く安心して乗れる。",
+      "trade_off": "",
+      "analog": null,
+      "eligibility": "既存オーナー",
+      "combinability": null,
+      "notes": ""
+    },
+    {
+      "id": "S-27",
+      "title": "カルチャー対応ナビゲーションプラン",
+      "one_liner": "宗教的行動に配慮し祈り時間や場所を案内する",
+      "direction": "upgrade",
+      "domain": "connectivity",
+      "lifecycle": "ownership",
+      "status": "draft",
+      "contributor": "",
+      "updated_at": "2026-06-04",
+      "primary_needs": [
+        {
+          "name": "PersonalExpression",
+          "weight": 1.0
+        },
+        {
+          "name": "StressFreeCommute",
+          "weight": 1.0
+        },
+        {
+          "name": "DrivingConfidence",
+          "weight": 1.0
+        }
+      ],
+      "secondary_needs": [],
+      "load_labels": [
+        "情報過多による判断負荷",
+        "機能不足による後悔"
+      ],
+      "value_axes": [
+        "efficiency",
+        "family"
+      ],
+      "burden_addressed": [
+        "祈り時間・場所探しの手間",
+        "移動中の文化的配慮不足"
+      ],
+      "value_shift": [
+        "convenience_up"
+      ],
+      "need_rationale": "宗教的行動に必要な情報を案内することで、個人の価値観に合った移動体験を支援できる。",
+      "trade_off": "",
+      "analog": null,
+      "eligibility": "既存オーナー",
+      "combinability": null,
+      "notes": ""
+    },
+    {
+      "id": "S-28",
+      "title": "ドライバーコンディションチェックプラン",
+      "one_liner": "運転前にアルコール状態を自動で確認する等、運転前の健康状態を車側で確認",
+      "direction": "upgrade",
+      "domain": "ownership_program",
+      "lifecycle": "ownership",
+      "status": "draft",
+      "contributor": "",
+      "updated_at": "2026-06-04",
+      "primary_needs": [
+        {
+          "name": "AccidentAnxietyReduction",
+          "weight": 1.0
+        },
+        {
+          "name": "DrivingConfidence",
+          "weight": 1.0
+        },
+        {
+          "name": "LongTermReliability",
+          "weight": 1.0
+        }
+      ],
+      "secondary_needs": [
+        {
+          "name": "ElderlyDrivingSupport",
+          "weight": 0.5
+        }
+      ],
+      "load_labels": [
+        "操作の難しさ",
+        "情報過多による判断負荷"
+      ],
+      "value_axes": [
+        "safety"
+      ],
+      "burden_addressed": [
+        "運転前の状態確認不安",
+        "事故リスクへの不安"
+      ],
+      "value_shift": [
+        "risk_down"
+      ],
+      "need_rationale": "運転前のコンディション確認を支援し、安全に運転できるかの判断負荷と事故不安を軽減する。",
+      "trade_off": "",
+      "analog": null,
+      "eligibility": "既存オーナー",
+      "combinability": null,
+      "notes": ""
+    },
+    {
+      "id": "S-29",
+      "title": "ドライバー覚醒サポートプラン",
+      "one_liner": "眠気レベルに応じてステアリングの冷たさ等操作感覚を自動調整する",
+      "direction": "upgrade",
+      "domain": "upgrade_path",
+      "lifecycle": "ownership",
+      "status": "draft",
+      "contributor": "",
+      "updated_at": "2026-06-04",
+      "primary_needs": [
+        {
+          "name": "FatigueReduction",
+          "weight": 1.0
+        },
+        {
+          "name": "AccidentAnxietyReduction",
+          "weight": 1.0
+        },
+        {
+          "name": "DrivingConfidence",
+          "weight": 1.0
+        }
+      ],
+      "secondary_needs": [
+        {
+          "name": "ComfortableLongDistanceTravel",
+          "weight": 0.5
+        }
+      ],
+      "load_labels": [
+        "長距離移動による疲労",
+        "操作の難しさ"
+      ],
+      "value_axes": [
+        "safety",
+        "efficiency"
+      ],
+      "burden_addressed": [
+        "眠気による事故不安",
+        "疲労時の集中維持負担"
+      ],
+      "value_shift": [
+        "risk_down"
+      ],
+      "need_rationale": "眠気や疲労に応じて刺激や操作感を調整し、長時間運転の疲労と事故不安を減らす。",
+      "trade_off": "",
+      "analog": null,
+      "eligibility": "既存オーナー",
+      "combinability": null,
+      "notes": ""
+    },
+    {
+      "id": "S-30",
+      "title": "オートドライブアルバム生成プラン",
+      "one_liner": "車載カメラ・レーダーなどの撮影やログ情報を基にした自動ドライブアルバムの生成",
+      "direction": "upgrade",
+      "domain": "upgrade_path",
+      "lifecycle": "ownership",
+      "status": "draft",
+      "contributor": "",
+      "updated_at": "2026-06-04",
+      "primary_needs": [
+        {
+          "name": "WeekendFamilyTrip",
+          "weight": 1.0
+        },
+        {
+          "name": "EmotionalAttachment",
+          "weight": 1.0
+        },
+        {
+          "name": "FamilyConversation",
+          "weight": 1.0
+        }
+      ],
+      "secondary_needs": [
+        {
+          "name": "AdventureLifestyle",
+          "weight": 0.5
+        }
+      ],
+      "load_labels": [
+        "情報過多による判断負荷",
+        "すぐ飽きるリスク"
+      ],
+      "value_axes": [
+        "family",
+        "enjoyment"
+      ],
+      "burden_addressed": [
+        "思い出整理の手間",
+        "旅の体験が残らない不満"
+      ],
+      "value_shift": [
+        "convenience_up"
+      ],
+      "need_rationale": "ドライブ記録を自動でアルバム化することで、家族旅行の思い出を残しやすくし愛着を高める。",
+      "trade_off": "",
+      "analog": null,
+      "eligibility": "既存オーナー",
+      "combinability": null,
+      "notes": ""
+    },
+    {
+      "id": "S-31",
+      "title": "モビリティフロアクリーニングプラン",
+      "one_liner": "車内空間を常に清潔に保つ自動清掃ロボット機能",
+      "direction": "upgrade",
+      "domain": "upgrade_path",
+      "lifecycle": "ownership",
+      "status": "draft",
+      "contributor": "",
+      "updated_at": "2026-06-04",
+      "primary_needs": [
+        {
+          "name": "FamilyComfort",
+          "weight": 1.0
+        },
+        {
+          "name": "PetFriendlyTravel",
+          "weight": 1.0
+        },
+        {
+          "name": "OutdoorGearTransport",
+          "weight": 1.0
+        }
+      ],
+      "secondary_needs": [
+        {
+          "name": "FlatSeatUtility",
+          "weight": 0.5
+        },
+        {
+          "name": "EmotionalAttachment",
+          "weight": 0.5
+        }
+      ],
+      "load_labels": [
+        "家族同乗時の不満リスク",
+        "維持費への不安"
+      ],
+      "value_axes": [
+        "family",
+        "efficiency"
+      ],
+      "burden_addressed": [
+        "車内清掃の身体的負担",
+        "汚れ・臭いによる快適性低下"
+      ],
+      "value_shift": [
+        "convenience_up"
+      ],
+      "need_rationale": "食べこぼし、ペットの毛、アウトドア後の砂汚れを自動清掃し、家族やペットとの快適な移動を維持できる。",
+      "trade_off": "",
+      "analog": null,
+      "eligibility": "既存オーナー",
+      "combinability": null,
+      "notes": ""
+    },
+    {
+      "id": "S-32",
+      "title": "ナイトビジョンコンフォートプラン",
+      "one_liner": "フロントガラスのAR補正等、夜間の対向車ライトの眩しさを緩和する",
+      "direction": "upgrade",
+      "domain": "upgrade_path",
+      "lifecycle": "ownership",
+      "status": "draft",
+      "contributor": "",
+      "updated_at": "2026-06-04",
+      "primary_needs": [
+        {
+          "name": "NightDrivingConfidence",
+          "weight": 1.0
+        },
+        {
+          "name": "VisibilityConfidence",
+          "weight": 1.0
+        },
+        {
+          "name": "AccidentAnxietyReduction",
+          "weight": 1.0
+        }
+      ],
+      "secondary_needs": [
+        {
+          "name": "DrivingConfidence",
+          "weight": 0.5
+        }
+      ],
+      "load_labels": [
+        "駐車・狭い道への不安",
+        "操作の難しさ"
+      ],
+      "value_axes": [
+        "safety"
+      ],
+      "burden_addressed": [
+        "夜間のまぶしさ",
+        "対向車ライトによる視認不安"
+      ],
+      "value_shift": [
+        "risk_down"
+      ],
+      "need_rationale": "夜間の眩しさを緩和し視認性を高めることで、暗い時間帯の運転不安を軽減できる。",
+      "trade_off": "",
+      "analog": null,
+      "eligibility": "既存オーナー",
+      "combinability": null,
+      "notes": ""
+    },
+    {
+      "id": "S-33",
+      "title": "SOSボタンの取り外し",
+      "one_liner": "SOSボタンの装着有無を選択できるようにする",
+      "direction": "downgrade",
+      "domain": "downgrade_path",
+      "lifecycle": "ownership",
+      "status": "draft",
+      "contributor": "",
+      "updated_at": "2026-06-04",
+      "primary_needs": [
+        {
+          "name": "MaintenanceCostReduction",
+          "weight": 1.0
+        },
+        {
+          "name": "EfficientDailyMobility",
+          "weight": 1.0
+        },
+        {
+          "name": "LongTermReliability",
+          "weight": 1.0
+        }
+      ],
+      "secondary_needs": [],
+      "load_labels": [
+        "使わない設備への投資",
+        "維持費への不安"
+      ],
+      "value_axes": [
+        "efficiency",
+        "safety"
+      ],
+      "burden_addressed": [
+        "不要機能への支出",
+        "購入価格への不満"
+      ],
+      "value_shift": [
+        "cost_down"
+      ],
+      "need_rationale": "使用頻度が低い装備を選択制にすることで、不要な設備投資を抑えられる。",
+      "trade_off": "",
+      "analog": null,
+      "eligibility": "新規購入者",
+      "combinability": null,
+      "notes": "安全装備のため、法規・安全要件の確認が必要。"
+    },
+    {
+      "id": "S-34",
+      "title": "ウィンドコンディションドアセーフティプラン",
+      "one_liner": "風速に応じてドア挙動を制御し安全な乗降を支援する",
+      "direction": "upgrade",
+      "domain": "upgrade_path",
+      "lifecycle": "ownership",
+      "status": "draft",
+      "contributor": "",
+      "updated_at": "2026-06-04",
+      "primary_needs": [
+        {
+          "name": "AccidentAnxietyReduction",
+          "weight": 1.0
+        },
+        {
+          "name": "EasyEntryExit",
+          "weight": 1.0
+        },
+        {
+          "name": "ChildSafety",
+          "weight": 1.0
+        }
+      ],
+      "secondary_needs": [
+        {
+          "name": "FamilyComfort",
+          "weight": 0.5
+        }
+      ],
+      "load_labels": [
+        "家族同乗時の不満リスク",
+        "操作の難しさ"
+      ],
+      "value_axes": [
+        "safety",
+        "family"
+      ],
+      "burden_addressed": [
+        "強風時のドア開閉不安",
+        "乗降時の接触・破損リスク"
+      ],
+      "value_shift": [
+        "risk_down"
+      ],
+      "need_rationale": "風速に応じてドア挙動を制御し、子供や家族の乗降時の事故・破損不安を軽減できる。",
+      "trade_off": "",
+      "analog": null,
+      "eligibility": "既存オーナー",
+      "combinability": null,
+      "notes": ""
+    },
+    {
+      "id": "S-35",
+      "title": "シーズナルスポットナビゲーションプラン",
+      "one_liner": "ナビと連動し季節イベントやスポットを自動で提案する",
+      "direction": "upgrade",
+      "domain": "connectivity",
+      "lifecycle": "ownership",
+      "status": "draft",
+      "contributor": "",
+      "updated_at": "2026-06-04",
+      "primary_needs": [
+        {
+          "name": "WeekendFamilyTrip",
+          "weight": 1.0
+        },
+        {
+          "name": "AdventureLifestyle",
+          "weight": 1.0
+        },
+        {
+          "name": "FamilyConversation",
+          "weight": 1.0
+        }
+      ],
+      "secondary_needs": [
+        {
+          "name": "StressFreeCommute",
+          "weight": 0.5
+        }
+      ],
+      "load_labels": [
+        "情報過多による判断負荷",
+        "すぐ飽きるリスク"
+      ],
+      "value_axes": [
+        "family",
+        "adventure"
+      ],
+      "burden_addressed": [
+        "行き先探しの手間",
+        "移動のマンネリ"
+      ],
+      "value_shift": [
+        "convenience_up"
+      ],
+      "need_rationale": "季節イベントやスポットを提案することで、家族のお出かけ先選びの負担を減らし楽しさを高める。",
+      "trade_off": "",
+      "analog": null,
+      "eligibility": "既存オーナー",
+      "combinability": null,
+      "notes": ""
+    },
+    {
+      "id": "S-36",
+      "title": "ビートシンクライドモード",
+      "one_liner": "音楽に連動しサスペンションを制御し振動を演出する",
+      "direction": "upgrade",
+      "domain": "upgrade_path",
+      "lifecycle": "ownership",
+      "status": "draft",
+      "contributor": "",
+      "updated_at": "2026-06-04",
+      "primary_needs": [
+        {
+          "name": "DrivingEnjoyment",
+          "weight": 1.0
+        },
+        {
+          "name": "AdventureLifestyle",
+          "weight": 1.0
+        },
+        {
+          "name": "ExcitingAcceleration",
+          "weight": 1.0
+        }
+      ],
+      "secondary_needs": [
+        {
+          "name": "EmotionalAttachment",
+          "weight": 0.5
+        }
+      ],
+      "load_labels": [
+        "すぐ飽きるリスク",
+        "機能不足による後悔"
+      ],
+      "value_axes": [
+        "enjoyment",
+        "adventure"
+      ],
+      "burden_addressed": [
+        "走行体験のマンネリ",
+        "車両特性への物足りなさ"
+      ],
+      "value_shift": [
+        "prestige_up"
+      ],
+      "need_rationale": "音楽と走行制御を連動させることで、移動そのものをエンタメ化し運転体験を高める。",
+      "trade_off": "",
+      "analog": null,
+      "eligibility": "既存オーナー",
+      "combinability": null,
+      "notes": ""
+    },
+    {
+      "id": "S-37",
+      "title": "パーソナライズドメーターUXプラン",
+      "one_liner": "運転特性に応じてメーター表示を最適化し情報をパーソナライズする",
+      "direction": "upgrade",
+      "domain": "upgrade_path",
+      "lifecycle": "ownership",
+      "status": "draft",
+      "contributor": "",
+      "updated_at": "2026-06-04",
+      "primary_needs": [
+        {
+          "name": "PersonalExpression",
+          "weight": 1.0
+        },
+        {
+          "name": "DrivingConfidence",
+          "weight": 1.0
+        },
+        {
+          "name": "DrivingEnjoyment",
+          "weight": 1.0
+        }
+      ],
+      "secondary_needs": [
+        {
+          "name": "PremiumFeeling",
+          "weight": 0.5
+        }
+      ],
+      "load_labels": [
+        "情報過多による判断負荷",
+        "機能不足による後悔"
+      ],
+      "value_axes": [
+        "enjoyment",
+        "safety"
+      ],
+      "burden_addressed": [
+        "メーター情報の見にくさ",
+        "自分に合わない表示へのストレス"
+      ],
+      "value_shift": [
+        "convenience_up"
+      ],
+      "need_rationale": "運転特性に応じて情報表示を最適化し、自分らしさと見やすさを両立できる。",
+      "trade_off": "",
+      "analog": null,
+      "eligibility": "既存オーナー",
+      "combinability": null,
+      "notes": ""
+    },
+    {
+      "id": "S-38",
+      "title": "フルインテリアプロファイルプラン",
+      "one_liner": "個人ごとの設定を空調・照明・シート含め一括制御する",
+      "direction": "upgrade",
+      "domain": "upgrade_path",
+      "lifecycle": "ownership",
+      "status": "draft",
+      "contributor": "",
+      "updated_at": "2026-06-04",
+      "primary_needs": [
+        {
+          "name": "SmoothRideComfort",
+          "weight": 1.0
+        },
+        {
+          "name": "ClimateComfort",
+          "weight": 1.0
+        },
+        {
+          "name": "PersonalExpression",
+          "weight": 1.0
+        }
+      ],
+      "secondary_needs": [
+        {
+          "name": "AccessibleSeating",
+          "weight": 0.5
+        },
+        {
+          "name": "QuietCabinExperience",
+          "weight": 0.5
+        }
+      ],
+      "load_labels": [
+        "操作の難しさ",
+        "家族同乗時の不満リスク"
+      ],
+      "value_axes": [
+        "efficiency",
+        "enjoyment"
+      ],
+      "burden_addressed": [
+        "複数設定を毎回調整する手間",
+        "自分に合わない車内環境"
+      ],
+      "value_shift": [
+        "convenience_up"
+      ],
+      "need_rationale": "空調・照明・シートを一括で個人最適化し、車内環境調整の手間を減らして快適性を高める。",
+      "trade_off": "",
+      "analog": null,
+      "eligibility": "既存オーナー",
+      "combinability": null,
+      "notes": ""
+    },
+    {
+      "id": "S-39",
+      "title": "感情連動BGM機能",
+      "one_liner": "表情や声、運転操作等から感情をリアルタイムで推定、状態にあったBGMに切り替える",
+      "direction": "upgrade",
+      "domain": "upgrade_path",
+      "lifecycle": "ownership",
+      "status": "draft",
+      "contributor": "",
+      "updated_at": "2026-06-04",
+      "primary_needs": [
+        {
+          "name": "RelaxingDrive",
+          "weight": 1.0
+        },
+        {
+          "name": "PersonalExpression",
+          "weight": 1.0
+        },
+        {
+          "name": "QuietCabinExperience",
+          "weight": 1.0
+        }
+      ],
+      "secondary_needs": [
+        {
+          "name": "DrivingEnjoyment",
+          "weight": 0.5
+        }
+      ],
+      "load_labels": [
+        "長距離移動による疲労",
+        "すぐ飽きるリスク"
+      ],
+      "value_axes": [
+        "enjoyment",
+        "efficiency"
+      ],
+      "burden_addressed": [
+        "気分に合わない車内音響",
+        "運転中の緊張・疲労感"
+      ],
+      "value_shift": [
+        "convenience_up"
+      ],
+      "need_rationale": "感情に合わせてBGMを切り替えることで、リラックスや気分転換を支援し車内体験を高める。",
+      "trade_off": "",
+      "analog": null,
+      "eligibility": "既存オーナー",
+      "combinability": null,
+      "notes": ""
+    },
+    {
+      "id": "S-40",
+      "title": "かんたん切替ドライブモード",
+      "one_liner": "走行環境や目的に応じて車両特性とUIを切替え運転体験を最適化する",
+      "direction": "upgrade",
+      "domain": "upgrade_path",
+      "lifecycle": "ownership",
+      "status": "draft",
+      "contributor": "",
+      "updated_at": "2026-06-04",
+      "primary_needs": [
+        {
+          "name": "DrivingEnjoyment",
+          "weight": 1.0
+        },
+        {
+          "name": "DrivingConfidence",
+          "weight": 1.0
+        },
+        {
+          "name": "ExcitingAcceleration",
+          "weight": 1.0
+        }
+      ],
+      "secondary_needs": [
+        {
+          "name": "UrbanManeuverability",
+          "weight": 0.5
+        }
+      ],
+      "load_labels": [
+        "操作の難しさ",
+        "情報過多による判断負荷"
+      ],
+      "value_axes": [
+        "enjoyment",
+        "safety"
+      ],
+      "burden_addressed": [
+        "走行環境に応じた設定判断",
+        "運転体験の物足りなさ"
+      ],
+      "value_shift": [
+        "control_up"
+      ],
+      "need_rationale": "走行環境や目的に合わせて車両特性を切り替え、扱いやすさと運転の楽しさを両立する。",
+      "trade_off": "",
+      "analog": null,
+      "eligibility": "既存オーナー",
+      "combinability": null,
+      "notes": ""
+    },
+    {
+      "id": "S-41",
+      "title": "車内ワークモード",
+      "one_liner": "移動中の車内を仕事空間として活用し業務効率を向上する",
+      "direction": "upgrade",
+      "domain": "upgrade_path",
+      "lifecycle": "ownership",
+      "status": "draft",
+      "contributor": "",
+      "updated_at": "2026-06-04",
+      "primary_needs": [
+        {
+          "name": "QuietCabinExperience",
+          "weight": 1.0
+        },
+        {
+          "name": "StressFreeCommute",
+          "weight": 1.0
+        },
+        {
+          "name": "RelaxingDrive",
+          "weight": 1.0
+        }
+      ],
+      "secondary_needs": [
+        {
+          "name": "ComfortableLongDistanceTravel",
+          "weight": 0.5
+        }
+      ],
+      "load_labels": [
+        "長距離移動による疲労",
+        "情報過多による判断負荷"
+      ],
+      "value_axes": [
+        "efficiency",
+        "enjoyment"
+      ],
+      "burden_addressed": [
+        "移動時間を活用できない不満",
+        "仕事環境づくりの手間"
+      ],
+      "value_shift": [
+        "convenience_up"
+      ],
+      "need_rationale": "静かな車内空間を仕事に使えるようにすることで、移動時間の活用と通勤ストレス軽減につながる。",
+      "trade_off": "",
+      "analog": null,
+      "eligibility": "既存オーナー",
+      "combinability": null,
+      "notes": ""
+    },
+    {
+      "id": "S-42",
+      "title": "予定連動ドライブアシスト",
+      "one_liner": "予定情報と連携し移動・業務・ルートを統合最適化する",
+      "direction": "upgrade",
+      "domain": "connectivity",
+      "lifecycle": "ownership",
+      "status": "draft",
+      "contributor": "",
+      "updated_at": "2026-06-04",
+      "primary_needs": [
+        {
+          "name": "StressFreeCommute",
+          "weight": 1.0
+        },
+        {
+          "name": "ShortTripEfficiency",
+          "weight": 1.0
+        },
+        {
+          "name": "QuickErrandMobility",
+          "weight": 1.0
+        }
+      ],
+      "secondary_needs": [
+        {
+          "name": "EfficientDailyMobility",
+          "weight": 0.5
+        }
+      ],
+      "load_labels": [
+        "渋滞ストレス",
+        "情報過多による判断負荷"
+      ],
+      "value_axes": [
+        "efficiency"
+      ],
+      "burden_addressed": [
+        "予定と移動計画の分断",
+        "ルート判断の手間"
+      ],
+      "value_shift": [
+        "convenience_up"
+      ],
+      "need_rationale": "予定情報と移動を連携させることで、ルート判断や移動準備の負担を減らし通勤・日常移動を効率化する。",
+      "trade_off": "",
+      "analog": null,
+      "eligibility": "既存オーナー",
+      "combinability": null,
+      "notes": ""
+    },
+    {
+      "id": "S-43",
+      "title": "アダプティブコンフォートシートプラン",
+      "one_liner": "時間や姿勢に応じてシート形状と支持部を自動調整する",
+      "direction": "upgrade",
+      "domain": "upgrade_path",
+      "lifecycle": "ownership",
+      "status": "draft",
+      "contributor": "",
+      "updated_at": "2026-06-04",
+      "primary_needs": [
+        {
+          "name": "AccessibleSeating",
+          "weight": 1.0
+        },
+        {
+          "name": "FatigueReduction",
+          "weight": 1.0
+        },
+        {
+          "name": "LowPhysicalBurden",
+          "weight": 1.0
+        }
+      ],
+      "secondary_needs": [
+        {
+          "name": "ComfortableLongDistanceTravel",
+          "weight": 0.5
+        }
+      ],
+      "load_labels": [
+        "長距離移動による疲労",
+        "操作の難しさ"
+      ],
+      "value_axes": [
+        "safety",
+        "family"
+      ],
+      "burden_addressed": [
+        "長時間運転時の身体負担",
+        "姿勢維持のつらさ"
+      ],
+      "value_shift": [
+        "convenience_up"
+      ],
+      "need_rationale": "時間や姿勢に応じてシートを調整し、身体負担を減らして快適な姿勢を確保できる。",
+      "trade_off": "",
+      "analog": null,
+      "eligibility": "既存オーナー",
+      "combinability": null,
+      "notes": ""
+    },
+    {
+      "id": "S-44",
+      "title": "コネクテッド洗車オーケストレーション",
+      "one_liner": "車両状態データに基づき洗車の最適タイミングと実行方法を自動調整する",
+      "direction": "upgrade",
+      "domain": "maintenance",
+      "lifecycle": "ownership",
+      "status": "draft",
+      "contributor": "",
+      "updated_at": "2026-06-04",
+      "primary_needs": [
+        {
+          "name": "LongTermReliability",
+          "weight": 1.0
+        },
+        {
+          "name": "ResaleValueRetention",
+          "weight": 1.0
+        },
+        {
+          "name": "MaintenanceCostReduction",
+          "weight": 1.0
+        }
+      ],
+      "secondary_needs": [
+        {
+          "name": "EmotionalAttachment",
+          "weight": 0.5
+        }
+      ],
+      "load_labels": [
+        "維持費への不安",
+        "情報過多による判断負荷"
+      ],
+      "value_axes": [
+        "efficiency",
+        "enjoyment"
+      ],
+      "burden_addressed": [
+        "洗車タイミング判断の手間",
+        "汚れによる価値低下不安"
+      ],
+      "value_shift": [
+        "convenience_up"
+      ],
+      "need_rationale": "車両状態に応じて洗車タイミングを最適化し、価値維持や清潔な状態への愛着を支援する。",
+      "trade_off": "",
+      "analog": null,
+      "eligibility": "既存オーナー",
+      "combinability": null,
       "notes": ""
     }
   ]
