@@ -345,14 +345,14 @@ def recommend_services_for_session(
     detected_load_details = profile_data.get("detected_loads") or []
     detected_loads = [load["name"] if isinstance(load, dict) else load for load in detected_load_details]
     
-    # Profile scores
+    # Profile scores（0-100 → 0-1 に正規化）
     prof = profile_data.get("profile") or {}
     profile_scores = {
-        "safety": float(prof.get("score_safety", 0)),
-        "family": float(prof.get("score_family", 0)),
-        "efficiency": float(prof.get("score_efficiency", 0)),
-        "enjoyment": float(prof.get("score_enjoyment", 0)),
-        "adventure": float(prof.get("score_adventure", 0)),
+        "safety": float(prof.get("score_safety", 0)) / 100.0,
+        "family": float(prof.get("score_family", 0)) / 100.0,
+        "efficiency": float(prof.get("score_efficiency", 0)) / 100.0,
+        "enjoyment": float(prof.get("score_enjoyment", 0)) / 100.0,
+        "adventure": float(prof.get("score_adventure", 0)) / 100.0,
     }
     
     # Lifecycle（デフォルト: ownership）
