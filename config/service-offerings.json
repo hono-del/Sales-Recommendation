@@ -1,5 +1,169 @@
 {
   "version": "1.0",
   "description": "アップグレード/ダウングレードサービス案カタログ（正本）",
-  "offerings": []
+  "offerings": [
+    {
+      "id": "S-1",
+      "title": "定額メンテナンスプラン",
+      "one_liner": "月額固定で、突然の整備費不安を減らす",
+      "direction": "upgrade",
+      "domain": "maintenance",
+      "lifecycle": "ownership",
+      "status": "active",
+      "contributor": "システム",
+      "updated_at": "2026-06-03",
+      "primary_needs": [
+        { "name": "MaintenanceCostReduction", "weight": 1.0 },
+        { "name": "LongTermReliability", "weight": 0.8 }
+      ],
+      "secondary_needs": [],
+      "load_labels": ["維持費への不安"],
+      "value_axes": ["efficiency", "safety"],
+      "burden_addressed": ["維持費への不安"],
+      "value_shift": ["risk_down", "simplicity_up"],
+      "trade_off": "月額は増えるが、突発的な整備費の不安が減る",
+      "need_rationale": "維持費の見通しが立つことで、長く乗る安心感にもつながる",
+      "analog": {
+        "name": "携帯電話の定額プラン",
+        "pattern": "predictable_cost",
+        "why": "変動費を固定費化して判断負荷を下げる構造が同じ",
+        "pitch_template": "携帯の定額プランのように、クルマの維持費を毎月一定に"
+      },
+      "eligibility": "既存オーナー",
+      "combinability": "stackable",
+      "notes": ""
+    },
+    {
+      "id": "S-2",
+      "title": "Honda ドライビングレッスン",
+      "one_liner": "運転への不安を減らし、安心して楽しめる",
+      "direction": "upgrade",
+      "domain": "experience",
+      "lifecycle": "ownership",
+      "status": "active",
+      "contributor": "システム",
+      "updated_at": "2026-06-03",
+      "primary_needs": [
+        { "name": "DrivingConfidence", "weight": 1.0 },
+        { "name": "AccidentAnxietyReduction", "weight": 0.9 }
+      ],
+      "secondary_needs": [
+        { "name": "DrivingEnjoyment", "weight": 0.7 }
+      ],
+      "load_labels": ["運転への不安", "事故への不安"],
+      "value_axes": ["safety", "enjoyment"],
+      "burden_addressed": ["運転への不安"],
+      "value_shift": ["confidence_up", "enjoyment_up"],
+      "trade_off": "時間と費用がかかるが、安心感と運転スキルが向上",
+      "need_rationale": "プロの指導で正しい運転技術を身につけ、自信を持って運転できるようになる",
+      "analog": {
+        "name": "スポーツジムのパーソナルトレーニング",
+        "pattern": "skill_enhancement",
+        "why": "プロの指導で基礎から学び、自信をつける",
+        "pitch_template": "ジムのパーソナルトレーニングのように、運転技術を基礎から学ぶ"
+      },
+      "eligibility": "新規購入者・既存オーナー",
+      "combinability": "standalone",
+      "notes": ""
+    },
+    {
+      "id": "S-3",
+      "title": "Honda オーナーズクラブ",
+      "one_liner": "仲間と一緒に、クルマライフを楽しむ",
+      "direction": "upgrade",
+      "domain": "community",
+      "lifecycle": "ownership",
+      "status": "active",
+      "contributor": "システム",
+      "updated_at": "2026-06-03",
+      "primary_needs": [
+        { "name": "OutdoorLifestyle", "weight": 1.0 },
+        { "name": "WeekendFamilyTrip", "weight": 0.8 }
+      ],
+      "secondary_needs": [
+        { "name": "EmotionalAttachment", "weight": 0.7 }
+      ],
+      "load_labels": [],
+      "value_axes": ["enjoyment", "adventure", "family"],
+      "burden_addressed": [],
+      "value_shift": ["enjoyment_up", "connection_up"],
+      "trade_off": "参加の手間はあるが、新しい体験とつながりが得られる",
+      "need_rationale": "同じクルマを愛する仲間との交流で、より豊かなカーライフを送れる",
+      "analog": {
+        "name": "趣味のコミュニティ（登山サークルなど）",
+        "pattern": "community_engagement",
+        "why": "共通の興味でつながり、一緒に楽しむ",
+        "pitch_template": "趣味のサークルのように、Honda オーナー同士でつながる"
+      },
+      "eligibility": "既存オーナー",
+      "combinability": "stackable",
+      "notes": ""
+    },
+    {
+      "id": "S-4",
+      "title": "Honda カーシェアリング",
+      "one_liner": "必要なときだけ使って、コストを最適化",
+      "direction": "downgrade",
+      "domain": "ownership",
+      "lifecycle": "consideration",
+      "status": "active",
+      "contributor": "システム",
+      "updated_at": "2026-06-03",
+      "primary_needs": [
+        { "name": "EfficientDailyMobility", "weight": 1.0 },
+        { "name": "MaintenanceCostReduction", "weight": 0.9 }
+      ],
+      "secondary_needs": [
+        { "name": "ShortTripEfficiency", "weight": 0.7 }
+      ],
+      "load_labels": ["維持費への不安", "使用頻度の低さ"],
+      "value_axes": ["efficiency"],
+      "burden_addressed": ["維持費への不安"],
+      "value_shift": ["cost_down", "flexibility_up"],
+      "trade_off": "所有感は減るが、使った分だけ払う合理性がある",
+      "need_rationale": "使用頻度が低い場合、シェアリングの方が経済的で環境にも優しい",
+      "analog": {
+        "name": "サブスク型音楽・動画サービス",
+        "pattern": "pay_per_use",
+        "why": "必要なときだけ使って、固定費を削減",
+        "pitch_template": "サブスクサービスのように、必要なときだけ Honda 車を使う"
+      },
+      "eligibility": "検討中の顧客",
+      "combinability": "alternative",
+      "notes": ""
+    },
+    {
+      "id": "S-5",
+      "title": "Honda コネクト サブスクリプション",
+      "one_liner": "デジタルサービスで、カーライフをもっと便利に",
+      "direction": "upgrade",
+      "domain": "technology",
+      "lifecycle": "ownership",
+      "status": "active",
+      "contributor": "システム",
+      "updated_at": "2026-06-03",
+      "primary_needs": [
+        { "name": "StressFreeCommute", "weight": 1.0 },
+        { "name": "EasyParking", "weight": 0.8 }
+      ],
+      "secondary_needs": [
+        { "name": "EnvironmentalResponsibility", "weight": 0.6 }
+      ],
+      "load_labels": ["駐車への不安", "渋滞ストレス"],
+      "value_axes": ["efficiency", "enjoyment"],
+      "burden_addressed": ["駐車への不安"],
+      "value_shift": ["convenience_up", "stress_down"],
+      "trade_off": "月額料金がかかるが、運転の利便性が大きく向上",
+      "need_rationale": "リアルタイムの交通情報や駐車場検索で、ストレスフリーな運転を実現",
+      "analog": {
+        "name": "ナビアプリの有料版（Google Maps Premium）",
+        "pattern": "digital_enhancement",
+        "why": "基本機能に加えて、便利な機能を追加",
+        "pitch_template": "ナビアプリの有料版のように、運転をもっとスマートに"
+      },
+      "eligibility": "既存オーナー",
+      "combinability": "stackable",
+      "notes": ""
+    }
+  ]
 }
