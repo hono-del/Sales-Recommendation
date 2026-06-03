@@ -1,7 +1,5 @@
 "use client";
 
-import type { ReactNode } from "react";
-
 type ServiceOffering = {
   id: string;
   title: string;

@@ -23,7 +23,6 @@ export function DealerClient() {
   const sessionId = useRequireSession();
   const delegationLevel = useDemoStore((s) => s.delegationLevel);
   const recommendations = useDemoStore((s) => s.recommendations);
-  const demoFallback = useDemoStore((s) => s.demoFallback);
   const [talk, setTalk] = useState<DealerTalk | null>(null);
   const [loading, setLoading] = useState(true);
   const [isInitialized, setIsInitialized] = useState(false);

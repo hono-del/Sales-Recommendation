@@ -42,7 +42,7 @@ export function ServiceRecommendClient() {
         setError(null);
         
         const data = await api.getServiceRecommendations(validSessionId);
-        setServices(data.services as any || []);
+        setServices((data.services || []) as ServiceOffering[]);
       } catch (e) {
         console.error("サービス推薦エラー:", e);
         setError(e instanceof Error ? e.message : "サービス推薦の取得に失敗しました");

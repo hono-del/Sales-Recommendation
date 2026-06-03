@@ -24330,5 +24330,50 @@
         ]
       }
     }
+  },
+  "f7253c29-073e-469f-bf7b-24d55ea2b336": {
+    "session_id": "f7253c29-073e-469f-bf7b-24d55ea2b336",
+    "created_at": "2026-06-03T09:39:25Z",
+    "updated_at": "2026-06-03T09:39:25Z",
+    "status": "active",
+    "delegation_level": null,
+    "demo_fallback_used": false,
+    "family_size": null,
+    "budget_range": null,
+    "budget_min": null,
+    "budget_max": null,
+    "answers": [],
+    "profile": null,
+    "events": []
+  },
+  "8dde0dd9-2f67-4c8b-92f2-320e405394f8": {
+    "session_id": "8dde0dd9-2f67-4c8b-92f2-320e405394f8",
+    "created_at": "2026-06-03T09:42:46Z",
+    "updated_at": "2026-06-03T09:42:46Z",
+    "status": "active",
+    "delegation_level": null,
+    "demo_fallback_used": false,
+    "family_size": null,
+    "budget_range": null,
+    "budget_min": null,
+    "budget_max": null,
+    "answers": [],
+    "profile": null,
+    "events": []
+  },
+  "e3d57f20-6028-45e2-9c4c-b4ddbe9d2919": {
+    "session_id": "e3d57f20-6028-45e2-9c4c-b4ddbe9d2919",
+    "created_at": "2026-06-03T09:42:48Z",
+    "updated_at": "2026-06-03T09:42:48Z",
+    "status": "active",
+    "delegation_level": null,
+    "demo_fallback_used": false,
+    "family_size": null,
+    "budget_range": null,
+    "budget_min": null,
+    "budget_max": null,
+    "answers": [],
+    "profile": null,
+    "events": []
   }
 }

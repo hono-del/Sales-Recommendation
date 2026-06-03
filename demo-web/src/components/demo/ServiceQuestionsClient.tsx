@@ -12,7 +12,6 @@ export function ServiceQuestionsClient() {
   const router = useRouter();
   const sessionId = useRequireSession();
   const addAnswer = useDemoStore((s) => s.addAnswer);
-  const answers = useDemoStore((s) => s.answers);
 
   const [questions, setQuestions] = useState<Question[]>([]);
   const [step, setStep] = useState(0);

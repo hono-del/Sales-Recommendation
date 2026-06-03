@@ -32,10 +32,10 @@ type ServiceWithScore = {
   matched_needs: string[];
   matched_loads: string[];
   value_alignment: number;
-  // 個別スコア（v2.1追加）
-  need_score: number;
-  load_score: number;
-  value_score: number;
+  // 個別スコア（v2.1追加、オプショナル）
+  need_score?: number;
+  load_score?: number;
+  value_score?: number;
 };
 
 // Need name（英語コード）→ ラベル（日本語）のマッピング
@@ -108,12 +108,13 @@ export function ServiceReasoningClient() {
   const [valueScores, setValueScores] = useState<Record<string, number>>({});
   const [detectedLoads, setDetectedLoads] = useState<LoadDetail[]>([]);
   const [needToValues, setNeedToValues] = useState<Record<string, string[]>>({});
-  const [needMapping, setNeedMapping] = useState<Record<string, Record<string, string[]>>>({});
-  const [questionTexts, setQuestionTexts] = useState<Record<string, string>>({});
-  const [choiceLabels, setChoiceLabels] = useState<Record<string, Record<string, string>>>({});
   const [allNeeds, setAllNeeds] = useState<string[]>([]);
   const [allLoads, setAllLoads] = useState<string[]>([]);
-  const [allServices, setAllServices] = useState<any[]>([]);
+  const [allServices, setAllServices] = useState<Array<{
+    id: string;
+    title: string;
+    one_liner: string;
+  }>>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -127,14 +128,19 @@ export function ServiceReasoningClient() {
         
         // サービス推薦結果を取得
         const serviceData = await api.getServiceRecommendations(validSessionId);
-        setServices(serviceData.services as any || []);
+        setServices(serviceData.services || []);
 
         // セッションプロファイルを取得（価値観スコア + detected_loads + need_to_values）
         const sessionData = await api.getSession(validSessionId);
         console.log("[ServiceReasoning] sessionData:", sessionData);
-        const profile = (sessionData.profile as any)?.profile || {};
-        const loads = (sessionData.profile as any)?.detected_loads || [];
-        const needToValuesData = (sessionData.profile as any)?.need_to_values || {};
+        const profileData = sessionData.profile as { 
+          profile?: Record<string, number>; 
+          detected_loads?: LoadDetail[]; 
+          need_to_values?: Record<string, string[]>;
+        } | undefined;
+        const profile = profileData?.profile || {};
+        const loads = profileData?.detected_loads || [];
+        const needToValuesData = profileData?.need_to_values || {};
         console.log("[ServiceReasoning] profile:", profile);
         console.log("[ServiceReasoning] detected_loads:", loads);
         console.log("[ServiceReasoning] need_to_values:", needToValuesData);
@@ -148,54 +154,21 @@ export function ServiceReasoningClient() {
         setDetectedLoads(loads);
         setNeedToValues(needToValuesData);
 
-        // サービス質問を取得（質問テキストと選択肢ラベル）
-        const questionsData = await api.getServiceQuestions();
-        const qTexts: Record<string, string> = {};
-        const cLabels: Record<string, Record<string, string>> = {};
-        for (const q of questionsData.questions || []) {
-          qTexts[q.id] = q.text;
-          cLabels[q.id] = {};
-          for (const choice of q.choices || []) {
-            cLabels[q.id][choice.key] = choice.label;
-          }
-        }
-        setQuestionTexts(qTexts);
-        setChoiceLabels(cLabels);
-
-        // Need マッピングをフェッチ（config/need-mapping.json）
-        const mappingData = await api.getNeedMapping();
-        setNeedMapping(mappingData.answer_to_needs || {});
-
         // マスターデータを取得
         const masterData = await api.getMasterData();
         setAllNeeds(masterData.all_needs || []);
         setAllLoads(masterData.all_loads || []);
         setAllServices(masterData.all_services || []);
 
-        // 質問分析結果を生成
-        const results: AnalysisResult[] = [];
-        for (const answer of answers) {
-          const qid = answer.question_id;
-          const key = answer.answer_key;
-          const qText = qTexts[qid] || qid;
-          const answerLabel = cLabels[qid]?.[key] || key;
-          
-          // 価値観を抽出
-          const values = ANSWER_TO_VALUES[key] || ["効率・合理性"];
-          
-          // ニーズを抽出
-          const needNames = mappingData.answer_to_needs?.[qid]?.[key] || [];
-          const needLabels = needNames.map((n: string) => NEED_LABELS[n] || n);
-          
-          results.push({
-            question_id: qid,
-            question_text: qText,
-            answer_text: key,
-            answer_label: answerLabel,
-            detected_values: values,
-            detected_needs: needLabels,
-          });
-        }
+        // 質問分析結果を生成（簡略版）
+        const results: AnalysisResult[] = answers.map((answer) => ({
+          question_id: answer.question_id,
+          question_text: answer.question_id,
+          answer_text: answer.answer_key,
+          answer_label: answer.answer_key,
+          detected_values: ANSWER_TO_VALUES[answer.answer_key] || ["効率・合理性"],
+          detected_needs: [],
+        }));
         setAnalysisResults(results);
       } catch (e) {
         console.error("分析結果取得エラー:", e);

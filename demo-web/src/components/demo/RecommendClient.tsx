@@ -15,6 +15,20 @@ import { ServiceOfferingSection } from "./ServiceOfferingSection";
 import { MaximizerRecommendLayout } from "./MaximizerRecommendLayout";
 import { SatisficerRecommendLayout } from "./SatisficerRecommendLayout";
 
+type ServiceOffering = {
+  id: string;
+  title: string;
+  one_liner: string;
+  direction: "upgrade" | "downgrade" | "neutral";
+  domain: string;
+  score: number;
+  matched_needs: string[];
+  matched_loads: string[];
+  value_alignment: number;
+  pitch: string;
+  need_rationale: string;
+};
+
 function RestartLink() {
   const reset = useDemoStore((s) => s.reset);
   return (
@@ -43,7 +57,7 @@ export function RecommendClient() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [showExcluded, setShowExcluded] = useState(false);
-  const [services, setServices] = useState<any[]>([]);
+  const [services, setServices] = useState<ServiceOffering[]>([]);
   const [servicesLoading, setServicesLoading] = useState(true);
 
   useEffect(() => {
@@ -126,7 +140,7 @@ export function RecommendClient() {
         const data = await api.getServiceRecommendations(sessionId);
         if (cancelled) return;
 
-        setServices(data.services || []);
+        setServices((data.services || []) as ServiceOffering[]);
       } catch (e) {
         console.error("Failed to load service recommendations:", e);
         setServices([]);
