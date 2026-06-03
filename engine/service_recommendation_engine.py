@@ -1,11 +1,13 @@
 """
 Service Offering Recommendation Engine
 
-ユーザーのプロファイル（Need, Load, 価値観）に基づいて
+ユーザーのプロファイル（Need, Load、価値観）に基づいて
 アップグレード・ダウングレードサービスを推薦する
 """
+import json
 import os
 from dataclasses import dataclass, field
+from pathlib import Path
 from typing import Optional
 from neo4j import GraphDatabase
 
@@ -127,7 +129,7 @@ class ServiceRecommendationEngine:
         return scored[:top_k]
     
     def _get_all_services(self) -> list[dict]:
-        """全ServiceOfferingを取得"""
+        """全ServiceOfferingを取得（Neo4j or JSON fallback）"""
         try:
             with self.driver.session() as session:
                 result = session.run("""
@@ -143,9 +145,41 @@ class ServiceRecommendationEngine:
                            s.load_labels AS load_labels,
                            s.value_axes AS value_axes
                 """)
-                return [dict(r) for r in result]
+                services = [dict(r) for r in result]
+                if services:
+                    return services
         except Exception as e:
-            print(f"[ServiceRecommendation] Error fetching services: {e}")
+            print(f"[ServiceRecommendation] Neo4j unavailable, using JSON fallback: {e}")
+        
+        # Fallback: JSONファイルから読み込む
+        try:
+            json_path = Path(__file__).resolve().parent.parent / "config" / "service-offerings.json"
+            data = json.loads(json_path.read_text(encoding="utf-8"))
+            offerings = data.get("offerings", [])
+            
+            # Neo4jと同じ形式に変換
+            services = []
+            for offer in offerings:
+                if offer.get("status") != "active":
+                    continue
+                services.append({
+                    "id": offer["id"],
+                    "title": offer["title"],
+                    "one_liner": offer["one_liner"],
+                    "direction": offer["direction"],
+                    "domain": offer["domain"],
+                    "lifecycle": offer.get("lifecycle", "ownership"),
+                    "pitch_template": offer.get("analog", {}).get("pitch_template", ""),
+                    "need_rationale": offer.get("need_rationale", ""),
+                    "load_labels": offer.get("load_labels", []),
+                    "value_axes": offer.get("value_axes", []),
+                    "primary_needs": [n["name"] for n in offer.get("primary_needs", [])],
+                    "secondary_needs": [n["name"] for n in offer.get("secondary_needs", [])]
+                })
+            print(f"[ServiceRecommendation] Loaded {len(services)} services from JSON")
+            return services
+        except Exception as json_e:
+            print(f"[ServiceRecommendation] JSON fallback failed: {json_e}")
             return []
     
     def _score_need_match(
@@ -153,33 +187,57 @@ class ServiceRecommendationEngine:
         service_id: str,
         user_needs: list[str]
     ) -> tuple[float, list[str]]:
-        """Needマッチスコア"""
+        """Needマッチスコア（Neo4j or JSON fallback）"""
         if not user_needs:
             return 0.0, []
         
-        with self.driver.session() as session:
-            result = session.run("""
-                MATCH (s:ServiceOffering {id: $service_id})-[r:ADDRESSES]->(n:Need)
-                WHERE n.name IN $user_needs
-                RETURN n.name AS need, n.label AS label, r.priority AS priority
-                ORDER BY r.priority
-            """, service_id=service_id, user_needs=user_needs)
+        try:
+            with self.driver.session() as session:
+                result = session.run("""
+                    MATCH (s:ServiceOffering {id: $service_id})-[r:ADDRESSES]->(n:Need)
+                    WHERE n.name IN $user_needs
+                    RETURN n.name AS need, n.label AS label, r.priority AS priority
+                    ORDER BY r.priority
+                """, service_id=service_id, user_needs=user_needs)
+                
+                matches = [dict(r) for r in result]
             
-            matches = [dict(r) for r in result]
+            if matches:
+                # Priority加重スコア（primary=1.0, secondary=0.5）
+                weighted_score = 0.0
+                for match in matches:
+                    priority = match['priority']
+                    weight = 1.0 if priority <= 3 else 0.5
+                    weighted_score += weight
+                
+                # 正規化（最大=ユーザーNeeds数）
+                score = min(weighted_score / len(user_needs), 1.0)
+                matched_need_names = [m['need'] for m in matches]
+                
+                return score, matched_need_names
+        except Exception:
+            pass
         
-        if not matches:
+        # Fallback: JSONデータから計算
+        services = self._get_all_services()
+        service_data = next((s for s in services if s['id'] == service_id), None)
+        if not service_data:
             return 0.0, []
         
-        # Priority加重スコア（primary=1.0, secondary=0.5）
-        weighted_score = 0.0
-        for match in matches:
-            priority = match['priority']
-            weight = 1.0 if priority <= 3 else 0.5
-            weighted_score += weight
+        primary_needs = service_data.get('primary_needs', [])
+        secondary_needs = service_data.get('secondary_needs', [])
         
-        # 正規化（最大=ユーザーNeeds数）
+        # マッチしたNeed
+        matched_primary = [n for n in user_needs if n in primary_needs]
+        matched_secondary = [n for n in user_needs if n in secondary_needs]
+        
+        if not matched_primary and not matched_secondary:
+            return 0.0, []
+        
+        # Priority加重スコア
+        weighted_score = len(matched_primary) * 1.0 + len(matched_secondary) * 0.5
         score = min(weighted_score / len(user_needs), 1.0)
-        matched_need_names = [m['need'] for m in matches]
+        matched_need_names = matched_primary + matched_secondary
         
         return score, matched_need_names
     
@@ -188,23 +246,40 @@ class ServiceRecommendationEngine:
         service_id: str,
         detected_loads: list[str]
     ) -> tuple[float, list[str]]:
-        """Load マッチスコア"""
+        """Load マッチスコア（Neo4j or JSON fallback）"""
         if not detected_loads:
             return 0.0, []
         
-        with self.driver.session() as session:
-            result = session.run("""
-                MATCH (s:ServiceOffering {id: $service_id})
-                WHERE s.load_labels IS NOT NULL
-                RETURN s.load_labels AS service_loads
-            """, service_id=service_id)
+        try:
+            with self.driver.session() as session:
+                result = session.run("""
+                    MATCH (s:ServiceOffering {id: $service_id})
+                    WHERE s.load_labels IS NOT NULL
+                    RETURN s.load_labels AS service_loads
+                """, service_id=service_id)
+                
+                record = result.single()
             
-            record = result.single()
+            if record and record['service_loads']:
+                service_loads = record['service_loads']
+                matched = [load for load in detected_loads if load in service_loads]
+                
+                if matched:
+                    score = len(matched) / len(detected_loads)
+                    return score, matched
+        except Exception:
+            pass
         
-        if not record or not record['service_loads']:
+        # Fallback: JSONデータから計算
+        services = self._get_all_services()
+        service_data = next((s for s in services if s['id'] == service_id), None)
+        if not service_data:
             return 0.0, []
         
-        service_loads = record['service_loads']
+        service_loads = service_data.get('load_labels', [])
+        if not service_loads:
+            return 0.0, []
+        
         matched = [load for load in detected_loads if load in service_loads]
         
         if not matched:
@@ -219,38 +294,41 @@ class ServiceRecommendationEngine:
         service_id: str,
         profile_scores: dict[str, float]
     ) -> float:
-        """価値観軸のアライメントスコア"""
+        """価値観軸のアライメントスコア（Neo4j or JSON fallback）"""
         if not profile_scores:
             return 0.0
         
-        with self.driver.session() as session:
-            result = session.run("""
-                MATCH (s:ServiceOffering {id: $service_id})
-                WHERE s.value_axes IS NOT NULL
-                RETURN s.value_axes AS service_axes
-            """, service_id=service_id)
+        try:
+            with self.driver.session() as session:
+                result = session.run("""
+                    MATCH (s:ServiceOffering {id: $service_id})
+                    WHERE s.value_axes IS NOT NULL
+                    RETURN s.value_axes AS value_axes
+                """, service_id=service_id)
+                
+                record = result.single()
             
-            record = result.single()
+            if record and record['value_axes']:
+                value_axes = record['value_axes']
+                if value_axes:
+                    axis_scores = [profile_scores.get(axis, 0.0) for axis in value_axes]
+                    return sum(axis_scores) / len(axis_scores) if axis_scores else 0.0
+        except Exception:
+            pass
         
-        if not record or not record['service_axes']:
+        # Fallback: JSONデータから計算
+        services = self._get_all_services()
+        service_data = next((s for s in services if s['id'] == service_id), None)
+        if not service_data:
             return 0.0
         
-        service_axes = record['service_axes']
+        value_axes = service_data.get('value_axes', [])
+        if not value_axes:
+            return 0.0
         
-        # サービスが強化する軸とユーザーの上位軸の重複度
-        user_top_axes = sorted(
-            profile_scores.items(),
-            key=lambda x: x[1],
-            reverse=True
-        )[:3]  # 上位3軸
-        
-        user_top_axis_names = [axis for axis, _ in user_top_axes]
-        
-        # 重複数でスコア計算
-        overlap = len(set(service_axes) & set(user_top_axis_names))
-        score = overlap / len(service_axes) if service_axes else 0.0
-        
-        return score
+        # 各軸のスコアの平均
+        axis_scores = [profile_scores.get(axis, 0.0) for axis in value_axes]
+        return sum(axis_scores) / len(axis_scores) if axis_scores else 0.0
 
 
 def recommend_services_for_session(
