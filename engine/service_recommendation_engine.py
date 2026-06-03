@@ -171,7 +171,7 @@ class ServiceRecommendationEngine:
                     "direction": offer["direction"],
                     "domain": offer["domain"],
                     "lifecycle": offer.get("lifecycle", "ownership"),
-                    "pitch_template": offer.get("analog", {}).get("pitch_template", ""),
+                    "pitch_template": (offer.get("analog") or {}).get("pitch_template", ""),
                     "need_rationale": offer.get("need_rationale", ""),
                     "load_labels": offer.get("load_labels", []),
                     "value_axes": offer.get("value_axes", []),
