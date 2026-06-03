@@ -115,6 +115,7 @@ export function ServiceReasoningClient() {
     title: string;
     one_liner: string;
   }>>([]);
+  const [needMapping, setNeedMapping] = useState<Record<string, Record<string, string[]>>>({});
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -160,15 +161,24 @@ export function ServiceReasoningClient() {
         setAllLoads(masterData.all_loads || []);
         setAllServices(masterData.all_services || []);
 
-        // 質問分析結果を生成（簡略版）
-        const results: AnalysisResult[] = answers.map((answer) => ({
-          question_id: answer.question_id,
-          question_text: answer.question_id,
-          answer_text: answer.answer_key,
-          answer_label: answer.answer_key,
-          detected_values: ANSWER_TO_VALUES[answer.answer_key] || ["効率・合理性"],
-          detected_needs: [],
-        }));
+        // Need マッピングを取得
+        const mappingData = await api.getNeedMapping();
+        const answerToNeeds = mappingData.answer_to_needs || {};
+        setNeedMapping(answerToNeeds);
+
+        // 質問分析結果を生成（Need マッピング適用）
+        const results: AnalysisResult[] = answers.map((answer) => {
+          const questionMapping = answerToNeeds[answer.question_id] || {};
+          const needs = questionMapping[answer.answer_key] || [];
+          return {
+            question_id: answer.question_id,
+            question_text: answer.question_id,
+            answer_text: answer.answer_key,
+            answer_label: answer.answer_key,
+            detected_values: ANSWER_TO_VALUES[answer.answer_key] || ["効率・合理性"],
+            detected_needs: needs,
+          };
+        });
         setAnalysisResults(results);
       } catch (e) {
         console.error("分析結果取得エラー:", e);
