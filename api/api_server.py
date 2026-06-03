@@ -51,23 +51,12 @@ app = FastAPI(title="Decision Intelligence PoC", version="1.0.0")
 # CORS設定を追加
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "http://127.0.0.1:3000"],
-    allow_credentials=True,
+    allow_origins=["*"],  # すべてのオリジンを許可（本番環境用）
+    allow_credentials=False,  # allow_origins=["*"] の場合はFalse必須
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-_cors_origins = os.environ.get(
-    "CORS_ORIGINS",
-    "http://localhost:3000,http://localhost:3001,http://localhost:8501",
-).split(",")
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=[o.strip() for o in _cors_origins if o.strip()],
-    allow_credentials=True,
-    allow_methods=["GET", "POST", "PATCH", "PUT", "DELETE", "OPTIONS"],
-    allow_headers=["*"],
-)
 app.include_router(demo_router)
 
 ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
