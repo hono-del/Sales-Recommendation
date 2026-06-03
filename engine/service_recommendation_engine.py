@@ -160,7 +160,9 @@ class ServiceRecommendationEngine:
             # Neo4jと同じ形式に変換
             services = []
             for offer in offerings:
-                if offer.get("status") != "active":
+                # status チェックを緩和（draft も含める）
+                status = offer.get("status", "draft")
+                if status not in ["active", "draft"]:
                     continue
                 services.append({
                     "id": offer["id"],
