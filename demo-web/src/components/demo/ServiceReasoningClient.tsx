@@ -140,7 +140,7 @@ export function ServiceReasoningClient() {
           question_id: string;
           answer_key: string;
         }>;
-        console.log("[ServiceReasoning] answersFromApi:", answersFromApi);
+        console.log("[ServiceReasoning] answersFromApi (v2):", answersFromApi);
         
         const profileData = sessionData.profile as { 
           profile?: Record<string, number>; 
