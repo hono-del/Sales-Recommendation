@@ -101,7 +101,6 @@ const ANSWER_TO_VALUES: Record<string, string[]> = {
 export function ServiceReasoningClient() {
   const router = useRouter();
   const sessionId = useRequireSession();
-  const answers = useDemoStore((s) => s.answers);
 
   const [analysisResults, setAnalysisResults] = useState<AnalysisResult[]>([]);
   const [services, setServices] = useState<ServiceWithScore[]>([]);
@@ -131,9 +130,18 @@ export function ServiceReasoningClient() {
         const serviceData = await api.getServiceRecommendations(validSessionId);
         setServices(serviceData.services || []);
 
-        // セッションプロファイルを取得（価値観スコア + detected_loads + need_to_values）
+        // セッションプロファイルを取得（価値観スコア + detected_loads + need_to_values + answers）
         const sessionData = await api.getSession(validSessionId);
         console.log("[ServiceReasoning] sessionData:", sessionData);
+        
+        // APIから回答データを取得
+        const answersFromApi = (sessionData.answers || []) as Array<{
+          question_index: number;
+          question_id: string;
+          answer_key: string;
+        }>;
+        console.log("[ServiceReasoning] answersFromApi:", answersFromApi);
+        
         const profileData = sessionData.profile as { 
           profile?: Record<string, number>; 
           detected_loads?: LoadDetail[]; 
@@ -167,7 +175,7 @@ export function ServiceReasoningClient() {
         setNeedMapping(answerToNeeds);
 
         // サービス質問（sq1-sq5）のみをフィルタリング
-        const serviceAnswers = answers.filter(a => a.question_id.startsWith('sq'));
+        const serviceAnswers = answersFromApi.filter(a => a.question_id.startsWith('sq'));
         console.log("[ServiceReasoning] serviceAnswers:", serviceAnswers);
         console.log("[ServiceReasoning] answerToNeeds:", answerToNeeds);
 
@@ -194,7 +202,7 @@ export function ServiceReasoningClient() {
     }
 
     fetchData();
-  }, [sessionId, answers]);
+  }, [sessionId]);
 
   if (loading) {
     return (

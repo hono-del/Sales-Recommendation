@@ -144,6 +144,7 @@ def get_session(session_id: str):
         "status": session["status"],
         "delegation_level": session.get("delegation_level"),
         "answers_count": len(session.get("answers", [])),
+        "answers": session.get("answers", []),  # 回答データを追加
         "profile": session.get("profile"),
         "demo_fallback_used": session.get("demo_fallback_used", False),
     }
