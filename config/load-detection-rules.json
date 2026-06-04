@@ -16,12 +16,13 @@
       "triggers": [
         {"question_id": "q3_priority", "answer_keys": ["efficiency"]},
         {"question_id": "q5_time_usage", "answer_keys": ["plan_optimize"]},
-        {"question_id": "sq1_lifestyle_satisfaction", "answer_keys": ["save_cost"]},
+        {"question_id": "sq1_lifestyle_satisfaction", "answer_keys": ["save_cost", "enhance_experience"]},
+        {"question_id": "sq2_technology_stance", "answer_keys": ["selective"]},
         {"question_id": "sq4_ownership_usage", "answer_keys": ["pay_per_use"]},
-        {"question_id": "sq5_life_change", "answer_keys": ["simplify_optimize"]}
+        {"question_id": "sq5_life_change", "answer_keys": ["simplify_optimize", "upgrade_quality"]}
       ],
       "threshold": 2,
-      "description": "効率・コスト重視・最適化志向 → 機能不足を後悔しやすい"
+      "description": "効率・コスト重視または品質・体験重視 → 機能不足を後悔しやすい"
     },
     "短期間で乗り換えるリスク": {
       "triggers": [
@@ -104,23 +105,14 @@
       "threshold": 2,
       "description": "慎重派・安定維持志向 → 契約ストレス"
     },
-    "選択肢過多への不安": {
+    "情報過多による判断負荷": {
       "triggers": [
         {"question_id": "q1_decision_style", "answer_keys": ["good_enough", "ask_others"]},
         {"question_id": "sq2_technology_stance", "answer_keys": ["selective", "cautious"]},
         {"question_id": "sq5_life_change", "answer_keys": ["simplify_optimize"]}
       ],
       "threshold": 2,
-      "description": "選択に悩むタイプ → 選択肢過多への不安"
-    },
-    "品質低下への懸念": {
-      "triggers": [
-        {"question_id": "sq1_lifestyle_satisfaction", "answer_keys": ["enhance_experience"]},
-        {"question_id": "sq2_technology_stance", "answer_keys": ["selective"]},
-        {"question_id": "sq5_life_change", "answer_keys": ["upgrade_quality"]}
-      ],
-      "threshold": 2,
-      "description": "品質・体験重視 → 品質低下への懸念"
+      "description": "選択に悩むタイプ → 情報過多による判断負荷"
     }
   }
 }
