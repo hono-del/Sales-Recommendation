@@ -174,6 +174,11 @@ export const api = {
       session_id: string;
       status: string;
       answers_count: number;
+      answers?: Array<{
+        question_index: number;
+        question_id: string;
+        answer_key: string;
+      }>;
       profile: unknown;
     }>(`/api/demo/sessions/${sessionId}`, undefined, 15000),
 
