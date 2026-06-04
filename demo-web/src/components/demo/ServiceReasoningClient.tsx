@@ -495,7 +495,7 @@ export function ServiceReasoningClient() {
               <span className="text-3xl font-bold text-blue-600">
                 {[...new Set(services.flatMap((s) => s.matched_needs))].length}
               </span>
-              <span className="text-sm text-text-muted">/ 全34種類</span>
+              <span className="text-sm text-text-muted">/ 全{allNeeds.length}種類</span>
             </div>
             <p className="mt-2 text-xs text-text-muted">
               がマッチしました
@@ -517,7 +517,7 @@ export function ServiceReasoningClient() {
               <span className="text-3xl font-bold text-amber-600">
                 {detectedLoads.length}
               </span>
-              <span className="text-sm text-text-muted">/ 全12種類</span>
+              <span className="text-sm text-text-muted">/ 全{allLoads.length}種類</span>
             </div>
             <p className="mt-2 text-xs text-text-muted">
               が検出されました
@@ -539,7 +539,7 @@ export function ServiceReasoningClient() {
               <span className="text-3xl font-bold text-indigo-600">
                 {services.length}
               </span>
-              <span className="text-sm text-text-muted">/ 全33種類</span>
+              <span className="text-sm text-text-muted">/ 全{allServices.length}種類</span>
             </div>
             <p className="mt-2 text-xs text-text-muted">
               を推薦しました
