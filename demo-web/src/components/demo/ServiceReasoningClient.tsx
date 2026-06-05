@@ -116,6 +116,11 @@ export function ServiceReasoningClient() {
   }>>([]);
   const [needMapping, setNeedMapping] = useState<Record<string, Record<string, string[]>>>({});
   const [loading, setLoading] = useState(true);
+  const [similarProfiles, setSimilarProfiles] = useState<{
+    total_users: number;
+    similar_users: number;
+    similarity_rate: number;
+  } | null>(null);
 
   useEffect(() => {
     if (!sessionId) return;
@@ -168,6 +173,15 @@ export function ServiceReasoningClient() {
         setAllNeeds(masterData.all_needs || []);
         setAllLoads(masterData.all_loads || []);
         setAllServices(masterData.all_services || []);
+
+        // 類似プロファイル情報を取得
+        try {
+          const similarData = await api.getSimilarProfiles(validSessionId);
+          setSimilarProfiles(similarData);
+        } catch (e) {
+          console.warn("[ServiceReasoning] 類似プロファイル取得エラー:", e);
+          // エラーが発生してもページ表示は継続
+        }
 
         // Need マッピングを取得
         const mappingData = await api.getNeedMapping();
@@ -276,6 +290,16 @@ export function ServiceReasoningClient() {
         <h3 className="mb-4 text-xl font-semibold text-navy">
           あなたの価値観プロファイル
         </h3>
+        {similarProfiles && similarProfiles.total_users > 0 && (
+          <p className="mb-4 text-sm text-text-muted">
+            あなたと近似していたのは
+            <span className="font-semibold text-navy"> {similarProfiles.similar_users}名</span>
+            /<span className="font-semibold">{similarProfiles.total_users}名</span>中
+            <span className="ml-2 text-xs">
+              （類似率: {similarProfiles.similarity_rate}%）
+            </span>
+          </p>
+        )}
         <div className="rounded-lg border border-border bg-surface p-6">
           <div className="space-y-4">
             {Object.entries(valueScores)
@@ -652,6 +676,12 @@ export function ServiceReasoningClient() {
         <PrimaryButton onClick={() => router.push("/demo/opening")}>
           最初に戻る
         </PrimaryButton>
+        <button
+          onClick={() => router.push("/demo/analytics")}
+          className="rounded-md bg-gray-600 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-gray-700"
+        >
+          ログデータを見る
+        </button>
       </div>
     </div>
   );

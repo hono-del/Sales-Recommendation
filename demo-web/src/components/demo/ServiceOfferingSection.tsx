@@ -14,9 +14,14 @@ type ServiceOffering = {
   need_rationale: string;
 };
 
+type FeedbackValue = "not_fit" | "low_interest" | "somewhat_interested" | "want_details";
+
 type Props = {
   services: ServiceOffering[];
   loading?: boolean;
+  sessionId?: string | null;
+  feedbacks?: Record<string, FeedbackValue>;
+  onFeedbackChange?: (serviceId: string, value: FeedbackValue) => void;
 };
 
 const DIRECTION_LABEL: Record<string, { label: string; color: string; icon: string }> = {
@@ -34,7 +39,7 @@ const DOMAIN_LABEL: Record<string, string> = {
   concierge_support: "コンシェルジュサポート",
 };
 
-export function ServiceOfferingSection({ services, loading }: Props) {
+export function ServiceOfferingSection({ services, loading, sessionId, feedbacks, onFeedbackChange }: Props) {
   if (loading) {
     return (
       <div className="rounded-md border border-border bg-surface p-8">
@@ -59,15 +64,47 @@ export function ServiceOfferingSection({ services, loading }: Props) {
   return (
     <div className="space-y-4">
       {services.map((service, idx) => (
-        <ServiceCard key={service.id} service={service} rank={idx + 1} />
+        <ServiceCard 
+          key={service.id} 
+          service={service} 
+          rank={idx + 1} 
+          sessionId={sessionId}
+          feedback={feedbacks?.[service.id] || null}
+          onFeedbackChange={onFeedbackChange}
+        />
       ))}
     </div>
   );
 }
 
-function ServiceCard({ service, rank }: { service: ServiceOffering; rank: number }) {
+function ServiceCard({ 
+  service, 
+  rank, 
+  sessionId,
+  feedback,
+  onFeedbackChange,
+}: { 
+  service: ServiceOffering; 
+  rank: number; 
+  sessionId?: string | null;
+  feedback: FeedbackValue | null;
+  onFeedbackChange?: (serviceId: string, value: FeedbackValue) => void;
+}) {
   const directionInfo = DIRECTION_LABEL[service.direction] || DIRECTION_LABEL.neutral;
   const domainLabel = DOMAIN_LABEL[service.domain] || service.domain;
+
+  const handleFeedback = (value: FeedbackValue) => {
+    if (onFeedbackChange) {
+      onFeedbackChange(service.id, value);
+    }
+  };
+
+  const feedbackOptions: Array<{ value: FeedbackValue; label: string; emoji: string }> = [
+    { value: "not_fit", label: "合わない", emoji: "✕" },
+    { value: "low_interest", label: "あまり興味なし", emoji: "△" },
+    { value: "somewhat_interested", label: "少し気になる", emoji: "○" },
+    { value: "want_details", label: "詳しく知りたい", emoji: "◎" },
+  ];
 
   return (
     <div className="group rounded-lg border border-border bg-surface p-6 shadow-sm transition-all hover:border-navy hover:shadow-md">
@@ -132,7 +169,7 @@ function ServiceCard({ service, rank }: { service: ServiceOffering; rank: number
         )}
       </div>
 
-      {/* アクションボタン（将来的に実装）*/}
+      {/* アクションボタン */}
       <div className="mt-4 flex gap-2">
         <button className="flex-1 rounded-md border border-navy px-4 py-2 text-sm font-medium text-navy transition-colors hover:bg-navy hover:text-white">
           詳細を見る
@@ -140,6 +177,27 @@ function ServiceCard({ service, rank }: { service: ServiceOffering; rank: number
         <button className="flex-1 rounded-md bg-navy px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-navy/90">
           お問い合わせ
         </button>
+      </div>
+
+      {/* フィードバック */}
+      <div className="mt-4 border-t border-border pt-3">
+        <p className="mb-2 text-xs text-text-muted">このサービスについて</p>
+        <div className="flex gap-2">
+          {feedbackOptions.map((option) => (
+            <button
+              key={option.value}
+              onClick={() => handleFeedback(option.value)}
+              className={`flex-1 rounded-md border px-2 py-1.5 text-xs font-medium transition-all ${
+                feedback === option.value
+                  ? "border-navy bg-navy text-white"
+                  : "border-border bg-white text-text hover:border-navy/50 hover:bg-navy/5"
+              }`}
+            >
+              <span className="mr-1">{option.emoji}</span>
+              {option.label}
+            </button>
+          ))}
+        </div>
       </div>
     </div>
   );

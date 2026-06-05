@@ -65,9 +65,20 @@ class ServiceRecommendationEngine:
     def recommend(
         self,
         req: ServiceRecommendationRequest,
-        top_k: int = 5
+        top_k: int = 5,
+        feedback_stats: Optional[dict[str, dict]] = None
     ) -> list[ServiceRecommendation]:
-        """サービスを推薦"""
+        """
+        サービスを推薦
+        
+        Args:
+            req: 推薦リクエスト
+            top_k: 上位何件返すか
+            feedback_stats: フィードバック統計（service_id -> stats）
+        
+        Returns:
+            推薦されたサービスのリスト
+        """
         services = self._get_all_services()
         if not services:
             return []
@@ -102,6 +113,33 @@ class ServiceRecommendationEngine:
                 load_score * 0.4 +
                 value_score * 0.2
             )
+            
+            # フィードバック統計によるスコア調整
+            if feedback_stats and service['id'] in feedback_stats:
+                fb_stat = feedback_stats[service['id']]
+                net_sentiment = fb_stat.get('net_sentiment', 0)
+                total_feedbacks = fb_stat.get('total_feedbacks', 0)
+                
+                # フィードバックが3件以上ある場合に調整を適用
+                if total_feedbacks >= 3:
+                    score_before = total_score  # 調整前のスコア保存
+                    
+                    # net_sentiment が -1.0 〜 +1.0 の範囲
+                    # 基本調整幅: ±30% (max adjustment = 0.3)
+                    adjustment = net_sentiment * 0.3
+                    
+                    # 完全にネガティブな場合（net_sentiment <= -0.8）は追加ペナルティ
+                    if net_sentiment <= -0.8:
+                        adjustment *= 1.5  # 1.5倍の調整（最大-45%）
+                    
+                    total_score = total_score * (1 + adjustment)
+                    
+                    # スコアを 0-1 の範囲に収める
+                    total_score = max(0.0, min(1.0, total_score))
+                    
+                    # デバッグログ
+                    if adjustment < -0.2:
+                        print(f"[FB調整] {service['id']} {service['title']}: FB数={total_feedbacks}, net={net_sentiment:.2f}, 調整率={adjustment:.2f}, スコア {score_before:.3f}→{total_score:.3f}")
             
             if total_score < 0.1:  # 最低閾値
                 continue
@@ -335,18 +373,29 @@ class ServiceRecommendationEngine:
 
 def recommend_services_for_session(
     session: dict,
-    top_k: int = 5
+    top_k: int = 5,
+    feedback_stats: Optional[dict[str, dict]] = None
 ) -> list[dict]:
-    """セッションから直接サービス推薦を生成"""
-    profile_data = session.get("profile") or {}
+    """
+    セッションから直接サービス推薦を生成
     
+    Args:
+        session: セッションデータ
+        top_k: 上位何件返すか
+        feedback_stats: フィードバック統計（service_id -> stats）
+    
+    Returns:
+        推薦されたサービスのリスト
+    """
+    profile_data = session.get("profile") or {}
+
     # Needs
     needs = profile_data.get("mapped_needs") or []
-    
+
     # Loads（詳細情報から名前だけを抽出）
     detected_load_details = profile_data.get("detected_loads") or []
     detected_loads = [load["name"] if isinstance(load, dict) else load for load in detected_load_details]
-    
+
     # Profile scores（0-100 → 0-1 に正規化）
     prof = profile_data.get("profile") or {}
     profile_scores = {
@@ -356,10 +405,10 @@ def recommend_services_for_session(
         "enjoyment": float(prof.get("score_enjoyment", 0)) / 100.0,
         "adventure": float(prof.get("score_adventure", 0)) / 100.0,
     }
-    
+
     # Lifecycle（デフォルト: ownership）
     lifecycle = session.get("lifecycle_stage", "ownership")
-    
+
     try:
         engine = ServiceRecommendationEngine()
         try:
@@ -369,9 +418,9 @@ def recommend_services_for_session(
                 profile_scores=profile_scores,
                 lifecycle_stage=lifecycle,
             )
-            
-            results = engine.recommend(req, top_k=top_k)
-            
+
+            results = engine.recommend(req, top_k=top_k, feedback_stats=feedback_stats)
+
             # 辞書形式に変換
             services = []
             for r in results:

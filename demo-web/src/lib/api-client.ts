@@ -343,4 +343,41 @@ export const api = {
         value_axes: string[];
       }>;
     }>("/api/demo/master-data", undefined, 5000),
+
+  postServiceFeedback: (
+    sessionId: string,
+    body: {
+      service_id: string;
+      service_rank: number;
+      service_score: number;
+      feedback_value: string;
+      matched_needs: string[];
+      matched_loads: string[];
+      value_alignment: number;
+    },
+  ) =>
+    request<{ message: string }>(
+      `/api/demo/sessions/${sessionId}/service-feedback`,
+      {
+        method: "POST",
+        body: JSON.stringify(body),
+      },
+      5000,
+    ),
+
+  logSessionAnalytics: (sessionId: string) =>
+    request<{ message: string; log_entry: unknown }>(
+      `/api/demo/sessions/${sessionId}/log-analytics`,
+      {
+        method: "POST",
+      },
+      15000,
+    ),
+
+  getSimilarProfiles: (sessionId: string) =>
+    request<{
+      total_users: number;
+      similar_users: number;
+      similarity_rate: number;
+    }>(`/api/demo/sessions/${sessionId}/similar-profiles`, undefined, 5000),
 };

@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import json
 import os
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Optional
 
@@ -16,6 +17,7 @@ from api.demo.graph_path_service import get_graph_path
 from api.demo.kg_catalog_service import build_feature_catalog_view, build_need_catalog_view
 from api.demo.recommend_service import recommend_for_session
 from api.demo.session_store import get_session_store
+from api.demo.analytics_logger import get_analytics_logger
 from engine.demo_profile import DemoProfileCalculator
 
 router = APIRouter(prefix="/api/demo", tags=["demo"])
@@ -477,11 +479,36 @@ def get_service_recommendations(session_id: str):
     if not session:
         raise HTTPException(status_code=404, detail="Session not found")
     
+    # フィードバック統計を取得（過去の類似プロファイルから学習）
+    feedback_stats = None
+    try:
+        from api.demo.analytics_logger import get_analytics_logger
+        logger = get_analytics_logger()
+        
+        # 現在のプロファイルを取得
+        profile_data = session.get("profile", {})
+        prof = profile_data.get("profile", {}) if isinstance(profile_data, dict) else {}
+        
+        current_profile = {
+            "safety": prof.get("score_safety", 0),
+            "family": prof.get("score_family", 0),
+            "efficiency": prof.get("score_efficiency", 0),
+            "enjoyment": prof.get("score_enjoyment", 0),
+            "adventure": prof.get("score_adventure", 0),
+        }
+        
+        # 類似プロファイルのフィードバック統計を取得
+        feedback_stats = logger.get_feedback_stats_for_profile(current_profile, threshold=30.0)
+        print(f"[ServiceRecommend] フィードバック統計取得: {len(feedback_stats)} サービス")
+    except Exception as e:
+        print(f"[WARN] フィードバック統計取得失敗: {e}")
+        feedback_stats = None
+    
     # サービス推薦を生成
     from engine.service_recommendation_engine import recommend_services_for_session
     
     try:
-        services = recommend_services_for_session(session, top_k=5)
+        services = recommend_services_for_session(session, top_k=5, feedback_stats=feedback_stats)
         fallback = False
     except Exception as e:
         print(f"[ERROR] Service recommendation failed: {e}")
@@ -489,7 +516,157 @@ def get_service_recommendations(session_id: str):
         services = []
         fallback = True
     
+    # サービス推薦結果をセッションにキャッシュ
+    session["cached_service_recommendations"] = {
+        "services": services,
+        "cached_at": datetime.now(timezone.utc).isoformat(),
+    }
+    session["updated_at"] = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    store._save()
+    
     return {
         "services": services,
         "fallback": fallback,
     }
+
+
+@router.post("/sessions/{session_id}/service-feedback")
+def post_service_feedback(session_id: str, body: dict):
+    """
+    サービス推薦へのフィードバックを保存
+    
+    Request body:
+        {
+          "service_id": "S-2",
+          "service_rank": 1,
+          "service_score": 0.85,
+          "feedback_value": "want_details" | "somewhat_interested" | "low_interest" | "not_fit",
+          "matched_needs": [...],
+          "matched_loads": [...],
+          "value_alignment": 0.7
+        }
+    """
+    store = get_session_store()
+    session = store.get_session(session_id)
+    
+    if not session:
+        raise HTTPException(status_code=404, detail="Session not found")
+    
+    # フィードバックデータ作成
+    feedback_entry = {
+        "service_id": body.get("service_id"),
+        "service_rank": body.get("service_rank"),
+        "service_score": body.get("service_score"),
+        "feedback_value": body.get("feedback_value"),
+        "matched_needs": body.get("matched_needs", []),
+        "matched_loads": body.get("matched_loads", []),
+        "value_alignment": body.get("value_alignment"),
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+    }
+    
+    # セッションに保存
+    if "service_feedbacks" not in session:
+        session["service_feedbacks"] = []
+    session["service_feedbacks"].append(feedback_entry)
+    session["updated_at"] = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    
+    # 保存
+    store._save()
+    
+    return {"message": "Feedback saved"}
+
+
+@router.post("/sessions/{session_id}/log-analytics")
+def log_session_analytics(session_id: str):
+    """
+    セッションの分析ログを手動出力
+    
+    Returns:
+        ログエントリ
+    """
+    store = get_session_store()
+    session = store.get_session(session_id)
+    
+    if not session:
+        raise HTTPException(status_code=404, detail="Session not found")
+    
+    logger = get_analytics_logger()
+    log_entry = logger.log_session_analytics(session)
+    
+    return log_entry
+
+
+@router.get("/analytics/logs")
+def get_all_analytics_logs():
+    """
+    全分析ログを取得
+    
+    Returns:
+        ログエントリのリスト
+    """
+    logger = get_analytics_logger()
+    logs = logger.get_all_logs()
+    
+    return {
+        "total": len(logs),
+        "logs": logs,
+    }
+
+
+@router.get("/sessions/{session_id}/similar-profiles")
+def get_similar_profiles(session_id: str):
+    """
+    現在のセッションの価値観プロファイルと類似した過去のユーザー数を取得
+    
+    Returns:
+        {
+            "total_users": int,
+            "similar_users": int,
+            "similarity_rate": float
+        }
+    """
+    store = get_session_store()
+    session = store.get_session(session_id)
+    
+    if not session:
+        raise HTTPException(status_code=404, detail="Session not found")
+    
+    # プロファイルデータ抽出
+    profile_data = session.get("profile", {})
+    profile_scores = profile_data.get("profile", {}) if isinstance(profile_data, dict) else {}
+    
+    # 価値観プロファイル
+    current_profile = {
+        "safety": profile_scores.get("score_safety", 0),
+        "family": profile_scores.get("score_family", 0),
+        "efficiency": profile_scores.get("score_efficiency", 0),
+        "enjoyment": profile_scores.get("score_enjoyment", 0),
+        "adventure": profile_scores.get("score_adventure", 0),
+    }
+    
+    # 類似プロファイル検索
+    logger = get_analytics_logger()
+    result = logger.find_similar_profiles(current_profile, threshold=30.0)
+    
+    return result
+
+
+@router.get("/analytics/export-csv")
+def export_analytics_csv():
+    """
+    分析ログをCSV形式でエクスポート
+    
+    Returns:
+        エクスポート結果
+    """
+    from pathlib import Path
+    
+    logger = get_analytics_logger()
+    output_path = logger.export_to_csv()
+    
+    return {
+        "message": "CSV exported successfully",
+        "path": str(output_path),
+        "url": "/data/demo/logs/analytics.csv",
+    }
+
