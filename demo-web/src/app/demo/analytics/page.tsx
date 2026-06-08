@@ -57,8 +57,7 @@ export default function AnalyticsPage() {
     async function fetchLogs() {
       try {
         setLoading(true);
-        const response = await fetch("http://localhost:8000/api/demo/analytics/logs");
-        const data = await response.json();
+        const data = await api.getAnalyticsLogs();
         
         // セッションIDごとに最新のログだけを取得
         const logsBySession = new Map<string, LogEntry>();

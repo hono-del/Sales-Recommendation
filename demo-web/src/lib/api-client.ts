@@ -380,4 +380,43 @@ export const api = {
       similar_users: number;
       similarity_rate: number;
     }>(`/api/demo/sessions/${sessionId}/similar-profiles`, undefined, 5000),
+
+  getAnalyticsLogs: () =>
+    request<{
+      total: number;
+      logs: Array<{
+        session_id: string;
+        logged_at: string;
+        created_at: string;
+        status: string;
+        value_profile: {
+          safety: number;
+          family: number;
+          efficiency: number;
+          enjoyment: number;
+          adventure: number;
+        };
+        mapped_needs: string[];
+        detected_loads: Array<{
+          name: string;
+          description: string;
+          related_values: string[];
+        }>;
+        recommended_services: Array<{
+          service_id: string;
+          title: string;
+          rank: number;
+          score: number;
+          matched_needs: string[];
+          matched_loads: string[];
+        }>;
+        service_feedbacks: Array<{
+          service_id: string;
+          service_rank: number;
+          feedback_value: string;
+          timestamp: string;
+        }>;
+        answers_count: number;
+      }>;
+    }>("/api/demo/analytics/logs", undefined, 10000),
 };
