@@ -159,6 +159,40 @@ async function request<T>(
 export const api = {
   health: () => request<HealthResponse>("/health", undefined, 3000),
 
+  /**
+   * Renderのウェイクアップを待機しながらヘルスチェック
+   * @param onProgress 進捗コールバック (attempt, maxAttempts, elapsedSeconds)
+   * @param maxAttempts 最大リトライ回数
+   * @returns ヘルスチェック成功時true、失敗時false
+   */
+  async waitForApiReady(
+    onProgress?: (attempt: number, maxAttempts: number, elapsedSeconds: number) => void,
+    maxAttempts: number = 20
+  ): Promise<boolean> {
+    const startTime = Date.now();
+    
+    for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+      try {
+        const elapsedSeconds = Math.floor((Date.now() - startTime) / 1000);
+        onProgress?.(attempt, maxAttempts, elapsedSeconds);
+        
+        await this.health();
+        return true; // 成功
+      } catch (error) {
+        // 最後の試行で失敗した場合
+        if (attempt === maxAttempts) {
+          return false;
+        }
+        
+        // 次の試行まで待機（段階的に間隔を増やす）
+        const waitTime = attempt <= 3 ? 2000 : attempt <= 10 ? 3000 : 5000;
+        await new Promise(resolve => setTimeout(resolve, waitTime));
+      }
+    }
+    
+    return false;
+  },
+
   createSession: () =>
     request<SessionCreateResponse>(
       "/api/demo/sessions",

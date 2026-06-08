@@ -38,15 +38,35 @@ export function OpeningClient() {
   const setNeo4jConnected = useDemoStore((s) => s.setNeo4jConnected);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [preparingApi, setPreparingApi] = useState(false);
+  const [apiProgress, setApiProgress] = useState({ attempt: 0, elapsed: 0 });
 
   async function handleStart(type: "vehicle" | "service") {
     if (loading) return;
     setLoading(true);
     setError(null);
+    setPreparingApi(true);
+    setApiProgress({ attempt: 0, elapsed: 0 });
+    
     try {
       reset();
       setRecommendationType(type);
-      // health は Neo4j 確認で遅いため待たずバックグラウンド実行
+      
+      // APIが起動するまで待機
+      const isReady = await api.waitForApiReady(
+        (attempt, maxAttempts, elapsedSeconds) => {
+          setApiProgress({ attempt, elapsed: elapsedSeconds });
+        },
+        20 // 最大20回リトライ（約60秒）
+      );
+      
+      if (!isReady) {
+        throw new Error("APIサーバーが応答しません。時間をおいて再度お試しください。");
+      }
+      
+      setPreparingApi(false);
+      
+      // Neo4j接続確認（バックグラウンド）
       api
         .health()
         .then((h) => setNeo4jConnected(h.neo4j === "connected"))
@@ -64,6 +84,7 @@ export function OpeningClient() {
     } catch (e) {
       setError(e instanceof Error ? e.message : "セッション開始に失敗しました");
       setLoading(false);
+      setPreparingApi(false);
     }
   }
 
@@ -198,9 +219,61 @@ export function OpeningClient() {
             </div>
           </div>
           {loading && (
-            <p style={{ marginTop: "12px", fontSize: "13px", color: "var(--color-text-muted)" }}>
-              セッションを準備しています…
-            </p>
+            <div style={{ marginTop: "20px" }}>
+              {preparingApi ? (
+                <div style={{ 
+                  background: "rgba(255,255,255,0.95)", 
+                  padding: "20px", 
+                  borderRadius: "12px",
+                  boxShadow: "0 4px 12px rgba(0,0,0,0.1)"
+                }}>
+                  <div style={{ 
+                    display: "flex", 
+                    alignItems: "center", 
+                    justifyContent: "center",
+                    gap: "12px",
+                    marginBottom: "12px"
+                  }}>
+                    <div 
+                      className="animate-spin"
+                      style={{
+                        width: "24px",
+                        height: "24px",
+                        border: "3px solid var(--color-border)",
+                        borderTop: "3px solid var(--color-navy)",
+                        borderRadius: "50%"
+                      }} 
+                    />
+                    <p style={{ 
+                      fontSize: "16px", 
+                      fontWeight: 600,
+                      color: "var(--color-navy)" 
+                    }}>
+                      APIサーバーを起動中...
+                    </p>
+                  </div>
+                  <p style={{ 
+                    fontSize: "13px", 
+                    color: "var(--color-text-muted)",
+                    marginBottom: "8px"
+                  }}>
+                    初回アクセス時は起動に30秒〜1分程度かかります
+                  </p>
+                  {apiProgress.attempt > 0 && (
+                    <p style={{ 
+                      fontSize: "12px", 
+                      color: "var(--color-text-muted)" 
+                    }}>
+                      接続試行: {apiProgress.attempt}回目 | 経過時間: {apiProgress.elapsed}秒
+                    </p>
+                  )}
+                </div>
+              ) : (
+                <p style={{ fontSize: "13px", color: "var(--color-text-muted)" }}>
+                  セッションを準備しています…
+                </p>
+              )}
+            </div>
           )}
         </div>
       </div>
