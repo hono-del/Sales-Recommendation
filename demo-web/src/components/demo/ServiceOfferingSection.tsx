@@ -179,21 +179,6 @@ function ServiceCard({
           </div>
         )}
         
-        {service.matched_needs.length > 0 && (
-          <div>
-            <span className="font-medium text-navy">対応するニーズ: </span>
-            <span>{service.matched_needs.slice(0, 3).join(", ")}</span>
-            {service.matched_needs.length > 3 && (
-              <span> 他{service.matched_needs.length - 3}件</span>
-            )}
-          </div>
-        )}
-        {service.matched_loads.length > 0 && (
-          <div>
-            <span className="font-medium text-navy">軽減する負荷: </span>
-            <span>{service.matched_loads.join(", ")}</span>
-          </div>
-        )}
         {service.need_rationale && (
           <div className="mt-2 border-t border-border pt-2">
             <span className="font-medium text-navy">推薦理由: </span>
