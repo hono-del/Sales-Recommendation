@@ -222,7 +222,7 @@ export default function AnalyticsPage() {
                     {Object.entries(log.value_profile)
                       .sort(([, a], [, b]) => b - a)
                       .slice(0, 2)
-                      .map(([key, val]) => `${Math.round(val)}%`)
+                      .map(([, val]) => `${Math.round(val)}%`)
                       .join(" / ")}
                   </p>
                 </div>

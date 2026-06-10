@@ -51,16 +51,19 @@ function KnowledgeBaseContent() {
         if (sessionId) {
           try {
             const session = await api.getSession(sessionId);
-            const services = await api.getServiceRecommendations(sessionId);
+            const serviceData = await api.getServiceRecommendations(sessionId);
             
-            const profile = session.profile || {};
-            const mappedNeeds = profile.mapped_needs || [];
-            const detectedLoads = profile.detected_loads || [];
+            const profileData = session.profile as {
+              mapped_needs?: string[];
+              detected_loads?: Array<{ name: string }>;
+            } | null | undefined;
+            const mappedNeeds = profileData?.mapped_needs || [];
+            const detectedLoads = profileData?.detected_loads || [];
             
             setSessionData({
               matched_needs: mappedNeeds,
-              detected_loads: detectedLoads.map((l: { name: string }) => l.name),
-              recommended_services: services.map((s: { id: string; title: string; score: number }) => ({
+              detected_loads: detectedLoads.map((l) => l.name),
+              recommended_services: (serviceData.services || []).map((s) => ({
                 id: s.id,
                 title: s.title,
                 score: s.score,

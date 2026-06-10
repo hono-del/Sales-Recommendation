@@ -159,12 +159,6 @@ export function ServiceReasoningClient() {
         setDetectedLoads(loads);
         setNeedToValues(needToValuesData);
 
-        // マスターデータを取得
-        const masterData = await api.getMasterData();
-        setAllNeeds(masterData.all_needs || []);
-        setAllLoads(masterData.all_loads || []);
-        setAllServices(masterData.all_services || []);
-
         // 類似プロファイル情報を取得
         try {
           const similarData = await api.getSimilarProfiles(validSessionId);
@@ -177,7 +171,6 @@ export function ServiceReasoningClient() {
         // Need マッピングを取得
         const mappingData = await api.getNeedMapping();
         const answerToNeeds = mappingData.answer_to_needs || {};
-        setNeedMapping(answerToNeeds);
 
         // サービス質問（sq1-sq5）のみをフィルタリング
         const serviceAnswers = answersFromApi.filter(a => a.question_id.startsWith('sq'));
@@ -495,7 +488,7 @@ export function ServiceReasoningClient() {
           最初に戻る
         </PrimaryButton>
         <button
-          onClick={() => router.push(`/demo/knowledge-base?session=${validSessionId}`)}
+          onClick={() => router.push(`/demo/knowledge-base?session=${sessionId}`)}
           className="rounded-md bg-blue-600 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-blue-700"
         >
           業務知識基盤を見る

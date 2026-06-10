@@ -160,7 +160,6 @@ export function ServiceRecommendClient() {
       <ServiceOfferingSection 
         services={services} 
         loading={false} 
-        sessionId={sessionId}
         feedbacks={feedbacks}
         onFeedbackChange={handleFeedbackChange}
       />

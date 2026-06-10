@@ -21,7 +21,6 @@ type FeedbackValue = "not_fit" | "low_interest" | "somewhat_interested" | "want_
 type Props = {
   services: ServiceOffering[];
   loading?: boolean;
-  sessionId?: string | null;
   feedbacks?: Record<string, FeedbackValue>;
   onFeedbackChange?: (serviceId: string, value: FeedbackValue) => void;
 };
@@ -41,7 +40,7 @@ const DOMAIN_LABEL: Record<string, string> = {
   concierge_support: "コンシェルジュサポート",
 };
 
-export function ServiceOfferingSection({ services, loading, sessionId, feedbacks, onFeedbackChange }: Props) {
+export function ServiceOfferingSection({ services, loading, feedbacks, onFeedbackChange }: Props) {
   if (loading) {
     return (
       <div className="rounded-md border border-border bg-surface p-8">
@@ -86,7 +85,6 @@ function ServiceCard({
 }: { 
   service: ServiceOffering; 
   rank: number; 
-  feedback: FeedbackValue | null;
   feedback: FeedbackValue | null;
   onFeedbackChange?: (serviceId: string, value: FeedbackValue) => void;
 }) {
