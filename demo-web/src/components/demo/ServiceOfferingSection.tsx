@@ -12,6 +12,8 @@ type ServiceOffering = {
   value_alignment: number;
   pitch: string;
   need_rationale: string;
+  feedback_adjusted?: boolean;
+  feedback_adjustment_info?: string | null;
 };
 
 type FeedbackValue = "not_fit" | "low_interest" | "somewhat_interested" | "want_details";
@@ -111,7 +113,7 @@ function ServiceCard({
       {/* ヘッダー */}
       <div className="mb-3 flex items-start justify-between">
         <div className="flex-1">
-          <div className="mb-2 flex items-center gap-2">
+          <div className="mb-2 flex flex-wrap items-center gap-2">
             <span className="flex h-6 w-6 items-center justify-center rounded-full bg-navy text-xs font-bold text-white">
               {rank}
             </span>
@@ -123,6 +125,11 @@ function ServiceCard({
             <span className="rounded-full bg-gray-100 px-2.5 py-0.5 text-xs text-gray-600">
               {domainLabel}
             </span>
+            {service.feedback_adjusted && service.feedback_adjustment_info && (
+              <span className="rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-700">
+                🌱 {service.feedback_adjustment_info}
+              </span>
+            )}
           </div>
           <h3 className="text-lg font-semibold text-navy">{service.title}</h3>
         </div>
@@ -146,6 +153,32 @@ function ServiceCard({
 
       {/* マッチ情報 */}
       <div className="space-y-2 text-xs text-text-muted">
+        {/* 参照した知識セクション */}
+        {(service.matched_needs.length > 0 || service.matched_loads.length > 0) && (
+          <div className="mb-3 rounded-md border border-purple-200 bg-purple-50 p-3">
+            <div className="mb-2 font-semibold text-purple-900">📚 参照した知識</div>
+            {service.matched_needs.length > 0 && (
+              <div className="mb-1">
+                <span className="font-medium text-purple-800">Need: </span>
+                <span className="text-purple-700">
+                  {service.matched_needs.slice(0, 2).join(" / ")}
+                  {service.matched_needs.length > 2 && ` 他${service.matched_needs.length - 2}件`}
+                </span>
+              </div>
+            )}
+            {service.matched_loads.length > 0 && (
+              <div className="mb-1">
+                <span className="font-medium text-purple-800">Load: </span>
+                <span className="text-purple-700">{service.matched_loads.join(" / ")}</span>
+              </div>
+            )}
+            <div>
+              <span className="font-medium text-purple-800">Service: </span>
+              <span className="text-purple-700">{service.title}</span>
+            </div>
+          </div>
+        )}
+        
         {service.matched_needs.length > 0 && (
           <div>
             <span className="font-medium text-navy">対応するニーズ: </span>

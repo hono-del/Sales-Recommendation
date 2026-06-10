@@ -666,7 +666,7 @@ export function ServiceReasoningClient() {
         </div>
       </section>
 
-      <div className="mt-12 flex justify-center gap-4">
+      <div className="mt-12 flex flex-wrap justify-center gap-4">
         <button
           onClick={() => router.push("/demo/service/recommend")}
           className="rounded-md border border-navy px-6 py-3 text-sm font-medium text-navy transition-colors hover:bg-navy/5"
@@ -676,6 +676,12 @@ export function ServiceReasoningClient() {
         <PrimaryButton onClick={() => router.push("/demo/opening")}>
           最初に戻る
         </PrimaryButton>
+        <button
+          onClick={() => router.push("/demo/knowledge-base")}
+          className="rounded-md bg-blue-600 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-blue-700"
+        >
+          業務知識基盤を見る
+        </button>
         <button
           onClick={() => router.push("/demo/analytics")}
           className="rounded-md bg-gray-600 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-gray-700"

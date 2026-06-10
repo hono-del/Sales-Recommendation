@@ -85,6 +85,29 @@ export default function AnalyticsPage() {
     fetchLogs();
   }, []);
 
+  // 統計情報を計算
+  const totalFeedbacks = logs.reduce((sum, log) => sum + log.service_feedbacks.length, 0);
+  const positiveFeedbacks = logs.reduce((sum, log) => {
+    return sum + log.service_feedbacks.filter(fb => 
+      fb.feedback_value === "somewhat_interested" || fb.feedback_value === "want_details"
+    ).length;
+  }, 0);
+  const negativeFeedbacks = logs.reduce((sum, log) => {
+    return sum + log.service_feedbacks.filter(fb => 
+      fb.feedback_value === "not_fit" || fb.feedback_value === "low_interest"
+    ).length;
+  }, 0);
+  
+  // フィードバックが3件以上あるサービスの数（改善された推薦の目安）
+  const serviceFeedbackCounts = new Map<string, number>();
+  logs.forEach(log => {
+    log.service_feedbacks.forEach(fb => {
+      const count = serviceFeedbackCounts.get(fb.service_id) || 0;
+      serviceFeedbackCounts.set(fb.service_id, count + 1);
+    });
+  });
+  const improvedServices = Array.from(serviceFeedbackCounts.values()).filter(count => count >= 3).length;
+
   if (loading) {
     return (
       <div className="flex min-h-screen items-center justify-center">
@@ -120,6 +143,39 @@ export default function AnalyticsPage() {
           <p className="mt-2 text-text-muted">
             過去のセッションデータと推薦結果を確認できます
           </p>
+        </div>
+
+        {/* 知識が育つダッシュボード */}
+        <div className="mb-8">
+          <h2 className="mb-4 text-xl font-semibold text-navy">📈 知識の成長状況</h2>
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
+            <div className="rounded-lg border border-border bg-white p-6 shadow-sm">
+              <div className="mb-2 text-sm font-medium text-text-muted">蓄積ログ数</div>
+              <div className="text-3xl font-bold text-navy">{logs.length}</div>
+              <div className="mt-1 text-xs text-text-muted">セッション</div>
+            </div>
+            <div className="rounded-lg border border-border bg-white p-6 shadow-sm">
+              <div className="mb-2 text-sm font-medium text-text-muted">総フィードバック数</div>
+              <div className="text-3xl font-bold text-navy">{totalFeedbacks}</div>
+              <div className="mt-1 text-xs text-green-600">
+                ポジティブ: {positiveFeedbacks} | ネガティブ: {negativeFeedbacks}
+              </div>
+            </div>
+            <div className="rounded-lg border border-border bg-white p-6 shadow-sm">
+              <div className="mb-2 text-sm font-medium text-text-muted">学習済みサービス</div>
+              <div className="text-3xl font-bold text-navy">{improvedServices}</div>
+              <div className="mt-1 text-xs text-text-muted">FB3件以上のサービス</div>
+            </div>
+            <div className="rounded-lg border border-blue-200 bg-blue-50 p-6 shadow-sm">
+              <div className="mb-2 text-sm font-medium text-blue-900">改善率</div>
+              <div className="text-3xl font-bold text-blue-900">
+                {improvedServices > 0 ? Math.round((improvedServices / 43) * 100) : 0}%
+              </div>
+              <div className="mt-1 text-xs text-blue-700">
+                全43サービス中{improvedServices}件が学習データあり
+              </div>
+            </div>
+          </div>
         </div>
 
         <div className="mb-6 flex items-center justify-between">

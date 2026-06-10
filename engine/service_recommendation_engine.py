@@ -44,6 +44,9 @@ class ServiceRecommendation:
     need_score: float = 0.0
     load_score: float = 0.0
     value_score: float = 0.0
+    # フィードバック調整情報（v3追加）
+    feedback_adjusted: bool = False
+    feedback_adjustment_info: Optional[str] = None
 
 
 class ServiceRecommendationEngine:
@@ -115,6 +118,9 @@ class ServiceRecommendationEngine:
             )
             
             # フィードバック統計によるスコア調整
+            feedback_adjusted = False
+            feedback_info = None
+            
             if feedback_stats and service['id'] in feedback_stats:
                 fb_stat = feedback_stats[service['id']]
                 net_sentiment = fb_stat.get('net_sentiment', 0)
@@ -136,6 +142,10 @@ class ServiceRecommendationEngine:
                     
                     # スコアを 0-1 の範囲に収める
                     total_score = max(0.0, min(1.0, total_score))
+                    
+                    # フィードバック調整フラグを設定
+                    feedback_adjusted = True
+                    feedback_info = f"過去{total_feedbacks}件のFBにより{adjustment:+.0%}調整"
                     
                     # デバッグログ
                     if adjustment < -0.2:
@@ -160,6 +170,9 @@ class ServiceRecommendationEngine:
                 need_score=need_score,
                 load_score=load_score,
                 value_score=value_score,
+                # フィードバック調整情報
+                feedback_adjusted=feedback_adjusted,
+                feedback_adjustment_info=feedback_info,
             ))
         
         # スコアでソート
@@ -440,6 +453,9 @@ def recommend_services_for_session(
                     "need_score": round(r.need_score, 3),
                     "load_score": round(r.load_score, 3),
                     "value_score": round(r.value_score, 3),
+                    # フィードバック調整情報（v3追加）
+                    "feedback_adjusted": r.feedback_adjusted,
+                    "feedback_adjustment_info": r.feedback_adjustment_info,
                 })
             
             return services
