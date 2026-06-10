@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { api } from "@/lib/api-client";
 
@@ -26,7 +26,7 @@ type SessionData = {
   }>;
 };
 
-export default function KnowledgeBasePage() {
+function KnowledgeBaseContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const sessionId = searchParams.get("session");
@@ -309,5 +309,20 @@ export default function KnowledgeBasePage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function KnowledgeBasePage() {
+  return (
+    <Suspense fallback={
+      <div className="flex min-h-screen items-center justify-center">
+        <div className="text-center">
+          <div className="mx-auto h-12 w-12 animate-spin rounded-full border-4 border-navy border-t-transparent"></div>
+          <p className="mt-4 text-text-muted">知識基盤を読み込み中...</p>
+        </div>
+      </div>
+    }>
+      <KnowledgeBaseContent />
+    </Suspense>
   );
 }
