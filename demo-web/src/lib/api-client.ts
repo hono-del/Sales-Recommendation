@@ -178,7 +178,7 @@ export const api = {
         
         await this.health();
         return true; // 成功
-      } catch (error) {
+      } catch (_error) {
         // 最後の試行で失敗した場合
         if (attempt === maxAttempts) {
           return false;

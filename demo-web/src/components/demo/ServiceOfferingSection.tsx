@@ -70,7 +70,6 @@ export function ServiceOfferingSection({ services, loading, sessionId, feedbacks
           key={service.id} 
           service={service} 
           rank={idx + 1} 
-          sessionId={sessionId}
           feedback={feedbacks?.[service.id] || null}
           onFeedbackChange={onFeedbackChange}
         />
@@ -82,13 +81,12 @@ export function ServiceOfferingSection({ services, loading, sessionId, feedbacks
 function ServiceCard({ 
   service, 
   rank, 
-  sessionId,
   feedback,
   onFeedbackChange,
 }: { 
   service: ServiceOffering; 
   rank: number; 
-  sessionId?: string | null;
+  feedback: FeedbackValue | null;
   feedback: FeedbackValue | null;
   onFeedbackChange?: (serviceId: string, value: FeedbackValue) => void;
 }) {

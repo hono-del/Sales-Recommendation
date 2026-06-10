@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useRequireSession } from "@/hooks/useRequireSession";
-import { useDemoStore } from "@/stores/demoStore";
 import { api } from "@/lib/api-client";
 import { PrimaryButton } from "./PrimaryButton";
 import { ServiceKnowledgeGraph } from "./ServiceKnowledgeGraph";
@@ -107,14 +106,6 @@ export function ServiceReasoningClient() {
   const [valueScores, setValueScores] = useState<Record<string, number>>({});
   const [detectedLoads, setDetectedLoads] = useState<LoadDetail[]>([]);
   const [needToValues, setNeedToValues] = useState<Record<string, string[]>>({});
-  const [allNeeds, setAllNeeds] = useState<string[]>([]);
-  const [allLoads, setAllLoads] = useState<string[]>([]);
-  const [allServices, setAllServices] = useState<Array<{
-    id: string;
-    title: string;
-    one_liner: string;
-  }>>([]);
-  const [needMapping, setNeedMapping] = useState<Record<string, Record<string, string[]>>>({});
   const [loading, setLoading] = useState(true);
   const [similarProfiles, setSimilarProfiles] = useState<{
     total_users: number;

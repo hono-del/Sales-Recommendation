@@ -59,8 +59,8 @@ function KnowledgeBaseContent() {
             
             setSessionData({
               matched_needs: mappedNeeds,
-              detected_loads: detectedLoads.map((l: any) => l.name),
-              recommended_services: services.map((s: any) => ({
+              detected_loads: detectedLoads.map((l: { name: string }) => l.name),
+              recommended_services: services.map((s: { id: string; title: string; score: number }) => ({
                 id: s.id,
                 title: s.title,
                 score: s.score,
