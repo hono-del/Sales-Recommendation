@@ -1,9 +1,21 @@
 {
-  "version": "2.0",
-  "description": "サービスレコメンド用の価値観判定質問（3問）",
+  "version": "3.0",
+  "description": "サービスレコメンド用の価値観判定質問（4問）",
   "questions": [
     {
       "index": 1,
+      "id": "sq0_decision_style",
+      "text": "大きな買い物を決めるとき、あなたに近いのは？",
+      "choices": [
+        { "key": "intuition", "label": "第一印象や直感を大切にする" },
+        { "key": "trust_authority", "label": "専門家の評価やランキングを重視する" },
+        { "key": "compare_thoroughly", "label": "たくさん比較して、最良の選択をしたい" },
+        { "key": "ask_others", "label": "家族や友人の意見を聞いて決める" },
+        { "key": "good_enough", "label": "必要な条件が揃えば、そこで決める" }
+      ]
+    },
+    {
+      "index": 2,
       "id": "sq1_lifestyle_satisfaction",
       "text": "現在の生活で、最も改善したいことは？",
       "choices": [
@@ -15,7 +27,7 @@
       ]
     },
     {
-      "index": 2,
+      "index": 3,
       "id": "sq2_technology_stance",
       "text": "デジタルやテクノロジーに対して、あなたは？",
       "choices": [
@@ -27,7 +39,7 @@
       ]
     },
     {
-      "index": 3,
+      "index": 4,
       "id": "sq4_ownership_usage",
       "text": "モノやサービスの利用について、あなたの考えは？",
       "choices": [

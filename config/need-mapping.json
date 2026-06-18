@@ -1,8 +1,15 @@
 {
-  "version": "4.0",
-  "description": "生活者の価値観からKG Needsへのマッピング（全質問3問対応）",
+  "version": "5.0",
+  "description": "生活者の価値観からKG Needsへのマッピング（全質問対応 + サービスDecisionStyle）",
   "answer_to_needs": {
     "q1_decision_style": {
+      "compare_thoroughly": ["DrivingConfidence", "LongTermReliability", "AccidentAnxietyReduction"],
+      "good_enough": ["EfficientDailyMobility", "FamilyComfort", "LowFuelAnxiety"],
+      "trust_authority": ["ChildSafety", "AccidentAnxietyReduction", "LongTermReliability"],
+      "ask_others": ["FamilyComfort", "ChildSafety", "WeekendFamilyTrip"],
+      "intuition": ["DrivingEnjoyment", "PersonalExpression", "EmotionalAttachment"]
+    },
+    "sq0_decision_style": {
       "compare_thoroughly": ["DrivingConfidence", "LongTermReliability", "AccidentAnxietyReduction"],
       "good_enough": ["EfficientDailyMobility", "FamilyComfort", "LowFuelAnxiety"],
       "trust_authority": ["ChildSafety", "AccidentAnxietyReduction", "LongTermReliability"],

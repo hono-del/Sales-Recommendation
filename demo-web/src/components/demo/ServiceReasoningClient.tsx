@@ -112,6 +112,11 @@ export function ServiceReasoningClient() {
     similar_users: number;
     similarity_rate: number;
   } | null>(null);
+  const [decisionStyle, setDecisionStyle] = useState<{
+    label: string;
+    description: string;
+    confidence: number | null;
+  } | null>(null);
 
   useEffect(() => {
     if (!sessionId) return;
@@ -158,6 +163,22 @@ export function ServiceReasoningClient() {
         });
         setDetectedLoads(loads);
         setNeedToValues(needToValuesData);
+
+        // DecisionStyle情報を取得（profileDataレベルから）
+        if (profileData) {
+          const style = profileData as unknown as { 
+            decision_style_label?: string;
+            decision_style_description?: string;
+            decision_style_confidence?: number;
+          };
+          if (style.decision_style_label) {
+            setDecisionStyle({
+              label: style.decision_style_label,
+              description: style.decision_style_description || "",
+              confidence: style.decision_style_confidence || null,
+            });
+          }
+        }
 
         // 類似プロファイル情報を取得
         try {
@@ -318,6 +339,31 @@ export function ServiceReasoningClient() {
           </div>
         </div>
       </section>
+
+      {/* セクション2.3: あなたの Decision スタイル */}
+      {decisionStyle && (
+        <section className="mb-12">
+          <h3 className="mb-4 text-xl font-semibold text-navy">
+            あなたの Decision スタイル
+          </h3>
+          <div className="rounded-lg border border-border bg-surface p-6">
+            <div className="mb-3 flex items-center gap-3">
+              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-navy text-white font-bold text-lg">
+                決
+              </div>
+              <div>
+                <h4 className="text-lg font-semibold text-navy">{decisionStyle.label}</h4>
+                {decisionStyle.confidence !== null && (
+                  <p className="text-sm text-text-muted">確信度 {Math.round(decisionStyle.confidence)}%</p>
+                )}
+              </div>
+            </div>
+            <p className="text-sm text-text-muted leading-relaxed">
+              {decisionStyle.description}
+            </p>
+          </div>
+        </section>
+      )}
 
       {/* セクション2.5: 検出された懸念事項（Load） */}
       {detectedLoads.length > 0 && (

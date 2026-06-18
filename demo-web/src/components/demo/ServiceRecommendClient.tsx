@@ -34,6 +34,11 @@ export function ServiceRecommendClient() {
   const [error, setError] = useState<string | null>(null);
   const [feedbacks, setFeedbacks] = useState<Record<string, FeedbackValue>>({});
   const [saving, setSaving] = useState(false);
+  const [decisionStyle, setDecisionStyle] = useState<{
+    name: string;
+    label: string;
+    description: string;
+  } | null>(null);
 
   useEffect(() => {
     if (!sessionId) return;
@@ -47,6 +52,22 @@ export function ServiceRecommendClient() {
         
         const data = await api.getServiceRecommendations(validSessionId);
         setServices((data.services || []) as ServiceOffering[]);
+        
+        // DecisionStyle情報を取得
+        const sessionData = await api.getSession(validSessionId);
+        const profileData = sessionData.profile as {
+          decision_style?: string;
+          decision_style_label?: string;
+          decision_style_description?: string;
+        } | undefined;
+        
+        if (profileData?.decision_style) {
+          setDecisionStyle({
+            name: profileData.decision_style,
+            label: profileData.decision_style_label || profileData.decision_style,
+            description: profileData.decision_style_description || "",
+          });
+        }
       } catch (e) {
         console.error("サービス推薦エラー:", e);
         setError(e instanceof Error ? e.message : "サービス推薦の取得に失敗しました");
@@ -130,14 +151,75 @@ export function ServiceRecommendClient() {
     );
   }
 
+  // DecisionStyleに応じた表示設定
+  const getDisplayConfig = () => {
+    const styleName = decisionStyle?.name;
+    switch (styleName) {
+      case "Maximizer":
+        return {
+          title: "あなたにおすすめのサービス（徹底比較型）",
+          subtitle: "すべてのサービスを詳しく比較して、最適な選択をしてください",
+          maxServices: services.length,
+        };
+      case "Satisficer":
+        return {
+          title: "あなたにおすすめのサービス（十分型）",
+          subtitle: "必要な条件を満たした上位5サービスをご提案します",
+          maxServices: 5,
+        };
+      case "Authority-driven":
+        return {
+          title: "あなたにおすすめのサービス（権威依存型）",
+          subtitle: "専門家の評価と実績をもとに厳選したサービスをご提案します",
+          maxServices: services.length,
+        };
+      case "Delegator":
+        return {
+          title: "あなたにおすすめのサービス（委任型）",
+          subtitle: "お客様の価値観を分析し、最適なサービスを選定しました",
+          maxServices: 7,
+        };
+      case "Intuitive":
+        return {
+          title: "あなたにおすすめのサービス（直感型）",
+          subtitle: "直感的に魅力を感じていただけるサービスをご提案します",
+          maxServices: services.length,
+        };
+      default:
+        return {
+          title: "あなたにおすすめのサービス",
+          subtitle: "ご回答いただいた価値観から、最適なサービスを提案します",
+          maxServices: services.length,
+        };
+    }
+  };
+
+  const displayConfig = getDisplayConfig();
+  const displayedServices = services.slice(0, displayConfig.maxServices);
+
   return (
     <div className="mx-auto max-w-[1024px] px-6 py-10">
+      {/* DecisionStyle表示 */}
+      {decisionStyle && (
+        <div className="mb-6 rounded-lg border border-navy/20 bg-navy/5 p-4">
+          <div className="flex items-center gap-3">
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-navy text-white font-bold">
+              決
+            </div>
+            <div>
+              <p className="text-sm font-semibold text-navy">{decisionStyle.label}</p>
+              <p className="text-xs text-text-muted">{decisionStyle.description}</p>
+            </div>
+          </div>
+        </div>
+      )}
+      
       <div className="mb-8">
         <h2 className="text-3xl font-bold text-navy">
-          あなたにおすすめのサービス
+          {displayConfig.title}
         </h2>
         <p className="mt-2 text-text-muted">
-          ご回答いただいた価値観から、最適なサービスを提案します
+          {displayConfig.subtitle}
         </p>
       </div>
 
@@ -158,17 +240,22 @@ export function ServiceRecommendClient() {
       )}
 
       <ServiceOfferingSection 
-        services={services} 
+        services={displayedServices} 
         loading={false} 
         feedbacks={feedbacks}
         onFeedbackChange={handleFeedbackChange}
       />
 
-      {services.length > 0 && (
+      {displayedServices.length > 0 && (
         <div className="mt-8 text-center">
           <p className="text-sm text-text-muted">
             これらのサービスについて、詳しくお知りになりたい場合はお問い合わせください
           </p>
+          {displayedServices.length < services.length && (
+            <p className="mt-2 text-xs text-text-muted">
+              （全{services.length}件中、上位{displayedServices.length}件を表示）
+            </p>
+          )}
         </div>
       )}
 
