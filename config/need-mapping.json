@@ -1,6 +1,6 @@
 {
-  "version": "2.0",
-  "description": "生活者の価値観からKG Needsへのマッピング",
+  "version": "3.0",
+  "description": "生活者の価値観からKG Needsへのマッピング（サービス質問3問対応）",
   "answer_to_needs": {
     "q1_decision_style": {
       "compare_thoroughly": ["DrivingConfidence", "LongTermReliability", "AccidentAnxietyReduction"],
@@ -51,26 +51,12 @@
       "cautious": ["AccidentAnxietyReduction", "CrimeAnxietyReduction", "DrivingConfidence"],
       "minimal": ["EfficientDailyMobility", "LowFuelAnxiety"]
     },
-    "sq3_community_value": {
-      "active_member": ["WeekendFamilyTrip", "OutdoorLifestyle", "AdventureLifestyle"],
-      "share_knowledge": ["FamilyConversation", "WeekendFamilyTrip"],
-      "observe_learn": ["DrivingConfidence", "LongTermReliability"],
-      "need_based": ["EfficientDailyMobility", "ShortTripEfficiency"],
-      "independent": ["DrivingEnjoyment", "PersonalExpression", "RelaxingDrive"]
-    },
     "sq4_ownership_usage": {
       "ownership": ["EmotionalAttachment", "PersonalExpression", "LongTermReliability"],
       "subscription": ["EfficientDailyMobility", "StressFreeCommute"],
       "pay_per_use": ["MaintenanceCostReduction", "LowFuelAnxiety", "EfficientDailyMobility"],
       "sharing": ["FlexibleCargoSpace", "ShortTripEfficiency"],
       "hybrid": ["FlexibleCargoSpace", "FlatSeatUtility", "EfficientDailyMobility"]
-    },
-    "sq5_life_change": {
-      "anticipate_prepare": ["LongTermReliability", "FlexibleCargoSpace", "FamilyComfort"],
-      "explore_options": ["FlexibleCargoSpace", "FlatSeatUtility", "AdventureLifestyle"],
-      "upgrade_quality": ["PremiumFeeling", "SmoothRideComfort", "QuietCabinExperience"],
-      "simplify_optimize": ["EfficientDailyMobility", "MaintenanceCostReduction", "LowFuelAnxiety"],
-      "maintain_stable": ["LongTermReliability", "DrivingConfidence", "FamilyComfort"]
     }
   },
   "need_to_capabilities": {

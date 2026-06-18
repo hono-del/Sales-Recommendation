@@ -1,6 +1,6 @@
 {
-  "version": "1.0",
-  "description": "サービスレコメンド用の価値観判定質問（5問）",
+  "version": "2.0",
+  "description": "サービスレコメンド用の価値観判定質問（3問）",
   "questions": [
     {
       "index": 1,
@@ -28,18 +28,6 @@
     },
     {
       "index": 3,
-      "id": "sq3_community_value",
-      "text": "コミュニティや人とのつながりについて、あなたは？",
-      "choices": [
-        { "key": "active_member", "label": "積極的に参加して、仲間と一緒に楽しみたい" },
-        { "key": "share_knowledge", "label": "経験や知識を共有して、みんなで学び合いたい" },
-        { "key": "observe_learn", "label": "情報収集や学びのために参加したい" },
-        { "key": "need_based", "label": "必要なときだけ、つながりを持ちたい" },
-        { "key": "independent", "label": "自分のペースで、独立して行動したい" }
-      ]
-    },
-    {
-      "index": 4,
       "id": "sq4_ownership_usage",
       "text": "モノやサービスの利用について、あなたの考えは？",
       "choices": [
@@ -48,18 +36,6 @@
         { "key": "pay_per_use", "label": "使った分だけ払う方が合理的" },
         { "key": "sharing", "label": "シェアやレンタルで、必要なときだけ使いたい" },
         { "key": "hybrid", "label": "状況に応じて、使い分けたい" }
-      ]
-    },
-    {
-      "index": 5,
-      "id": "sq5_life_change",
-      "text": "今後のライフスタイルの変化について、あなたは？",
-      "choices": [
-        { "key": "anticipate_prepare", "label": "変化を予測して、今から準備したい" },
-        { "key": "explore_options", "label": "選択肢を広げて、柔軟に対応したい" },
-        { "key": "upgrade_quality", "label": "より良い体験にアップグレードしたい" },
-        { "key": "simplify_optimize", "label": "シンプルにして、最適化したい" },
-        { "key": "maintain_stable", "label": "今の生活を維持して、安定させたい" }
       ]
     }
   ]
