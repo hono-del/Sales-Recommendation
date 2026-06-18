@@ -52,14 +52,6 @@ export function ServiceQuestionsClient() {
         // ローカルストアにも保存
         addAnswer(answerPayload);
         
-        // プロファイルとDecisionStyleを更新
-        if (res.profile) {
-          setLocalProfile(res.profile);
-          const style = decisionStyleFromApiResponse(res);
-          setProfile(res.profile, res.mapped_needs || [], style);
-          setDecisionStyle(style);
-        }
-        
         // 質問1（sq0_decision_style）の回答から直接DecisionStyleを設定
         if (current.id === 'sq0_decision_style') {
           const styleMap: Record<string, string> = {
@@ -78,7 +70,7 @@ export function ServiceQuestionsClient() {
             'Intuitive': { label: '直感型', description: '第一印象や感覚を大切にする' },
           };
           const styleInfo = styleLabels[styleName];
-          setDecisionStyle({
+          const newStyle: DecisionStyleResult = {
             name: styleName,
             label: styleInfo.label,
             description: styleInfo.description,
@@ -87,7 +79,24 @@ export function ServiceQuestionsClient() {
             secondaryLabel: '',
             scores: { [styleName]: 100 },
             isMixed: false,
-          });
+          };
+          console.log('[ServiceQuestions] Setting DecisionStyle from Q1:', newStyle);
+          setDecisionStyle(newStyle);
+          
+          // Zustandストアにも保存（重要！）
+          if (res.profile) {
+            setLocalProfile(res.profile);
+            setProfile(res.profile, res.mapped_needs || [], newStyle);
+            console.log('[ServiceQuestions] Saved DecisionStyle to Zustand store');
+          }
+        } else {
+          // その他の質問：APIレスポンスからDecisionStyleを取得
+          if (res.profile) {
+            setLocalProfile(res.profile);
+            const style = decisionStyleFromApiResponse(res);
+            setProfile(res.profile, res.mapped_needs || [], style);
+            setDecisionStyle(style);
+          }
         }
       } catch (error) {
         console.error("回答送信エラー:", error);

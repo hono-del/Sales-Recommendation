@@ -28,6 +28,7 @@ export function ServiceRecommendClient() {
   const router = useRouter();
   const sessionId = useRequireSession();
   const answers = useDemoStore((s) => s.answers);
+  const decisionStyleFromStore = useDemoStore((s) => s.decisionStyle);
 
   const [services, setServices] = useState<ServiceOffering[]>([]);
   const [loading, setLoading] = useState(true);
@@ -53,20 +54,34 @@ export function ServiceRecommendClient() {
         const data = await api.getServiceRecommendations(validSessionId);
         setServices((data.services || []) as ServiceOffering[]);
         
-        // DecisionStyle情報を取得
-        const sessionData = await api.getSession(validSessionId);
-        const profileData = sessionData.profile as {
-          decision_style?: string;
-          decision_style_label?: string;
-          decision_style_description?: string;
-        } | undefined;
-        
-        if (profileData?.decision_style) {
+        // DecisionStyle情報を取得（ストアを優先、なければAPIから）
+        if (decisionStyleFromStore) {
+          console.log('[ServiceRecommend] DecisionStyle from store:', decisionStyleFromStore);
           setDecisionStyle({
-            name: profileData.decision_style,
-            label: profileData.decision_style_label || profileData.decision_style,
-            description: profileData.decision_style_description || "",
+            name: decisionStyleFromStore.name,
+            label: decisionStyleFromStore.label,
+            description: decisionStyleFromStore.description,
           });
+        } else {
+          // フォールバック: APIから取得
+          console.log('[ServiceRecommend] DecisionStyle not in store, fetching from API');
+          const sessionData = await api.getSession(validSessionId);
+          const profileData = sessionData.profile as {
+            decision_style?: string;
+            decision_style_label?: string;
+            decision_style_description?: string;
+          } | undefined;
+          
+          if (profileData?.decision_style) {
+            console.log('[ServiceRecommend] DecisionStyle from API:', profileData.decision_style);
+            setDecisionStyle({
+              name: profileData.decision_style,
+              label: profileData.decision_style_label || profileData.decision_style,
+              description: profileData.decision_style_description || "",
+            });
+          } else {
+            console.log('[ServiceRecommend] No DecisionStyle found');
+          }
         }
       } catch (e) {
         console.error("サービス推薦エラー:", e);
@@ -77,7 +92,7 @@ export function ServiceRecommendClient() {
     }
 
     fetchServices();
-  }, [sessionId]);
+  }, [sessionId, decisionStyleFromStore]);
 
   const handleFeedbackChange = (serviceId: string, value: FeedbackValue) => {
     setFeedbacks((prev) => ({
@@ -154,6 +169,9 @@ export function ServiceRecommendClient() {
   // DecisionStyleに応じた表示設定
   const getDisplayConfig = () => {
     const styleName = decisionStyle?.name;
+    console.log('[ServiceRecommend] getDisplayConfig - decisionStyle:', decisionStyle);
+    console.log('[ServiceRecommend] styleName:', styleName);
+    
     switch (styleName) {
       case "Maximizer":
         return {
@@ -204,6 +222,7 @@ export function ServiceRecommendClient() {
           showDetailedScores: false,
         };
       default:
+        console.log('[ServiceRecommend] Using default layout');
         return {
           title: "あなたにおすすめのサービス",
           subtitle: "ご回答いただいた価値観から、最適なサービスを提案します",
@@ -215,6 +234,7 @@ export function ServiceRecommendClient() {
   };
 
   const displayConfig = getDisplayConfig();
+  console.log('[ServiceRecommend] displayConfig:', displayConfig);
   const displayedServices = services.slice(0, displayConfig.maxServices);
 
   return (
