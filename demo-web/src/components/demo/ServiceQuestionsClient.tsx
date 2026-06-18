@@ -9,6 +9,7 @@ import type { Question, QuestionChoice } from "@/types/demo";
 import { PrimaryButton } from "./PrimaryButton";
 import { DecisionStylePanel } from "./DecisionStylePanel";
 import { ProfileMap } from "./ProfileMap";
+import { decisionStyleFromApiResponse, type DecisionStyleResult } from "@/lib/decision-style-calculator";
 
 export function ServiceQuestionsClient() {
   const router = useRouter();
@@ -20,12 +21,14 @@ export function ServiceQuestionsClient() {
   const [step, setStep] = useState(0);
   const [selectedKey, setSelectedKey] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
-  const [profile, setLocalProfile] = useState<Record<string, number>>({});
-  const [decisionStyle, setDecisionStyle] = useState<{
-    name: string;
-    label: string;
-    description: string;
+  const [profile, setLocalProfile] = useState<{
+    score_safety: number;
+    score_family: number;
+    score_efficiency: number;
+    score_enjoyment: number;
+    score_adventure: number;
   } | null>(null);
+  const [decisionStyle, setDecisionStyle] = useState<DecisionStyleResult | null>(null);
 
   useEffect(() => {
     // サービスレコメンド用の質問を取得
@@ -52,20 +55,9 @@ export function ServiceQuestionsClient() {
         // プロファイルとDecisionStyleを更新
         if (res.profile) {
           setLocalProfile(res.profile);
-          setProfile(res.profile, res.mapped_needs || [], {
-            name: res.decision_style || "",
-            label: res.decision_style_label || "",
-            description: res.decision_style_description || "",
-          });
-        }
-        
-        // DecisionStyleを更新
-        if (res.decision_style) {
-          setDecisionStyle({
-            name: res.decision_style,
-            label: res.decision_style_label || res.decision_style,
-            description: res.decision_style_description || "",
-          });
+          const style = decisionStyleFromApiResponse(res);
+          setProfile(res.profile, res.mapped_needs || [], style);
+          setDecisionStyle(style);
         }
       } catch (error) {
         console.error("回答送信エラー:", error);
