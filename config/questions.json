@@ -1,6 +1,6 @@
 {
-  "version": "2.0",
-  "description": "生活者の価値観を判定する5問（車に関係ない質問）",
+  "version": "3.0",
+  "description": "生活者の価値観を判定する3問（車に関係ない質問）",
   "questions": [
     {
       "index": 1,
@@ -16,18 +16,6 @@
     },
     {
       "index": 2,
-      "id": "q2_stress_handling",
-      "text": "ストレスや困難な状況に直面したとき、あなたは？",
-      "choices": [
-        { "key": "distance_refresh", "label": "一旦距離を置いて、気分転換する" },
-        { "key": "challenge_growth", "label": "成長の機会と捉えて、挑戦する" },
-        { "key": "analyze_solve", "label": "原因を分析して、解決策を考える" },
-        { "key": "seek_support", "label": "信頼できる人に相談する" },
-        { "key": "accept_adapt", "label": "受け入れて、柔軟に対応する" }
-      ]
-    },
-    {
-      "index": 3,
       "id": "q3_priority",
       "text": "日々の生活で、最も大切にしていることは？",
       "choices": [
@@ -39,7 +27,7 @@
       ]
     },
     {
-      "index": 4,
+      "index": 3,
       "id": "q4_change",
       "text": "変化や新しいことに対して、あなたは？",
       "choices": [
@@ -48,18 +36,6 @@
         { "key": "ask_advice", "label": "信頼できる人に相談してから決める" },
         { "key": "cautious", "label": "慎重に検討してから取り入れる" },
         { "key": "follow_trend", "label": "評判が良ければ試してみる" }
-      ]
-    },
-    {
-      "index": 5,
-      "id": "q5_time_usage",
-      "text": "休日や自由な時間の過ごし方は？",
-      "choices": [
-        { "key": "relax_enjoy", "label": "リラックスや趣味を楽しむ" },
-        { "key": "family_center", "label": "家族と一緒に過ごす" },
-        { "key": "learning_growth", "label": "学びや自己成長の時間にする" },
-        { "key": "balance", "label": "やることと休むことのバランスを取る" },
-        { "key": "plan_optimize", "label": "計画を立てて、効率よく過ごす" }
       ]
     }
   ]

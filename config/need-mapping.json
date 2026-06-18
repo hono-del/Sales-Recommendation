@@ -1,6 +1,6 @@
 {
-  "version": "3.0",
-  "description": "生活者の価値観からKG Needsへのマッピング（サービス質問3問対応）",
+  "version": "4.0",
+  "description": "生活者の価値観からKG Needsへのマッピング（全質問3問対応）",
   "answer_to_needs": {
     "q1_decision_style": {
       "compare_thoroughly": ["DrivingConfidence", "LongTermReliability", "AccidentAnxietyReduction"],
@@ -8,13 +8,6 @@
       "trust_authority": ["ChildSafety", "AccidentAnxietyReduction", "LongTermReliability"],
       "ask_others": ["FamilyComfort", "ChildSafety", "WeekendFamilyTrip"],
       "intuition": ["DrivingEnjoyment", "PersonalExpression", "EmotionalAttachment"]
-    },
-    "q2_stress_handling": {
-      "analyze_solve": ["DrivingConfidence", "LongTermReliability", "AccidentAnxietyReduction"],
-      "accept_adapt": ["FamilyComfort", "RelaxingDrive", "EfficientDailyMobility"],
-      "seek_support": ["FamilyComfort", "ChildSafety", "WeekendFamilyTrip"],
-      "distance_refresh": ["RelaxingDrive", "QuietCabinExperience", "DrivingEnjoyment"],
-      "challenge_growth": ["OutdoorLifestyle", "AdventureLifestyle", "DrivingEnjoyment"]
     },
     "q3_priority": {
       "safety_security": ["ChildSafety", "DrivingConfidence", "AccidentAnxietyReduction", "EasyParking", "CrimeAnxietyReduction"],
@@ -29,13 +22,6 @@
       "follow_trend": ["DrivingEnjoyment", "PersonalExpression", "ChildSafety"],
       "ask_advice": ["FamilyComfort", "ChildSafety", "DrivingConfidence"],
       "try_new": ["OutdoorLifestyle", "AdventureLifestyle", "DrivingEnjoyment"]
-    },
-    "q5_time_usage": {
-      "plan_optimize": ["EfficientDailyMobility", "UrbanManeuverability", "LowFuelAnxiety"],
-      "balance": ["FamilyComfort", "EfficientDailyMobility", "RelaxingDrive"],
-      "family_center": ["FamilyComfort", "WeekendFamilyTrip", "ChildSafety", "EasyChildPickup"],
-      "learning_growth": ["EfficientDailyMobility", "DrivingConfidence", "PersonalExpression"],
-      "relax_enjoy": ["RelaxingDrive", "QuietCabinExperience", "DrivingEnjoyment", "PersonalExpression"]
     },
     "sq1_lifestyle_satisfaction": {
       "reduce_hassle": ["LowPhysicalBurden", "EasyEntryExit", "EfficientDailyMobility", "StressFreeCommute"],
