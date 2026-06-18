@@ -158,38 +158,58 @@ export function ServiceRecommendClient() {
       case "Maximizer":
         return {
           title: "あなたにおすすめのサービス（徹底比較型）",
-          subtitle: "すべてのサービスを詳しく比較して、最適な選択をしてください",
+          subtitle: "全てのサービスを詳しく比較し、最適な選択ができます",
           maxServices: services.length,
+          layout: "comparison" as const,
+          showDetailedScores: true,
         };
       case "Satisficer":
         return {
-          title: "あなたにおすすめのサービス（十分型）",
-          subtitle: "必要な条件を満たした上位5サービスをご提案します",
+          title: "あなたに最適なサービス（十分型）",
+          subtitle: "必要な条件を満たした最適なサービスをご提案します",
           maxServices: 5,
+          layout: "hero" as const,
+          showDetailedScores: false,
         };
       case "Authority-driven":
         return {
-          title: "あなたにおすすめのサービス（権威依存型）",
-          subtitle: "専門家の評価と実績をもとに厳選したサービスをご提案します",
+          title: "専門家が推奨するサービス（権威依存型）",
+          subtitle: "実績と評価に基づいた信頼性の高いサービスです",
           maxServices: services.length,
+          layout: "authority" as const,
+          showDetailedScores: false,
         };
       case "Delegator":
         return {
-          title: "あなたにおすすめのサービス（委任型）",
-          subtitle: "お客様の価値観を分析し、最適なサービスを選定しました",
+          title: "多くの方に選ばれているサービス（委任型）",
+          subtitle: "あなたと同じ条件の方に人気のサービスです",
           maxServices: 7,
+          layout: "popular" as const,
+          showDetailedScores: false,
         };
       case "Intuitive":
         return {
-          title: "あなたにおすすめのサービス（直感型）",
-          subtitle: "直感的に魅力を感じていただけるサービスをご提案します",
+          title: "あなたにぴったりのサービス（直感型）",
+          subtitle: "体験価値を重視したサービスをご提案します",
           maxServices: services.length,
+          layout: "visual" as const,
+          showDetailedScores: false,
+        };
+      case "Impulsive":
+        return {
+          title: "今すぐ始められるサービス（即決型）",
+          subtitle: "期間限定の特別なご提案です",
+          maxServices: services.length,
+          layout: "urgent" as const,
+          showDetailedScores: false,
         };
       default:
         return {
           title: "あなたにおすすめのサービス",
           subtitle: "ご回答いただいた価値観から、最適なサービスを提案します",
           maxServices: services.length,
+          layout: "default" as const,
+          showDetailedScores: false,
         };
     }
   };
@@ -244,6 +264,8 @@ export function ServiceRecommendClient() {
         loading={false} 
         feedbacks={feedbacks}
         onFeedbackChange={handleFeedbackChange}
+        layout={displayConfig.layout}
+        showDetailedScores={displayConfig.showDetailedScores}
       />
 
       {displayedServices.length > 0 && (

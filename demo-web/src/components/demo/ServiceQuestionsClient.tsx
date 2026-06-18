@@ -59,6 +59,36 @@ export function ServiceQuestionsClient() {
           setProfile(res.profile, res.mapped_needs || [], style);
           setDecisionStyle(style);
         }
+        
+        // 質問1（sq0_decision_style）の回答から直接DecisionStyleを設定
+        if (current.id === 'sq0_decision_style') {
+          const styleMap: Record<string, string> = {
+            'compare_thoroughly': 'Maximizer',
+            'good_enough': 'Satisficer',
+            'trust_authority': 'Authority-driven',
+            'ask_others': 'Delegator',
+            'intuition': 'Intuitive',
+          };
+          const styleName = styleMap[choice.key] || 'Satisficer';
+          const styleLabels: Record<string, { label: string; description: string }> = {
+            'Maximizer': { label: '徹底比較型', description: '複数のサービスを詳しく比較し、最適な選択をしたい' },
+            'Satisficer': { label: '十分型', description: '必要な条件を満たせば、それで十分' },
+            'Authority-driven': { label: '権威依存型', description: '専門家の評価やランキングを重視する' },
+            'Delegator': { label: '委任型', description: '他者の意見やおすすめを参考にしたい' },
+            'Intuitive': { label: '直感型', description: '第一印象や感覚を大切にする' },
+          };
+          const styleInfo = styleLabels[styleName];
+          setDecisionStyle({
+            name: styleName,
+            label: styleInfo.label,
+            description: styleInfo.description,
+            confidence: 100,
+            secondary: '',
+            secondaryLabel: '',
+            scores: { [styleName]: 100 },
+            isMixed: false,
+          });
+        }
       } catch (error) {
         console.error("回答送信エラー:", error);
       } finally {

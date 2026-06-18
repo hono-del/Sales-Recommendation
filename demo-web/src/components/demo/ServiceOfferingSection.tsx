@@ -23,6 +23,8 @@ type Props = {
   loading?: boolean;
   feedbacks?: Record<string, FeedbackValue>;
   onFeedbackChange?: (serviceId: string, value: FeedbackValue) => void;
+  layout?: "comparison" | "hero" | "authority" | "popular" | "visual" | "urgent" | "default";
+  showDetailedScores?: boolean;
 };
 
 const DIRECTION_LABEL: Record<string, { label: string; color: string; icon: string }> = {
@@ -40,7 +42,7 @@ const DOMAIN_LABEL: Record<string, string> = {
   concierge_support: "コンシェルジュサポート",
 };
 
-export function ServiceOfferingSection({ services, loading, feedbacks, onFeedbackChange }: Props) {
+export function ServiceOfferingSection({ services, loading, feedbacks, onFeedbackChange, layout = "default", showDetailedScores = false }: Props) {
   if (loading) {
     return (
       <div className="rounded-md border border-border bg-surface p-8">
@@ -62,8 +64,81 @@ export function ServiceOfferingSection({ services, loading, feedbacks, onFeedbac
     );
   }
 
+  // Satisficer（十分型）: 1位を大きく、他は小さく
+  if (layout === "hero" && services.length > 0) {
+    return (
+      <div className="space-y-6">
+        {/* 1位: 大きく表示 */}
+        <div className="rounded-lg border-2 border-gold bg-gradient-to-br from-gold/5 to-transparent p-1">
+          <div className="rounded-lg bg-white p-6">
+            <div className="mb-3 flex items-center gap-2">
+              <span className="rounded-full bg-gold px-3 py-1 text-sm font-bold text-white">
+                ⭐ あなたに最適な1つ
+              </span>
+            </div>
+            <ServiceCard 
+              service={services[0]} 
+              rank={1} 
+              feedback={feedbacks?.[services[0].id] || null}
+              onFeedbackChange={onFeedbackChange}
+              layout={layout}
+              showDetailedScores={showDetailedScores}
+              isHeroCard={true}
+            />
+          </div>
+        </div>
+
+        {/* 2位以降: 控えめに */}
+        {services.length > 1 && (
+          <details className="group">
+            <summary className="cursor-pointer rounded-lg border border-border bg-surface p-4 text-center text-sm font-medium text-navy hover:bg-surface/80">
+              参考：他の選択肢も見る（{services.length - 1}件）
+            </summary>
+            <div className="mt-4 space-y-3">
+              {services.slice(1).map((service, idx) => (
+                <ServiceCard 
+                  key={service.id} 
+                  service={service} 
+                  rank={idx + 2} 
+                  feedback={feedbacks?.[service.id] || null}
+                  onFeedbackChange={onFeedbackChange}
+                  layout={layout}
+                  showDetailedScores={showDetailedScores}
+                  isHeroCard={false}
+                />
+              ))}
+            </div>
+          </details>
+        )}
+      </div>
+    );
+  }
+
+  // その他のレイアウト
   return (
     <div className="space-y-4">
+      {layout === "authority" && (
+        <div className="mb-4 rounded-lg border border-blue-200 bg-blue-50 p-4 text-center">
+          <p className="text-sm font-medium text-blue-900">
+            ✓ 実績と評価に基づいた信頼性の高いサービスをご提案しています
+          </p>
+        </div>
+      )}
+      {layout === "popular" && (
+        <div className="mb-4 rounded-lg border border-green-200 bg-green-50 p-4 text-center">
+          <p className="text-sm font-medium text-green-900">
+            👥 多くのお客様に選ばれているサービスです
+          </p>
+        </div>
+      )}
+      {layout === "urgent" && (
+        <div className="mb-4 rounded-lg border border-red-200 bg-red-50 p-4 text-center">
+          <p className="text-sm font-medium text-red-900">
+            ⚡ 今だけの特別なご提案です
+          </p>
+        </div>
+      )}
+      
       {services.map((service, idx) => (
         <ServiceCard 
           key={service.id} 
@@ -71,6 +146,8 @@ export function ServiceOfferingSection({ services, loading, feedbacks, onFeedbac
           rank={idx + 1} 
           feedback={feedbacks?.[service.id] || null}
           onFeedbackChange={onFeedbackChange}
+          layout={layout}
+          showDetailedScores={showDetailedScores}
         />
       ))}
     </div>
@@ -82,11 +159,17 @@ function ServiceCard({
   rank, 
   feedback,
   onFeedbackChange,
+  layout = "default",
+  showDetailedScores = false,
+  isHeroCard = false,
 }: { 
   service: ServiceOffering; 
   rank: number; 
   feedback: FeedbackValue | null;
   onFeedbackChange?: (serviceId: string, value: FeedbackValue) => void;
+  layout?: string;
+  showDetailedScores?: boolean;
+  isHeroCard?: boolean;
 }) {
   const directionInfo = DIRECTION_LABEL[service.direction] || DIRECTION_LABEL.neutral;
   const domainLabel = DOMAIN_LABEL[service.domain] || service.domain;
@@ -104,8 +187,13 @@ function ServiceCard({
     { value: "want_details", label: "詳しく知りたい", emoji: "◎" },
   ];
 
+  // ヒーローカード（Satisficer 1位）は大きく表示
+  const cardSizeClass = isHeroCard ? "p-8" : "p-6";
+  const titleSizeClass = isHeroCard ? "text-2xl" : "text-lg";
+  const scoreSizeClass = isHeroCard ? "text-4xl" : "text-2xl";
+
   return (
-    <div className="group rounded-lg border border-border bg-surface p-6 shadow-sm transition-all hover:border-navy hover:shadow-md">
+    <div className={`group rounded-lg border border-border bg-surface ${cardSizeClass} shadow-sm transition-all hover:border-navy hover:shadow-md`}>
       {/* ヘッダー */}
       <div className="mb-3 flex items-start justify-between">
         <div className="flex-1">
@@ -126,19 +214,48 @@ function ServiceCard({
                 🌱 {service.feedback_adjustment_info}
               </span>
             )}
+            {layout === "popular" && rank <= 3 && (
+              <span className="rounded-full bg-orange-100 px-2.5 py-0.5 text-xs font-medium text-orange-700">
+                👥 人気 No.{rank}
+              </span>
+            )}
+            {layout === "urgent" && rank === 1 && (
+              <span className="rounded-full bg-red-100 px-2.5 py-0.5 text-xs font-medium text-red-700 animate-pulse">
+                ⚡ 今だけ
+              </span>
+            )}
           </div>
-          <h3 className="text-lg font-semibold text-navy">{service.title}</h3>
+          <h3 className={`${titleSizeClass} font-semibold text-navy`}>{service.title}</h3>
         </div>
         <div className="ml-4 text-right">
-          <div className="text-2xl font-bold text-navy">
+          <div className={`${scoreSizeClass} font-bold text-navy`}>
             {Math.round(service.score * 100)}
           </div>
           <div className="text-xs text-text-muted">適合度</div>
+          {showDetailedScores && (
+            <div className="mt-2 space-y-1 text-xs text-text-muted">
+              <div>ニーズ: {Math.round((service.matched_needs.length / 3) * 100)}%</div>
+              <div>負荷: {Math.round((service.matched_loads.length / 2) * 100)}%</div>
+              <div>価値観: {Math.round(service.value_alignment * 100)}%</div>
+            </div>
+          )}
         </div>
       </div>
 
       {/* 説明 */}
-      <p className="mb-4 text-sm text-text">{service.one_liner}</p>
+      <p className={`mb-4 ${isHeroCard ? 'text-base' : 'text-sm'} text-text`}>{service.one_liner}</p>
+
+      {/* Satisficer用の「この1台で十分な理由」 */}
+      {isHeroCard && (
+        <div className="mb-4 rounded-lg border border-gold/30 bg-gold/5 p-4">
+          <h4 className="mb-2 text-sm font-semibold text-navy">✓ このサービスがあなたに最適な理由</h4>
+          <ul className="space-y-1 text-sm text-text">
+            <li>• 必要な条件を満たしています</li>
+            <li>• あなたの価値観に合致しています（適合度 {Math.round(service.score * 100)}%）</li>
+            <li>• 過不足のないバランスの良い選択です</li>
+          </ul>
+        </div>
+      )}
 
       {/* 提案文 */}
       {service.pitch && (
@@ -148,48 +265,50 @@ function ServiceCard({
       )}
 
       {/* マッチ情報 */}
-      <div className="space-y-2 text-xs text-text-muted">
-        {/* 参照した知識セクション */}
-        {(service.matched_needs.length > 0 || service.matched_loads.length > 0) && (
-          <div className="mb-3 rounded-md border border-purple-200 bg-purple-50 p-3">
-            <div className="mb-2 font-semibold text-purple-900">📚 参照した知識</div>
-            {service.matched_needs.length > 0 && (
-              <div className="mb-1">
-                <span className="font-medium text-purple-800">Need: </span>
-                <span className="text-purple-700">
-                  {service.matched_needs.slice(0, 2).join(" / ")}
-                  {service.matched_needs.length > 2 && ` 他${service.matched_needs.length - 2}件`}
-                </span>
+      {layout !== "visual" && (
+        <div className="space-y-2 text-xs text-text-muted">
+          {/* 参照した知識セクション */}
+          {(service.matched_needs.length > 0 || service.matched_loads.length > 0) && (
+            <div className="mb-3 rounded-md border border-purple-200 bg-purple-50 p-3">
+              <div className="mb-2 font-semibold text-purple-900">📚 参照した知識</div>
+              {service.matched_needs.length > 0 && (
+                <div className="mb-1">
+                  <span className="font-medium text-purple-800">Need: </span>
+                  <span className="text-purple-700">
+                    {service.matched_needs.slice(0, 2).join(" / ")}
+                    {service.matched_needs.length > 2 && ` 他${service.matched_needs.length - 2}件`}
+                  </span>
+                </div>
+              )}
+              {service.matched_loads.length > 0 && (
+                <div className="mb-1">
+                  <span className="font-medium text-purple-800">Load: </span>
+                  <span className="text-purple-700">{service.matched_loads.join(" / ")}</span>
+                </div>
+              )}
+              <div>
+                <span className="font-medium text-purple-800">Service: </span>
+                <span className="text-purple-700">{service.title}</span>
               </div>
-            )}
-            {service.matched_loads.length > 0 && (
-              <div className="mb-1">
-                <span className="font-medium text-purple-800">Load: </span>
-                <span className="text-purple-700">{service.matched_loads.join(" / ")}</span>
-              </div>
-            )}
-            <div>
-              <span className="font-medium text-purple-800">Service: </span>
-              <span className="text-purple-700">{service.title}</span>
             </div>
-          </div>
-        )}
-        
-        {service.need_rationale && (
-          <div className="mt-2 border-t border-border pt-2">
-            <span className="font-medium text-navy">推薦理由: </span>
-            <span>{service.need_rationale}</span>
-          </div>
-        )}
-      </div>
+          )}
+          
+          {service.need_rationale && layout !== "visual" && (
+            <div className="mt-2 border-t border-border pt-2">
+              <span className="font-medium text-navy">推薦理由: </span>
+              <span>{service.need_rationale}</span>
+            </div>
+          )}
+        </div>
+      )}
 
       {/* アクションボタン */}
       <div className="mt-4 flex gap-2">
         <button className="flex-1 rounded-md border border-navy px-4 py-2 text-sm font-medium text-navy transition-colors hover:bg-navy hover:text-white">
           詳細を見る
         </button>
-        <button className="flex-1 rounded-md bg-navy px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-navy/90">
-          お問い合わせ
+        <button className={`flex-1 rounded-md ${isHeroCard || layout === "urgent" ? 'bg-gold hover:bg-gold/90' : 'bg-navy hover:bg-navy/90'} px-4 py-2 text-sm font-medium text-white transition-colors`}>
+          {layout === "urgent" ? "今すぐ相談" : "お問い合わせ"}
         </button>
       </div>
 
