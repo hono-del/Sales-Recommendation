@@ -275,11 +275,11 @@ function ServiceCard({
 
       {/* サービス画像（タイトル・説明は画像内に含まれる） */}
       {imageUrl ? (
-        <div className="mb-4 overflow-hidden rounded-lg border border-border bg-gray-50">
+        <div className="mb-4 rounded-lg border border-border bg-gray-50">
           <img
             src={imageUrl}
             alt={service.title}
-            className="aspect-[16/9] w-full object-cover"
+            className="block h-auto w-full object-contain"
           />
         </div>
       ) : (
