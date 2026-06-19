@@ -142,6 +142,35 @@ class DemoProfileCalculator:
 
     def compute_decision_style(self, answers: list[dict[str, Any]]) -> dict[str, Any]:
         """Quick Questions 回答から DecisionStyle（KG 6 型）を推定。"""
+        # サービスレコメンド: Q1（sq0_decision_style）だけでDecisionStyleを特定
+        sq0_answer = next((a for a in answers if a.get("question_id") == "sq0_decision_style"), None)
+        if sq0_answer:
+            key = sq0_answer.get("answer_key", "")
+            # sq0_decision_styleの選択肢をDecisionStyleに直接マッピング
+            style_mapping = {
+                "intuition": "Intuitive",
+                "trust_authority": "Authority-driven",
+                "compare_thoroughly": "Maximizer",
+                "ask_others": "Delegator",
+                "good_enough": "Satisficer",
+            }
+            style_name = style_mapping.get(key)
+            if style_name:
+                cfg = self._style_weights
+                labels: dict[str, dict[str, str]] = cfg.get("labels", {})
+                meta = labels.get(style_name, {})
+                return {
+                    "decision_style": style_name,
+                    "decision_style_label": meta.get("label", style_name),
+                    "decision_style_description": meta.get("description", ""),
+                    "decision_style_scores": {style_name: 100.0},
+                    "decision_style_confidence": 100.0,
+                    "decision_style_secondary": "",
+                    "decision_style_secondary_label": "",
+                    "decision_style_is_mixed": False,
+                }
+        
+        # 車種レコメンド: 従来のロジック（複数質問から計算）
         cfg = self._style_weights
         styles: list[str] = list(cfg.get("styles", []))
         labels: dict[str, dict[str, str]] = cfg.get("labels", {})

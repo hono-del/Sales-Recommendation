@@ -64,11 +64,11 @@ export const useDemoStore = create<DemoState>()(
       setNeo4jConnected: (v) => set({ neo4jConnected: v }),
       setDemoFallback: (v) => set({ demoFallback: v }),
       setProfile: (profile, mappedNeeds, decisionStyle) =>
-        set({
+        set((state) => ({
           profile,
           mappedNeeds,
-          ...(decisionStyle !== undefined ? { decisionStyle } : {}),
-        }),
+          decisionStyle: decisionStyle ?? state.decisionStyle,
+        })),
       addAnswer: (answer) =>
         set((s) => {
           const answers = [

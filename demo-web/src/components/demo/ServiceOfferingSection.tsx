@@ -214,6 +214,36 @@ function ServiceCard({
                 🌱 {service.feedback_adjustment_info}
               </span>
             )}
+            {layout === "authority" && rank === 1 && (
+              <span className="rounded-full bg-blue-100 px-2.5 py-0.5 text-xs font-medium text-blue-700">
+                👑 専門家推奨 No.1
+              </span>
+            )}
+            {layout === "authority" && rank === 2 && (
+              <span className="rounded-full bg-blue-100 px-2.5 py-0.5 text-xs font-medium text-blue-700">
+                ⭐ 実績評価トップクラス
+              </span>
+            )}
+            {layout === "authority" && rank >= 3 && (
+              <span className="rounded-full bg-blue-50 px-2.5 py-0.5 text-xs font-medium text-blue-600">
+                ✓ 信頼性確認済み
+              </span>
+            )}
+            {layout === "visual" && rank === 1 && (
+              <span className="rounded-full bg-purple-100 px-2.5 py-0.5 text-xs font-medium text-purple-700">
+                ✨ あなたの直感にぴったり
+              </span>
+            )}
+            {layout === "visual" && rank === 2 && (
+              <span className="rounded-full bg-purple-100 px-2.5 py-0.5 text-xs font-medium text-purple-700">
+                💎 魅力的な体験
+              </span>
+            )}
+            {layout === "visual" && rank >= 3 && (
+              <span className="rounded-full bg-purple-50 px-2.5 py-0.5 text-xs font-medium text-purple-600">
+                🌟 感動価値あり
+              </span>
+            )}
             {layout === "popular" && rank <= 3 && (
               <span className="rounded-full bg-orange-100 px-2.5 py-0.5 text-xs font-medium text-orange-700">
                 👥 人気 No.{rank}
@@ -257,10 +287,58 @@ function ServiceCard({
         </div>
       )}
 
+      {/* Authority-driven用の専門家推薦情報 */}
+      {layout === "authority" && rank <= 3 && (
+        <div className="mb-4 rounded-lg border border-blue-200 bg-blue-50 p-3">
+          <div className="flex items-start gap-2">
+            <span className="text-blue-600">🏆</span>
+            <div className="flex-1 text-sm text-blue-900">
+              <p className="font-semibold mb-1">
+                {rank === 1 && "○○モビリティ愛知 推奨サービス"}
+                {rank === 2 && "業界実績トップクラス"}
+                {rank === 3 && "専門家評価 高評価獲得"}
+              </p>
+              <p className="text-xs text-blue-700">
+                {rank === 1 && "全国200店舗以上で採用されている実績のあるサービスです"}
+                {rank === 2 && "多くのディーラーで採用されている信頼性の高いサービスです"}
+                {rank === 3 && "品質と実績が認められたサービスです"}
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Visual（Intuitive）用の魅力訴求 */}
+      {layout === "visual" && rank === 1 && (
+        <div className="mb-4 rounded-lg border border-purple-200 bg-gradient-to-r from-purple-50 to-pink-50 p-3">
+          <div className="flex items-start gap-2">
+            <span className="text-purple-600">✨</span>
+            <div className="flex-1 text-sm text-purple-900">
+              <p className="font-semibold mb-1">あなたの価値観にぴったりマッチ</p>
+              <p className="text-xs text-purple-700">
+                心地よい体験と充実感を提供するサービスです
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* 提案文 */}
       {service.pitch && (
-        <div className="mb-4 rounded-md bg-blue-50 p-3">
-          <p className="text-sm text-blue-900">💡 {service.pitch}</p>
+        <div className={`mb-4 rounded-md p-3 ${
+          layout === "visual" 
+            ? "bg-gradient-to-r from-purple-50 to-blue-50 border border-purple-200" 
+            : layout === "authority"
+            ? "bg-blue-50 border border-blue-200"
+            : "bg-blue-50"
+        }`}>
+          <p className={`text-sm ${
+            layout === "visual" ? "text-purple-900 font-medium" : "text-blue-900"
+          }`}>
+            {layout === "visual" && "✨ "}
+            {layout === "authority" && "👑 "}
+            💡 {service.pitch}
+          </p>
         </div>
       )}
 

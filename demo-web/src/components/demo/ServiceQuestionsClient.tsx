@@ -89,13 +89,14 @@ export function ServiceQuestionsClient() {
             setProfile(res.profile, res.mapped_needs || [], newStyle);
             console.log('[ServiceQuestions] Saved DecisionStyle to Zustand store');
           }
-        } else {
-          // その他の質問：APIレスポンスからDecisionStyleを取得
-          if (res.profile) {
-            setLocalProfile(res.profile);
-            const style = decisionStyleFromApiResponse(res);
-            setProfile(res.profile, res.mapped_needs || [], style);
-            setDecisionStyle(style);
+        } else if (res.profile) {
+          // Q2以降: プロファイルのみ更新（Q1で確定したDecisionStyleは維持）
+          setLocalProfile(res.profile);
+          const styleFromApi = decisionStyleFromApiResponse(res);
+          const preservedStyle = styleFromApi ?? decisionStyle ?? useDemoStore.getState().decisionStyle;
+          setProfile(res.profile, res.mapped_needs || [], preservedStyle);
+          if (preservedStyle) {
+            setDecisionStyle(preservedStyle);
           }
         }
       } catch (error) {

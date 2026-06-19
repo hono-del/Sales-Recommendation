@@ -126,6 +126,37 @@ export function computeDecisionStyleFromAnswers(
   };
 }
 
+const SERVICE_SQ0_STYLE_MAP: Record<string, string> = {
+  intuition: "Intuitive",
+  trust_authority: "Authority-driven",
+  compare_thoroughly: "Maximizer",
+  ask_others: "Delegator",
+  good_enough: "Satisficer",
+};
+
+/** サービスレコメンド Q1（sq0_decision_style）から DecisionStyle を復元 */
+export function decisionStyleFromServiceSq0(
+  answers: StoredAnswer[],
+): DecisionStyleResult | null {
+  const sq0 = answers.find((a) => a.question_id === "sq0_decision_style");
+  if (!sq0) return null;
+
+  const styleName = SERVICE_SQ0_STYLE_MAP[sq0.answer_key];
+  if (!styleName) return null;
+
+  const meta = CFG.labels[styleName] ?? { label: styleName, description: "" };
+  return {
+    name: styleName,
+    label: meta.label,
+    description: meta.description,
+    confidence: 100,
+    secondary: "",
+    secondaryLabel: "",
+    scores: { [styleName]: 100 },
+    isMixed: false,
+  };
+}
+
 export function decisionStyleFromApiResponse(res: {
   decision_style?: string;
   decision_style_label?: string;

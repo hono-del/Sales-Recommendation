@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useRequireSession } from "@/hooks/useRequireSession";
 import { useDemoStore } from "@/stores/demoStore";
 import { api } from "@/lib/api-client";
+import { decisionStyleFromServiceSq0 } from "@/lib/decision-style-calculator";
 import { ServiceOfferingSection } from "./ServiceOfferingSection";
 import { PrimaryButton } from "./PrimaryButton";
 import { useRouter } from "next/navigation";
@@ -54,16 +55,12 @@ export function ServiceRecommendClient() {
         const data = await api.getServiceRecommendations(validSessionId);
         setServices((data.services || []) as ServiceOffering[]);
         
-        // DecisionStyle情報を取得（ストアを優先、なければAPIから）
-        if (decisionStyleFromStore) {
-          console.log('[ServiceRecommend] DecisionStyle from store:', decisionStyleFromStore);
-          setDecisionStyle({
-            name: decisionStyleFromStore.name,
-            label: decisionStyleFromStore.label,
-            description: decisionStyleFromStore.description,
-          });
-        } else {
-          // フォールバック: APIから取得
+        // DecisionStyle: ストア → API → Q1回答 の順で取得
+        const storeAnswers = useDemoStore.getState().answers;
+        const styleFromAnswers = decisionStyleFromServiceSq0(storeAnswers);
+        let resolvedStyle = decisionStyleFromStore ?? styleFromAnswers;
+
+        if (!resolvedStyle) {
           console.log('[ServiceRecommend] DecisionStyle not in store, fetching from API');
           const sessionData = await api.getSession(validSessionId);
           const profileData = sessionData.profile as {
@@ -71,17 +68,37 @@ export function ServiceRecommendClient() {
             decision_style_label?: string;
             decision_style_description?: string;
           } | undefined;
-          
+
           if (profileData?.decision_style) {
-            console.log('[ServiceRecommend] DecisionStyle from API:', profileData.decision_style);
-            setDecisionStyle({
+            resolvedStyle = {
               name: profileData.decision_style,
               label: profileData.decision_style_label || profileData.decision_style,
               description: profileData.decision_style_description || "",
-            });
+              confidence: 100,
+              secondary: "",
+              secondaryLabel: "",
+              scores: { [profileData.decision_style]: 100 },
+              isMixed: false,
+            };
           } else {
-            console.log('[ServiceRecommend] No DecisionStyle found');
+            const apiAnswers = (sessionData.answers ?? []).map((a) => ({
+              question_index: a.question_index,
+              question_id: a.question_id,
+              answer_key: a.answer_key,
+            }));
+            resolvedStyle = decisionStyleFromServiceSq0(apiAnswers);
           }
+        }
+
+        if (resolvedStyle) {
+          console.log('[ServiceRecommend] DecisionStyle resolved:', resolvedStyle.name);
+          setDecisionStyle({
+            name: resolvedStyle.name,
+            label: resolvedStyle.label,
+            description: resolvedStyle.description,
+          });
+        } else {
+          console.log('[ServiceRecommend] No DecisionStyle found');
         }
       } catch (e) {
         console.error("サービス推薦エラー:", e);
@@ -191,24 +208,24 @@ export function ServiceRecommendClient() {
         };
       case "Authority-driven":
         return {
-          title: "専門家が推奨するサービス（権威依存型）",
-          subtitle: "実績と評価に基づいた信頼性の高いサービスです",
+          title: "専門家が推奨するサービス",
+          subtitle: "✓ 実績と信頼性で選ばれたトップクラスのサービス",
           maxServices: services.length,
           layout: "authority" as const,
           showDetailedScores: false,
         };
       case "Delegator":
         return {
-          title: "多くの方に選ばれているサービス（委任型）",
-          subtitle: "あなたと同じ条件の方に人気のサービスです",
+          title: "多くの方に選ばれているサービス",
+          subtitle: "👥 あなたと同じ条件の方に人気のサービス",
           maxServices: 7,
           layout: "popular" as const,
           showDetailedScores: false,
         };
       case "Intuitive":
         return {
-          title: "あなたにぴったりのサービス（直感型）",
-          subtitle: "体験価値を重視したサービスをご提案します",
+          title: "あなたの直感が選ぶベストサービス",
+          subtitle: "✨ 魅力的な体験と充実感を提供するサービス",
           maxServices: services.length,
           layout: "visual" as const,
           showDetailedScores: false,
