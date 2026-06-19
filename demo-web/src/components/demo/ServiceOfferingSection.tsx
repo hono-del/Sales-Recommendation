@@ -1,5 +1,7 @@
 "use client";
 
+import { getServiceImageUrl } from "@/lib/serviceImage";
+
 type ServiceOffering = {
   id: string;
   title: string;
@@ -173,6 +175,7 @@ function ServiceCard({
 }) {
   const directionInfo = DIRECTION_LABEL[service.direction] || DIRECTION_LABEL.neutral;
   const domainLabel = DOMAIN_LABEL[service.domain] || service.domain;
+  const imageUrl = getServiceImageUrl(service.id);
 
   const handleFeedback = (value: FeedbackValue) => {
     if (onFeedbackChange) {
@@ -189,13 +192,12 @@ function ServiceCard({
 
   // ヒーローカード（Satisficer 1位）は大きく表示
   const cardSizeClass = isHeroCard ? "p-8" : "p-6";
-  const titleSizeClass = isHeroCard ? "text-2xl" : "text-lg";
   const scoreSizeClass = isHeroCard ? "text-4xl" : "text-2xl";
 
   return (
     <div className={`group rounded-lg border border-border bg-surface ${cardSizeClass} shadow-sm transition-all hover:border-navy hover:shadow-md`}>
       {/* ヘッダー */}
-      <div className="mb-3 flex items-start justify-between">
+      <div className="mb-3 flex items-start justify-between gap-4">
         <div className="flex-1">
           <div className="mb-2 flex flex-wrap items-center gap-2">
             <span className="flex h-6 w-6 items-center justify-center rounded-full bg-navy text-xs font-bold text-white">
@@ -255,9 +257,8 @@ function ServiceCard({
               </span>
             )}
           </div>
-          <h3 className={`${titleSizeClass} font-semibold text-navy`}>{service.title}</h3>
         </div>
-        <div className="ml-4 text-right">
+        <div className="shrink-0 text-right">
           <div className={`${scoreSizeClass} font-bold text-navy`}>
             {Math.round(service.score * 100)}
           </div>
@@ -272,8 +273,25 @@ function ServiceCard({
         </div>
       </div>
 
-      {/* 説明 */}
-      <p className={`mb-4 ${isHeroCard ? 'text-base' : 'text-sm'} text-text`}>{service.one_liner}</p>
+      {/* サービス画像（タイトル・説明は画像内に含まれる） */}
+      {imageUrl ? (
+        <div className="mb-4 overflow-hidden rounded-lg border border-border bg-gray-50">
+          <img
+            src={imageUrl}
+            alt={service.title}
+            className="aspect-[16/9] w-full object-cover"
+          />
+        </div>
+      ) : (
+        <div className="mb-4">
+          <h3 className={`${isHeroCard ? "text-2xl" : "text-lg"} font-semibold text-navy`}>
+            {service.title}
+          </h3>
+          <p className={`mt-2 ${isHeroCard ? "text-base" : "text-sm"} text-text`}>
+            {service.one_liner}
+          </p>
+        </div>
+      )}
 
       {/* Satisficer用の「この1台で十分な理由」 */}
       {isHeroCard && (
