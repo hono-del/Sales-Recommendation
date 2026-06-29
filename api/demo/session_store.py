@@ -246,9 +246,15 @@ _store: Optional[DemoSessionStore] = None
 def get_session_store() -> DemoSessionStore:
     global _store
     if _store is None:
-        # Vercel KV を使うかどうかを判定
+        # Supabase / Vercel KV / ローカル JSON を自動判定
+        use_supabase = bool(os.getenv("SUPABASE_URL") and os.getenv("SUPABASE_SERVICE_KEY"))
         use_vercel_kv = bool(os.getenv("KV_REST_API_URL"))
-        if use_vercel_kv:
+        
+        if use_supabase:
+            from api.demo.session_store_supabase import SupabaseSessionStore
+            print("[SessionStore] Using Supabase for persistence")
+            _store = SupabaseSessionStore()  # type: ignore
+        elif use_vercel_kv:
             from api.demo.session_store_vercel import VercelSessionStore
             print("[SessionStore] Using Vercel KV for persistence")
             _store = VercelSessionStore()  # type: ignore
