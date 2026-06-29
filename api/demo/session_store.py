@@ -246,5 +246,13 @@ _store: Optional[DemoSessionStore] = None
 def get_session_store() -> DemoSessionStore:
     global _store
     if _store is None:
-        _store = DemoSessionStore()
+        # Vercel KV を使うかどうかを判定
+        use_vercel_kv = bool(os.getenv("KV_REST_API_URL"))
+        if use_vercel_kv:
+            from api.demo.session_store_vercel import VercelSessionStore
+            print("[SessionStore] Using Vercel KV for persistence")
+            _store = VercelSessionStore()  # type: ignore
+        else:
+            print(f"[SessionStore] Using local JSON file: {_SESSIONS_FILE}")
+            _store = DemoSessionStore()
     return _store

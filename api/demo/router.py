@@ -596,6 +596,51 @@ def log_session_analytics(session_id: str):
     return log_entry
 
 
+@router.get("/feedback-logs")
+def get_all_feedback_logs():
+    """
+    全セッションのフィードバックログを取得（Vercel対応）
+    
+    Returns:
+        {
+          "total_sessions": 100,
+          "sessions_with_feedback": 25,
+          "feedbacks": [
+            {
+              "session_id": "...",
+              "created_at": "...",
+              "updated_at": "...",
+              "feedback_count": 3,
+              "feedbacks": [...]
+            }
+          ]
+        }
+    """
+    store = get_session_store()
+    all_sessions = store.list_all_sessions()
+    
+    feedback_logs = []
+    for session_id, session in all_sessions.items():
+        feedbacks = session.get("service_feedbacks", [])
+        if feedbacks:
+            feedback_logs.append({
+                "session_id": session_id,
+                "created_at": session.get("created_at"),
+                "updated_at": session.get("updated_at"),
+                "feedback_count": len(feedbacks),
+                "feedbacks": feedbacks,
+            })
+    
+    # 更新日時でソート（新しい順）
+    feedback_logs.sort(key=lambda x: x.get("updated_at", ""), reverse=True)
+    
+    return {
+        "total_sessions": len(all_sessions),
+        "sessions_with_feedback": len(feedback_logs),
+        "feedbacks": feedback_logs,
+    }
+
+
 @router.get("/analytics/logs")
 def get_all_analytics_logs():
     """

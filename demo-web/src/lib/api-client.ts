@@ -3,6 +3,10 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL ??
     ? "http://127.0.0.1:8000" 
     : "https://sales-recommendation.onrender.com");
 
+function getApiUrl(): string {
+  return API_URL;
+}
+
 export type ProfileScores = {
   score_safety: number;
   score_family: number;
@@ -157,6 +161,8 @@ async function request<T>(
 }
 
 export const api = {
+  getApiUrl: () => API_URL,
+  
   health: () => request<HealthResponse>("/health", undefined, 3000),
 
   /**
