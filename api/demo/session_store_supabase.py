@@ -89,7 +89,7 @@ class SupabaseSessionStore:
     def _sb_upsert(self, session_id: str, data: dict) -> None:
         """Supabase に保存（UPSERT）"""
         try:
-            self._requests.post(
+            response = self._requests.post(
                 f"{self._supabase_url}/rest/v1/demo_sessions",
                 headers={
                     "apikey": self._supabase_key,
@@ -104,8 +104,11 @@ class SupabaseSessionStore:
                 },
                 timeout=5,
             )
+            response.raise_for_status()
+            print(f"[Supabase UPSERT Success] session_id={session_id}")
         except Exception as e:
-            print(f"[Supabase UPSERT Error] {e}")
+            print(f"[Supabase UPSERT Error] session_id={session_id}, error={e}")
+            raise  # エラーを再スローして上位で処理できるようにする
 
     def _sb_list_all(self) -> dict[str, dict[str, Any]]:
         """Supabase から全セッション取得"""
