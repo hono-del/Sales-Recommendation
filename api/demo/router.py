@@ -522,7 +522,7 @@ def get_service_recommendations(session_id: str):
         "cached_at": datetime.now(timezone.utc).isoformat(),
     }
     session["updated_at"] = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-    store._save()
+    store._save_session(session_id, session)
     
     return {
         "services": services,
@@ -571,7 +571,7 @@ def post_service_feedback(session_id: str, body: dict):
     session["updated_at"] = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     
     # 保存
-    store._save()
+    store._save_session(session_id, session)
     
     return {"message": "Feedback saved"}
 
