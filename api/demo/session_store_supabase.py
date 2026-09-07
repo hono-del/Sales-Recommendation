@@ -27,11 +27,15 @@ class SupabaseSessionStore:
     def __init__(self, json_path: str = "data/demo/sessions.json"):
         self._json_path = Path(json_path)
         self._use_supabase = bool(os.getenv("SUPABASE_URL") and os.getenv("SUPABASE_SERVICE_KEY"))
+        # メモリ内キャッシュ（Supabase 障害時のフォールバック兼高速化）
+        self._sessions: dict[str, dict[str, Any]] = {}
+        # 直近の Supabase エラー（診断用）
+        self.last_supabase_error: Optional[str] = None
         
         if self._use_supabase:
             import requests
-            self._supabase_url = os.getenv("SUPABASE_URL")
-            self._supabase_key = os.getenv("SUPABASE_SERVICE_KEY")
+            self._supabase_url = (os.getenv("SUPABASE_URL") or "").strip().rstrip("/")
+            self._supabase_key = (os.getenv("SUPABASE_SERVICE_KEY") or "").strip()
             self._requests = requests
             print(f"[SessionStore] Using Supabase for persistence")
             self._ensure_table()
@@ -86,8 +90,9 @@ class SupabaseSessionStore:
             print(f"[Supabase GET Error] {e}")
             return None
 
-    def _sb_upsert(self, session_id: str, data: dict) -> None:
-        """Supabase に保存（UPSERT）"""
+    def _sb_upsert(self, session_id: str, data: dict) -> bool:
+        """Supabase に保存（UPSERT）。
+        失敗しても例外を投げず False を返す（メモリ内フォールバックで動作継続）。"""
         try:
             response = self._requests.post(
                 f"{self._supabase_url}/rest/v1/demo_sessions",
@@ -105,10 +110,21 @@ class SupabaseSessionStore:
                 timeout=5,
             )
             response.raise_for_status()
+            self.last_supabase_error = None
             print(f"[Supabase UPSERT Success] session_id={session_id}")
+            return True
         except Exception as e:
-            print(f"[Supabase UPSERT Error] session_id={session_id}, error={e}")
-            raise  # エラーを再スローして上位で処理できるようにする
+            # レスポンスボディがあれば詳細を含める（診断用）
+            detail = ""
+            resp = getattr(e, "response", None)
+            if resp is not None:
+                try:
+                    detail = f" body={resp.text[:300]}"
+                except Exception:
+                    pass
+            self.last_supabase_error = f"{e}{detail}"
+            print(f"[Supabase UPSERT Error] session_id={session_id}, error={e}{detail}")
+            return False  # raise しない: セッションはメモリ内に保持され、アプリは動作継続
 
     def _sb_list_all(self) -> dict[str, dict[str, Any]]:
         """Supabase から全セッション取得"""
@@ -132,7 +148,11 @@ class SupabaseSessionStore:
 
     def get_session(self, session_id: str) -> Optional[dict[str, Any]]:
         if self._use_supabase:
-            return self._sb_get(session_id)
+            session = self._sb_get(session_id)
+            if session is None:
+                # Supabase から取得できない場合はメモリ内キャッシュを参照
+                session = self._sessions.get(session_id)
+            return session
         else:
             return self._sessions.get(session_id)
 
@@ -155,10 +175,11 @@ class SupabaseSessionStore:
             "events": [],
         }
         
+        # 常にメモリにも保持（Supabase 障害時のフォールバック）
+        self._sessions[sid] = session
         if self._use_supabase:
             self._sb_upsert(sid, session)
         else:
-            self._sessions[sid] = session
             self._save_to_file()
         
         return {
@@ -176,10 +197,11 @@ class SupabaseSessionStore:
     def _save_session(self, session_id: str, session: dict[str, Any]) -> None:
         """セッションを保存（共通処理）"""
         session["updated_at"] = _iso(_utc_now())
+        # 常にメモリにも保持（Supabase 障害時のフォールバック）
+        self._sessions[session_id] = session
         if self._use_supabase:
             self._sb_upsert(session_id, session)
         else:
-            self._sessions[session_id] = session
             self._save_to_file()
 
     def upsert_answer(
@@ -265,6 +287,11 @@ class SupabaseSessionStore:
     def list_all_sessions(self) -> dict[str, dict[str, Any]]:
         """全セッション取得（分析用）"""
         if self._use_supabase:
-            return self._sb_list_all()
+            result = self._sb_list_all()
+            # メモリ内のみのセッション（Supabase 書き込み失敗分）もマージ
+            for sid, session in self._sessions.items():
+                if sid not in result:
+                    result[sid] = session
+            return result
         else:
             return self._sessions

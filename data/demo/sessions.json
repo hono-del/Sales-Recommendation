@@ -42876,5 +42876,20 @@
     "answers": [],
     "profile": null,
     "events": []
+  },
+  "5b265b86-dd1c-4069-817f-f98a97648119": {
+    "session_id": "5b265b86-dd1c-4069-817f-f98a97648119",
+    "created_at": "2026-09-07T01:10:41Z",
+    "updated_at": "2026-09-07T01:10:41Z",
+    "status": "active",
+    "delegation_level": null,
+    "demo_fallback_used": false,
+    "family_size": null,
+    "budget_range": null,
+    "budget_min": null,
+    "budget_max": null,
+    "answers": [],
+    "profile": null,
+    "events": []
   }
 }

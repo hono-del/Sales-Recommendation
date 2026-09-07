@@ -135,6 +135,45 @@ def create_session():
     return store.create_session()
 
 
+@router.get("/storage-status")
+def storage_status():
+    """ストレージバックエンドの状態を診断する（Supabase 接続確認用）。"""
+    store = get_session_store()
+    backend = type(store).__name__
+    use_supabase = getattr(store, "_use_supabase", False)
+    last_error = getattr(store, "last_supabase_error", None)
+
+    supabase_ok = None
+    supabase_detail = None
+    if use_supabase:
+        try:
+            import requests as _rq
+            resp = _rq.get(
+                f"{store._supabase_url}/rest/v1/demo_sessions",
+                headers={
+                    "apikey": store._supabase_key,
+                    "Authorization": f"Bearer {store._supabase_key}",
+                },
+                params={"select": "session_id", "limit": "1"},
+                timeout=5,
+            )
+            supabase_ok = resp.status_code == 200
+            if not supabase_ok:
+                supabase_detail = f"HTTP {resp.status_code}: {resp.text[:300]}"
+        except Exception as e:
+            supabase_ok = False
+            supabase_detail = str(e)
+
+    return {
+        "backend": backend,
+        "use_supabase": use_supabase,
+        "supabase_read_ok": supabase_ok,
+        "supabase_detail": supabase_detail,
+        "last_write_error": last_error,
+        "memory_sessions": len(getattr(store, "_sessions", {})),
+    }
+
+
 @router.get("/sessions/{session_id}")
 def get_session(session_id: str):
     store = get_session_store()
