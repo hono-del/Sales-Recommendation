@@ -1,10 +1,180 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { api } from "@/lib/api-client";
+import { api, type StorageStatusResponse } from "@/lib/api-client";
 import { useDemoStore } from "@/stores/demoStore";
 import { PrimaryButton } from "./PrimaryButton";
+
+// Supabase ダッシュボード（プロジェクト復旧用）
+const SUPABASE_DASHBOARD_URL =
+  "https://supabase.com/dashboard/project/vgkojkjsqfpphywcahqk";
+
+/** ストレージ（Supabase）接続ステータスバッジ */
+function StorageStatusBadge() {
+  const [status, setStatus] = useState<StorageStatusResponse | null>(null);
+  const [checking, setChecking] = useState(true);
+  const [expanded, setExpanded] = useState(false);
+
+  async function checkStatus() {
+    setChecking(true);
+    try {
+      const s = await api.getStorageStatus();
+      setStatus(s);
+    } catch {
+      setStatus(null);
+    } finally {
+      setChecking(false);
+    }
+  }
+
+  useEffect(() => {
+    checkStatus();
+    // 60秒ごとに自動再チェック
+    const timer = setInterval(checkStatus, 60000);
+    return () => clearInterval(timer);
+  }, []);
+
+  // 状態判定
+  const isConnected = status?.use_supabase === true && status?.supabase_read_ok === true;
+  const isDisconnected = status?.use_supabase === true && status?.supabase_read_ok === false;
+  const isLocalMode = status?.use_supabase === false;
+
+  let dotColor = "#9CA3AF"; // グレー（確認中/不明）
+  let label = "確認中...";
+  if (!checking || status) {
+    if (isConnected) {
+      dotColor = "#22C55E"; // 緑
+      label = "Supabase 接続中";
+    } else if (isDisconnected) {
+      dotColor = "#EF4444"; // 赤
+      label = "Supabase 未接続";
+    } else if (isLocalMode) {
+      dotColor = "#3B82F6"; // 青
+      label = "ローカル保存モード";
+    } else if (!status) {
+      dotColor = "#9CA3AF";
+      label = "状態不明";
+    }
+  }
+
+  return (
+    <div
+      style={{
+        position: "fixed",
+        right: "16px",
+        bottom: "16px",
+        zIndex: 50,
+        maxWidth: "340px",
+      }}
+    >
+      {/* 未接続時の警告パネル */}
+      {isDisconnected && expanded && (
+        <div
+          style={{
+            marginBottom: "8px",
+            background: "#FEF2F2",
+            border: "1px solid #FECACA",
+            borderRadius: "12px",
+            padding: "16px",
+            boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+            fontSize: "13px",
+            lineHeight: 1.6,
+            color: "#7F1D1D",
+          }}
+        >
+          <p style={{ fontWeight: 700, marginBottom: "8px" }}>
+            ⚠️ フィードバックの永続保存が無効です
+          </p>
+          <p style={{ marginBottom: "12px" }}>
+            Supabase プロジェクトが一時停止されている可能性があります。
+            現在のログは一時保存のみで、サーバー再起動時に消えます。
+          </p>
+          <p style={{ fontWeight: 600, marginBottom: "6px" }}>復旧手順：</p>
+          <ol style={{ paddingLeft: "18px", marginBottom: "12px" }}>
+            <li>下のボタンから Supabase を開く</li>
+            <li>「Restore project」をクリック</li>
+            <li>数分待つと自動的に再接続されます</li>
+          </ol>
+          <a
+            href={SUPABASE_DASHBOARD_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: "block",
+              textAlign: "center",
+              background: "#3ECF8E",
+              color: "#FFFFFF",
+              fontWeight: 700,
+              padding: "10px 16px",
+              borderRadius: "8px",
+              textDecoration: "none",
+            }}
+          >
+            Supabase ダッシュボードを開く →
+          </a>
+          <button
+            onClick={checkStatus}
+            style={{
+              display: "block",
+              width: "100%",
+              marginTop: "8px",
+              background: "transparent",
+              border: "1px solid #FCA5A5",
+              color: "#B91C1C",
+              fontSize: "12px",
+              padding: "6px",
+              borderRadius: "8px",
+              cursor: "pointer",
+            }}
+          >
+            接続を再確認する
+          </button>
+        </div>
+      )}
+
+      {/* ステータスバッジ本体 */}
+      <button
+        onClick={() => (isDisconnected ? setExpanded(!expanded) : checkStatus())}
+        title={
+          isDisconnected
+            ? "クリックで復旧手順を表示"
+            : "クリックで再確認"
+        }
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: "8px",
+          marginLeft: "auto",
+          background: "rgba(255,255,255,0.95)",
+          border: `1px solid ${isDisconnected ? "#FECACA" : "var(--color-border)"}`,
+          borderRadius: "999px",
+          padding: "8px 14px",
+          fontSize: "12px",
+          fontWeight: 600,
+          color: isDisconnected ? "#B91C1C" : "var(--color-text-muted)",
+          boxShadow: "0 2px 8px rgba(0,0,0,0.12)",
+          cursor: "pointer",
+        }}
+      >
+        <span
+          style={{
+            width: "8px",
+            height: "8px",
+            borderRadius: "50%",
+            background: dotColor,
+            flexShrink: 0,
+            animation: checking ? "pulse 1s infinite" : undefined,
+          }}
+        />
+        データ保存: {label}
+        {isDisconnected && (
+          <span style={{ fontSize: "10px" }}>{expanded ? "▼" : "▲"}</span>
+        )}
+      </button>
+    </div>
+  );
+}
 
 /** 浮遊タグの配置（left/top は %） */
 const FLOATING_TAGS: { label: string; left: string; top: string; delay: string }[] = [
@@ -277,6 +447,9 @@ export function OpeningClient() {
           )}
         </div>
       </div>
+
+      {/* ストレージ接続ステータス（右下固定） */}
+      <StorageStatusBadge />
     </main>
   );
 }

@@ -81,6 +81,15 @@ export type HealthResponse = {
   neo4j: "connected" | "unavailable" | "skipped";
 };
 
+export type StorageStatusResponse = {
+  backend: string;
+  use_supabase: boolean;
+  supabase_read_ok: boolean | null;
+  supabase_detail: string | null;
+  last_write_error: string | null;
+  memory_sessions: number;
+};
+
 export type QuestionMaster = {
   version: string;
   questions: {
@@ -165,6 +174,9 @@ export const api = {
   getApiUrl: () => API_URL,
   
   health: () => request<HealthResponse>("/health", undefined, 8000),
+
+  getStorageStatus: () =>
+    request<StorageStatusResponse>("/api/demo/storage-status", undefined, 10000),
 
   /**
    * Renderのウェイクアップを待機しながらヘルスチェック
