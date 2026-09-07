@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>迷わせないレコメンド — 1枚まとめ</title>
+  <style>
+    :root {
+      --bg-panel: rgba(12, 28, 52, 0.72);
+      --cyan: #00c8ff;
+      --cyan-dim: rgba(0, 200, 255, 0.35);
+      --cyan-glow: rgba(0, 200, 255, 0.55);
+      --text: #ffffff;
+      --text-muted: rgba(255, 255, 255, 0.82);
+      --border: rgba(0, 200, 255, 0.45);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Segoe UI", "Hiragino Sans", "Yu Gothic UI", "Meiryo", sans-serif;
+      background: #020810;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .slide {
+      position: relative;
+      width: 1280px;
+      max-width: 100%;
+      aspect-ratio: 16 / 9;
+      background:
+        radial-gradient(ellipse 80% 60% at 70% 20%, rgba(0, 120, 200, 0.12) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 40% at 10% 80%, rgba(0, 200, 255, 0.06) 0%, transparent 50%),
+        linear-gradient(160deg, #071018 0%, #0a1628 45%, #060d1a 100%);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      padding: 32px 40px 28px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 0 60px rgba(0, 200, 255, 0.08), inset 0 0 80px rgba(0, 80, 160, 0.05);
+    }
+
+    .slide::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0, 200, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 200, 255, 0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+    }
+
+    .slide::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 420px;
+      height: 220px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 200' fill='none'%3E%3Cpath d='M60 140 L120 120 L200 125 L280 115 L340 130' stroke='%2300c8ff' stroke-width='1' opacity='0.25'/%3E%3Cellipse cx='200' cy='128' rx='90' ry='28' stroke='%2300c8ff' stroke-width='1.2' opacity='0.35'/%3E%3C/svg%3E") no-repeat center / contain;
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    .header {
+      position: relative;
+      z-index: 1;
+      margin-bottom: 20px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--cyan-dim);
+    }
+
+    .eyebrow {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+      margin-bottom: 6px;
+    }
+
+    .headline {
+      font-size: 30px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.35;
+      text-shadow: 0 0 24px rgba(0, 200, 255, 0.25);
+    }
+
+    .columns {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.05fr 1.1fr 1fr;
+      gap: 16px;
+      flex: 1;
+      min-height: 0;
+    }
+
+    .panel {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      box-shadow: 0 0 20px rgba(0, 200, 255, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+      overflow: hidden;
+    }
+
+    .panel.center {
+      border-color: var(--cyan);
+      box-shadow: 0 0 28px rgba(0, 200, 255, 0.15), inset 0 0 40px rgba(0, 200, 255, 0.04);
+    }
+
+    .panel-head {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .icon-circle {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: linear-gradient(145deg, rgba(0, 200, 255, 0.25), rgba(0, 120, 200, 0.15));
+      border: 1px solid var(--cyan);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 0 12px var(--cyan-glow);
+    }
+
+    .icon-circle svg {
+      width: 20px;
+      height: 20px;
+      stroke: var(--cyan);
+      fill: none;
+      stroke-width: 1.8;
+    }
+
+    .panel-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .list-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 15px;
+      line-height: 1.5;
+      color: var(--text-muted);
+    }
+
+    .list-item .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--cyan);
+      box-shadow: 0 0 8px var(--cyan);
+      margin-top: 7px;
+      flex-shrink: 0;
+    }
+
+    .list-item strong { color: var(--text); font-weight: 600; }
+
+    .example-group {
+      margin-top: 2px;
+    }
+
+    .example-label {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--cyan);
+      margin: 6px 0 4px 0;
+    }
+
+    .arrow-block {
+      text-align: center;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--cyan);
+      padding: 4px 0;
+      letter-spacing: 0.08em;
+    }
+
+    .arrow-block::before,
+    .arrow-block::after {
+      content: "—";
+      opacity: 0.4;
+      margin: 0 8px;
+    }
+
+    /* ハブ＆スポーク — 4方向均等配置で重なり防止 */
+    .hub-wrap {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 0;
+      padding: 4px 0;
+    }
+
+    .hub-diagram {
+      position: relative;
+      width: 260px;
+      height: 200px;
+    }
+
+    .hub-lines {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .hub-lines line {
+      stroke: var(--cyan);
+      stroke-width: 1.2;
+      stroke-dasharray: 5 4;
+      opacity: 0.4;
+    }
+
+    .hub-center {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0, 200, 255, 0.22) 0%, rgba(0, 80, 140, 0.12) 100%);
+      border: 2px solid var(--cyan);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.3;
+      box-shadow: 0 0 24px var(--cyan-glow);
+      z-index: 2;
+    }
+
+    .hub-node {
+      position: absolute;
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: rgba(0, 40, 70, 0.9);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--cyan);
+      text-align: center;
+      line-height: 1.15;
+      box-shadow: 0 0 12px rgba(0, 200, 255, 0.25);
+      z-index: 3;
+    }
+
+    /* 上・右・下・左 に均等配置（中心72px + ノード54px + 余白） */
+    .hub-node.need {
+      left: 50%;
+      top: 0;
+      transform: translateX(-50%);
+    }
+    .hub-node.load {
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .hub-node.service {
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+    }
+    .hub-node.relation {
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 11px;
+    }
+
+    .hub-caption {
+      font-size: 14px;
+      line-height: 1.45;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    .output-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .output-chip {
+      background: rgba(0, 60, 100, 0.35);
+      border: 1px solid var(--cyan-dim);
+      border-radius: 6px;
+      padding: 10px 12px;
+      font-size: 14px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .output-chip svg {
+      width: 18px;
+      height: 18px;
+      stroke: var(--cyan);
+      fill: none;
+      stroke-width: 1.6;
+      flex-shrink: 0;
+    }
+
+    .points {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .point-card {
+      background: rgba(8, 24, 44, 0.6);
+      border: 1px solid var(--cyan-dim);
+      border-radius: 6px;
+      padding: 12px 14px;
+      font-size: 15px;
+      line-height: 1.45;
+      color: var(--text-muted);
+    }
+
+    .point-card strong {
+      display: block;
+      font-size: 16px;
+      color: var(--cyan);
+      margin-bottom: 4px;
+      font-weight: 700;
+    }
+
+    .footer-box {
+      position: relative;
+      z-index: 1;
+      margin-top: 12px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 20px;
+      background: rgba(0, 50, 90, 0.35);
+      border: 1px solid var(--cyan);
+      border-radius: 8px;
+      box-shadow: 0 0 20px rgba(0, 200, 255, 0.12);
+    }
+
+    .footer-check {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(0, 200, 255, 0.15);
+      border: 1px solid var(--cyan);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 0 12px var(--cyan-glow);
+    }
+
+    .footer-check svg {
+      width: 18px;
+      height: 18px;
+      stroke: var(--cyan);
+      fill: none;
+      stroke-width: 2.5;
+    }
+
+    .footer-text {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.45;
+    }
+
+    @media print {
+      body { background: #060d1a; padding: 0; }
+      .slide { width: 100%; border: none; box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="slide">
+    <header class="header">
+      <p class="eyebrow">迷わせないレコメンド</p>
+      <h1 class="headline">意味化した情報基盤をAIが参照し、利用フィードバックで育つ</h1>
+    </header>
+
+    <div class="columns">
+      <!-- 入力 -->
+      <div class="panel">
+        <div class="panel-head">
+          <div class="icon-circle">
+            <svg viewBox="0 0 24 24"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="9"/></svg>
+          </div>
+          <div class="panel-title">入力</div>
+        </div>
+        <div class="list-item"><span class="dot"></span><span>顧客の回答</span></div>
+        <div class="list-item"><span class="dot"></span><span>価値観プロファイル</span></div>
+        <div class="arrow-block">構造化・意味化</div>
+
+        <div class="example-group">
+          <div class="example-label">Need の例</div>
+          <div class="list-item"><span class="dot"></span><span>静かな空間で移動したい</span></div>
+          <div class="list-item"><span class="dot"></span><span>子供を安全に乗せたい</span></div>
+          <div class="list-item"><span class="dot"></span><span>上質感を感じたい</span></div>
+        </div>
+
+        <div class="example-group">
+          <div class="example-label">Load の例</div>
+          <div class="list-item"><span class="dot"></span><span>情報過多による判断負荷</span></div>
+          <div class="list-item"><span class="dot"></span><span>機能不足による後悔</span></div>
+          <div class="list-item"><span class="dot"></span><span>選択肢過多への不安</span></div>
+        </div>
+      </div>
+
+      <!-- 意味化情報基盤 -->
+      <div class="panel center">
+        <div class="panel-head">
+          <div class="icon-circle">
+            <svg viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="9" ry="5"/><path d="M3 12c0 3 4 5 9 5s9-2 9-5"/></svg>
+          </div>
+          <div class="panel-title">意味化情報基盤</div>
+        </div>
+        <div class="hub-wrap">
+          <div class="hub-diagram">
+            <svg class="hub-lines" viewBox="0 0 260 200">
+              <!-- 中心 (130, 100) へ4方向 -->
+              <line x1="130" y1="100" x2="130" y2="27"/>
+              <line x1="130" y1="100" x2="207" y2="100"/>
+              <line x1="130" y1="100" x2="130" y2="173"/>
+              <line x1="130" y1="100" x2="53" y2="100"/>
+            </svg>
+            <div class="hub-center">意味化<br>情報基盤</div>
+            <div class="hub-node need">Need</div>
+            <div class="hub-node load">Load</div>
+            <div class="hub-node service">Service</div>
+            <div class="hub-node relation">関係性</div>
+          </div>
+        </div>
+        <p class="hub-caption"><strong style="color:#fff">Need</strong>・<strong style="color:#fff">Load</strong>・<strong style="color:#fff">Service</strong> の関係性を AI が参照</p>
+      </div>
+
+      <!-- 出力 -->
+      <div class="panel">
+        <div class="panel-head">
+          <div class="icon-circle">
+            <svg viewBox="0 0 24 24"><path d="M9 11l3 3 8-8"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+          </div>
+          <div class="panel-title">根拠付きレコメンド</div>
+        </div>
+        <div class="output-grid">
+          <div class="output-chip">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 13h4"/></svg>
+            おすすめサービス
+          </div>
+          <div class="output-chip">
+            <svg viewBox="0 0 24 24"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>
+            適合度・推薦理由
+          </div>
+          <div class="output-chip">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 3"/></svg>
+            参照した情報
+          </div>
+          <div class="output-chip">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M9 9h6M9 13h4"/></svg>
+            利用FBで調整
+          </div>
+        </div>
+        <div class="list-item" style="margin-top:6px"><span class="dot"></span><span>参照した情報（Need / Load / Service）</span></div>
+      </div>
+    </div>
+
+    <div class="points">
+      <div class="point-card"><strong>1. 説明できる</strong>なぜこの提案かが見える</div>
+      <div class="point-card"><strong>2. AIは覚えない</strong>情報基盤を参照する</div>
+      <div class="point-card"><strong>3. 育つ</strong>利用FBで精度が改善する</div>
+    </div>
+
+    <div class="footer-box">
+      <div class="footer-check">
+        <svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+      </div>
+      <p class="footer-text">AIの賢さではなく、「AIが参照する意味化情報基盤」の価値を示すPoC</p>
+    </div>
+  </div>
+</body>
+</html>

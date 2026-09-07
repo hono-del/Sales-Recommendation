@@ -54,6 +54,11 @@ class DemoSessionStore:
         tmp.write_text(payload, encoding="utf-8")
         tmp.replace(self._path)
 
+    def _save_session(self, session_id: str, session: dict[str, Any]) -> None:
+        """SupabaseSessionStore と互換のセッション単位保存インターフェース"""
+        self._sessions[session_id] = session
+        self._save()
+
     def create_session(self) -> dict[str, Any]:
         sid = str(uuid.uuid4())
         now = _utc_now()

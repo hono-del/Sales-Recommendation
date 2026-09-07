@@ -14,6 +14,7 @@ from neo4j import GraphDatabase
 NEO4J_URI = os.environ.get("NEO4J_URI", "bolt://localhost:7687")
 NEO4J_USER = os.environ.get("NEO4J_USER", "neo4j")
 NEO4J_PASSWORD = os.environ.get("NEO4J_PASSWORD", "password")
+NEO4J_DISABLED = os.environ.get("DISABLE_NEO4J", "").lower() in ("1", "true", "yes")
 
 
 @dataclass
@@ -51,15 +52,20 @@ class ServiceRecommendation:
 
 class ServiceRecommendationEngine:
     def __init__(self):
+        self.driver = None
+        if NEO4J_DISABLED:
+            return
         self.driver = GraphDatabase.driver(
             NEO4J_URI,
             auth=(NEO4J_USER, NEO4J_PASSWORD),
-            connection_timeout=5.0,
-            connection_acquisition_timeout=5.0,
+            connection_timeout=2.0,
+            connection_acquisition_timeout=2.0,
+            max_transaction_retry_time=1.0,
         )
     
     def close(self):
-        self.driver.close()
+        if self.driver is not None:
+            self.driver.close()
     
     def _fetch_all_services(self) -> list[dict]:
         """全サービスを取得（公開メソッド）"""
@@ -181,6 +187,8 @@ class ServiceRecommendationEngine:
     
     def _get_all_services(self) -> list[dict]:
         """全ServiceOfferingを取得（Neo4j or JSON fallback）"""
+        if self.driver is None:
+            return self._load_services_from_json()
         try:
             with self.driver.session() as session:
                 result = session.run("""
@@ -202,7 +210,10 @@ class ServiceRecommendationEngine:
         except Exception as e:
             print(f"[ServiceRecommendation] Neo4j unavailable, using JSON fallback: {e}")
         
-        # Fallback: JSONファイルから読み込む
+        return self._load_services_from_json()
+
+    def _load_services_from_json(self) -> list[dict]:
+        """Fallback: JSONファイルから読み込む"""
         try:
             json_path = Path(__file__).resolve().parent.parent / "config" / "service-offerings.json"
             data = json.loads(json_path.read_text(encoding="utf-8"))

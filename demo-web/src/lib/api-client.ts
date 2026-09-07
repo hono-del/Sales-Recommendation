@@ -1,5 +1,6 @@
 const API_URL = process.env.NEXT_PUBLIC_API_URL ?? 
-  (typeof window !== 'undefined' && window.location.hostname === 'localhost' 
+  (typeof window !== 'undefined' && 
+   (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
     ? "http://127.0.0.1:8000" 
     : "https://sales-recommendation.onrender.com");
 
@@ -77,7 +78,7 @@ export type AnswerResponse = {
 
 export type HealthResponse = {
   status: string;
-  neo4j: "connected" | "unavailable";
+  neo4j: "connected" | "unavailable" | "skipped";
 };
 
 export type QuestionMaster = {
@@ -163,7 +164,7 @@ async function request<T>(
 export const api = {
   getApiUrl: () => API_URL,
   
-  health: () => request<HealthResponse>("/health", undefined, 3000),
+  health: () => request<HealthResponse>("/health", undefined, 8000),
 
   /**
    * Renderのウェイクアップを待機しながらヘルスチェック
@@ -353,7 +354,7 @@ export const api = {
     }>(
       `/api/demo/sessions/${sessionId}/services`,
       undefined,
-      10000,
+      20000,
     ),
 
   getNeedMapping: () =>

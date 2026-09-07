@@ -317,21 +317,38 @@ def _score_features(features: list[str], needs: list[str]) -> list[AppealPoint]:
 
 # ── Routes ─────────────────────────────────────────────────────────────────
 
+# Neo4j 接続チェック結果のキャッシュ（health を高速化し、毎回の接続試行を防ぐ）
+_neo4j_health_cache: dict = {"status": None, "checked_at": 0.0}
+_NEO4J_HEALTH_TTL = 300  # 5分キャッシュ
+
+
 @app.get("/health")
 def health():
-    """Neo4j 確認はデモ起動を遅らせないようスキップ可能（環境変数 HEALTH_SKIP_NEO4J）。"""
-    if os.environ.get("HEALTH_SKIP_NEO4J", "").lower() in ("1", "true", "yes"):
+    """ヘルスチェック。Neo4j 確認は重い（未起動時にタイムアウト待ちが発生する）ため、
+    結果をキャッシュして即座に応答する。"""
+    # DISABLE_NEO4J / HEALTH_SKIP_NEO4J が設定されていれば Neo4j チェック自体をスキップ
+    if os.environ.get("HEALTH_SKIP_NEO4J", "").lower() in ("1", "true", "yes") or \
+       os.environ.get("DISABLE_NEO4J", "").lower() in ("1", "true", "yes"):
         return {"status": "ok", "neo4j": "skipped"}
+
+    import time as _time
+    now = _time.time()
+    # キャッシュが有効ならそれを返す（接続試行なしで即応答）
+    if _neo4j_health_cache["status"] is not None and \
+       now - _neo4j_health_cache["checked_at"] < _NEO4J_HEALTH_TTL:
+        return {"status": "ok", "neo4j": _neo4j_health_cache["status"]}
+
     neo4j_status = "unavailable"
     try:
         engine = _get_engine()
-        # verify_connectivity は環境によって 10 秒以上かかることがある
         with engine.driver.session() as session:
             session.run("RETURN 1").consume()
         neo4j_status = "connected"
         engine.close()
     except Exception:
         pass
+    _neo4j_health_cache["status"] = neo4j_status
+    _neo4j_health_cache["checked_at"] = now
     return {"status": "ok", "neo4j": neo4j_status}
 
 

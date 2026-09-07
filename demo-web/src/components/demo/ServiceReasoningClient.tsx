@@ -5,7 +5,8 @@ import { useRouter } from "next/navigation";
 import { useRequireSession } from "@/hooks/useRequireSession";
 import { api } from "@/lib/api-client";
 import { PrimaryButton } from "./PrimaryButton";
-import { ServiceKnowledgeGraph } from "./ServiceKnowledgeGraph";
+
+// ─── 型定義 ──────────────────────────────────────────────────────────────────
 
 type LoadDetail = {
   name: string;
@@ -15,29 +16,45 @@ type LoadDetail = {
   threshold: number;
 };
 
-type AnalysisResult = {
-  question_id: string;
-  question_text: string;
-  answer_text: string;
-  answer_label: string;
-  detected_values: string[];
-  detected_needs: string[];
-};
-
 type ServiceWithScore = {
   id: string;
   title: string;
+  one_liner?: string;
+  pitch?: string;
+  need_rationale?: string;
   score: number;
   matched_needs: string[];
   matched_loads: string[];
   value_alignment: number;
-  // 個別スコア（v2.1追加、オプショナル）
   need_score?: number;
   load_score?: number;
   value_score?: number;
 };
 
-// Need name（英語コード）→ ラベル（日本語）のマッピング
+type AnswerRecord = {
+  question_index: number;
+  question_id: string;
+  answer_key: string;
+};
+
+// ─── 静的マスターデータ ────────────────────────────────────────────────────────
+
+const VALUE_LABELS: Record<string, string> = {
+  safety: "安全・安心",
+  family: "家族との時間",
+  efficiency: "効率・合理性",
+  enjoyment: "楽しさ・充実感",
+  adventure: "自己成長・学び",
+};
+
+const VALUE_BADGE_COLORS: Record<string, { bg: string; text: string; bar: string }> = {
+  safety:    { bg: "bg-blue-50",   text: "text-blue-800",   bar: "bg-blue-500"   },
+  family:    { bg: "bg-green-50",  text: "text-green-800",  bar: "bg-green-500"  },
+  efficiency:{ bg: "bg-gray-50",   text: "text-gray-700",   bar: "bg-gray-500"   },
+  enjoyment: { bg: "bg-purple-50", text: "text-purple-800", bar: "bg-purple-500" },
+  adventure: { bg: "bg-orange-50", text: "text-orange-800", bar: "bg-orange-500" },
+};
+
 const NEED_LABELS: Record<string, string> = {
   LowPhysicalBurden: "身体負担を減らしたい",
   EasyEntryExit: "乗り降りを楽にしたい",
@@ -68,44 +85,231 @@ const NEED_LABELS: Record<string, string> = {
   EmotionalAttachment: "愛着を持てる車に乗りたい",
 };
 
-// 回答キーから価値観を抽出
-const ANSWER_TO_VALUES: Record<string, string[]> = {
-  reduce_hassle: ["効率・合理性"],
-  enhance_experience: ["楽しさ・充実感"],
-  connect_community: ["家族との時間"],
-  save_cost: ["効率・合理性"],
-  flexible_usage: ["効率・合理性"],
-  enthusiast: ["自己成長・学び"],
-  pragmatic: ["効率・合理性"],
-  selective: ["効率・合理性"],
-  cautious: ["安全・安心"],
-  minimal: ["効率・合理性"],
-  active_member: ["家族との時間"],
-  share_knowledge: ["家族との時間"],
-  observe_learn: ["自己成長・学び"],
-  need_based: ["効率・合理性"],
-  independent: ["楽しさ・充実感"],
-  ownership: ["楽しさ・充実感"],
-  subscription: ["効率・合理性"],
-  pay_per_use: ["効率・合理性"],
-  sharing: ["効率・合理性"],
-  hybrid: ["効率・合理性"],
-  anticipate_prepare: ["安全・安心"],
-  explore_options: ["自己成長・学び"],
-  upgrade_quality: ["楽しさ・充実感"],
-  simplify_optimize: ["効率・合理性"],
-  maintain_stable: ["安全・安心"],
+const ANSWER_LABELS: Record<string, string> = {
+  reduce_hassle: "手間を省きたい",
+  enhance_experience: "体験を高めたい",
+  connect_community: "コミュニティとつながりたい",
+  save_cost: "コストを抑えたい",
+  flexible_usage: "柔軟に使いたい",
+  enthusiast: "熱狂的なファン",
+  pragmatic: "実用重視",
+  selective: "厳選派",
+  cautious: "慎重派",
+  minimal: "ミニマリスト",
+  active_member: "積極的な参加者",
+  share_knowledge: "知識を共有したい",
+  observe_learn: "観察・学習派",
+  need_based: "必要なときだけ",
+  independent: "自立派",
+  ownership: "所有したい",
+  subscription: "サブスクがいい",
+  pay_per_use: "使った分だけ払いたい",
+  sharing: "シェアしたい",
+  hybrid: "状況に合わせたい",
+  anticipate_prepare: "先を読んで備えたい",
+  explore_options: "選択肢を探りたい",
+  upgrade_quality: "質を上げたい",
+  simplify_optimize: "シンプルに最適化したい",
+  maintain_stable: "安定を維持したい",
 };
+
+const SERVICE_QUESTION_TEXTS: Record<string, string> = {
+  sq1: "クルマに求める体験",
+  sq2: "クルマの使い方",
+  sq3: "購入・利用の判断基準",
+  sq4: "コミュニティへの関わり方",
+  sq5: "サービスの利用スタイル",
+};
+
+const RANK_BADGE: Record<number, { label: string; bg: string; text: string; border: string }> = {
+  1: { label: "1位", bg: "bg-yellow-400", text: "text-yellow-900", border: "border-yellow-500" },
+  2: { label: "2位", bg: "bg-gray-300",   text: "text-gray-700",   border: "border-gray-400"   },
+  3: { label: "3位", bg: "bg-orange-300", text: "text-orange-900", border: "border-orange-400" },
+};
+
+// ─── サブコンポーネント ─────────────────────────────────────────────────────────
+
+/** 分析ステップ（横型フロー）の1ブロック */
+function FlowStep({
+  num,
+  title,
+  items,
+  colorClass,
+}: {
+  num: number;
+  title: string;
+  items: string[];
+  colorClass: string;
+}) {
+  return (
+    <div className="flex flex-col items-center text-center" style={{ minWidth: 140 }}>
+      <div className={`flex h-9 w-9 items-center justify-center rounded-full text-white font-bold text-sm mb-2 ${colorClass}`}>
+        {num}
+      </div>
+      <p className="text-xs font-semibold text-gray-600 mb-2">{title}</p>
+      <div className="flex flex-col gap-1">
+        {items.map((item, i) => (
+          <span
+            key={i}
+            className="rounded-full bg-white border border-gray-200 px-2 py-0.5 text-[11px] text-gray-700 shadow-sm"
+          >
+            {item}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/** フローの矢印 */
+function FlowArrow() {
+  return (
+    <div className="flex items-center px-2 pt-5">
+      <svg width="28" height="16" viewBox="0 0 28 16" fill="none">
+        <path
+          d="M0 8 H22 M16 2 L24 8 L16 14"
+          stroke="#94A3B8"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    </div>
+  );
+}
+
+/** 推薦理由カード（サービス1件分） */
+function ServiceReasonCard({
+  service,
+  rank,
+  valueScores,
+}: {
+  service: ServiceWithScore;
+  rank: number;
+  valueScores: Record<string, number>;
+}) {
+  const badge = RANK_BADGE[rank] ?? RANK_BADGE[3];
+
+  // 最もスコアが高い価値観を特定（value_alignment が高い ≒ 主な価値観）
+  const topValueEntry = Object.entries(valueScores).sort(([, a], [, b]) => b - a)[0];
+  const topValueLabel = topValueEntry ? VALUE_LABELS[topValueEntry[0]] : null;
+
+  // スコアバーの色
+  const scoreColor =
+    service.score >= 0.75 ? "bg-green-500" :
+    service.score >= 0.5  ? "bg-blue-500"  : "bg-gray-400";
+
+  return (
+    <div className={`rounded-xl border-2 bg-white p-6 shadow-sm ${badge.border}`}>
+      {/* ヘッダー */}
+      <div className="flex items-start justify-between mb-4">
+        <div className="flex items-center gap-3">
+          <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-sm font-bold ${badge.bg} ${badge.text}`}>
+            {badge.label}
+          </span>
+          <h4 className="text-lg font-bold text-navy leading-snug">{service.title}</h4>
+        </div>
+        <div className="text-right shrink-0 ml-4">
+          <span className="text-2xl font-bold text-navy">{Math.round(service.score * 100)}</span>
+          <span className="text-sm text-gray-500 ml-0.5">点</span>
+          <p className="text-xs text-gray-400 mt-0.5">総合マッチスコア</p>
+        </div>
+      </div>
+
+      {/* 総合スコアバー */}
+      <div className="mb-5">
+        <div className="h-2 rounded-full bg-gray-100 overflow-hidden">
+          <div
+            className={`h-full rounded-full transition-all ${scoreColor}`}
+            style={{ width: `${Math.round(service.score * 100)}%` }}
+          />
+        </div>
+      </div>
+
+      {/* スコア内訳 */}
+      <div className="grid grid-cols-3 gap-3 mb-5">
+        <div className="rounded-lg bg-blue-50 p-3 text-center">
+          <p className="text-xs text-blue-600 font-medium mb-1">価値観マッチ</p>
+          <p className="text-xl font-bold text-blue-700">{Math.round(service.value_alignment * 100)}<span className="text-xs font-normal ml-0.5">%</span></p>
+        </div>
+        <div className="rounded-lg bg-yellow-50 p-3 text-center">
+          <p className="text-xs text-yellow-700 font-medium mb-1">ニーズ対応</p>
+          <p className="text-xl font-bold text-yellow-700">{Math.round((service.need_score ?? 0) * 100)}<span className="text-xs font-normal ml-0.5">%</span></p>
+        </div>
+        <div className="rounded-lg bg-orange-50 p-3 text-center">
+          <p className="text-xs text-orange-600 font-medium mb-1">課題解消</p>
+          <p className="text-xl font-bold text-orange-600">{Math.round((service.load_score ?? 0) * 100)}<span className="text-xs font-normal ml-0.5">%</span></p>
+        </div>
+      </div>
+
+      {/* 推薦理由テキスト */}
+      {(service.pitch || service.need_rationale) && (
+        <div className="mb-4 rounded-lg bg-navy/5 p-4 border-l-4 border-navy">
+          <p className="text-sm font-semibold text-navy mb-1">推薦のポイント</p>
+          <p className="text-sm text-gray-700 leading-relaxed">
+            {service.pitch || service.need_rationale}
+          </p>
+        </div>
+      )}
+
+      {/* マッチしたニーズ */}
+      {service.matched_needs.length > 0 && (
+        <div className="mb-4">
+          <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">
+            対応するあなたのニーズ
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {service.matched_needs.map((need) => (
+              <span
+                key={need}
+                className="flex items-center gap-1 rounded-full bg-yellow-100 border border-yellow-300 px-3 py-1 text-xs text-yellow-900"
+              >
+                <span className="text-yellow-500">✓</span>
+                {NEED_LABELS[need] || need}
+              </span>
+            ))}
+          </div>
+          {topValueLabel && (
+            <p className="mt-2 text-xs text-gray-500">
+              あなたの <span className="font-semibold text-gray-700">「{topValueLabel}」</span> という価値観と強く一致しています
+            </p>
+          )}
+        </div>
+      )}
+
+      {/* マッチしたLoad */}
+      {service.matched_loads.length > 0 && (
+        <div>
+          <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">
+            解消できる懸念事項
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {service.matched_loads.map((load) => (
+              <span
+                key={load}
+                className="flex items-center gap-1 rounded-full bg-amber-100 border border-amber-300 px-3 py-1 text-xs text-amber-900"
+              >
+                <span>⚡</span>
+                {load}
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ─── メインコンポーネント ───────────────────────────────────────────────────────
 
 export function ServiceReasoningClient() {
   const router = useRouter();
   const sessionId = useRequireSession();
 
-  const [analysisResults, setAnalysisResults] = useState<AnalysisResult[]>([]);
   const [services, setServices] = useState<ServiceWithScore[]>([]);
   const [valueScores, setValueScores] = useState<Record<string, number>>({});
   const [detectedLoads, setDetectedLoads] = useState<LoadDetail[]>([]);
-  const [needToValues, setNeedToValues] = useState<Record<string, string[]>>({});
+  const [answers, setAnswers] = useState<AnswerRecord[]>([]);
   const [loading, setLoading] = useState(true);
   const [similarProfiles, setSimilarProfiles] = useState<{
     total_users: number;
@@ -120,99 +324,54 @@ export function ServiceReasoningClient() {
 
   useEffect(() => {
     if (!sessionId) return;
-    
-    const validSessionId = sessionId; // 型ガード
+    const sid = sessionId;
 
     async function fetchData() {
       try {
         setLoading(true);
-        
-        // サービス推薦結果を取得
-        const serviceData = await api.getServiceRecommendations(validSessionId);
+
+        const [serviceData, sessionData] = await Promise.all([
+          api.getServiceRecommendations(sid),
+          api.getSession(sid),
+        ]);
+
         setServices(serviceData.services || []);
 
-        // セッションプロファイルを取得（価値観スコア + detected_loads + need_to_values + answers）
-        const sessionData = await api.getSession(validSessionId);
-        console.log("[ServiceReasoning] sessionData:", sessionData);
-        
-        // APIから回答データを取得
-        const answersFromApi = (sessionData.answers || []) as Array<{
-          question_index: number;
-          question_id: string;
-          answer_key: string;
-        }>;
-        console.log("[ServiceReasoning] answersFromApi (v2):", answersFromApi);
-        
-        const profileData = sessionData.profile as { 
-          profile?: Record<string, number>; 
-          detected_loads?: LoadDetail[]; 
-          need_to_values?: Record<string, string[]>;
+        const answersFromApi = (sessionData.answers || []) as AnswerRecord[];
+        setAnswers(answersFromApi.filter((a) => a.question_id.startsWith("sq")));
+
+        const profileData = sessionData.profile as {
+          profile?: Record<string, number>;
+          detected_loads?: LoadDetail[];
+          decision_style_label?: string;
+          decision_style_description?: string;
+          decision_style_confidence?: number;
         } | undefined;
+
         const profile = profileData?.profile || {};
-        const loads = profileData?.detected_loads || [];
-        const needToValuesData = profileData?.need_to_values || {};
-        console.log("[ServiceReasoning] profile:", profile);
-        console.log("[ServiceReasoning] detected_loads:", loads);
-        console.log("[ServiceReasoning] need_to_values:", needToValuesData);
         setValueScores({
-          safety: profile.score_safety || 0,
-          family: profile.score_family || 0,
-          efficiency: profile.score_efficiency || 0,
+          safety:    profile.score_safety    || 0,
+          family:    profile.score_family    || 0,
+          efficiency:profile.score_efficiency|| 0,
           enjoyment: profile.score_enjoyment || 0,
           adventure: profile.score_adventure || 0,
         });
-        setDetectedLoads(loads);
-        setNeedToValues(needToValuesData);
+        setDetectedLoads(profileData?.detected_loads || []);
 
-        // DecisionStyle情報を取得（profileDataレベルから）
-        if (profileData) {
-          const style = profileData as unknown as { 
-            decision_style_label?: string;
-            decision_style_description?: string;
-            decision_style_confidence?: number;
-          };
-          if (style.decision_style_label) {
-            setDecisionStyle({
-              label: style.decision_style_label,
-              description: style.decision_style_description || "",
-              confidence: style.decision_style_confidence || null,
-            });
-          }
+        if (profileData?.decision_style_label) {
+          setDecisionStyle({
+            label:       profileData.decision_style_label,
+            description: profileData.decision_style_description || "",
+            confidence:  profileData.decision_style_confidence  || null,
+          });
         }
 
-        // 類似プロファイル情報を取得
         try {
-          const similarData = await api.getSimilarProfiles(validSessionId);
+          const similarData = await api.getSimilarProfiles(sid);
           setSimilarProfiles(similarData);
-        } catch (e) {
-          console.warn("[ServiceReasoning] 類似プロファイル取得エラー:", e);
-          // エラーが発生してもページ表示は継続
+        } catch {
+          /* 無視 */
         }
-
-        // Need マッピングを取得
-        const mappingData = await api.getNeedMapping();
-        const answerToNeeds = mappingData.answer_to_needs || {};
-
-        // サービス質問（sq1-sq5）のみをフィルタリング
-        const serviceAnswers = answersFromApi.filter(a => a.question_id.startsWith('sq'));
-        console.log("[ServiceReasoning] serviceAnswers:", serviceAnswers);
-        console.log("[ServiceReasoning] answerToNeeds:", answerToNeeds);
-
-        // 質問分析結果を生成（Need マッピング適用）
-        const results: AnalysisResult[] = serviceAnswers.map((answer) => {
-          const questionMapping = answerToNeeds[answer.question_id] || {};
-          const needs = questionMapping[answer.answer_key] || [];
-          console.log(`[ServiceReasoning] ${answer.question_id} -> ${answer.answer_key} -> needs:`, needs);
-          return {
-            question_id: answer.question_id,
-            question_text: answer.question_id,
-            answer_text: answer.answer_key,
-            answer_label: answer.answer_key,
-            detected_values: ANSWER_TO_VALUES[answer.answer_key] || ["効率・合理性"],
-            detected_needs: needs,
-          };
-        });
-        setAnalysisResults(results);
       } catch (e) {
         console.error("分析結果取得エラー:", e);
       } finally {
@@ -227,186 +386,202 @@ export function ServiceReasoningClient() {
     return (
       <div className="flex min-h-[60vh] items-center justify-center">
         <div className="text-center">
-          <div className="mx-auto h-12 w-12 animate-spin rounded-full border-4 border-navy border-t-transparent"></div>
+          <div className="mx-auto h-12 w-12 animate-spin rounded-full border-4 border-navy border-t-transparent" />
           <p className="mt-4 text-text-muted">分析結果を読み込み中...</p>
         </div>
       </div>
     );
   }
 
+  // 価値観を降順ソート
+  const sortedValues = Object.entries(valueScores).sort(([, a], [, b]) => b - a);
+  const topValues = sortedValues.slice(0, 3);
+
+  // フロー表示用データ
+  const flowAnswerItems = answers.slice(0, 3).map((a) => ANSWER_LABELS[a.answer_key] || a.answer_key);
+  const flowValueItems  = topValues.slice(0, 3).map(([k]) => VALUE_LABELS[k]);
+  const flowNeedItems   = [...new Set(services.slice(0, 3).flatMap((s) => s.matched_needs))]
+    .slice(0, 3)
+    .map((n) => NEED_LABELS[n] || n);
+  const flowLoadItems   = detectedLoads.slice(0, 2).map((l) => l.name);
+  const flowServiceItems= services.slice(0, 3).map((s) => s.title);
+
   return (
-    <div className="mx-auto max-w-[1200px] px-6 py-10">
-      <div className="mb-8">
+    <div className="mx-auto max-w-[1100px] px-6 py-10">
+      {/* ページヘッダー */}
+      <div className="mb-10">
         <h2 className="text-3xl font-bold text-navy">提案の理由</h2>
         <p className="mt-2 text-text-muted">
-          あなたの回答から分析した価値観と、サービスのマッチングを可視化します
+          あなたの回答から価値観・ニーズ・懸念事項を分析し、最もマッチするサービスを選定しました
         </p>
       </div>
 
-      {/* セクション1: 質問分析結果 */}
+      {/* ══════════════════════════════════════════════════════════════
+          セクション 1: 分析ステップのフロー
+      ══════════════════════════════════════════════════════════════ */}
       <section className="mb-12">
-        <h3 className="mb-4 text-xl font-semibold text-navy">
-          質問から分析した内容
-        </h3>
-        <div className="space-y-4">
-          {analysisResults.map((result, idx) => (
-            <div
-              key={result.question_id}
-              className="rounded-lg border border-border bg-surface p-6"
-            >
-              <div className="mb-2 flex items-center gap-2">
-                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-navy text-xs font-bold text-white">
-                  Q{idx + 1}
-                </span>
-                <h4 className="font-medium text-navy">質問{idx + 1}</h4>
-              </div>
-              <p className="mb-3 text-sm text-text-muted">
-                回答キー: {result.answer_label}
-              </p>
-              <div className="grid grid-cols-2 gap-4 text-sm">
-                <div>
-                  <p className="mb-1 font-medium text-navy">検出された価値観</p>
-                  <div className="flex flex-wrap gap-2">
-                    {result.detected_values.map((value, i) => (
-                      <span key={i} className="rounded-full bg-gold/20 px-3 py-1 text-xs text-gold-dark">
-                        {value}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-                <div>
-                  <p className="mb-1 font-medium text-navy">関連するニーズ</p>
-                  <div className="flex flex-wrap gap-2">
-                    {result.detected_needs.slice(0, 3).map((need, i) => (
-                      <span key={i} className="rounded-full bg-blue-100 px-3 py-1 text-xs text-blue-700">
-                        {need}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
+        <h3 className="mb-4 text-xl font-semibold text-navy">分析の流れ</h3>
+        <div className="rounded-xl border border-border bg-white p-6 shadow-sm">
+          <div className="overflow-x-auto">
+            <div className="flex items-start min-w-[720px]">
+              <FlowStep
+                num={1}
+                title="質問への回答"
+                items={flowAnswerItems.length > 0 ? flowAnswerItems : ["回答データなし"]}
+                colorClass="bg-blue-500"
+              />
+              <FlowArrow />
+              <FlowStep
+                num={2}
+                title="価値観の検出"
+                items={flowValueItems.length > 0 ? flowValueItems : ["検出中"]}
+                colorClass="bg-purple-500"
+              />
+              <FlowArrow />
+              <FlowStep
+                num={3}
+                title="ニーズの特定"
+                items={flowNeedItems.length > 0 ? flowNeedItems : ["特定中"]}
+                colorClass="bg-yellow-500"
+              />
+              {flowLoadItems.length > 0 && (
+                <>
+                  <FlowArrow />
+                  <FlowStep
+                    num={4}
+                    title="懸念事項の検出"
+                    items={flowLoadItems}
+                    colorClass="bg-orange-500"
+                  />
+                </>
+              )}
+              <FlowArrow />
+              <FlowStep
+                num={flowLoadItems.length > 0 ? 5 : 4}
+                title="サービス推薦"
+                items={flowServiceItems.length > 0 ? flowServiceItems : ["推薦中"]}
+                colorClass="bg-navy"
+              />
             </div>
-          ))}
+          </div>
+          <p className="mt-4 text-xs text-gray-400 text-center">
+            ※ 価値観・ニーズ・懸念事項それぞれのマッチ度を合算してサービスをスコアリングしています
+          </p>
         </div>
       </section>
 
-      {/* セクション2: 価値観スコア */}
+      {/* ══════════════════════════════════════════════════════════════
+          セクション 2: あなたのプロファイル
+      ══════════════════════════════════════════════════════════════ */}
       <section className="mb-12">
-        <h3 className="mb-4 text-xl font-semibold text-navy">
-          あなたの価値観プロファイル
-        </h3>
-        {similarProfiles && similarProfiles.total_users > 0 && (
-          <p className="mb-4 text-sm text-text-muted">
-            あなたと近似していたのは
-            <span className="font-semibold text-navy"> {similarProfiles.similar_users}名</span>
-            /<span className="font-semibold">{similarProfiles.total_users}名</span>中
-            <span className="ml-2 text-xs">
-              （類似率: {similarProfiles.similarity_rate}%）
-            </span>
-          </p>
-        )}
-        <div className="rounded-lg border border-border bg-surface p-6">
-          <div className="space-y-4">
-            {Object.entries(valueScores)
-              .sort(([, a], [, b]) => b - a)
-              .map(([key, score]) => {
-                const labels: Record<string, string> = {
-                  safety: "安全・安心",
-                  family: "家族との時間",
-                  efficiency: "効率・合理性",
-                  enjoyment: "楽しさ・充実感",
-                  adventure: "自己成長・学び",
-                };
+        <div className="flex items-center justify-between mb-4">
+          <h3 className="text-xl font-semibold text-navy">あなたのプロファイル</h3>
+          {similarProfiles && similarProfiles.total_users > 0 && (
+            <p className="text-sm text-text-muted">
+              類似ユーザー：
+              <span className="font-semibold text-navy">{similarProfiles.similar_users}</span>
+              /{similarProfiles.total_users} 名（{similarProfiles.similarity_rate}%）
+            </p>
+          )}
+        </div>
+
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+          {/* 価値観プロファイル */}
+          <div className="rounded-xl border border-border bg-white p-5 shadow-sm">
+            <p className="text-sm font-semibold text-navy mb-4">価値観プロファイル</p>
+            <div className="space-y-3">
+              {sortedValues.map(([key, score]) => {
+                const colors = VALUE_BADGE_COLORS[key] ?? { bg: "bg-gray-50", text: "text-gray-700", bar: "bg-gray-400" };
                 return (
                   <div key={key}>
-                    <div className="mb-1 flex items-center justify-between">
-                      <span className="text-sm font-medium text-navy">
-                        {labels[key]}
+                    <div className="flex items-center justify-between mb-1">
+                      <span className={`text-xs font-medium ${colors.text}`}>
+                        {VALUE_LABELS[key]}
                       </span>
-                      <span className="text-sm text-text-muted">
-                        {Math.round(score)}%
-                      </span>
+                      <span className="text-xs text-gray-500">{Math.round(score)}%</span>
                     </div>
-                    <div className="h-2 overflow-hidden rounded-full bg-gray-200">
+                    <div className="h-1.5 rounded-full bg-gray-100 overflow-hidden">
                       <div
-                        className="h-full rounded-full bg-navy transition-all"
+                        className={`h-full rounded-full ${colors.bar}`}
                         style={{ width: `${Math.min(score, 100)}%` }}
                       />
                     </div>
                   </div>
                 );
               })}
+            </div>
+          </div>
+
+          {/* Decision スタイル */}
+          <div className="rounded-xl border border-border bg-white p-5 shadow-sm">
+            <p className="text-sm font-semibold text-navy mb-4">Decision スタイル</p>
+            {decisionStyle ? (
+              <>
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-navy text-white font-bold text-lg">
+                    決
+                  </div>
+                  <div>
+                    <p className="font-semibold text-navy">{decisionStyle.label}</p>
+                    {decisionStyle.confidence !== null && (
+                      <p className="text-xs text-gray-500">確信度 {Math.round(decisionStyle.confidence)}%</p>
+                    )}
+                  </div>
+                </div>
+                <p className="text-xs text-gray-600 leading-relaxed">{decisionStyle.description}</p>
+              </>
+            ) : (
+              <p className="text-sm text-gray-400">データなし</p>
+            )}
+          </div>
+
+          {/* 検出された懸念事項 */}
+          <div className="rounded-xl border border-amber-200 bg-amber-50 p-5 shadow-sm">
+            <p className="text-sm font-semibold text-amber-900 mb-4">検出された懸念事項</p>
+            {detectedLoads.length > 0 ? (
+              <div className="space-y-3">
+                {detectedLoads.map((load, idx) => (
+                  <div key={idx} className="flex items-start gap-2">
+                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-amber-300 text-xs font-bold text-amber-900 mt-0.5">
+                      {idx + 1}
+                    </span>
+                    <div>
+                      <p className="text-sm font-semibold text-amber-900">{load.name}</p>
+                      {load.description && (
+                        <p className="text-xs text-gray-600 mt-0.5">{load.description}</p>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p className="text-sm text-gray-500">懸念事項は検出されませんでした</p>
+            )}
           </div>
         </div>
       </section>
 
-      {/* セクション2.3: あなたの Decision スタイル */}
-      {decisionStyle && (
+      {/* ══════════════════════════════════════════════════════════════
+          セクション 3: 質問と検出内容（補足情報）
+      ══════════════════════════════════════════════════════════════ */}
+      {answers.length > 0 && (
         <section className="mb-12">
-          <h3 className="mb-4 text-xl font-semibold text-navy">
-            あなたの Decision スタイル
-          </h3>
-          <div className="rounded-lg border border-border bg-surface p-6">
-            <div className="mb-3 flex items-center gap-3">
-              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-navy text-white font-bold text-lg">
-                決
-              </div>
-              <div>
-                <h4 className="text-lg font-semibold text-navy">{decisionStyle.label}</h4>
-                {decisionStyle.confidence !== null && (
-                  <p className="text-sm text-text-muted">確信度 {Math.round(decisionStyle.confidence)}%</p>
-                )}
-              </div>
-            </div>
-            <p className="text-sm text-text-muted leading-relaxed">
-              {decisionStyle.description}
-            </p>
-          </div>
-        </section>
-      )}
-
-      {/* セクション2.5: 検出された懸念事項（Load） */}
-      {detectedLoads.length > 0 && (
-        <section className="mb-12">
-          <h3 className="mb-4 text-xl font-semibold text-navy">
-            検出された懸念事項（Load）
-          </h3>
-          <div className="rounded-lg border border-amber-200 bg-amber-50 p-6">
-            <p className="mb-4 text-sm text-gray-700">
-              あなたの回答から、以下の懸念事項が検出されました。これらに対応するサービスを優先的に推薦しています。
-            </p>
-            <div className="space-y-4">
-              {detectedLoads.map((load, idx) => (
-                <div
-                  key={idx}
-                  className="rounded-lg border border-amber-300 bg-white p-4"
-                >
-                  <div className="flex items-start gap-3">
-                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-amber-200 text-sm font-bold text-amber-900">
-                      {idx + 1}
-                    </span>
-                    <div className="flex-1 min-w-0">
-                      <h4 className="font-semibold text-amber-900 mb-2">
-                        {load.name}
-                      </h4>
-                      {load.description && (
-                        <p className="text-sm text-gray-700 mb-2">
-                          {load.description}
-                        </p>
-                      )}
-                      {load.related_values.length > 0 && (
-                        <div className="flex flex-wrap gap-2 items-center">
-                          <span className="text-xs text-gray-600">関連価値観:</span>
-                          {load.related_values.map((value, vIdx) => (
-                            <span
-                              key={vIdx}
-                              className="rounded bg-blue-100 px-2 py-0.5 text-xs text-blue-700 border border-blue-200"
-                            >
-                              {value}
-                            </span>
-                          ))}
-                        </div>
-                      )}
+          <h3 className="mb-4 text-xl font-semibold text-navy">質問から検出した内容</h3>
+          <div className="rounded-xl border border-border bg-white p-6 shadow-sm">
+            <div className="space-y-3">
+              {answers.map((answer, idx) => (
+                <div key={answer.question_id} className="flex items-start gap-4 py-3 border-b border-gray-100 last:border-0">
+                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-blue-100 text-xs font-bold text-blue-700 mt-0.5">
+                    Q{idx + 1}
+                  </span>
+                  <div className="flex-1">
+                    <p className="text-sm font-medium text-gray-700">
+                      {SERVICE_QUESTION_TEXTS[answer.question_id] || answer.question_id}
+                    </p>
+                    <div className="mt-1 flex flex-wrap gap-2">
+                      <span className="rounded-full bg-blue-100 px-3 py-0.5 text-xs text-blue-700">
+                        {ANSWER_LABELS[answer.answer_key] || answer.answer_key}
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -416,113 +591,27 @@ export function ServiceReasoningClient() {
         </section>
       )}
 
-      {/* セクション3: サービスマッチング */}
+      {/* ══════════════════════════════════════════════════════════════
+          セクション 4: 推薦サービスの詳細理由（メイン）
+      ══════════════════════════════════════════════════════════════ */}
       <section className="mb-12">
-        <h3 className="mb-4 text-xl font-semibold text-navy">
-          サービスとのマッチング
-        </h3>
-        <div className="space-y-4">
-          {services.slice(0, 3).map((service) => (
-            <div
+        <h3 className="mb-2 text-xl font-semibold text-navy">なぜこのサービスが選ばれたか</h3>
+        <p className="mb-5 text-sm text-gray-500">
+          スコアは「価値観マッチ」「ニーズ対応」「懸念解消」の3軸を合算して算出しています
+        </p>
+        <div className="space-y-5">
+          {services.slice(0, 3).map((service, idx) => (
+            <ServiceReasonCard
               key={service.id}
-              className="rounded-lg border border-border bg-surface p-6"
-            >
-              <h4 className="mb-3 text-lg font-semibold text-navy">
-                {service.title}
-              </h4>
-              <div className="grid grid-cols-2 gap-4 text-sm">
-                <div>
-                  <p className="mb-2 font-medium text-navy">
-                    Need Match: {Math.round((service.need_score || 0) * 100)}%
-                  </p>
-                  <div className="flex flex-wrap gap-1">
-                    {service.matched_needs.slice(0, 3).map((need) => (
-                      <span
-                        key={need}
-                        className="rounded bg-blue-100 px-2 py-0.5 text-xs text-blue-700"
-                      >
-                        {need}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-                <div>
-                  <p className="mb-2 font-medium text-navy">
-                    Load Match: {Math.round((service.load_score || 0) * 100)}%
-                  </p>
-                  <div className="flex flex-wrap gap-1">
-                    {service.matched_loads.length > 0 ? (
-                      service.matched_loads.map((load) => (
-                        <span
-                          key={load}
-                          className="rounded bg-amber-100 px-2 py-0.5 text-xs font-medium text-amber-900 border border-amber-300"
-                        >
-                          {load}
-                        </span>
-                      ))
-                    ) : (
-                      <span className="text-xs text-text-muted">なし</span>
-                    )}
-                  </div>
-                </div>
-              </div>
-            </div>
+              service={service}
+              rank={idx + 1}
+              valueScores={valueScores}
+            />
           ))}
         </div>
       </section>
 
-      {/* セクション4: ナレッジグラフ風ビジュアル */}
-      <section className="mb-12">
-        <h3 className="mb-4 text-xl font-semibold text-navy">
-          分析フローの可視化
-        </h3>
-        <div className="rounded-lg border border-border bg-surface p-8">
-          <ServiceKnowledgeGraph
-            values={Object.entries(valueScores)
-              .map(([key, score]) => {
-                const labels: Record<string, string> = {
-                  safety: "安全・安心",
-                  family: "家族との時間",
-                  efficiency: "効率・合理性",
-                  enjoyment: "楽しさ・充実感",
-                  adventure: "自己成長・学び",
-                };
-                return { key, label: labels[key], score };
-              })
-              .sort((a, b) => b.score - a.score)}
-            needs={[
-              ...new Set(
-                services.slice(0, 3).flatMap((s) => 
-                  s.matched_needs.map((n: string) => NEED_LABELS[n] || n)
-                )
-              ),
-            ].slice(0, 5)}
-            services={services.slice(0, 3).map((s) => ({
-              id: s.id,
-              title: s.title,
-              matched_needs: s.matched_needs.map((n: string) => NEED_LABELS[n] || n),
-            }))}
-            needToValues={Object.fromEntries(
-              Object.entries(needToValues).map(([needCode, valueKeys]) => [
-                NEED_LABELS[needCode] || needCode,
-                valueKeys
-              ])
-            )}
-          />
-          <div className="mt-4 text-center text-sm text-text-muted">
-            <p>矢印の濃さは関連度の強さを表します</p>
-            <p className="mt-1">
-              <span className="inline-block h-3 w-3 rounded-sm bg-blue-200 border border-blue-500"></span>
-              {" "}価値観{" "}
-              <span className="inline-block h-3 w-3 rounded-sm bg-yellow-200 border border-yellow-500 ml-3"></span>
-              {" "}ニーズ{" "}
-              <span className="inline-block h-3 w-3 rounded-sm bg-indigo-200 border border-indigo-500 ml-3"></span>
-              {" "}サービス
-            </p>
-          </div>
-        </div>
-      </section>
-
+      {/* ナビゲーション */}
       <div className="mt-12 flex flex-wrap justify-center gap-4">
         <button
           onClick={() => router.push("/demo/service/recommend")}
